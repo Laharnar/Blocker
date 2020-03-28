@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da6f73a4a32f3884f8a3ff48ba21e3b6, type: 3}
+  m_Name: Player Science Args Var
+  m_EditorClassIdentifier: 
+  args:
+    move: {x: 0, y: 0, z: 0}
+    rotationAnglesY: 2.671452
+    knownAllyDeaths:
+    - recordedRelativePosition: {x: 0, y: 0, z: 0}
+      lastImportantPoint: {x: -0.47516918, y: -0.8675004, z: 9.7854}
+      type: 
+      value: 0
+    - recordedRelativePosition: {x: 0, y: 0, z: 0}
+      lastImportantPoint: {x: 0.33880758, y: -0.86749995, z: 2.2700887}
+      type: 
+      value: 0
+    source: {fileID: 0}
+    target:
+      pos: {x: -0.47516918, y: -0.8675004, z: 9.7854}
+      target: {fileID: 0}
+      _objectless: 1
+    trackingAngleY: -0
+    trackedPosition: {x: 5.25, y: -4.59, z: 0}
+    moveX: 0
+    rotationDirY: 0

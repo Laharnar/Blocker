@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17b7aeecd932e6e41a00c375abb5763c, type: 3}
+  m_Name: Research Tree Package 1
+  m_EditorClassIdentifier: 
+  researchOptions:
+  - name: DetactAllyDeaths
+    tag: 0
+    unlocked: {fileID: 11400000, guid: 9952b7169beb15346b1f23736b1d3564, type: 2}
+    cost: {fileID: 11400000, guid: e1ab173e1d3e6c4418ed689cbc9e10c9, type: 2}
+    weight: {fileID: 11400000, guid: 01c783e742a35594e9674ead65bee9b7, type: 2}
+    onBuy:
+      m_PersistentCalls:
+        m_Calls: []
+  - name: Acceleration
+    tag: 1
+    unlocked: {fileID: 11400000, guid: b32ba5209d95a5b4c86fe7bbd998a1a0, type: 2}
+    cost: {fileID: 11400000, guid: 03f38d3847f8be14392ffacf2fe19528, type: 2}
+    weight: {fileID: 11400000, guid: 340131a5a6981f24fbb88d91816fde52, type: 2}
+    onBuy:
+      m_PersistentCalls:
+        m_Calls: []
+  - name: Steering wheel
+    tag: 2
+    unlocked: {fileID: 11400000, guid: 312bc7155457d3544b27503c199a1ffe, type: 2}
+    cost: {fileID: 11400000, guid: 802288b3fe8bc224cb054e23c68aa341, type: 2}
+    weight: {fileID: 11400000, guid: d50522e0283a6fd44aba9ff50ca4001d, type: 2}
+    onBuy:
+      m_PersistentCalls:
+        m_Calls: []
+  - name: Pick closest
+    tag: 3
+    unlocked: {fileID: 11400000, guid: a7718b0a81471b24382cfcc1aecbcac3, type: 2}
+    cost: {fileID: 11400000, guid: 764db9f4d937e5445b23ba02716e9ec0, type: 2}
+    weight: {fileID: 11400000, guid: 39c056d5a611b9944848259f87f78760, type: 2}
+    onBuy:
+      m_PersistentCalls:
+        m_Calls: []
+  - name: Tracking rotation
+    tag: 4
+    unlocked: {fileID: 11400000, guid: 3fa5f63e1a40efd47b82ec19f2bc2091, type: 2}
+    cost: {fileID: 11400000, guid: 2324b2be7abc58b4caf40b0364f0691d, type: 2}
+    weight: {fileID: 11400000, guid: 692aa97fc3e6a7f44919b1dadb50e1ef, type: 2}
+    onBuy:
+      m_PersistentCalls:
+        m_Calls: []

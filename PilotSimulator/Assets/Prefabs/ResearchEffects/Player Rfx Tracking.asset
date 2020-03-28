@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dcad1ff80742b34eab1ad9d959c2a0b, type: 3}
+  m_Name: Player Rfx Tracking
+  m_EditorClassIdentifier: Assembly-CSharp::RfxTracking
+  trackingUnlocked: {fileID: 11400000, guid: 3fa5f63e1a40efd47b82ec19f2bc2091, type: 2}
+  trackingRotationWeight: {fileID: 11400000, guid: 692aa97fc3e6a7f44919b1dadb50e1ef,
+    type: 2}
+  allyDeathsWeight: {fileID: 11400000, guid: 01c783e742a35594e9674ead65bee9b7, type: 2}
+  pickClosestWeight: {fileID: 11400000, guid: 39c056d5a611b9944848259f87f78760, type: 2}
+  rotationDamping:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 6.916666
+      outSlope: 6.916666
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.1
+      value: 0.45
+      inSlope: 3.3269234
+      outSlope: 3.3269234
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.23
+      value: 0.73
+      inSlope: 1.2773275
+      outSlope: 1.2773275
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 0
+    m_PostInfinity: 2
+    m_RotationOrder: 4

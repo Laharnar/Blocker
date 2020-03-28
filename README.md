@@ -13,16 +13,16 @@ First stage:
 Basic prototype that shows the idea, without actual gameplay goals.
 
 Features:
-- research menu with items that can be edited
-- units that can move, target, rotate depending on picked research.
-- information map (like x-ray vision)
-- units can spawn, die and give money.
+- [x] research menu with items that can be edited
+- [x] units that can move, target, rotate depending on picked research.
+- [x] information map (like x-ray vision)
+- [x] units can spawn, die and give money.
 
 Results:
 ![Stage 1](/images/stage1.png)
 Format: ![Alt Text](url)
 
-
+---
 
 Second stage:
 
@@ -33,11 +33,11 @@ Gameplay goals, experimentation, understanding of key time sinks in this sort of
  In progress.
 
 Features:
-- offers one full simple level to beat.
-- ui, background.
-- explore a few ideas around using different blocks.
+- [ ] offers one full simple level to beat.
+- [ ] ui, background.
+- [ ] explore a few ideas around using different blocks.
 
-
+---
 
 Third stage:
 

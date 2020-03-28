@@ -13900,5 +13900,65 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5246928384309677989, guid: ac61ed3bf3bcbcd4ebba7a1f673e465f,
+        type: 3}
+      propertyPath: rate
+      value: 
+      objectReference: {fileID: 5542436624762378617}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac61ed3bf3bcbcd4ebba7a1f673e465f, type: 3}
+--- !u!1 &5542436624762378615 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5246928384309677988, guid: ac61ed3bf3bcbcd4ebba7a1f673e465f,
+    type: 3}
+  m_PrefabInstance: {fileID: 5542436624762378614}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5542436624762378616 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5246928384309677989, guid: ac61ed3bf3bcbcd4ebba7a1f673e465f,
+    type: 3}
+  m_PrefabInstance: {fileID: 5542436624762378614}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5542436624762378615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a50da8f7ae192f4b9f939f2a866f137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5542436624762378617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5542436624762378615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c18ad8d3eba2884fb4c55488196f56f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delays:
+  - value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 1
+  - value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 1
+  - value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 5
+  activeDelay: 0
+  onReady:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5542436624762378616}
+        m_MethodName: SpawnNewAtSpawnPoint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

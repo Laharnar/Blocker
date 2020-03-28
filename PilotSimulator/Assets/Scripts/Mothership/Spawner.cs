@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Spawner:MonoBehaviour {
     [SerializeField] Transform target;
-    [SerializeField] float rate = 1;
+    [SerializeField] ProgrammableDelay rate;
     [SerializeField] Transform spawnPoint;
 
     public ReferenceCall onSpawn = new ReferenceCall()
@@ -19,22 +19,12 @@ public class Spawner:MonoBehaviour {
     void Start()
     {
         spawned.Add(this, new List<Transform>());
-        StartCoroutine(Spawn());
     }
 
-    public void SetRate(float value)
+    // Event usable.
+    public void SpawnNewAtSpawnPoint()
     {
-        rate = Mathf.Max(value, 0.00001f);
-    }
-
-    IEnumerator Spawn()
-    {
-        while (true)
-        {
-            SpawnNew(spawnPoint.position, spawnPoint.rotation);
-
-            yield return new WaitForSeconds(rate);
-        }
+        SpawnNew(spawnPoint.position, spawnPoint.rotation);
     }
 
     public void SpawnNew(Vector3 pos, Quaternion rot)

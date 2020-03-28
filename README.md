@@ -1,10 +1,13 @@
 # Blocker
 Game about builder blocks and researchable AI
 
-Everything should be researchable. Movement, rotation, health points, flying, targeting, spawning... And everything should be editable. Movement 90% effective. Spawning 30% effective. And everything should be built from basic blocks.
+Everything should be researchable. Movement, rotation, health points, flying, targeting, spawning... Research should be editable. movement is 90% effective. Spawning 30% effective. Building are created with basic blocks and research.
+
 It should be like playing with legos.
+
 This allows for mixing results. For example mixing movement, with rotation and targeting give us fliers. Spawning plus rotation plus gravity should give us barriers.
 
+---
 
 First stage: 
 

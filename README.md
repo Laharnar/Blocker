@@ -6,12 +6,10 @@ It should be like playing with legos.
 This allows for mixing results. For example mixing movement, with rotation and targeting give us fliers. Spawning plus rotation plus gravity should give us barriers.
 
 
-Second stage:
---> 28.03.2020
- In progress.
-
 First stage: 
+
 --> ??
+
 Basic prototype that shows the basic idea.
 
 Features:
@@ -23,3 +21,12 @@ Features:
 Results:
 ![Stage 1](/images/stage1.png)
 Format: ![Alt Text](url)
+
+
+
+Second stage:
+
+--> 28.03.2020
+
+ In progress.
+

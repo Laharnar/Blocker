@@ -10,7 +10,7 @@ First stage:
 
 --> ??
 
-Basic prototype that shows the basic idea.
+Basic prototype that shows the idea, without actual gameplay goals.
 
 Features:
 - research menu with items that can be edited
@@ -26,7 +26,21 @@ Format: ![Alt Text](url)
 
 Second stage:
 
+Gameplay goals, experimentation, understanding of key time sinks in this sort of project.
+
 --> 28.03.2020
 
  In progress.
 
+Features:
+- offers one full simple level to beat.
+- ui, background.
+- explore a few ideas around using different blocks.
+
+
+
+Third stage:
+
+More experimentation based on speed of development. Developing a few features to feature a few levels.
+
+Upcoming.

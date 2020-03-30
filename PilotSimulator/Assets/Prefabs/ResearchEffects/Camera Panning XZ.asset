@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c014ee867b0042a4baadda5518c56915, type: 3}
+  m_Name: Camera Panning XZ
+  m_EditorClassIdentifier: 
+  useX:
+    value: {fileID: 11400000, guid: 53dd6916957aea54da6810dde89359a9, type: 2}
+    useDefault: 0
+    defaultValue: 0
+  useY:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 0
+  useZ:
+    value: {fileID: 11400000, guid: 53dd6916957aea54da6810dde89359a9, type: 2}
+    useDefault: 0
+    defaultValue: 0
+  moveStrengthX: {fileID: 11400000, guid: a5ef767ef5ccb51439068d20ae330e75, type: 2}
+  moveStrengthY: {fileID: 0}
+  moveStrengthZ: {fileID: 11400000, guid: 344c887b54d483341a6e92fd07083c01, type: 2}
+  useRX: 0
+  rotationStrengthY: {fileID: 0}
+  directionRight: {fileID: 0}

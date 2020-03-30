@@ -10,18 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da6f73a4a32f3884f8a3ff48ba21e3b6, type: 3}
-  m_Name: Player Science Args Var
+  m_Name: Player Science Tree Args
   m_EditorClassIdentifier: 
   args:
     move: {x: 0, y: 0, z: 0}
-    rotationAnglesY: 2.671452
+    rotationAnglesY: 1.562025
     knownAllyDeaths:
-    - recordedRelativePosition: {x: 0, y: 0, z: 0}
-      lastImportantPoint: {x: -0.47516918, y: -0.8675004, z: 9.7854}
-      type: 
-      value: 0
-    - recordedRelativePosition: {x: 0, y: 0, z: 0}
-      lastImportantPoint: {x: 0.33880758, y: -0.86749995, z: 2.2700887}
+    - recordedRelativePosition: {x: 5.3992505, y: -0.00000011920929, z: 26.150637}
+      lastImportantPoint: {x: -6.341033, y: -0.86749995, z: -2.618175}
       type: 
       value: 0
     source: {fileID: 0}
@@ -32,4 +28,6 @@ MonoBehaviour:
     trackingAngleY: -0
     trackedPosition: {x: 5.25, y: -4.59, z: 0}
     moveX: 0
-    rotationDirY: 0
+    moveY: 0
+    moveZ: 0
+    rotationDirY: 1

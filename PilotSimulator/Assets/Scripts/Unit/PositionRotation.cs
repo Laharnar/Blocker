@@ -1,28 +1,36 @@
-﻿using System.Collections.Generic;
+﻿
+using System.Collections.Generic;
 using UnityEngine;
-public class Block : ScienceAffected {
+public class PositionRotation : ScienceAffected {
+
     public FloatVarRef moveSpeed, rotationSpeed;
     public Vector3 direction;
     public Vector3 rotationDeg;
     public Vector3 scaling = Vector3.one;
     public Vector3 lastRot;
+
+    [Header("Special case")]
+    public SpaceVarValue relativeTo;
+
     // Update is called once per frame
     void Update()
     {
         Vector3 moveAmount = direction * moveSpeed.Value * Time.deltaTime;
         Vector3 rotsAmount = rotationDeg * Time.deltaTime * rotationSpeed.Value;
 
-        if (ArgsRef != null)
+        if (ScienceTree != null)
         {
-            ArgsRef.args.moveX = moveAmount.x;
-            ArgsRef.args.rotationAnglesY = rotsAmount.y;
-            ArgsRef.args.source = transform;
-            ScienceEffect.RequestScienceEffect(Effects, ArgsRef.args);
+            ScienceTree.args.moveX = moveAmount.x;
+            ScienceTree.args.rotationAnglesY = rotsAmount.y;
+            ScienceTree.args.source = transform;
+            ScienceEffect.RequestScienceEffect(Effects, ScienceTree.args);
             // is this delayed? is it static?
-            moveAmount = new Vector3(0, 0, ArgsRef.args.moveX);
-            rotsAmount.y *= ArgsRef.args.rotationDirY; // * direction * strength
+            moveAmount = ScienceTree.args.moveDir;//new Vector3(0, 0, ArgsRef.args.moveX);
+            rotsAmount.y *= ScienceTree.args.rotationDirY; // * direction * strength
         }
-        transform.Translate(moveAmount, Space.Self);
+        
+        transform.Translate(moveAmount, relativeTo.Value);
+
         lastRot = transform.forward;
         transform.Rotate(rotsAmount);
 

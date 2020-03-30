@@ -8,6 +8,7 @@ public class ResearchUIToggle : MonoBehaviour {
 
     public void Init(BoolVar customVal)
     {
+        Debug.Log("This is used [*1]. if not, remove it.");
         val = customVal;
     }
 

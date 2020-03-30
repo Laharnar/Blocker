@@ -160,6 +160,11 @@ PrefabInstance:
       propertyPath: moveSpeed.defaultValue
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4077712338987557003, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
+        type: 3}
+      propertyPath: relativeTo.defaultValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4744049145723941408, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
         type: 3}
       propertyPath: m_UseGravity

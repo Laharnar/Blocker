@@ -2,6 +2,6 @@
 using UnityEngine;
 
 public abstract class ScienceAffected :MonoBehaviour{
-    public ScienceArgsVar ArgsRef;
+    public ScienceArgsVar ScienceTree;
     public List<ScienceEffect> Effects;
 }

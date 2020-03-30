@@ -12,7 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c014ee867b0042a4baadda5518c56915, type: 3}
   m_Name: Player Rfx Acceleration
   m_EditorClassIdentifier: 
-  science: {fileID: 11400000, guid: 0d9f34b5f3ee2d442a218fa516081ad6, type: 2}
+  useX:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 1
+  useY:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 1
+  useZ:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 1
+  moveStrengthX: {fileID: 0}
+  moveStrengthY: {fileID: 0}
   moveStrengthZ: {fileID: 11400000, guid: 340131a5a6981f24fbb88d91816fde52, type: 2}
+  useRX: 1
   rotationStrengthY: {fileID: 11400000, guid: d50522e0283a6fd44aba9ff50ca4001d, type: 2}
-  rotationRight: {fileID: 11400000, guid: 4d53272e39980344996c036ef53ffc84, type: 2}
+  directionRight: {fileID: 11400000, guid: 4d53272e39980344996c036ef53ffc84, type: 2}

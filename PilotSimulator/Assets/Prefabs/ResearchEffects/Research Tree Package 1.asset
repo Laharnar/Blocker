@@ -53,3 +53,11 @@ MonoBehaviour:
     onBuy:
       m_PersistentCalls:
         m_Calls: []
+  - name: Observer
+    tag: 5
+    unlocked: {fileID: 11400000, guid: 53dd6916957aea54da6810dde89359a9, type: 2}
+    cost: {fileID: 11400000, guid: 7bbb2f2c12c628642abf09ed63951203, type: 2}
+    weight: {fileID: 11400000, guid: b0d7c127842785c4cbe11d34ea8d5d85, type: 2}
+    onBuy:
+      m_PersistentCalls:
+        m_Calls: []

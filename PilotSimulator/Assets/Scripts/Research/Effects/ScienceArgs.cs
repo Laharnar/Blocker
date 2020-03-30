@@ -24,5 +24,8 @@ public class ScienceArgs {
     public float trackingAngleY;
     public Vector3 trackedPosition;
     public float moveX;
+    public float moveY;
+    public float moveZ;
     public float rotationDirY;
+    internal Vector3 moveDir;
 }

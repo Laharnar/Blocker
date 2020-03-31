@@ -11,7 +11,6 @@ public class UnitBuilder : MonoBehaviour
 
     public LayerMask buildLayerMask;
     public Transform referencePoint;
-    public bool onlyDown;
 
     public ReferenceCall onBuild;
     public TempItems temp;
@@ -26,8 +25,16 @@ public class UnitBuilder : MonoBehaviour
     public Timer spawnTimer;
     
     private Ray buildRay;
-    private bool buildConditionCleared;
+    private BuildMode activeBuildMode;
+    private bool hoveringOverBuildLocation;
+    private bool mousePressed;
+    private bool delayPassed;
 
+    const int READY = 0;
+    const int PLACE_CONTINOUSLY = 1;
+    const int PLACE_CONTINOUSLY_PLACED_ONE = 4;
+    const int PLACE_ONCE = 3;
+    const int CLEANUP = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -38,80 +45,134 @@ public class UnitBuilder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (mode > 0)
+        // in build mode
+        if (mode > READY)
         {
+            InBuildMode();
+        }
+    }
 
-            RaycastHit hit;
-            buildRay = mainCam.ScreenPointToRay(Input.mousePosition);
-            bool hoveringOverBuildLocation = Physics.Raycast(buildRay, out hit, Mathf.Infinity, buildLayerMask, QueryTriggerInteraction.Collide);
+    private void InBuildMode()
+    {
+        temporarySpawned.position = FindBuildLocationUnderMouse();
+
+        HandleBuildConditions();
+
+        if (BuildRequestValid())
+        {
             if (hoveringOverBuildLocation)
             {
-                Vector3 placeOn = hit.point;
-                placeOn.x = (int)placeOn.x;
-                placeOn.y = (int)placeOn.y;
-                placeOn.z = (int)placeOn.z;
-                temporarySpawned.position = placeOn;
+                Construct(temporarySpawned.position);
+                SetBuildModeAfterBuilding(); 
+                SetTimerForNextAllowedBuild();
             }
             else
             {
-                temporarySpawned.position = new Vector3(10000, 0);
+                Debug.Log("state: Invalid location to build, aborting.");
+                //Construct(r.origin + r.direction);
             }
-            buildConditionCleared = false;
-            HandleBuildConditions();
-            
-
-            // build on valid location.
-            if (buildConditionCleared)
-            {
-                Debug.Log("asd");
-                if (hoveringOverBuildLocation)
-                {
-                Debug.Log("bsd");
-                    Construct(hit.point);
-                    mode = 2;
-                    spawnTimer.Trigger();
-                }
-                else
-                {
-                    Debug.Log("Invalid location to build, aborting.");
-                    //Construct(r.origin + r.direction);
-                }
-
-                if (onlyDown)
-                    EndBuilding();
-            }
-
-            // allow multiple build modes
-            if (Input.GetKey(KeyCode.Space))
-            {
-                placementMode = 1;
-                temp.SphericalPlacement(referencePoint.position);
-            }
-            else
-            {
-                placementMode = 0;
-                temp.DirectionalPlacement(referencePoint.position);
-            }
-
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                EndBuilding();
-            }
-
         }
 
-        if (!onlyDown && mode == 2)
+        // allow multiple build modes
+        if (Input.GetKey(KeyCode.Space))
         {
-            if (Input.GetMouseButtonUp(0))
-                EndBuilding();
+            placementMode = 1;
+            temp.SphericalPlacement(referencePoint.position);
         }
+        else
+        {
+            placementMode = 0;
+            temp.DirectionalPlacement(referencePoint.position);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            mode = CLEANUP;
+        }
+
+        if (Input.GetMouseButtonUp(0) && mode == PLACE_CONTINOUSLY_PLACED_ONE)
+        {
+            mode = CLEANUP;
+        }
+
+        // cancel building only in buils mode
+        if (mode == CLEANUP)
+        {
+            EndBuilding();
+        }
+    }
+
+    private void SetBuildModeAfterBuilding()
+    {
+        if (mode == PLACE_CONTINOUSLY || mode == PLACE_CONTINOUSLY_PLACED_ONE)
+        {
+            mode = PLACE_CONTINOUSLY_PLACED_ONE;
+        }
+        else if (mode == PLACE_ONCE)
+        {
+            mode = CLEANUP;
+        }
+        else
+        {
+            throw new NotImplementedException("Unknown mode " + mode);
+        }
+    }
+
+    private Vector3 FindBuildLocationUnderMouse()
+    {
+        RaycastHit hit;
+        buildRay = mainCam.ScreenPointToRay(Input.mousePosition);
+        if (IsOverBuildLocation(out hit))
+        {
+            hoveringOverBuildLocation = true;
+            return SnapBuildLocation(hit.point);
+        }
+        else
+        {
+            return new Vector3(10000, 0);
+        }
+    }
+
+    private static Vector3 SnapBuildLocation(Vector3 placeOn)
+    {
+        placeOn.x = (int)placeOn.x;
+        placeOn.y = (int)placeOn.y;
+        placeOn.z = (int)placeOn.z;
+        return placeOn;
+    }
+
+    private bool BuildRequestValid()
+    {
+        if (mode == PLACE_CONTINOUSLY || mode == PLACE_CONTINOUSLY_PLACED_ONE)
+        {
+            if(mousePressed && spawnTimer.Ready())
+                return true;
+        }
+        else if (mode == PLACE_ONCE)
+        {
+            if(mousePressed)
+                return true;
+        }
+        else if (mode == CLEANUP)
+        {
+            return false;
+        }
+        else
+        {
+            throw new NotImplementedException("Unknown mode " + mode);
+        }
+        return false;
+    }
+
+    private bool IsOverBuildLocation(out RaycastHit hit)
+    {
+        return Physics.Raycast(buildRay, out hit, Mathf.Infinity, buildLayerMask, QueryTriggerInteraction.Collide);
     }
 
     private void HandleBuildConditions()
     {
-
-        buildConditionCleared = Input.GetKey(KeyCode.Mouse0);
-        buildConditionCleared &= spawnTimer.Ready();
+        mousePressed = Input.GetKey(KeyCode.Mouse0);
+        delayPassed = spawnTimer.Ready();
     }
 
     private void OnDrawGizmos()
@@ -130,13 +191,36 @@ public class UnitBuilder : MonoBehaviour
 
         onBuild.ActivateCall(t);
     }
+    void SetTimerForNextAllowedBuild()
+    {
+        spawnTimer.Trigger();
+    }
 
-    // called form ui.
+    // called from ui.
+    public void SetBuildMode(int buildMode)
+    {
+        activeBuildMode = (BuildMode)buildMode;
+    }
+    public void BeginBuilding1(BuildMode asd)
+    {
+    }
+        // called from ui.
     public void BeginBuilding()
     {
-        if (mode == 0)
+        if (mode == READY)
         {
-            mode = 1;
+            if (activeBuildMode == BuildMode.Blocks)
+            {
+                mode = PLACE_CONTINOUSLY;
+            }
+            else if(activeBuildMode == BuildMode.Building)
+            {
+                mode = PLACE_ONCE;
+            }
+            else
+            {
+                throw new NotImplementedException("Unknown mode " + mode);
+            }
             temporarySpawned = Instantiate(preBuildPrefabs[buildId]);
         }
         else Debug.Log("Already building.");
@@ -144,7 +228,9 @@ public class UnitBuilder : MonoBehaviour
 
     public void EndBuilding()
     {
-        mode = 0;
+        Debug.Log("End building.");
+
+        mode = READY;
         if (temporarySpawned!= null)
         {
             Destroy(temporarySpawned.gameObject);
@@ -152,4 +238,5 @@ public class UnitBuilder : MonoBehaviour
 
         temp.ClearAll();
     }
+    
 }

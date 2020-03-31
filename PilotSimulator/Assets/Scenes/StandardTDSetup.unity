@@ -3275,11 +3275,14 @@ MonoBehaviour:
     callFun: NewSpawn
     callFuns:
     - NewSpawn
-    - NewBuilding
+    - AddAbsorber
     - NewBuilding
     - NewBuilding
     references:
     - {fileID: 1207895180}
+    - {fileID: 1269245306}
+    - {fileID: 1269245306}
+    - {fileID: 1269245306}
     use: 1
   temp: {fileID: 353696664}
   spawnTimer:
@@ -5971,17 +5974,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 642642296}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &642642299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7137,7 +7129,7 @@ GameObject:
   - component: {fileID: 797768955}
   - component: {fileID: 797768954}
   m_Layer: 0
-  m_Name: Base
+  m_Name: PlayerBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8739,7 +8731,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 123.18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1041874099
 MonoBehaviour:
@@ -10031,7 +10023,7 @@ PrefabInstance:
     - target: {fileID: 392529813208287839, guid: 6da2c0fdb0a9bbd44bad4e0d9bafe089,
         type: 3}
       propertyPath: m_Name
-      value: SpawnerBase-A2
+      value: PlayerSpawnerBase-A2
       objectReference: {fileID: 0}
     - target: {fileID: 5724743952607504900, guid: 6da2c0fdb0a9bbd44bad4e0d9bafe089,
         type: 3}
@@ -10531,6 +10523,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265925399}
   m_CullTransparentMesh: 0
+--- !u!1 &1269245304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1269245305}
+  - component: {fileID: 1269245306}
+  m_Layer: 0
+  m_Name: Materials
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1269245305
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269245304}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1207895181}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1269245306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269245304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 330f383135561c741b00d5270c6c7d9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 0
+  generatedEnergy:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 0
+  repeatRate:
+    rate: 0.5
+  detectors: []
+  alliance: {fileID: 797768954}
 --- !u!1 &1275388993
 GameObject:
   m_ObjectHideFlags: 0
@@ -15074,17 +15121,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1779412896}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1779412899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15750,7 +15786,7 @@ PrefabInstance:
     - target: {fileID: 5246928384309677988, guid: ac61ed3bf3bcbcd4ebba7a1f673e465f,
         type: 3}
       propertyPath: m_Name
-      value: SpawnerBase-B2
+      value: EnemySpawnerBase-B2
       objectReference: {fileID: 0}
     - target: {fileID: 5246928384309677989, guid: ac61ed3bf3bcbcd4ebba7a1f673e465f,
         type: 3}
@@ -16420,17 +16456,6 @@ MonoBehaviour:
       - m_Target: {fileID: 353696665}
         m_MethodName: BeginBuilding
         m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2033000462}
-        m_MethodName: SetActive
-        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

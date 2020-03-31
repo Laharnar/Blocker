@@ -15,6 +15,16 @@ public class IntVarValue  {
             }
             return value.value;
         }
+        set {
+            if (useDefault)
+            {
+                defaultValue = value;
+            }
+            else
+            {
+                this.value.value = value;
+            }
+        }
     }
 
     internal void SetIntPrefab(IntVar customVal)

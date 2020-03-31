@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using UnityEngine;
 
 [System.Serializable]
 public class Timer {
@@ -15,4 +17,10 @@ public class Timer {
     {
         nextReady = Time.time + rate;
     }
+
+    public IEnumerator WaitReady()
+    {
+        yield return new WaitForSeconds(rate);
+    }
+
 }

@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class OnHit : MonoBehaviour {
-    public bool lastCollisionPassed = true;
-    public bool useCollision = true;
-    public bool useTrigger = false;
 
     public ReferenceCall call = new ReferenceCall()
     {
@@ -20,7 +17,7 @@ public class OnHit : MonoBehaviour {
             call.ActivateCall(o);
     }
 
-    private void OnTriggerEnter(Collider collider)
+    protected virtual void OnTriggerEnter(Collider collider)
     {
         Debug.Log("Trigger " + name + " -> " + collider.gameObject.name);
         DamageReciever o = collider.gameObject.GetComponent<DamageReciever>();

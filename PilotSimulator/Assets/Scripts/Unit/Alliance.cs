@@ -15,6 +15,7 @@ public class Alliance:MonoBehaviour {
         DamageReciever o = (DamageReciever)other;
         writeBack.pass = thisAlliance != o.alliance.thisAlliance;
     }
+
     public void AllianceSame(DamageReciever other)
     {
         writeBack.pass = thisAlliance == other.alliance.thisAlliance;

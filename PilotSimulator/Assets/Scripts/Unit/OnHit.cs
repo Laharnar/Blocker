@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class OnHit : MonoBehaviour {
-
+    public bool log = false;
     public ReferenceCall call = new ReferenceCall()
     {
         callFun = "OnHit"
@@ -11,7 +11,7 @@ public class OnHit : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collision "+name +" -> "+collision.gameObject.name);
+        if(log)Debug.Log("Collision "+name +" -> "+collision.gameObject.name);
         DamageReciever o = collision.gameObject.GetComponent<DamageReciever>();
         if(o)
             call.ActivateCall(o);
@@ -19,7 +19,7 @@ public class OnHit : MonoBehaviour {
 
     protected virtual void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("Trigger " + name + " -> " + collider.gameObject.name);
+        if (log) Debug.Log("Trigger " + name + " -> " + collider.gameObject.name);
         DamageReciever o = collider.gameObject.GetComponent<DamageReciever>();
         if (o)
             call.ActivateCall(o);

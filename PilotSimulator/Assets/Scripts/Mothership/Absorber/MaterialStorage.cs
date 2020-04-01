@@ -9,6 +9,8 @@ public class MaterialStorage : GroupOfRegistered {
     [SerializeField] IntVarValue generatedEnergy;
     [SerializeField] Timer repeatRate;
     GroupOfRegistered detectors1;
+    public FloatVarRef multiplierForBasicIncome;
+    public FloatVarRef multiplierForAbsorbers;
 
     private void Start()
     {
@@ -24,15 +26,20 @@ public class MaterialStorage : GroupOfRegistered {
         {
             for (int i = 0; i < detectors1.Registred.Count; i++)
             {
-                OnTriggerFindGroup materialRegister = detectors1.GetScript<OnTriggerFindGroup>(i);
-                if (materialRegister)
+                MonoBehaviour materialRegister = detectors1.GetScript<MonoBehaviour>(i);
+                if (materialRegister as GroupOfRegistered)
                 {
-                    Register[] t = materialRegister.GetAllCostly();
+                    Register[] t = ((GroupOfRegistered)materialRegister).Registred.ToArray();
+                    AbsorbEnergy(t);
+                }
+                else if (materialRegister as ConstantIncome)
+                {
+                    ConstantIncome t = ((ConstantIncome)materialRegister);
                     AbsorbEnergy(t);
                 }
                 else
                 {
-                    Debug.LogError("Detector doesn't have MaterialAbsorber.");
+                    Debug.LogError("Detector doesn't have known MonoBehaviour type?");
                 }
             }
 
@@ -41,8 +48,13 @@ public class MaterialStorage : GroupOfRegistered {
         }
     }
 
+    private void AbsorbEnergy(ConstantIncome t)
+    {
+        generatedEnergy.Value += (int)(t.incomePerSecond.Value * multiplierForBasicIncome.Value);
+    }
+
     private void AbsorbEnergy(Register[] t)
     {
-        generatedEnergy.Value += t.Length;
+        generatedEnergy.Value += (int)(t.Length *multiplierForAbsorbers.Value);
     }
 }

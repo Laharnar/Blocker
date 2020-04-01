@@ -1,5 +1,3 @@
-﻿using UnityEngine;
-
-public class Absorbable:Register {
+﻿public class Absorbable:Register {
     
 }

@@ -1,4 +1,5 @@
-﻿public enum GroupType {
-    Manager,
+﻿public enum GroupType { // TODO: remove
+    MaterialManager,
+    EnergyManager,
     GeneralItem
 }

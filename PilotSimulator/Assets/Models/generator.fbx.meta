@@ -1,0 +1,159 @@
+fileFormatVersion: 2
+guid: 7376f32c745fffd4a916ab4a774541f6
+ModelImporter:
+  serializedVersion: 19300
+  internalIDToNameTable:
+  - first:
+      74: -4911565503757375977
+    second: Torus|Action
+  - first:
+      74: -900620017773550554
+    second: Torus|RotateGeneratorCircles
+  - first:
+      74: -7806878530582402559
+    second: Torus|Torus.001Action
+  - first:
+      74: -5189603869508835534
+    second: Torus|Torus.002Action
+  - first:
+      74: 1249802314547873222
+    second: Torus.001|Action
+  - first:
+      74: -6712411584854245995
+    second: Torus.001|RotateGeneratorCircles
+  - first:
+      74: 6755702151989149167
+    second: Torus.001|Torus.001Action
+  - first:
+      74: -6892660587647262754
+    second: Torus.001|Torus.002Action
+  - first:
+      74: 7215309781969398367
+    second: Torus.002|Action
+  - first:
+      74: -635027232881702281
+    second: Torus.002|RotateGeneratorCircles
+  - first:
+      74: 1069378591129367317
+    second: Torus.002|Torus.001Action
+  - first:
+      74: -5770713183457694718
+    second: Torus.002|Torus.002Action
+  - first:
+      74: 885944232402757753
+    second: Armature|Action
+  - first:
+      74: 4781951162920444690
+    second: Armature|ArmatureAction
+  - first:
+      74: -462285861569296140
+    second: Armature|RotateGeneratorCircles
+  - first:
+      74: -9169718339512348043
+    second: Armature|Torus.001Action
+  - first:
+      74: 4577622158389463166
+    second: Armature|Torus.002Action
+  - first:
+      74: -8051102449201487124
+    second: Cube|Action
+  - first:
+      74: 4939943542264149938
+    second: Cube|RotateGeneratorCircles
+  - first:
+      74: -1403696092148114826
+    second: Cube|Torus.001Action
+  - first:
+      74: -7093410136762809876
+    second: Cube|Torus.002Action
+  externalObjects: {}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 1
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

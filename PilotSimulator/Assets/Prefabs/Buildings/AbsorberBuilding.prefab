@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 950733aabe1303a44a4c0b5b184d082f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  group: 1
+  group: {fileID: 11400000, guid: dbdd2671cf58c8c49961cc6edafc854a, type: 2}
   registred: []
   OnStart:
     m_PersistentCalls:
@@ -5246,13 +5246,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 653701528}
-  m_LocalRotation: {x: 0.5215946, y: -0.512614, z: -0.46165442, w: 0.50203717}
-  m_LocalPosition: {x: -1.426, y: -0.67899907, z: -0.03999996}
+  m_LocalRotation: {x: 0.5219076, y: -0.51229525, z: -0.461961, w: 0.50175506}
+  m_LocalPosition: {x: -1.449, y: -0.67899907, z: -0.03999996}
   m_LocalScale: {x: 0.21893, y: 0.21893, z: 0.21893}
   m_Children: []
   m_Father: {fileID: 7886194588802130415}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 2.89, y: -94, z: -88.3}
+  m_LocalEulerAnglesHint: {x: 2.89, y: -94, z: -88.37}
 --- !u!33 &653701532
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5548,6 +5548,7 @@ MonoBehaviour:
   registerOnStart: 1
   script: {fileID: 291148109}
   finder: {fileID: 11400000, guid: ffdbbca75b0ef6b48a36f363ea4b9891, type: 2}
+  belongsTo: {fileID: 11400000, guid: 742d56cada3e906439bf9b5b27491c39, type: 2}
 --- !u!1 &1931626325
 GameObject:
   m_ObjectHideFlags: 0

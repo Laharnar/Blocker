@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,24 +28,29 @@ public class MaterialStorage : GroupOfRegistered {
             for (int i = 0; i < detectors1.Registred.Count; i++)
             {
                 MonoBehaviour materialRegister = detectors1.GetScript<MonoBehaviour>(i);
-                if (materialRegister as GroupOfRegistered)
-                {
-                    Register[] t = ((GroupOfRegistered)materialRegister).Registred.ToArray();
-                    AbsorbEnergy(t);
-                }
-                else if (materialRegister as ConstantIncome)
-                {
-                    ConstantIncome t = ((ConstantIncome)materialRegister);
-                    AbsorbEnergy(t);
-                }
-                else
-                {
-                    Debug.LogError("Detector doesn't have known MonoBehaviour type?");
-                }
+                AbsorbEnergyFromDifferentTypes(materialRegister);
             }
 
             repeatRate.Trigger();
             yield return repeatRate.WaitReady();
+        }
+    }
+
+    private void AbsorbEnergyFromDifferentTypes(MonoBehaviour materialRegister)
+    {
+        if (materialRegister as GroupOfRegistered)
+        {
+            Register[] t = ((GroupOfRegistered)materialRegister).Registred.ToArray();
+            AbsorbEnergy(t);
+        }
+        else if (materialRegister as ConstantIncome)
+        {
+            ConstantIncome t = ((ConstantIncome)materialRegister);
+            AbsorbEnergy(t);
+        }
+        else
+        {
+            Debug.LogError("Detector doesn't have known MonoBehaviour type?");
         }
     }
 

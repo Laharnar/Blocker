@@ -10,6 +10,7 @@ public class Register:MonoBehaviour {
     public bool registerOnStart = true;
     public MonoBehaviour script;
     public Finder finder;
+    public IntVar belongsTo;
 
     bool registred = false;
 
@@ -23,9 +24,25 @@ public class Register:MonoBehaviour {
         if (registerOnStart)
         {
             List<GroupOfRegistered> group = finder.SearchByAlliance<GroupOfRegistered>();
-            GroupOfRegistered manager = GroupOfRegistered.PickManager(group);
+            GroupOfRegistered manager = PickTargetByType(group, belongsTo);
             TryRegisterThis(manager);
         }
+    }
+
+    public GroupOfRegistered PickTargetByType(List<GroupOfRegistered> group, IntVar target)
+    {
+        for (int i = 0; i < group.Count; i++)
+        {
+            if(group[i].group == null)
+            {
+                Debug.LogError("Group isn't assigned somewhere.", gameObject);
+            }
+            if (group[i].group.value == target.value)
+            {
+                return group[i];
+            }
+        }
+        throw new NullReferenceException("No manager in given group.");
     }
 
     public void TryRegisterThis(GroupOfRegistered group)

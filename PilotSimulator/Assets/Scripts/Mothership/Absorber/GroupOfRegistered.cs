@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class GroupOfRegistered : MonoBehaviour {
 
-    public GroupType group;
+    public IntVar group;
 
     [SerializeField] List<Register> registred = new List<Register>();
     public  List<Register> Registred { get => registred; }
@@ -32,17 +31,7 @@ public class GroupOfRegistered : MonoBehaviour {
         }
     }
 
-    public static GroupOfRegistered PickManager(List<GroupOfRegistered> group)
-    {
-        for (int i = 0; i < group.Count; i++)
-        {
-            if (group[i].group == GroupType.Manager)
-            {
-                return group[i];
-            }
-        }
-        throw new NullReferenceException("No manager in given group.");
-    }
+    
 
     internal bool Unregister(Register item)
     {

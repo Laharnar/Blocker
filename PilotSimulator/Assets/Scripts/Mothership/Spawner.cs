@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 public class Spawner:MonoBehaviour {
-    [SerializeField] Transform target;
+    [SerializeField] TransformVarValue target;
     [SerializeField] ProgrammableDelay rate;
-    [SerializeField] Transform spawnPoint;
+    [SerializeField] TransformVarValue spawnPoint;
 
     public ReferenceCall onSpawn = new ReferenceCall()
     {
@@ -22,12 +22,12 @@ public class Spawner:MonoBehaviour {
     // Event usable.
     public void SpawnNewAtSpawnPoint()
     {
-        SpawnNew(spawnPoint.position, spawnPoint.rotation);
+        SpawnNew(spawnPoint.Value.position, spawnPoint.Value.rotation);
     }
 
     public void SpawnNew(Vector3 pos, Quaternion rot)
     {
-        Transform source = Instantiate(target, pos, rot);
+        Transform source = Instantiate(target.Value, pos, rot);
         spawned[this].Add(source);
 
         onSpawn.ActivateCall(source);

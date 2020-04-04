@@ -47,6 +47,7 @@ MonoBehaviour:
   registerOnStart: 0
   script: {fileID: 2049767771}
   finder: {fileID: 0}
+  belongsTo: {fileID: 11400000, guid: dbdd2671cf58c8c49961cc6edafc854a, type: 2}
 --- !u!65 &2049767770
 BoxCollider:
   m_ObjectHideFlags: 0

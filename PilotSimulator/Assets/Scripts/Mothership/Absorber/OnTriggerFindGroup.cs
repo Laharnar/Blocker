@@ -16,6 +16,24 @@ public class OnTriggerFindGroup:GroupOfRegistered {
         OnStart?.Invoke();
     }
 
+    private void Update()
+    {
+        // Null items from destroy calls have to be removed in this script, because registration also happens here.
+        LoseNulls();
+    }
+
+    private void LoseNulls()
+    {
+
+        for (int i = all.Count - 1; i >= 0; i--)
+        {
+            if (all[i] == null)
+            {
+                Lost(all[i]);
+            }
+        }
+    }
+
     public void FindNew(Register detectable)
     {
         //absorbables.Add(detectable);
@@ -25,17 +43,11 @@ public class OnTriggerFindGroup:GroupOfRegistered {
 
     public void Lost(Register detectable)
     {
-        //absorbables.Remove(detectable);
         Unregister(detectable);
         OnLostOne.Invoke();
 
         if (all.Count == 0)
             OnLostAll.Invoke();
-    }
-
-    public Register[] GetAllCostly()
-    {
-        return all.ToArray();
     }
 
     protected void OnTriggerEnter(Collider other)

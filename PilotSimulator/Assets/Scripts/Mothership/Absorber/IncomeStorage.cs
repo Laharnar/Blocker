@@ -4,14 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class MaterialStorage : GroupOfRegistered {
+public class IncomeStorage : GroupOfRegistered {
 
     [SerializeField] IntVarValue materials;
-    [SerializeField] IntVarValue generatedEnergy;
     [SerializeField] Timer repeatRate;
     GroupOfRegistered detectors1;
-    public FloatVarRef multiplierForBasicIncome;
-    public FloatVarRef multiplierForAbsorbers;
+    public FloatVarRef multiplierForOtherIncome;
+    public FloatVarRef multiplierForConstantIncome;
 
     private void Start()
     {
@@ -25,6 +24,14 @@ public class MaterialStorage : GroupOfRegistered {
         // todo: find cubes in range
         while (true)
         {
+            if (multiplierForConstantIncome.Value == 0)
+            {
+                Debug.LogError("Income multiplier is 0.");
+            }
+            if (multiplierForOtherIncome.Value == 0)
+            {
+                Debug.LogError("Income multiplier is 0.");
+            }
             for (int i = 0; i < detectors1.Registred.Count; i++)
             {
                 MonoBehaviour materialRegister = detectors1.GetScript<MonoBehaviour>(i);
@@ -56,11 +63,11 @@ public class MaterialStorage : GroupOfRegistered {
 
     private void AbsorbEnergy(ConstantIncome t)
     {
-        generatedEnergy.Value += (int)(t.incomePerSecond.Value * multiplierForBasicIncome.Value);
+        materials.Value += (int)(t.incomePerSecond.Value * multiplierForConstantIncome.Value);
     }
 
     private void AbsorbEnergy(Register[] t)
     {
-        generatedEnergy.Value += (int)(t.Length *multiplierForAbsorbers.Value);
+        materials.Value += (int)(t.Length * multiplierForOtherIncome.Value);
     }
 }

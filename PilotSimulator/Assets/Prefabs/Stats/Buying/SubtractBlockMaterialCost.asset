@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c4491a5275aef54781acfc6a559e542, type: 3}
+  m_Name: SubtractBlockMaterialCost
+  m_EditorClassIdentifier: 
+  a:
+    value: {fileID: 11400000, guid: 0b6a9d6e393fbb842a4cf5106b59c21d, type: 2}
+    useDefault: 0
+    defaultValue: 0
+  b:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: -5
+  result:
+    value: {fileID: 11400000, guid: 0b6a9d6e393fbb842a4cf5106b59c21d, type: 2}
+    useDefault: 0
+    defaultValue: 0

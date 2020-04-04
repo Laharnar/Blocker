@@ -1,0 +1,201 @@
+fileFormatVersion: 2
+guid: 8d09c7897a5dab44895e01dfc38d784c
+ModelImporter:
+  serializedVersion: 19300
+  internalIDToNameTable:
+  - first:
+      74: 2457425914892895654
+    second: Cube|BotLeftInOut
+  - first:
+      74: 4980978717038686677
+    second: Cube|BotRightInOut
+  - first:
+      74: 8525211293763167436
+    second: Cube|Platform down
+  - first:
+      74: -406131704029570854
+    second: Cube|Platform down.001
+  - first:
+      74: 4796990820821196057
+    second: Cube|Platform up
+  - first:
+      74: 3639106000108978077
+    second: Cube|TopLeftInOut
+  - first:
+      74: -5584291221627239785
+    second: Cube|TopRightInOut
+  - first:
+      74: -7211081443667709825
+    second: Cube.001|BotLeftInOut
+  - first:
+      74: 2574284340723905207
+    second: Cube.001|BotRightInOut
+  - first:
+      74: -8303983891871907922
+    second: Cube.001|Platform down
+  - first:
+      74: 3408705732627532214
+    second: Cube.001|Platform down.001
+  - first:
+      74: 7096648772286722144
+    second: Cube.001|Platform up
+  - first:
+      74: -4826475002685237677
+    second: Cube.001|TopLeftInOut
+  - first:
+      74: 2607064449121296786
+    second: Cube.001|TopRightInOut
+  - first:
+      74: 8438723764651197980
+    second: Cube.002|BotLeftInOut
+  - first:
+      74: 7047631462789083957
+    second: Cube.002|BotRightInOut
+  - first:
+      74: -7555076846537230342
+    second: Cube.002|Platform down
+  - first:
+      74: -452742318361583000
+    second: Cube.002|Platform down.001
+  - first:
+      74: 8512831374702594115
+    second: Cube.002|Platform up
+  - first:
+      74: 7341629796349903653
+    second: Cube.002|TopLeftInOut
+  - first:
+      74: 7613823127458130746
+    second: Cube.002|TopRightInOut
+  - first:
+      74: -4145434661053082766
+    second: Cube.003|BotLeftInOut
+  - first:
+      74: -3013668084718857392
+    second: Cube.003|BotRightInOut
+  - first:
+      74: -3409402904945161904
+    second: Cube.003|Platform down
+  - first:
+      74: 7966690562754561697
+    second: Cube.003|Platform down.001
+  - first:
+      74: 1567626941280182562
+    second: Cube.003|Platform up
+  - first:
+      74: 3195916015508922433
+    second: Cube.003|TopLeftInOut
+  - first:
+      74: 116172426750947479
+    second: Cube.003|TopRightInOut
+  - first:
+      74: -2810389338409177191
+    second: Cube.004|BotLeftInOut
+  - first:
+      74: -8575360989440892387
+    second: Cube.004|BotRightInOut
+  - first:
+      74: -8506581507581228064
+    second: Cube.004|Platform down
+  - first:
+      74: 203059341328988236
+    second: Cube.004|Platform down.001
+  - first:
+      74: 2897426890179550734
+    second: Cube.004|Platform up
+  - first:
+      74: -9608628101801608
+    second: Cube.004|TopLeftInOut
+  - first:
+      74: -7084307937046781300
+    second: Cube.004|TopRightInOut
+  externalObjects: {}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

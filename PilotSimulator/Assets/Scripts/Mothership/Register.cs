@@ -23,11 +23,25 @@ public class Register:MonoBehaviour {
 
         if (registerOnStart)
         {
-            List<GroupOfRegistered> group = finder.SearchByAlliance<GroupOfRegistered>();
-            GroupOfRegistered manager = PickTargetByType(group, belongsTo);
-            TryRegisterThis(manager);
+            TryRegisterThis(SearchForManager());
         }
     }
+
+    private void OnDestroy()
+    {
+        if (registred)
+        {
+            TryUnregisterThis(SearchForManager());
+        }
+    }
+
+    GroupOfRegistered SearchForManager()
+    {
+        List<GroupOfRegistered> group = finder.SearchByAlliance<GroupOfRegistered>();
+        GroupOfRegistered manager = PickTargetByType(group, belongsTo);
+        return manager;
+    }
+
 
     public GroupOfRegistered PickTargetByType(List<GroupOfRegistered> group, IntVar target)
     {

@@ -8,7 +8,7 @@ public class ResearchMapsDisplay : MonoBehaviour
     public Transform markerPrefab;
     private Transform mapParent => transform;
     private ResearchCluster cluster;// multiple bases can connect.
-    private List<ResearchResult> displayData = new List<ResearchResult>();
+    private List<ResearchUnitArgs> displayData = new List<ResearchUnitArgs>();
     private List<Transform> displayedObjects = new List<Transform>();
     public bool on = false;
     public DisplayControllerBase[] controllers;
@@ -44,7 +44,7 @@ public class ResearchMapsDisplay : MonoBehaviour
         SetMapVisbility(on);
     }
 
-    public void DisplayUI(ResearchResult results)
+    public void DisplayUI(ResearchUnitArgs results)
     {
         displayData.Add(results);
         Instantiate(markerPrefab, results.lastImportantPoint + results.recordedRelativePosition, new Quaternion(), mapParent);

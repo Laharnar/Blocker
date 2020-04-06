@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
 
+public class MonoInfo:MonoBehaviour {
+
+}
+
+// try to get rid of this, or pack it into something else. it doesn't tell anything on it's own.
 [System.Serializable]
 public class ReferenceCall {
     public string callFun = "None";

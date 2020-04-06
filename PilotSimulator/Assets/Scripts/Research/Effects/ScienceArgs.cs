@@ -8,7 +8,7 @@ public class ScienceArgs {
     public float rotationAnglesY;
 
     // --- tracking ---
-    public List<ResearchResult> knownAllyDeaths;
+    public List<ResearchUnitArgs> knownAllyDeaths;
 
     // who is requesting science calculation
     public Transform source;

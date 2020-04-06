@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class ResearchCluster : MonoBehaviour {
 
-    List<ResearchResult> data = new List<ResearchResult>();
-    public List<ResearchResult> AllyDeaths { get => data; }
+    List<ResearchUnitArgs> data = new List<ResearchUnitArgs>();
+    public List<ResearchUnitArgs> AllyDeaths { get => data; }
 
-    public Action<ResearchResult> onRecieveResearch;
+    public Action<ResearchUnitArgs> onRecieveResearch;
     public ResearchTree tree;
     public ScienceArgsVar scienceArgs;
 
     public bool log;
     
-    internal void RegisterNewResearch(ResearchResult results)
+    internal void RegisterNewResearch(ResearchUnitArgs results)
     {
         if (log)
         {

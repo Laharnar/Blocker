@@ -55,7 +55,8 @@ public class ResearchMapsDisplay : MonoBehaviour
     {
         if (cluster) cluster.onRecieveResearch -= DisplayUI;
         this.cluster = cluster;
-        cluster.onRecieveResearch += DisplayUI;
+        if (this.cluster == null) Debug.LogError("ASsigned null cluster.");
+        if (cluster) cluster.onRecieveResearch += DisplayUI;
     }
 }
 

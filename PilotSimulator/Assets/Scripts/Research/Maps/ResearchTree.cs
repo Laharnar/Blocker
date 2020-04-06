@@ -31,6 +31,11 @@ public class ResearchTree:MonoBehaviour {
         }
     }
 
+    public void AddVSP(int v)
+    {
+        RecieveResearchPoints(v);
+    }
+
     public void RecieveResearchPoints(int pts)
     {
         researchPoints += pts;
@@ -58,11 +63,6 @@ public class ResearchTree:MonoBehaviour {
             onBuyAny?.Invoke();
         }
 
-    }
-
-    public void AddVSP(int v)
-    {
-        RecieveResearchPoints(v);
     }
 
 }

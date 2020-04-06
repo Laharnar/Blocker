@@ -56,7 +56,7 @@ public class Register:MonoBehaviour {
                 return group[i];
             }
         }
-        throw new NullReferenceException("No manager in given group.");
+        throw new NullReferenceException("No manager in given group. "+ target.value);
     }
 
     public void TryRegisterThis(GroupOfRegistered group)

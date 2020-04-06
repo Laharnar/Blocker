@@ -5,6 +5,6 @@ public class Spawned:MonoBehaviour {
 
     public void SetCluster(ResearchCluster rc)
     {
-        researchSender.cluster = rc;
+        researchSender.researchCluster.value = rc;
     }
 }

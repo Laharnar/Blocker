@@ -219,9 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfe4aed385e17e34eaab5c435a373e80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastCollisionPassed: 1
-  useCollision: 1
-  useTrigger: 0
+  log: 0
   call:
     callFun: OnHit
     callFuns: []

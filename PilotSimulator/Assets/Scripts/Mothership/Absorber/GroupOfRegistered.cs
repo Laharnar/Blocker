@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+public class ExpectedDifferentValueException : Exception {
+}
+
 public class GroupOfRegistered : MonoBehaviour {
 
     public IntVar group;
@@ -8,7 +11,7 @@ public class GroupOfRegistered : MonoBehaviour {
     [SerializeField] List<Register> registred = new List<Register>();
     public  List<Register> Registred { get => registred; }
 
-    protected bool ignoreRegisterOnSelf = true;
+    protected bool notAllowedRegisterOnSelf = true;
     private Register selfRegister;
 
     protected void Awake()
@@ -18,11 +21,15 @@ public class GroupOfRegistered : MonoBehaviour {
 
     internal void Register(Register item)
     {
-        if(ignoreRegisterOnSelf)
+        if(notAllowedRegisterOnSelf)
         {
-            if (selfRegister != item)
+            if (selfRegister == null)
             {
                 registred.Add(item);
+            }
+            else
+            {
+                Debug.LogError("Based on settings, Register class isnt allowed on this object.", gameObject);
             }
         }
         else
@@ -35,11 +42,15 @@ public class GroupOfRegistered : MonoBehaviour {
 
     internal bool Unregister(Register item)
     {
-        if (ignoreRegisterOnSelf)
+        if (notAllowedRegisterOnSelf)
         {
-            if (selfRegister != item)
+            if (selfRegister == null)
             {
                 return registred.Remove(item);
+            }
+            else
+            {
+                Debug.LogError("Based on settings, Register class isnt allowed on this object.", gameObject);
             }
             return false;
         }

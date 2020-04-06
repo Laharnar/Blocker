@@ -15,14 +15,14 @@ MonoBehaviour:
   useX:
     value: {fileID: 0}
     useDefault: 1
-    defaultValue: 1
+    defaultValue: 0
   useY:
     value: {fileID: 0}
     useDefault: 1
-    defaultValue: 1
+    defaultValue: 0
   useZ:
-    value: {fileID: 0}
-    useDefault: 1
+    value: {fileID: 11400000, guid: b32ba5209d95a5b4c86fe7bbd998a1a0, type: 2}
+    useDefault: 0
     defaultValue: 1
   moveStrengthX: {fileID: 0}
   moveStrengthY: {fileID: 0}

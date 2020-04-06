@@ -2,11 +2,22 @@
 
 public class ResearchSender:MonoBehaviour {
 
-    public ResearchCluster cluster;
-    public ResearchSensors sensors;
+    public MonoBehaviourVar researchCluster;
+    public ResearchSensors researchSensors;
 
     public void Deliver()
     {
-        cluster.RegisterNewResearch(sensors.results);
+        if (researchCluster == null)
+        {
+            Debug.LogError("Cluster value is null " + gameObject.name, gameObject);
+        }
+        else if (researchSensors == null)
+        {
+            Debug.LogError("Sensors value is null "+ gameObject.name, gameObject);
+        }
+        else
+        {
+            ((ResearchCluster)researchCluster.Value).RegisterNewResearch(researchSensors.results);
+        }
     }
 }

@@ -43,7 +43,9 @@ public class OnTriggerFindGroup:GroupOfRegistered {
 
     public void Lost(Register detectable)
     {
-        Unregister(detectable);
+        if (Unregister(detectable))
+        {
+        }
         OnLostOne.Invoke();
 
         if (all.Count == 0)

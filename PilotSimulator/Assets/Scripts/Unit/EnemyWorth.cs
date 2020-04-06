@@ -8,7 +8,6 @@ public class EnemyWorth:MonoBehaviour {
 
     public void AddVSPToAnyCluster()
     {
-        Debug.Log("asd");
         if(tree == null)
             tree = GameObject.FindObjectOfType<ResearchTree>();
         tree.AddVSP(worthOnDeath);

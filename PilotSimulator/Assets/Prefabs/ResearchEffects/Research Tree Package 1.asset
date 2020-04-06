@@ -61,3 +61,19 @@ MonoBehaviour:
     onBuy:
       m_PersistentCalls:
         m_Calls: []
+  - name: Generator Unlock
+    tag: 6
+    unlocked: {fileID: 11400000, guid: 2a4907c04cf495641a294585900b7aa3, type: 2}
+    cost: {fileID: 11400000, guid: c4dd6c5a0d4f6fa4696b8b003a617ec8, type: 2}
+    weight: {fileID: 11400000, guid: f3ad7b9b4afb1504eb7758e98a658164, type: 2}
+    onBuy:
+      m_PersistentCalls:
+        m_Calls: []
+  - name: Absorber Unlock
+    tag: 7
+    unlocked: {fileID: 11400000, guid: 2fcf2c67b4a1385499e04b3967c5dd11, type: 2}
+    cost: {fileID: 11400000, guid: 4177b4da2f151644a8d013a7ab2b3a2e, type: 2}
+    weight: {fileID: 11400000, guid: 9f7481f27f67819488d4cefdbfc32cdf, type: 2}
+    onBuy:
+      m_PersistentCalls:
+        m_Calls: []

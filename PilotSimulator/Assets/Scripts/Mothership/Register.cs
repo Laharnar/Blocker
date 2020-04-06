@@ -45,6 +45,10 @@ public class Register:MonoBehaviour {
 
     public GroupOfRegistered PickTargetByType(List<GroupOfRegistered> group, IntVar target)
     {
+        if (group.Count == 0) {
+            Debug.Log("NullError:Group for this type isn't in scene. Can happen when quitting game. " + target.value);
+            return null;
+        }
         for (int i = 0; i < group.Count; i++)
         {
             if(group[i].group == null)
@@ -56,7 +60,8 @@ public class Register:MonoBehaviour {
                 return group[i];
             }
         }
-        throw new NullReferenceException("No manager in given group. "+ target.value);
+        
+        throw new NullReferenceException("No manager of given group between existing groups. "+ target.value);
     }
 
     public void TryRegisterThis(GroupOfRegistered group)
@@ -69,6 +74,10 @@ public class Register:MonoBehaviour {
     }
     public void TryUnregisterThis(GroupOfRegistered group)
     {
+        if(group == null)
+        {
+            Debug.Log("group is null.");
+        }
         if (registred)
         {
             bool unregistred = group.Unregister(this);

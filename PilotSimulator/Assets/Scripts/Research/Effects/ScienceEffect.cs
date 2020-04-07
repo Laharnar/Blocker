@@ -10,6 +10,7 @@ public abstract class ScienceEffect:ScriptableObject {
     // New values should be saved in args.
     internal static void RequestScienceEffect(List<ScienceEffect> effects, ScienceArgs args)
     {
+        args.StartOnNewObject();
         for (int i = 0; i < effects.Count; i++)
         {
             effects[i].Activate(args);

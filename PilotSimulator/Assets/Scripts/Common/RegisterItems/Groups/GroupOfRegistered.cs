@@ -6,7 +6,7 @@ public class ExpectedDifferentValueException : Exception {
 
 public class GroupOfRegistered : MonoBehaviour {
 
-    public IntVar group;
+    public IntVar groupId;
 
     [SerializeField] List<Register> registred = new List<Register>();
     public  List<Register> Registred { get => registred; }

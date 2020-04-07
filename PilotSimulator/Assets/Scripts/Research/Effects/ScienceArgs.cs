@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
 public class ScienceArgs {
-    // --- movement ---
-    public Vector3 move;
-    public float rotationAnglesY;
 
     // --- tracking ---
     public List<ResearchUnitArgs> knownAllyDeaths;
@@ -22,10 +20,15 @@ public class ScienceArgs {
     /// Angle to target.
     /// </summary>
     public float trackingAngleY;
-    public Vector3 trackedPosition;
-    public float moveX;
-    public float moveY;
-    public float moveZ;
     public float rotationDirY;
-    internal Vector3 moveDir;
+    public Vector3 moveDir;
+
+    internal void StartOnNewObject()
+    {
+        // If this isn't called, some stuff can be left over from last object.
+        // When 0 effects are applied those value stay, resulting in weird behaviour.
+        trackingAngleY = 0;
+        rotationDirY = 0;
+        moveDir = Vector3.zero;
+    }
 }

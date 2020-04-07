@@ -23,7 +23,7 @@ public class Register:MonoBehaviour {
 
         if (registerOnStart)
         {
-            TryRegisterThis(SearchForManager());
+            TryRegisterThis(FindManager());
         }
     }
 
@@ -31,54 +31,59 @@ public class Register:MonoBehaviour {
     {
         if (registred)
         {
-            TryUnregisterThis(SearchForManager());
+            TryUnregisterThis(FindManager());
         }
     }
 
-    GroupOfRegistered SearchForManager()
+    private GroupOfRegistered FindManager()
     {
         List<GroupOfRegistered> group = finder.SearchByAlliance<GroupOfRegistered>();
-        GroupOfRegistered manager = PickTargetByType(group, belongsTo);
+        GroupOfRegistered manager = PickFirstById(group, belongsTo);
         return manager;
     }
 
-
-    public GroupOfRegistered PickTargetByType(List<GroupOfRegistered> group, IntVar target)
+    private GroupOfRegistered PickFirstById(List<GroupOfRegistered> group, IntVar groupId)
     {
         if (group.Count == 0) {
-            Debug.Log("NullError:Group for this type isn't in scene. Can happen when quitting game. " + target.value);
+            Debug.Log("NullError:Group for this type isn't in scene. Allowed to happen when quitting game. Can trigger followup error[R1]." + groupId.value);
             return null;
         }
         for (int i = 0; i < group.Count; i++)
         {
-            if(group[i].group == null)
+            if (group[i].groupId == null)
             {
-                Debug.LogError("Group isn't assigned somewhere.", gameObject);
+                Debug.LogError("Group id isn't assigned on the target object." + group[i]+". This object will be excluded and script will continue.", group[i]);
             }
-            if (group[i].group.value == target.value)
+            else
             {
-                return group[i];
+                if (group[i].groupId.value == groupId.value)
+                {
+                    return group[i];
+                }
             }
         }
         
-        throw new NullReferenceException("No manager of given group between existing groups. "+ target.value);
+        throw new NullReferenceException("No manager of given group between existing groups. "+ groupId.value);
     }
 
-    public void TryRegisterThis(GroupOfRegistered group)
+    private void TryRegisterThis(GroupOfRegistered group)
     {
-        if (!registred)
+        if (group == null)
+        {
+            Debug.LogError("[R1]Group is null, can't register to null group.");
+        }else if (!registred)
         {
             group.Register(this);
             registred = true;
         }
     }
-    public void TryUnregisterThis(GroupOfRegistered group)
+
+    private void TryUnregisterThis(GroupOfRegistered group)
     {
-        if(group == null)
+        if(group == null) 
         {
-            Debug.Log("group is null.");
-        }
-        if (registred)
+            Debug.LogError("[R1]Group is null, can't unregister from null group.");
+        }else if (registred)
         {
             bool unregistred = group.Unregister(this);
             if (unregistred)

@@ -12,30 +12,42 @@ public class PositionRotation : ScienceAffected {
     [Header("Special case")]
     public SpaceVarValue relativeTo;
 
+    private Vector3 moveAmount;
+    private Vector3 rotsAmount;
+
     // Update is called once per frame
     void Update()
     {
-        Vector3 moveAmount = direction * moveSpeed.Value * Time.deltaTime;
-        Vector3 rotsAmount = rotationDeg * Time.deltaTime * rotationSpeed.Value;
+        CalculateBasicMoveRotateScale();
+        ApplyExternalModifications();
+        MoveRotateScale();
+    }
 
-        if (ScienceTree != null)
-        {
-            ScienceTree.args.moveX = moveAmount.x;
-            ScienceTree.args.rotationAnglesY = rotsAmount.y;
-            ScienceTree.args.source = transform;
-            ScienceEffect.RequestScienceEffect(Effects, ScienceTree.args);
-            // is this delayed? is it static?
-            moveAmount = ScienceTree.args.moveDir;//new Vector3(0, 0, ArgsRef.args.moveX);
-            rotsAmount.y *= ScienceTree.args.rotationDirY; // * direction * strength
-        }
-        
+    private void CalculateBasicMoveRotateScale()
+    {
+        moveAmount = direction * moveSpeed.Value * Time.deltaTime;
+        rotsAmount = rotationDeg * Time.deltaTime * rotationSpeed.Value;
+    }
+
+    private void MoveRotateScale()
+    {
         transform.Translate(moveAmount, relativeTo.Value);
 
         lastRot = transform.forward;
         transform.Rotate(rotsAmount);
 
-
         transform.localScale = scaling;
+    }
+
+    private void ApplyExternalModifications()
+    {
+        if (ScienceTree != null)
+        {
+            ScienceTree.args.source = transform;
+            ScienceEffect.RequestScienceEffect(Effects, ScienceTree.args);
+            moveAmount = ScienceTree.args.moveDir;
+            rotsAmount.y *= ScienceTree.args.rotationDirY;
+        }
     }
 
     private void OnDrawGizmos()

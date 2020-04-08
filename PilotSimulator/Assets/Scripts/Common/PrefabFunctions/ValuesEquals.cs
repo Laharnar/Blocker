@@ -19,7 +19,7 @@ public class ValuesEquals:Condition {
             case Operator.Equals:
                 return requiredValue.Value == currentValue.Value;
             case Operator.Not:
-                return requiredValue.Value == currentValue.Value;
+                return requiredValue.Value != currentValue.Value;
             case Operator.Less:
                 return requiredValue.Value < currentValue.Value;
             case Operator.More:

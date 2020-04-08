@@ -1,16 +1,21 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
-public class MonoInfo:MonoBehaviour {
-
-}
-
-// try to get rid of this, or pack it into something else. it doesn't tell anything on it's own.
+// System to share a custom object over multiple preselected references
 [System.Serializable]
-public class ReferenceCall {
+public class DynamicParameterCall {
     public string callFun = "None";
-    public string[] callFuns =new string[0];
+    public string[] callFuns = new string[0];
     public MonoBehaviour[] references;
     public bool use = true;
+
+    internal void ReassignReferencesTo(Transform spawned)
+    {
+        for (int i = 0; i < references.Length; i++)
+        {
+
+        }
+    }
 
     public void ActivateCall(object c)
     {

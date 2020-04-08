@@ -1,20 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 public class OnHit : MonoBehaviour {
+
+    public DamageSender sender;
+    public IntVarValue selfAlliance;
+
+    public IntVar onHitSelfAlliance;
+    public IntVar onHitOtherAlliance;
+    public ConditionGroup onHitIf;
+
     public bool log = false;
-    public ReferenceCall call = new ReferenceCall()
-    {
-        callFun = "OnHit"
-    };
 
     private void OnCollisionEnter(Collision collision)
     {
         if(log)Debug.Log("Collision "+name +" -> "+collision.gameObject.name);
         DamageReciever o = collision.gameObject.GetComponent<DamageReciever>();
-        if(o)
-            call.ActivateCall(o);
+        if (o)
+        {
+            onHitSelfAlliance.value = selfAlliance.Value;
+            onHitOtherAlliance.value = o.selfAlliance.Value;
+            if (onHitIf.IsTrue())
+                sender.OnHit(o);
+        }
     }
 
     protected virtual void OnTriggerEnter(Collider collider)
@@ -22,6 +31,11 @@ public class OnHit : MonoBehaviour {
         if (log) Debug.Log("Trigger " + name + " -> " + collider.gameObject.name);
         DamageReciever o = collider.gameObject.GetComponent<DamageReciever>();
         if (o)
-            call.ActivateCall(o);
+        {
+            onHitSelfAlliance.value = selfAlliance.Value;
+            onHitOtherAlliance.value = o.selfAlliance.Value;
+            if (onHitIf.IsTrue())
+                sender.OnHit(o);
+        }
     }
 }

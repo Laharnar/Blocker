@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
 public class DamageReciever:MonoBehaviour {
-    public Alliance alliance;
+    public IntVarValue selfAlliance;
     public Health hp;
 }

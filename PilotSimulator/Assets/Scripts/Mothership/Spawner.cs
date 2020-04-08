@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class Spawner:MonoBehaviour {
     [SerializeField] TransformVarValue target;
     [SerializeField] ProgrammableDelay rate;
     [SerializeField] TransformVarValue spawnPoint;
-
-    public ReferenceCall onSpawn = new ReferenceCall()
-    {
-        callFun = "NewSpawn",
-        use = false
-    };
 
     static Dictionary<Spawner, List<Transform>> spawned = new Dictionary<Spawner, List<Transform>>();
 
@@ -29,7 +24,5 @@ public class Spawner:MonoBehaviour {
     {
         Transform source = Instantiate(target.Value, pos, rot);
         spawned[this].Add(source);
-
-        onSpawn.ActivateCall(source);
     }
 }

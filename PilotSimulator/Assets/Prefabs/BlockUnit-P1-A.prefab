@@ -90,7 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   registerOnStart: 0
   script: {fileID: 2049767771}
-  finder: {fileID: 0}
+  finder: {fileID: 11400000, guid: ffdbbca75b0ef6b48a36f363ea4b9891, type: 2}
   belongsTo: {fileID: 11400000, guid: dbdd2671cf58c8c49961cc6edafc854a, type: 2}
 --- !u!65 &2049767770
 BoxCollider:
@@ -167,9 +167,7 @@ MonoBehaviour:
   results:
     recordedRelativePosition: {x: 0, y: 0, z: 0}
     lastImportantPoint: {x: 0, y: 0, z: 0}
-    type: 
-    value: 0
-  logGather: 1
+  logGather: 0
 --- !u!114 &5755799895089245140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +200,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3363914595107625994, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
         type: 3}
+      propertyPath: onHitIf.conditions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3363914595107625994, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
+        type: 3}
       propertyPath: call.references.Array.data[0]
       value: 
       objectReference: {fileID: 1157126293238686781}
@@ -223,7 +226,7 @@ PrefabInstance:
     - target: {fileID: -3363914595107625994, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
         type: 3}
       propertyPath: call.use
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3363914595107625994, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
         type: 3}
@@ -235,6 +238,34 @@ PrefabInstance:
       propertyPath: useTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -3363914595107625994, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
+        type: 3}
+      propertyPath: sender
+      value: 
+      objectReference: {fileID: 4934958259879314754}
+    - target: {fileID: -3363914595107625994, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
+        type: 3}
+      propertyPath: alliance
+      value: 
+      objectReference: {fileID: 1157126293238686781}
+    - target: {fileID: -3363914595107625994, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
+        type: 3}
+      propertyPath: onHitSelfAlliance
+      value: 
+      objectReference: {fileID: 11400000, guid: 93934e5c8b2b9614680fb72d49dba9e8,
+        type: 2}
+    - target: {fileID: -3363914595107625994, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
+        type: 3}
+      propertyPath: onHitOtherAlliance
+      value: 
+      objectReference: {fileID: 11400000, guid: afd6dc097d51c5145a110505169a6fd7,
+        type: 2}
+    - target: {fileID: -3363914595107625994, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
+        type: 3}
+      propertyPath: onHitIf.conditions.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: eb41b50fcfa66f041a2db5727a32bc78,
+        type: 2}
     - target: {fileID: 695494951990129942, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
         type: 3}
       propertyPath: OnDestroyed.m_PersistentCalls.m_Calls.Array.size
@@ -538,11 +569,11 @@ PrefabInstance:
         type: 3}
       propertyPath: onDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1157126293238686781}
+      objectReference: {fileID: 0}
     - target: {fileID: 6719436536200536968, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
         type: 3}
       propertyPath: onDamage.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AllianceDifferent
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6719436536200536968, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
         type: 3}
@@ -552,7 +583,7 @@ PrefabInstance:
     - target: {fileID: 6719436536200536968, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
         type: 3}
       propertyPath: onDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6719436536200536968, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
         type: 3}

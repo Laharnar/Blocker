@@ -12,8 +12,9 @@ public class UnitBuilder : MonoBehaviour
     public LayerMask buildLayerMask;
     public Transform referencePoint;
 
-    public ReferenceCall onBuild;
-    public TempItems temp;
+    public Timer spawnTimer;
+
+    public TempItems prebuiltVisuals;
 
     private int placementMode = 0;
     private int mode = 0;
@@ -21,8 +22,6 @@ public class UnitBuilder : MonoBehaviour
 
     private Camera mainCam;
     private Transform temporarySpawned;
-
-    public Timer spawnTimer;
     
     private Ray buildRay;
     private BuildMode activeBuildMode;
@@ -30,11 +29,11 @@ public class UnitBuilder : MonoBehaviour
     private bool mousePressed;
     private bool delayPassed;
 
-    const int READY = 0;
-    const int PLACE_CONTINOUSLY = 1;
-    const int PLACE_CONTINOUSLY_PLACED_ONE = 4;
-    const int PLACE_ONCE = 3;
-    const int CLEANUP = 2;
+    private const int READY = 0;
+    private const int PLACE_CONTINOUSLY = 1;
+    private const int PLACE_CONTINOUSLY_PLACED_ONE = 4;
+    private const int PLACE_ONCE = 3;
+    private const int CLEANUP = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -77,12 +76,12 @@ public class UnitBuilder : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             placementMode = 1;
-            temp.SphericalPlacement(referencePoint.position);
+            prebuiltVisuals.SphericalPlacement(referencePoint.position);
         }
         else
         {
             placementMode = 0;
-            temp.DirectionalPlacement(referencePoint.position);
+            prebuiltVisuals.DirectionalPlacement(referencePoint.position);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -189,7 +188,6 @@ public class UnitBuilder : MonoBehaviour
         Debug.Log("building.");
         Transform t= Instantiate(buildPrefabs[buildId], position, new Quaternion());
 
-        onBuild.ActivateCall(t);
     }
     void SetTimerForNextAllowedBuild()
     {
@@ -236,7 +234,7 @@ public class UnitBuilder : MonoBehaviour
             Destroy(temporarySpawned.gameObject);
         }
 
-        temp.ClearAll();
+        prebuiltVisuals.ClearAll();
     }
     
 }

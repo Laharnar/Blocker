@@ -19,7 +19,7 @@ public class ResearchSensors:MonoBehaviour {
     {
         if (logGather)
         {
-            Debug.Log("gathering research", this);
+            Debug.Log("Gathering research "+name, this);
         }
         results.recordedRelativePosition = transform.position - results.lastImportantPoint;
     }

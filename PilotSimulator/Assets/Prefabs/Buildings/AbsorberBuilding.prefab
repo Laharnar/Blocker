@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 950733aabe1303a44a4c0b5b184d082f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  group: {fileID: 11400000, guid: dbdd2671cf58c8c49961cc6edafc854a, type: 2}
+  groupId: {fileID: 11400000, guid: dbdd2671cf58c8c49961cc6edafc854a, type: 2}
   registred: []
   OnStart:
     m_PersistentCalls:

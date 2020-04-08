@@ -93,6 +93,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -3363914595107625994, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
         type: 3}
+      propertyPath: onHitIf.conditions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3363914595107625994, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
+        type: 3}
       propertyPath: call.callFuns.Array.data[0]
       value: AllianceDifferent
       objectReference: {fileID: 0}
@@ -121,6 +126,39 @@ PrefabInstance:
       propertyPath: useTrigger
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -3363914595107625994, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
+        type: 3}
+      propertyPath: onHitSelfAlliance
+      value: 
+      objectReference: {fileID: 11400000, guid: 93934e5c8b2b9614680fb72d49dba9e8,
+        type: 2}
+    - target: {fileID: -3363914595107625994, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
+        type: 3}
+      propertyPath: onHitOtherAlliance
+      value: 
+      objectReference: {fileID: 11400000, guid: afd6dc097d51c5145a110505169a6fd7,
+        type: 2}
+    - target: {fileID: -3363914595107625994, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
+        type: 3}
+      propertyPath: onHitIf.conditions.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: eb41b50fcfa66f041a2db5727a32bc78,
+        type: 2}
+    - target: {fileID: -3363914595107625994, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
+        type: 3}
+      propertyPath: call.use
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3363914595107625994, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
+        type: 3}
+      propertyPath: sender
+      value: 
+      objectReference: {fileID: 3268385753880371834}
+    - target: {fileID: -3363914595107625994, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
+        type: 3}
+      propertyPath: alliance
+      value: 
+      objectReference: {fileID: 8730559764297253637}
     - target: {fileID: 381030146304024738, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
         type: 3}
       propertyPath: researchSender

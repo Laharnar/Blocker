@@ -1,4 +1,7 @@
-﻿[System.Serializable]
+﻿using UnityEngine;
+
+
+[System.Serializable]
 public class ConditionGroup {
     public Condition[] conditions;
     public int op;// 0: and, 1: or

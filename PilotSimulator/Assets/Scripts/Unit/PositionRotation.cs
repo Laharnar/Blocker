@@ -14,13 +14,32 @@ public class PositionRotation : ScienceAffected {
 
     private Vector3 moveAmount;
     private Vector3 rotsAmount;
+    private Rigidbody rig;
+
+    private void Start()
+    {
+        rig = GetComponent<Rigidbody>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        CalculateBasicMoveRotateScale();
-        ApplyExternalModifications();
-        MoveRotateScale();
+        if (rig == null || relativeTo.Value == Space.World)
+        {
+            CalculateBasicMoveRotateScale();
+            ApplyExternalModifications();
+            MoveRotateScale();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (rig != null && relativeTo.Value == Space.Self)
+        {
+            CalculateBasicMoveRotateScaleFixed();
+            ApplyExternalModifications();
+            MoveRotateScale();
+        }
     }
 
     private void CalculateBasicMoveRotateScale()
@@ -29,14 +48,30 @@ public class PositionRotation : ScienceAffected {
         rotsAmount = rotationDeg * Time.deltaTime * rotationSpeed.Value;
     }
 
+    private void CalculateBasicMoveRotateScaleFixed()
+    {
+        moveAmount = direction * moveSpeed.Value * Time.fixedDeltaTime;
+        rotsAmount = rotationDeg * Time.fixedDeltaTime * rotationSpeed.Value;
+    }
     private void MoveRotateScale()
     {
-        transform.Translate(moveAmount, relativeTo.Value);
-
-        lastRot = transform.forward;
-        transform.Rotate(rotsAmount);
-
-        transform.localScale = scaling;
+        if (rig == null || relativeTo.Value == Space.World)
+        {
+            transform.Translate(moveAmount, relativeTo.Value);
+            lastRot = transform.forward;
+            transform.Rotate(rotsAmount);
+        }
+        else if (rig != null && relativeTo.Value == Space.Self)
+        {
+            rig.MovePosition(rig.position + transform.InverseTransformDirection(moveAmount));
+            rig.MoveRotation( Quaternion.Euler(rig.rotation.eulerAngles+rotsAmount));
+        }
+        else
+        {
+            Debug.LogError("Missing rigidbody.", this);
+        }
+        if(transform.localScale != scaling)
+            transform.localScale = scaling;
     }
 
     private void ApplyExternalModifications()

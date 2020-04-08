@@ -9297,7 +9297,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisAlliance: 0
-  writeBack: {fileID: 0}
 --- !u!114 &797768955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9326,7 +9325,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9474e4455e5a93c4fae373ba10a75422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alliance: {fileID: 797768954}
+  selfAlliance:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 0
   hp: {fileID: 797768955}
 --- !u!54 &797768957
 Rigidbody:

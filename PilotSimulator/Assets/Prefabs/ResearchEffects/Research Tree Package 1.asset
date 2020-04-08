@@ -77,3 +77,11 @@ MonoBehaviour:
     onBuy:
       m_PersistentCalls:
         m_Calls: []
+  - name: Spawner Unlock
+    tag: 8
+    unlocked: {fileID: 11400000, guid: 47e194ed622b37c48b588a47c016e76e, type: 2}
+    cost: {fileID: 11400000, guid: 47aa14db47bbee34381d43afc0478f26, type: 2}
+    weight: {fileID: 11400000, guid: fd65e7be89673f549af3955e6bc03ad0, type: 2}
+    onBuy:
+      m_PersistentCalls:
+        m_Calls: []

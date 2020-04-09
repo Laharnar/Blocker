@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33f53221fbb33684b8488a61dd92b4d8, type: 3}
-  m_Name: SubtractBlockMaterialCost
+  m_Name: PredictEnergy
   m_EditorClassIdentifier: 
   negateA: 0
   negateB: 0
   a:
-    value: {fileID: 11400000, guid: 0b6a9d6e393fbb842a4cf5106b59c21d, type: 2}
+    value: {fileID: 11400000, guid: a99bb837297951d468fb35547f796126, type: 2}
     useDefault: 0
     defaultValue: 0
-  op: 0
+  op: 1
   b:
-    value: {fileID: 0}
-    useDefault: 1
-    defaultValue: -5
+    value: {fileID: 11400000, guid: 0d180f2b590e71e4fafefc1841e16bff, type: 2}
+    useDefault: 0
+    defaultValue: 0
   result:
-    value: {fileID: 11400000, guid: 0b6a9d6e393fbb842a4cf5106b59c21d, type: 2}
+    value: {fileID: 11400000, guid: 0755fb7671726e84c802e68d5fa82ef8, type: 2}
     useDefault: 0
     defaultValue: 0

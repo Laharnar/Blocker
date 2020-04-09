@@ -22,6 +22,19 @@ public class OnTriggerFindGroup:GroupOfRegistered {
         LoseNulls();
     }
 
+    public void TurnOff()
+    {
+        LoseAll();
+    }
+
+    private void LoseAll()
+    {
+        for (int i = all.Count - 1; i >= 0; i--)
+        {
+            Lost(all[i]);
+        }
+    }
+
     private void LoseNulls()
     {
 

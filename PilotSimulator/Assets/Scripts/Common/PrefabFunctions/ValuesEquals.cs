@@ -3,9 +3,9 @@
 [CreateAssetMenu(menuName ="Operators/Equals")]
 public class ValuesEquals:Condition {
 
-    public IntVarValue requiredValue;
+    public MultiTypeValue requiredValue;
     public Operator op;
-    public IntVarValue currentValue;
+    public MultiTypeValue currentValue;
 
     public override bool IsTrue()
     {

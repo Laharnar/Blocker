@@ -1,4 +1,6 @@
-﻿[System.Serializable]
+﻿using System;
+
+[System.Serializable]
 public class FloatVarRef {
     public FloatVar value;
     public bool useDefault = true;
@@ -10,6 +12,21 @@ public class FloatVarRef {
                 return defaultValue;
             else return value.value;
         }
+        set {
+            if (useDefault)
+                defaultValue=value;
+            else this.value.value = value;
+        }
     }
+
+    public string GetPrefabNameOrDefault(string defaultName)
+    {
+        if (useDefault)
+        {
+            return defaultName;
+        }
+        return value.name;
+    }
+
 }
 

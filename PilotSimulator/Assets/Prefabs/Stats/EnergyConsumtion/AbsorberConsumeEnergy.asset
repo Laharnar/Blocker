@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33f53221fbb33684b8488a61dd92b4d8, type: 3}
-  m_Name: PredictEnergy
+  m_Name: AbsorberConsumeEnergy
   m_EditorClassIdentifier: 
   negateA: 0
   negateB: 0
@@ -18,7 +18,7 @@ MonoBehaviour:
     useInt: 0
     i:
       value: {fileID: 0}
-      useDefault: 1
+      useDefault: 0
       defaultValue: 0
     useFloat: 1
     f:
@@ -30,24 +30,24 @@ MonoBehaviour:
   b:
     useInt: 0
     i:
-      value: {fileID: 11400000, guid: ec5a9201b8773d94693788ece5de43b7, type: 2}
-      useDefault: 1
-      defaultValue: 454
+      value: {fileID: 0}
+      useDefault: 0
+      defaultValue: 0
     useFloat: 1
     f:
       value: {fileID: 11400000, guid: 8c7479d0d6572dd47833c7f77df49062, type: 2}
       useDefault: 0
-      defaultValue: 56.7
+      defaultValue: 0
     defaultValue: 0
   result:
     useInt: 0
     i:
       value: {fileID: 0}
-      useDefault: 1
-      defaultValue: 65
+      useDefault: 0
+      defaultValue: 0
     useFloat: 1
     f:
-      value: {fileID: 11400000, guid: 673f58b110cc6c648841328d329dcf0b, type: 2}
+      value: {fileID: 11400000, guid: 0f507dc6087d5f64b93ca4b2263b2f02, type: 2}
       useDefault: 0
-      defaultValue: 1
+      defaultValue: 0
     defaultValue: 0

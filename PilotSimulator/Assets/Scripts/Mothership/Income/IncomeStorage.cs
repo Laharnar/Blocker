@@ -39,6 +39,7 @@ public class IncomeStorage : GroupOfRegistered {
             }
 
             repeatRate.Trigger();
+
             yield return repeatRate.WaitReady();
         }
     }

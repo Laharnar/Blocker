@@ -8,7 +8,9 @@ public class ConditionDo:MonoBehaviour {
     // operate only if enough energy
     public UnityEvent preCondition;
     public ConditionGroup conditionsToUse;
+    public bool skipClear = false;
     public UnityEvent onClearCondition;
+    public bool skipFail = false;
     public UnityEvent onFailCondition;
 
     public bool useEveryFrame = true;
@@ -27,11 +29,13 @@ public class ConditionDo:MonoBehaviour {
         preCondition?.Invoke();
         if (conditionsToUse.IsTrue())
         {
-            onClearCondition?.Invoke();
+            if(!skipClear)
+                onClearCondition?.Invoke();
         }
         else
         {
-            onFailCondition?.Invoke();
+            if(!skipFail)
+                onFailCondition?.Invoke();
         }
     }
 }

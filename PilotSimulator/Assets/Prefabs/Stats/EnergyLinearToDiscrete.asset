@@ -9,31 +9,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d2f0286b72ac834abd1da8d7815043a, type: 3}
-  m_Name: IsEnoughAfterAbsroberUsePrediction
+  m_Script: {fileID: 11500000, guid: 0c868f9f31dff2f45961c7f63f322bf9, type: 3}
+  m_Name: EnergyLinearToDiscrete
   m_EditorClassIdentifier: 
-  requiredValue:
+  from:
     useInt: 0
     i:
       value: {fileID: 0}
-      useDefault: 1
-      defaultValue: 0
-    useFloat: 1
-    f:
-      value: {fileID: 11400000, guid: 673f58b110cc6c648841328d329dcf0b, type: 2}
       useDefault: 0
       defaultValue: 0
-    defaultValue: 5
-  op: 2
-  currentValue:
-    useInt: 0
-    i:
-      value: {fileID: 0}
-      useDefault: 1
-      defaultValue: 0
     useFloat: 1
     f:
+      value: {fileID: 11400000, guid: 0f507dc6087d5f64b93ca4b2263b2f02, type: 2}
+      useDefault: 0
+      defaultValue: 0
+    defaultValue: 0
+  into:
+    useInt: 1
+    i:
+      value: {fileID: 11400000, guid: a99bb837297951d468fb35547f796126, type: 2}
+      useDefault: 0
+      defaultValue: 0
+    useFloat: 0
+    f:
       value: {fileID: 0}
-      useDefault: 1
+      useDefault: 0
       defaultValue: 0
     defaultValue: 0

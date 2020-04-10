@@ -6,10 +6,12 @@ public class ConditionGroup {
     public Condition[] conditions;
     public int op;// 0: and, 1: or
     public bool valueFor0Len = true;
+    public bool skip = false;
 
     public bool IsTrue()
     {
-        
+        if (skip)
+            return valueFor0Len;
         if (op == 0)
         {
             return And();

@@ -27,6 +27,14 @@ public class IntVarValue  {
         }
     }
 
+    public string GetPrefabNameOrDefault(string defaultName) {
+        if (useDefault)
+        {
+            return defaultName;
+        }
+        return value.name;
+    }
+
     internal void SetIntPrefab(IntVar customVal)
     {
         value = customVal;

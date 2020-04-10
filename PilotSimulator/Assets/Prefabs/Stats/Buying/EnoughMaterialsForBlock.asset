@@ -13,11 +13,27 @@ MonoBehaviour:
   m_Name: EnoughMaterialsForBlock
   m_EditorClassIdentifier: 
   requiredValue:
-    value: {fileID: 0}
-    useDefault: 1
+    useInt: 0
+    i:
+      value: {fileID: 0}
+      useDefault: 1
+      defaultValue: 0
+    useFloat: 1
+    f:
+      value: {fileID: 0}
+      useDefault: 1
+      defaultValue: 0
     defaultValue: 5
   op: 1
   currentValue:
-    value: {fileID: 11400000, guid: 0b6a9d6e393fbb842a4cf5106b59c21d, type: 2}
-    useDefault: 0
+    useInt: 0
+    i:
+      value: {fileID: 0}
+      useDefault: 1
+      defaultValue: 0
+    useFloat: 1
+    f:
+      value: {fileID: 0}
+      useDefault: 1
+      defaultValue: 0
     defaultValue: 0

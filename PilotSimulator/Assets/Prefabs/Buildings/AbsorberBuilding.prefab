@@ -5654,7 +5654,7 @@ GameObject:
   - component: {fileID: 2117465785}
   - component: {fileID: 2117465784}
   m_Layer: 0
-  m_Name: Use energy
+  m_Name: Use energy absorber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

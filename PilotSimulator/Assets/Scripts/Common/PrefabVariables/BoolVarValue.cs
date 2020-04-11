@@ -12,5 +12,10 @@ public class BoolVarValue {
                 return defaultValue;
             else return value.value;
         }
+        set {
+            if (useDefault)
+                defaultValue = value;
+            else this.value.value = value;
+        }
     }
 }

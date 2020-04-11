@@ -10,45 +10,45 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33f53221fbb33684b8488a61dd92b4d8, type: 3}
-  m_Name: SubtractBlockMaterialCost
+  m_Name: SpawnerCalcConsumptionPerTick
   m_EditorClassIdentifier: 
   negateA: 0
   negateB: 0
   a:
     useInt: 1
     i:
-      value: {fileID: 11400000, guid: 0b6a9d6e393fbb842a4cf5106b59c21d, type: 2}
+      value: {fileID: 11400000, guid: 0430897ab0a6a814298bc1412034df5a, type: 2}
       useDefault: 0
       defaultValue: 0
     useFloat: 0
     f:
       value: {fileID: 0}
-      useDefault: 1
+      useDefault: 0
       defaultValue: 0
     defaultValue: 0
-  op: 1
+  op: 2
   b:
-    useInt: 1
+    useInt: 0
     i:
-      value: {fileID: 11400000, guid: 7b98fa0f8bb58054d9a8142bb719c117, type: 2}
-      useDefault: 0
-      defaultValue: 0
-    useFloat: 0
-    f:
       value: {fileID: 0}
       useDefault: 1
       defaultValue: 0
-    defaultValue: -5
+    useFloat: 1
+    f:
+      value: {fileID: 11400000, guid: 9b82d39a87e5a6a43b10e273e93b36cd, type: 2}
+      useDefault: 0
+      defaultValue: 0
+    defaultValue: 0
   result:
-    useInt: 1
+    useInt: 0
     i:
-      value: {fileID: 11400000, guid: 0b6a9d6e393fbb842a4cf5106b59c21d, type: 2}
-      useDefault: 0
-      defaultValue: 0
-    useFloat: 0
-    f:
       value: {fileID: 0}
       useDefault: 1
+      defaultValue: 0
+    useFloat: 1
+    f:
+      value: {fileID: 11400000, guid: 4696a8edc77f06c418062d1c9e00933f, type: 2}
+      useDefault: 0
       defaultValue: 0
     defaultValue: 0
   OnRun:

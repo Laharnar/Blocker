@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33f53221fbb33684b8488a61dd92b4d8, type: 3}
+  m_Name: SpawnerSubtractEnergy
+  m_EditorClassIdentifier: 
+  negateA: 0
+  negateB: 0
+  a:
+    useInt: 0
+    i:
+      value: {fileID: 0}
+      useDefault: 0
+      defaultValue: 0
+    useFloat: 1
+    f:
+      value: {fileID: 11400000, guid: 0f507dc6087d5f64b93ca4b2263b2f02, type: 2}
+      useDefault: 0
+      defaultValue: 0
+    defaultValue: 0
+  op: 1
+  b:
+    useInt: 0
+    i:
+      value: {fileID: 0}
+      useDefault: 0
+      defaultValue: 0
+    useFloat: 1
+    f:
+      value: {fileID: 11400000, guid: 4696a8edc77f06c418062d1c9e00933f, type: 2}
+      useDefault: 0
+      defaultValue: 0
+    defaultValue: 0
+  result:
+    useInt: 0
+    i:
+      value: {fileID: 0}
+      useDefault: 0
+      defaultValue: 0
+    useFloat: 1
+    f:
+      value: {fileID: 11400000, guid: 0f507dc6087d5f64b93ca4b2263b2f02, type: 2}
+      useDefault: 0
+      defaultValue: 0
+    defaultValue: 0
+  OnRun:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 2ebf60bfb8e1f324e872cce035756546, type: 2}
+        m_MethodName: Activate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

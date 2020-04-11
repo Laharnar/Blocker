@@ -32,7 +32,15 @@ public class ProgrammableDelay:MonoBehaviour {
 
     protected void ActivateEvent()
     {
-        onReady?.Invoke();
+        try
+        {
+            onReady?.Invoke();
+        }
+        catch (Exception e)
+        {
+            Debug.Log("Could crash spawner coroutine.");
+            Debug.LogException(e);
+        }
     }
 
     protected void ToNextDelay()

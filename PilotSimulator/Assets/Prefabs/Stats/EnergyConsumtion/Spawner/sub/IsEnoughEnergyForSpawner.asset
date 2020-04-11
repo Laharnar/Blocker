@@ -10,28 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d2f0286b72ac834abd1da8d7815043a, type: 3}
-  m_Name: EnoughMaterialsForBlock
+  m_Name: SpawnerIsEnoughEnergy
   m_EditorClassIdentifier: 
   requiredValue:
-    useInt: 1
+    useInt: 0
     i:
-      value: {fileID: 11400000, guid: 0b6a9d6e393fbb842a4cf5106b59c21d, type: 2}
-      useDefault: 0
-      defaultValue: 0
-    useFloat: 0
-    f:
       value: {fileID: 0}
       useDefault: 1
+      defaultValue: 0
+    useFloat: 1
+    f:
+      value: {fileID: 11400000, guid: ed88dddcba83ea64cab7c21938235190, type: 2}
+      useDefault: 0
       defaultValue: 0
     defaultValue: 5
   op: 2
   currentValue:
-    useInt: 1
+    useInt: 0
     i:
-      value: {fileID: 11400000, guid: 7b98fa0f8bb58054d9a8142bb719c117, type: 2}
-      useDefault: 0
-      defaultValue: 2
-    useFloat: 0
+      value: {fileID: 0}
+      useDefault: 1
+      defaultValue: 0
+    useFloat: 1
     f:
       value: {fileID: 0}
       useDefault: 1

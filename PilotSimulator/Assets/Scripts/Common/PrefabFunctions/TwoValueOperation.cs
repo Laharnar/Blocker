@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "Operators/TwoValueOperation")]
 public class TwoValueOperation:ScriptableObject {
@@ -9,10 +10,16 @@ public class TwoValueOperation:ScriptableObject {
     public Operator op = Operator.Add;
     public MultiTypeValue b;
     public MultiTypeValue result;
-    
 
-    // For event system.
+    public UnityEvent OnRun;
+
     public void Add()
+    {
+        Debug.Log("Obsolete call."+name);
+        Add2();
+    }
+
+    void Add2()
     {
         float aval = a.Value;
         float bval = b.Value;
@@ -66,8 +73,11 @@ public class TwoValueOperation:ScriptableObject {
         }
     }
 
+    // For event system.
     public void Run()
     {
-        Add();
+        Add2();
+
+        OnRun?.Invoke();
     }
 }

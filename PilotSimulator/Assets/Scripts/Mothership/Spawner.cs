@@ -9,7 +9,7 @@ public class Spawner:MonoBehaviour {
 
     static Dictionary<Spawner, List<Transform>> spawned = new Dictionary<Spawner, List<Transform>>();
 
-    void Start()
+    void Awake()
     {
         spawned.Add(this, new List<Transform>());
     }

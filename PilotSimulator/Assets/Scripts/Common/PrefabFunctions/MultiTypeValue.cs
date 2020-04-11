@@ -17,14 +17,22 @@ public class MultiTypeValue {
                 return i.Value;
             else if (useFloat)
                 return f.Value;
-            else return defaultValue;
+            else
+            {
+                Debug.Log("using default because of missing reference.");
+                return defaultValue;
+            }
         }
         set {
             if (useInt)
                 i.Value = (int)value;
-            else if(useFloat)
+            else if (useFloat)
                 f.Value = value;
-            else defaultValue = value;
+            else
+            {
+                Debug.Log("using default because of missing reference.");
+                defaultValue = value;
+            }
         }
     }
 

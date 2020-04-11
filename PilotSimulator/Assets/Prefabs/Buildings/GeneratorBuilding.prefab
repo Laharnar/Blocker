@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   incomePerSecond:
-    value: {fileID: 11400000, guid: e362adf00ff469b4ab0b0578b49ee685, type: 2}
+    value: {fileID: 11400000, guid: 495d6f2fb6d93a54ba53b473bc6e69cb, type: 2}
     useDefault: 1
     defaultValue: 1
 --- !u!95 &1463017830

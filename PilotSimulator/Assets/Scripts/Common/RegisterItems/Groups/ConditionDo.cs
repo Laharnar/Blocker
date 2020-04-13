@@ -2,10 +2,6 @@
 using UnityEngine.Events;
 
 public class ConditionDo:MonoBehaviour {
-    // 2 features: toggle mesh enable on condition/s
-    // conume energy if avalibale
-    // init to correct energy storage
-    // operate only if enough energy
     public UnityEvent preCondition;
     public ConditionGroup conditionsToUse;
     public bool skipClear = false;

@@ -1,6 +1,8 @@
 ﻿
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
 public class PositionRotation : ScienceAffected {
 
     public FloatVarRef moveSpeed, rotationSpeed;

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fa2636780592a849bd9edb189aa87b0, type: 3}
+  m_Name: StopOnGround
+  m_EditorClassIdentifier: 
+  rcast:
+    position:
+      value: {fileID: 0}
+      useDefault: 1
+      defaultValue: {x: 0, y: -0.48000398, z: -1.37}
+    direction:
+      value: {fileID: 0}
+      useDefault: 1
+      defaultValue: {x: 0, y: -1, z: 0}
+    anyHit:
+      value: {fileID: 0}
+      useDefault: 1
+      defaultValue: 1
+    theHit:
+      target: {fileID: 0}
+      useDefault: 1
+      defaultValue: {fileID: 0}
+    maxDistance: 0.5
+    castedLayers:
+      serializedVersion: 2
+      m_Bits: 1024
+  useSetting:
+    value: {fileID: 11400000, guid: 7d67f2f5fca6cbf4ea4a555fddef0638, type: 2}
+    useDefault: 0
+    defaultValue: 0
+  movement: {fileID: 11400000, guid: 0a9f9d8b1437956488a34628a4e8468c, type: 2}
+  onRaycast: {fileID: 11400000, guid: c7b75d9bff933524fac1746b93c95417, type: 2}

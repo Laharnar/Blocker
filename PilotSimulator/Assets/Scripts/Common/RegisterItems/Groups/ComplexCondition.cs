@@ -1,0 +1,60 @@
+﻿using UnityEngine;
+using UnityEngine.Events;
+
+public class ComplexCondition : MonoBehaviour {
+
+    public IfThenItem[] ifs;
+    public DoEvent allFail;
+
+    public void DoMultiIf()
+    {
+        for (int i = 0; i < ifs.Length; i++)
+        {
+            if (ifs[i].IsTrue())
+            {
+                ifs[i].Do();
+                break;
+            }
+        }
+        allFail.Do();
+    }
+
+    [System.Serializable]
+    public class IfThenItem {
+        public string context;
+        public ConditionGroup condition;
+        public bool autoTrue = false;
+        public bool autoFalse = false;
+
+        public DoEvent onSuccess;
+
+        public bool IsTrue()
+        {
+            return condition.IsTrue();
+        }
+
+        public bool IsFalse()
+        {
+            return condition.IsFalse();
+        }
+
+        public void Do()
+        {
+            onSuccess.Do();
+        }
+    }
+
+    [System.Serializable]
+    public class DoEvent {
+        public bool skipBoth;
+        public DoPrefab onSuccess1;
+        public UnityEvent onSuccess2;
+
+        public void Do()
+        {
+            if (skipBoth) return;
+            onSuccess1.DoIt();
+            onSuccess2?.Invoke();
+        }
+    }
+}

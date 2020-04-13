@@ -14,5 +14,12 @@ public class TransformVarValue {
             }
             return target.value;
         }
+        set {
+            if (useDefault)
+            {
+                defaultValue = value;
+            }else
+            target.value = value;
+        }
     }
 }

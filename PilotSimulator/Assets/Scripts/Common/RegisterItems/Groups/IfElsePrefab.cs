@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-
 [CreateAssetMenu(menuName = "Functions/IfElse")]
 public class IfElsePrefab : ScriptableObject {
     public bool autoTrue = false;

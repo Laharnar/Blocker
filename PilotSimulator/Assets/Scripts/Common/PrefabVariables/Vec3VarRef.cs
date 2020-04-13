@@ -1,13 +1,12 @@
-﻿using System;
-
+﻿using UnityEngine;
 
 [System.Serializable]
-public class FloatVarRef {
-    public FloatVar value;
+public class Vec3VarRef {
+    public Vec3Var value;
     public bool useDefault = true;
-    public float defaultValue;
+    public Vector3 defaultValue;
 
-    public float Value {
+    public Vector3 Value {
         get {
             if (useDefault)
                 return defaultValue;
@@ -15,7 +14,7 @@ public class FloatVarRef {
         }
         set {
             if (useDefault)
-                defaultValue=value;
+                defaultValue = value;
             else this.value.value = value;
         }
     }
@@ -28,6 +27,5 @@ public class FloatVarRef {
         }
         return value.name;
     }
-
 }
 

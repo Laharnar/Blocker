@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d2f0286b72ac834abd1da8d7815043a, type: 3}
+  m_Name: IsSpawnerRunning
+  m_EditorClassIdentifier: 
+  requiredValue:
+    useInt: 0
+    i:
+      value: {fileID: 11400000, guid: a99bb837297951d468fb35547f796126, type: 2}
+      useDefault: 1
+      defaultValue: 0
+    useFloat: 1
+    f:
+      value: {fileID: 11400000, guid: 0f507dc6087d5f64b93ca4b2263b2f02, type: 2}
+      useDefault: 0
+      defaultValue: 0
+    defaultValue: 5
+  op: 3
+  currentValue:
+    useInt: 0
+    i:
+      value: {fileID: 0}
+      useDefault: 1
+      defaultValue: 0
+    useFloat: 1
+    f:
+      value: {fileID: 0}
+      useDefault: 1
+      defaultValue: 0
+    defaultValue: 0
+  state:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 1
+  lastComparedA: 79
+  lastComparedB: 0

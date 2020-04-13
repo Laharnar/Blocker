@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d2f0286b72ac834abd1da8d7815043a, type: 3}
-  m_Name: SpawnerIsEnoughEnergy
+  m_Name: IsEnoughEnergyForSpawner
   m_EditorClassIdentifier: 
   requiredValue:
     useInt: 0
@@ -37,3 +37,9 @@ MonoBehaviour:
       useDefault: 1
       defaultValue: 0
     defaultValue: 0
+  state:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 0
+  lastComparedA: 0
+  lastComparedB: 0

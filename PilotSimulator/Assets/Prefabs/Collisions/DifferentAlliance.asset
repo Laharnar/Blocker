@@ -13,11 +13,33 @@ MonoBehaviour:
   m_Name: DifferentAlliance
   m_EditorClassIdentifier: 
   requiredValue:
-    value: {fileID: 11400000, guid: 93934e5c8b2b9614680fb72d49dba9e8, type: 2}
-    useDefault: 0
+    useInt: 1
+    i:
+      value: {fileID: 11400000, guid: 93934e5c8b2b9614680fb72d49dba9e8, type: 2}
+      useDefault: 0
+      defaultValue: 0
+    useFloat: 0
+    f:
+      value: {fileID: 0}
+      useDefault: 1
+      defaultValue: 0
     defaultValue: 0
   op: 5
   currentValue:
-    value: {fileID: 11400000, guid: afd6dc097d51c5145a110505169a6fd7, type: 2}
-    useDefault: 0
+    useInt: 1
+    i:
+      value: {fileID: 11400000, guid: afd6dc097d51c5145a110505169a6fd7, type: 2}
+      useDefault: 0
+      defaultValue: 0
+    useFloat: 0
+    f:
+      value: {fileID: 0}
+      useDefault: 1
+      defaultValue: 0
     defaultValue: 0
+  state:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 0
+  lastComparedA: 0
+  lastComparedB: 0

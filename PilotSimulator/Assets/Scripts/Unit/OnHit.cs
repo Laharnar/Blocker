@@ -28,14 +28,21 @@ public class OnHit : MonoBehaviour {
 
     protected virtual void OnTriggerEnter(Collider collider)
     {
-        if (log) Debug.Log("Trigger " + name + " -> " + collider.gameObject.name);
+        string logging = "";
+        if (log) logging ="TriggerEvt" + name + " -> " + collider.gameObject.name;
+
         DamageReciever o = collider.gameObject.GetComponent<DamageReciever>();
         if (o)
         {
             onHitSelfAlliance.value = selfAlliance.Value;
             onHitOtherAlliance.value = o.selfAlliance.Value;
             if (onHitIf.IsTrue())
+            {
                 sender.OnHit(o);
-        }
+                if (log) logging += " - Success";
+            }
+            else if (log) logging += " - Failure";
+        }else if (log) logging += " - No DamageReciever.";
+        if (log) Debug.Log(logging);
     }
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c014ee867b0042a4baadda5518c56915, type: 3}
-  m_Name: Fx Player Flying
+  m_Name: Fx Player Base Flying
   m_EditorClassIdentifier: 
   useX:
     value: {fileID: 0}
@@ -24,9 +24,25 @@ MonoBehaviour:
     value: {fileID: 0}
     useDefault: 1
     defaultValue: 0
-  moveStrengthX: {fileID: 0}
-  moveStrengthY: {fileID: 11400000, guid: 0a9f9d8b1437956488a34628a4e8468c, type: 2}
-  moveStrengthZ: {fileID: 0}
+  ifNoneUsedFalse:
+    value: {fileID: 0}
+    useFloats: 0
+    x: {fileID: 0}
+    y: {fileID: 0}
+    z: {fileID: 0}
+    useDefault: 1
+    defaultValue: {x: 0, y: 0, z: 0}
+  vectorOperations: []
   useRX: 0
   rotationStrengthY: {fileID: 0}
   directionRight: {fileID: 0}
+  op:
+    op: 5
+  moveResult:
+    value: {fileID: 0}
+    useFloats: 0
+    x: {fileID: 0}
+    y: {fileID: 0}
+    z: {fileID: 0}
+    useDefault: 1
+    defaultValue: {x: 0, y: 0, z: 0}

@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 
 public class IntUI : MonoBehaviour
 {
-    public TMPro.TMP_Text text;
+    public TMP_Text text;
     public IntVar optionalInt;
     public bool setEveryFrame = true;
 

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c014ee867b0042a4baadda5518c56915, type: 3}
-  m_Name: Camera Panning XZ
+  m_Name: Camera BaseSpeed
   m_EditorClassIdentifier: 
   useX:
     value: {fileID: 11400000, guid: 53dd6916957aea54da6810dde89359a9, type: 2}
@@ -34,17 +34,17 @@ MonoBehaviour:
     defaultValue: {x: 0, y: 0, z: 0}
   vectorOperations:
   - value: {fileID: 0}
-    useFloats: 1
-    x: {fileID: 11400000, guid: a5ef767ef5ccb51439068d20ae330e75, type: 2}
+    useFloats: 0
+    x: {fileID: 0}
     y: {fileID: 0}
-    z: {fileID: 11400000, guid: 344c887b54d483341a6e92fd07083c01, type: 2}
-    useDefault: 0
-    defaultValue: {x: 0, y: 0, z: 0}
+    z: {fileID: 0}
+    useDefault: 1
+    defaultValue: {x: 0.15, y: 0, z: 0.15}
   useRX: 0
   rotationStrengthY: {fileID: 0}
   directionRight: {fileID: 0}
   op:
-    op: 2
+    op: 0
   moveStart:
     value: {fileID: 0}
     useFloats: 0
@@ -52,7 +52,7 @@ MonoBehaviour:
     y: {fileID: 0}
     z: {fileID: 0}
     useDefault: 1
-    defaultValue: {x: 0, y: 0, z: 0}
+    defaultValue: {x: 0.0225859, y: 0, z: 0.0225859}
   moveResult:
     value: {fileID: 0}
     useFloats: 0
@@ -60,4 +60,4 @@ MonoBehaviour:
     y: {fileID: 0}
     z: {fileID: 0}
     useDefault: 1
-    defaultValue: {x: 0, y: 0, z: 0}
+    defaultValue: {x: 0.1725859, y: 0, z: 0.1725859}

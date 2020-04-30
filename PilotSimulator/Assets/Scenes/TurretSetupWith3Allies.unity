@@ -10677,9 +10677,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 792310592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15d815bef3af43544a7d73159ef738f9, type: 3}
+  m_Script: {fileID: 11500000, guid: fecba0d0a84af664bb45aee9aebcda1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horizontal: {fileID: 11400000, guid: a5ef767ef5ccb51439068d20ae330e75, type: 2}
+  vertical: {fileID: 11400000, guid: 344c887b54d483341a6e92fd07083c01, type: 2}
+  raw: 0
+  keepSquared: 1
+  instantStart: 0
+  instantStop: 0
 --- !u!1 &793265087
 GameObject:
   m_ObjectHideFlags: 0
@@ -14798,6 +14804,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6073316949564774141, guid: 6da2c0fdb0a9bbd44bad4e0d9bafe089,
         type: 3}
+      propertyPath: postPrediction.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6073316949564774141, guid: 6da2c0fdb0a9bbd44bad4e0d9bafe089,
+        type: 3}
       propertyPath: rotationDeg.y
       value: 0
       objectReference: {fileID: 0}
@@ -14825,6 +14836,31 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 00fffad821f769b4fba3f52b56cdbf34,
         type: 2}
+    - target: {fileID: -6073316949564774141, guid: 6da2c0fdb0a9bbd44bad4e0d9bafe089,
+        type: 3}
+      propertyPath: postPrediction.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6073316949564774141, guid: 6da2c0fdb0a9bbd44bad4e0d9bafe089,
+        type: 3}
+      propertyPath: postPrediction.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -6073316949564774141, guid: 6da2c0fdb0a9bbd44bad4e0d9bafe089,
+        type: 3}
+      propertyPath: postPrediction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1244953451}
+    - target: {fileID: -6073316949564774141, guid: 6da2c0fdb0a9bbd44bad4e0d9bafe089,
+        type: 3}
+      propertyPath: postPrediction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Modifications
+      objectReference: {fileID: 0}
+    - target: {fileID: -6073316949564774141, guid: 6da2c0fdb0a9bbd44bad4e0d9bafe089,
+        type: 3}
+      propertyPath: postPrediction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1621214086, guid: 6da2c0fdb0a9bbd44bad4e0d9bafe089, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -14922,7 +14958,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerSpawnerBase-A2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 392529813208287838, guid: 6da2c0fdb0a9bbd44bad4e0d9bafe089, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6da2c0fdb0a9bbd44bad4e0d9bafe089, type: 3}
 --- !u!4 &1207895181 stripped
 Transform:
@@ -15304,6 +15341,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1232620946}
   m_CullTransparentMesh: 0
+--- !u!1 &1244953448 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 392529813208287839, guid: 6da2c0fdb0a9bbd44bad4e0d9bafe089,
+    type: 3}
+  m_PrefabInstance: {fileID: 1207895179}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1244953449 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -6073316949564774141, guid: 6da2c0fdb0a9bbd44bad4e0d9bafe089,
+    type: 3}
+  m_PrefabInstance: {fileID: 1207895179}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244953448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 444329b2287500942a0209c0ebec07e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1244953451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244953448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f54efa5c5c0df4e8b07de84412cf2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  used:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 0
+  ScienceTree: {fileID: 11400000, guid: 78d3412026269af4da3f849f1455576e, type: 2}
+  Effects:
+  - {fileID: 11400000, guid: 7fd8a1a340b6184459f4e509241ac586, type: 2}
+  - {fileID: 11400000, guid: 00fffad821f769b4fba3f52b56cdbf34, type: 2}
+  onDone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1244953449}
+        m_MethodName: SetMoveValue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 457efe4a338dc2d4e82c8f738c9935de,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: Vec3Var, Tests
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1249711657
 GameObject:
   m_ObjectHideFlags: 0
@@ -15683,6 +15773,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1275388994}
   - component: {fileID: 1275388995}
+  - component: {fileID: 1275388996}
   m_Layer: 0
   m_Name: CameraVerticality
   m_TagString: Untagged
@@ -15733,20 +15824,89 @@ MonoBehaviour:
   lastRot: {x: 0, y: 0, z: 0}
   useDeltaTime: 1
   expectedMove:
-    value: {fileID: 0}
-    useDefault: 1
+    value: {fileID: 11400000, guid: 457efe4a338dc2d4e82c8f738c9935de, type: 2}
+    useFloats: 0
+    x: {fileID: 0}
+    y: {fileID: 0}
+    z: {fileID: 0}
+    useDefault: 0
     defaultValue: {x: 0, y: 0, z: 0}
   expectedRotation:
     value: {fileID: 0}
+    useFloats: 0
+    x: {fileID: 0}
+    y: {fileID: 0}
+    z: {fileID: 0}
     useDefault: 1
     defaultValue: {x: 0, y: 0, z: 0}
-  onPreMove:
+  postPrediction:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 520de8a44cc45034190e48a2562f3c55, type: 2}
+        m_MethodName: SetTransform
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1275388994}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1275388996}
+        m_MethodName: Modifications
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  prePredictionMove: {x: 0, y: 0, z: 0}
+  postPredictionMove: {x: 0, y: 0, z: 0}
+  postPredictionAngles: {x: 0, y: 0, z: 0}
   relativeTo:
     value: {fileID: 11400000, guid: f686e1dabaa5c82429affc9e7274d708, type: 2}
     useDefault: 0
     defaultValue: 1
+--- !u!114 &1275388996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275388993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f54efa5c5c0df4e8b07de84412cf2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  used:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 1
+  ScienceTree: {fileID: 11400000, guid: 78d3412026269af4da3f849f1455576e, type: 2}
+  Effects:
+  - {fileID: 11400000, guid: db4e8f6e8ec6d84418a61695159b30e4, type: 2}
+  - {fileID: 11400000, guid: 16239aea02f0d9b4a9dd4cf20c6f031b, type: 2}
+  - {fileID: 11400000, guid: acf04688fd2f4f54482cc320c4440011, type: 2}
+  onDone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1275388995}
+        m_MethodName: SetMoveValue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 457efe4a338dc2d4e82c8f738c9935de,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: Vec3Var, Tests
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1277277670
 GameObject:
   m_ObjectHideFlags: 0

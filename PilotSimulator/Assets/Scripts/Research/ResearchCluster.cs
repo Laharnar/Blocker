@@ -9,7 +9,7 @@ public class ResearchCluster : MonoBehaviour {
 
     public Action<ResearchUnitArgs> onRecieveResearch;
     public ResearchTree tree;
-    public ScienceArgsVar scienceArgs;
+    public RealtimeScienceArgs scienceArgs;
 
     public bool log;
     

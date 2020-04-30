@@ -11,7 +11,7 @@ public class RfxTracking: ScienceEffect {
     public AnimationCurve rotationDamping;// 1:180 degrees, 0: 0 degrees
 
 
-    protected override void Activate(ScienceArgs args)
+    protected override void Effect(ScienceArgs args)
     {
         // include tracking
         if (!trackingUnlocked.value)
@@ -31,7 +31,7 @@ public class RfxTracking: ScienceEffect {
             float tempRange = 0;
             for (int i = 0; i < args.knownAllyDeaths.Count; i++)
             {
-                tempRange = Vector3.Distance(args.knownAllyDeaths[i].recordedRelativePosition+ args.knownAllyDeaths[i].lastImportantPoint, args.source.position);
+                tempRange = Vector3.Distance(args.knownAllyDeaths[i].recordedRelativePosition+ args.knownAllyDeaths[i].lastImportantPoint, args.Source.position);
                 if (tempRange<minRange)
                 {
                     closest = i;
@@ -47,9 +47,9 @@ public class RfxTracking: ScienceEffect {
         {
             // Pick by weighting originally requested rotation results vs tracking rotation.
             float original = args.rotationDirY;
-            Vector3 samePlane1 = args.source.forward;
+            Vector3 samePlane1 = args.Source.forward;
             samePlane1.y = 0;
-            Vector3 samePlane2 = args.target.Position - args.source.position;
+            Vector3 samePlane2 = args.target.Position - args.Source.position;
             samePlane2.y = 0;
             args.trackingAngleY = Vector3.SignedAngle(samePlane1, samePlane2, Vector3.up);
 

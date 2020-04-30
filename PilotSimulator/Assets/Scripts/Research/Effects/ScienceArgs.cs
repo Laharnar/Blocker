@@ -3,13 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class ScienceArgs {
+public class ScienceArgs
+{
 
     // --- tracking ---
     public List<ResearchUnitArgs> knownAllyDeaths;
 
     // who is requesting science calculation
-    public Transform source;
+    [SerializeField] Transform source;
+    public Transform Source {
+        get {
+            if (source == null)
+            {
+                throw new NullReferenceException("source transform isn't assigned.");
+            }
+            return source;
+        }
+    }
 
     /// <summary>
     /// Results from tracking.
@@ -21,7 +31,7 @@ public class ScienceArgs {
     /// </summary>
     public float trackingAngleY;
     public float rotationDirY;
-    public Vector3 moveDir;
+    public Vec3VarRef moveDir;
 
     internal void StartOnNewObject()
     {
@@ -29,6 +39,6 @@ public class ScienceArgs {
         // When 0 effects are applied those value stay, resulting in weird behaviour.
         trackingAngleY = 0;
         rotationDirY = 0;
-        moveDir = Vector3.zero;
+        moveDir.Value = Vector3.zero;
     }
 }

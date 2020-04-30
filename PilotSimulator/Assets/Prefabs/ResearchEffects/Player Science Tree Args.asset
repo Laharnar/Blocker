@@ -13,21 +13,17 @@ MonoBehaviour:
   m_Name: Player Science Tree Args
   m_EditorClassIdentifier: 
   args:
-    move: {x: 0, y: 0, z: 0}
-    rotationAnglesY: 1.562025
     knownAllyDeaths:
     - recordedRelativePosition: {x: 5.3992505, y: -0.00000011920929, z: 26.150637}
       lastImportantPoint: {x: -6.341033, y: -0.86749995, z: -2.618175}
-      type: 
-      value: 0
     source: {fileID: 0}
     target:
       pos: {x: -0.47516918, y: -0.8675004, z: 9.7854}
       target: {fileID: 0}
       _objectless: 1
-    trackingAngleY: -0
-    trackedPosition: {x: 5.25, y: -4.59, z: 0}
-    moveX: 0
-    moveY: 0
-    moveZ: 0
-    rotationDirY: 1
+    trackingAngleY: 0
+    rotationDirY: 0
+    moveDir:
+      value: {fileID: 11400000, guid: 457efe4a338dc2d4e82c8f738c9935de, type: 2}
+      useDefault: 0
+      defaultValue: {x: 0, y: 0, z: 0}

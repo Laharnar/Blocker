@@ -30,11 +30,13 @@ public class OnRaycastSurface : ScienceEffect {
         IfThenStop(t.Value);
     }
 
-    protected override void Activate(ScienceArgs args)
+    protected override void Effect(ScienceArgs realtime)
     {
-        IfThenStop(args.source);
+        IfThenStop(realtime.Source);
 
-        args.moveDir.y = movement.Value;
+        Vector3 v3 = Vector3.zero;
+        v3.y = movement.Value;
+        realtime.moveDir.Value = v3;
     }
 
 

@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,7 +16,12 @@ public class PositionRotation : MonoBehaviour {
     [Header("Modifications")]
     public Vec3VarRef expectedMove;
     public Vec3VarRef expectedRotation;
-    public UnityEvent onPreMove;
+
+    public UnityEvent postPrediction;
+    [SerializeField] private Vector3 prePredictionMove;
+    [SerializeField] private Vector3 postPredictionMove;
+    [SerializeField] private Vector3 postPredictionAngles;
+
 
     [Header("Special case")]
     public SpaceVarValue relativeTo;
@@ -27,6 +33,7 @@ public class PositionRotation : MonoBehaviour {
     private void Start()
     {
         rig = GetComponent<Rigidbody>();
+        expectedMove.Value = Vector3.zero;
     }
 
     // Update is called once per frame
@@ -73,11 +80,25 @@ public class PositionRotation : MonoBehaviour {
 
     private void ModifyDirectionAndRotationOnExtrenalScripts()
     {
+
         expectedMove.Value = moveAmount;
         expectedRotation.Value = rotsAmount;
-        onPreMove?.Invoke();
+        prePredictionMove = moveAmount;
+        postPrediction?.Invoke();
+        postPredictionMove = expectedMove.Value;
+        postPredictionAngles = expectedRotation.Value;
         moveAmount = expectedMove.Value;
         rotsAmount = expectedRotation.Value;
+    }
+
+    public void SetMoveValue(Vec3Var vec3)
+    {
+        expectedMove.Value = vec3.value;
+    }
+
+    public void SetRotationValue(Vec3Var rot3)
+    {
+        expectedRotation.Value = rot3.value;
     }
 
     private void MoveRotateScale()

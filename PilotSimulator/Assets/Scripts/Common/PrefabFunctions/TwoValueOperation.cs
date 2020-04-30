@@ -2,6 +2,13 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+[System.Serializable]
+public class OperatorTransitional
+{
+    public TwoValueOperation.Operator op;
+    public TwoValueOperation.Operator Value => op;
+}
+
 [CreateAssetMenu(menuName = "Operators/TwoValueOperation")]
 public class TwoValueOperation:ScriptableObject {
 
@@ -11,6 +18,8 @@ public class TwoValueOperation:ScriptableObject {
     public bool keepSignB = false;
     public MultiTypeValue a;
     public Operator op = Operator.Add;
+    public OperatorTransitional opTmp;
+
     public MultiTypeValue b;
     public MultiTypeValue result;
 
@@ -18,7 +27,7 @@ public class TwoValueOperation:ScriptableObject {
 
     public void Add()
     {
-        Debug.Log("Obsolete call."+name);
+        Debug.LogError("Obsolete call."+name+" Use Run");
         Add2();
     }
 
@@ -28,7 +37,11 @@ public class TwoValueOperation:ScriptableObject {
         float bval = b.Value;
         aval = NegationHandler(aval, true);
         bval = NegationHandler(bval, true);
-        result.Value = OpHandler(op, aval, bval);
+        float operated = Operate(opTmp.Value, aval, bval);
+        float signed = Signs(a.Value, keepSignA,
+                        Signs(b.Value, keepSignB,
+                            operated));
+        result.Value = signed;
     }
 
     float NegationHandler(float val, bool negated)
@@ -37,10 +50,8 @@ public class TwoValueOperation:ScriptableObject {
         else return val;
     }
 
-    float OpHandler(Operator op, float a, float b)
+    public static float Operate(Operator op, float a, float b)
     {
-        float signa = Math.Sign(a);
-        float signb = Math.Sign(b);
         float result = 0;
         switch (op)
         {
@@ -58,19 +69,26 @@ public class TwoValueOperation:ScriptableObject {
                     result = 0;
                 else result = a / b;
                 break;
+            case Operator.SetToA:
+                result = a;
+                break;
+            case Operator.SetToB:
+                result = b;
+                break;
             default:
                 throw new System.NotImplementedException("Operator isn't defined"+op);
         }
-        if (keepSignA)
-        {
-            result*= signa;
-        }
-
-        if (keepSignB)
-        {
-            result *= signb;
-        }
+        
         return result;
+    }
+
+    float Signs(float s1, bool keep, float value)
+    {
+        if (keep)
+        {
+            value *= Math.Sign(s1);
+        }
+        return value;
     }
 
     public enum Operator {
@@ -78,7 +96,9 @@ public class TwoValueOperation:ScriptableObject {
         Subtract,
         Multiply,
         Divide,
-        SignA
+        SignA,
+        SetToA,
+        SetToB
     }
     public string OpAsString() {
         switch (op)
@@ -91,6 +111,10 @@ public class TwoValueOperation:ScriptableObject {
                 return "*";
             case Operator.Divide:
                 return "/";
+            case Operator.SetToA:
+                return "=a=" ;
+            case Operator.SetToB:
+                return "=b=";
             default:
                 throw new System.NotImplementedException("Operator isn't defined"+op);
         }
@@ -99,6 +123,7 @@ public class TwoValueOperation:ScriptableObject {
     // For event system.
     public void Run()
     {
+        opTmp.op = op;
         Add2();
 
         OnRun?.Invoke();

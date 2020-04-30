@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 public class ResearchUICost : MonoBehaviour {
 
-    public TMPro.TMP_Text text;
+    public TMP_Text text;
     [SerializeField] string prefix = "";
     [SerializeField] string suffix = "VSP";
     [SerializeField] IntVarValue val;

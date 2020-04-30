@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Events;
-
 public class Health : MonoBehaviour {
     public IntVarValue health;
     public IntVarValue maxHealth;

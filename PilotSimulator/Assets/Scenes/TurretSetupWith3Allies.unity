@@ -385,6 +385,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 37899780}
+  optionalInt: {fileID: 0}
+  setEveryFrame: 1
 --- !u!114 &37899780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2127,10 +2129,12 @@ MonoBehaviour:
     value: {fileID: 0}
     useDefault: 1
     defaultValue: 2
+    log: 0
   multiplierForConstantIncome:
     value: {fileID: 0}
     useDefault: 1
     defaultValue: 1
+    log: 0
 --- !u!114 &153714331
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3383,6 +3387,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 258161143}
+  optionalInt: {fileID: 0}
+  setEveryFrame: 1
 --- !u!114 &258161143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3625,6 +3631,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 277091397}
+  optionalInt: {fileID: 0}
+  setEveryFrame: 1
 --- !u!114 &277091397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3794,6 +3802,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 277180487}
+  optionalInt: {fileID: 0}
+  setEveryFrame: 1
 --- !u!114 &277180487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7445,6 +7455,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 566190011}
+  optionalInt: {fileID: 0}
+  setEveryFrame: 1
 --- !u!1 &576277875
 GameObject:
   m_ObjectHideFlags: 0
@@ -7632,6 +7644,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 585556530}
+  optionalInt: {fileID: 0}
+  setEveryFrame: 1
 --- !u!114 &585556530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7991,6 +8005,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 594013587}
+  optionalInt: {fileID: 0}
+  setEveryFrame: 1
 --- !u!114 &594013587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8253,6 +8269,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 608003604}
+  optionalInt: {fileID: 0}
+  setEveryFrame: 1
 --- !u!114 &608003604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9957,6 +9975,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 758478978}
+  optionalInt: {fileID: 0}
+  setEveryFrame: 1
 --- !u!114 &758478978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10660,8 +10680,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d815bef3af43544a7d73159ef738f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontal: {fileID: 11400000, guid: a5ef767ef5ccb51439068d20ae330e75, type: 2}
-  vertical: {fileID: 11400000, guid: 344c887b54d483341a6e92fd07083c01, type: 2}
 --- !u!1 &793265087
 GameObject:
   m_ObjectHideFlags: 0
@@ -10873,10 +10891,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e021b51aa3ab2f4c83a8db763dea70d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 100
+  maxHealth:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 100
+  OnDamaged:
+    m_PersistentCalls:
+      m_Calls: []
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
+  checkEveryFrame: 1
 --- !u!114 &797768956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14762,15 +14791,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 0}
-      propertyPath: scienceArgs
-      value: 
-      objectReference: {fileID: 11400000, guid: 78d3412026269af4da3f849f1455576e,
-        type: 2}
-    - target: {fileID: 0}
-      propertyPath: tree
-      value: 
-      objectReference: {fileID: 80614427}
     - target: {fileID: -6073316949564774141, guid: 6da2c0fdb0a9bbd44bad4e0d9bafe089,
         type: 3}
       propertyPath: Effects.Array.size
@@ -15634,10 +15654,12 @@ MonoBehaviour:
     value: {fileID: 0}
     useDefault: 1
     defaultValue: 2
+    log: 0
   multiplierForConstantIncome:
     value: {fileID: 0}
     useDefault: 1
     defaultValue: 1
+    log: 0
 --- !u!114 &1269245308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15695,22 +15717,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 444329b2287500942a0209c0ebec07e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScienceTree: {fileID: 11400000, guid: 78d3412026269af4da3f849f1455576e, type: 2}
-  Effects:
-  - {fileID: 11400000, guid: 16239aea02f0d9b4a9dd4cf20c6f031b, type: 2}
-  - {fileID: 11400000, guid: acf04688fd2f4f54482cc320c4440011, type: 2}
   moveSpeed:
     value: {fileID: 0}
     useDefault: 1
     defaultValue: 1
+    log: 0
   rotationSpeed:
     value: {fileID: 0}
     useDefault: 1
     defaultValue: 0
+    log: 0
   direction: {x: 1, y: 0, z: 1}
   rotationDeg: {x: 0, y: 0, z: 0}
   scaling: {x: 1, y: 1, z: 1}
   lastRot: {x: 0, y: 0, z: 0}
+  useDeltaTime: 1
+  expectedMove:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: {x: 0, y: 0, z: 0}
+  expectedRotation:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: {x: 0, y: 0, z: 0}
+  onPreMove:
+    m_PersistentCalls:
+      m_Calls: []
   relativeTo:
     value: {fileID: 11400000, guid: f686e1dabaa5c82429affc9e7274d708, type: 2}
     useDefault: 0
@@ -18264,6 +18296,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 1484447684}
+  optionalInt: {fileID: 0}
+  setEveryFrame: 1
 --- !u!114 &1484447684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19816,44 +19850,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c18ad8d3eba2884fb4c55488196f56f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delays:
-  - value: {fileID: 0}
-    useDefault: 1
-    defaultValue: 1
-  activeDelay: 0
-  onReady:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 8f96c6b7060c9f44fbc9b6452161abf3, type: 2}
-        m_MethodName: Run
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 00fffad821f769b4fba3f52b56cdbf34, type: 2}
-        m_MethodName: IfThenStop
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1207895181}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  condition:
-    boolConditions: []
-    conditions:
-    - {fileID: 11400000, guid: 662e20e9711e08a40a7caf1a23f03b02, type: 2}
-    state: 0
-    op: 0
-    skip: 0
-    valueOnSkip: 1
 --- !u!114 &1592275383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23752,18 +23748,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1935037803}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1935037805 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5246928384309677989, guid: ac61ed3bf3bcbcd4ebba7a1f673e465f,
-    type: 3}
-  m_PrefabInstance: {fileID: 1935037803}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1935037804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a50da8f7ae192f4b9f939f2a866f137, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1935037806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23776,38 +23760,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c18ad8d3eba2884fb4c55488196f56f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delays:
-  - value: {fileID: 0}
-    useDefault: 1
-    defaultValue: 1
-  - value: {fileID: 0}
-    useDefault: 1
-    defaultValue: 1
-  - value: {fileID: 0}
-    useDefault: 1
-    defaultValue: 5
-  activeDelay: 0
-  onReady:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1935037805}
-        m_MethodName: SpawnNewAtSpawnPoint
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  condition:
-    boolConditions: []
-    conditions: []
-    state: 0
-    op: 0
-    skip: 0
-    valueOnSkip: 1
 --- !u!4 &1935037807 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5246928384309677986, guid: ac61ed3bf3bcbcd4ebba7a1f673e465f,

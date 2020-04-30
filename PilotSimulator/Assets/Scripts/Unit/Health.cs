@@ -3,24 +3,58 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class Health : MonoBehaviour {
-    public int health = 1;
+    public IntVarValue health;
+    public IntVarValue maxHealth;
+    public UnityEvent OnDamaged;
     public UnityEvent OnDestroyed;
+    public bool checkEveryFrame = true;
     bool destroyedFromHealth = false;
+
+    private void Start()
+    {
+        if (maxHealth.Value == 0)
+        {
+            Debug.LogError("Max hp is 0."+name, this);
+        }
+    }
+
     public void RecieveDamage(int dmg)
     {
-        health -= dmg;
-        if (health<= 0)
+        if (dmg < 0)
+        {
+            Debug.Log("Recieve damage. "+dmg);
+        }
+        else if(dmg > 0)
+        {
+            Debug.Log("Recieve healing. "+dmg);
+        }
+        else
+        {
+            Debug.Log("Damage negated.");
+        }
+
+        Debug.Log(name + " recieve damage "+dmg);
+        health.Value = Mathf.Clamp(health.Value - dmg, 0, maxHealth.Value);
+        OnDamaged.Invoke();
+        if (health.Value <= 0)
         {
             destroyedFromHealth = true;
+            OnDestroyed.Invoke();
             Destroy(gameObject);
         }
     }
 
-    private void OnDestroy()
+    private void Update() // this covers other sources of damage.
     {
-        if (destroyedFromHealth)
+        if (checkEveryFrame)
         {
-            OnDestroyed.Invoke();
+            if (health.Value <= 0)
+            {
+                destroyedFromHealth = true;
+                OnDestroyed.Invoke();
+                Destroy(gameObject);
+            }
         }
     }
+
 }

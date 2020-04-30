@@ -23,7 +23,7 @@ public class RfxTracking: ScienceEffect {
         {
             // TODO: first instead of closest.
             Vector3 pos = Vector3.zero;
-            pos += (args.knownAllyDeaths[0].lastImportantPoint+ args.knownAllyDeaths[0].recordedRelativePosition) * allyDeathsWeight.V * (1 - pickClosestWeight.V);
+            pos += (args.knownAllyDeaths[0].lastImportantPoint+ args.knownAllyDeaths[0].recordedRelativePosition) * allyDeathsWeight.Value * (1 - pickClosestWeight.Value);
 
             // find closest
             float minRange=float.MaxValue;
@@ -38,7 +38,7 @@ public class RfxTracking: ScienceEffect {
                     minRange = tempRange;
                 }
             }
-            pos += (args.knownAllyDeaths[closest].lastImportantPoint + args.knownAllyDeaths[closest].recordedRelativePosition) * allyDeathsWeight.V *  pickClosestWeight.V;
+            pos += (args.knownAllyDeaths[closest].lastImportantPoint + args.knownAllyDeaths[closest].recordedRelativePosition) * allyDeathsWeight.Value *  pickClosestWeight.Value;
             args.target = new TargetTracking(pos);
 
         }
@@ -54,7 +54,7 @@ public class RfxTracking: ScienceEffect {
             args.trackingAngleY = Vector3.SignedAngle(samePlane1, samePlane2, Vector3.up);
 
             float normalizedAngle =  args.trackingAngleY / 180;// 0 to 180
-            args.rotationDirY = original * (1 - trackingRotationWeight.V) + rotationDamping.Evaluate(normalizedAngle) * trackingRotationWeight.V*Mathf.Sign(args.trackingAngleY);
+            args.rotationDirY = original * (1 - trackingRotationWeight.Value) + rotationDamping.Evaluate(normalizedAngle) * trackingRotationWeight.Value*Mathf.Sign(args.trackingAngleY);
         }
         else
         {

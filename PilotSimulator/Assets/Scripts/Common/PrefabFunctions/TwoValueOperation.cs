@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "Operators/TwoValueOperation")]
@@ -6,6 +7,8 @@ public class TwoValueOperation:ScriptableObject {
 
     public bool negateA=false;
     public bool negateB=false;
+    public bool keepSignA = false;
+    public bool keepSignB = false;
     public MultiTypeValue a;
     public Operator op = Operator.Add;
     public MultiTypeValue b;
@@ -36,26 +39,46 @@ public class TwoValueOperation:ScriptableObject {
 
     float OpHandler(Operator op, float a, float b)
     {
+        float signa = Math.Sign(a);
+        float signb = Math.Sign(b);
+        float result = 0;
         switch (op)
         {
             case Operator.Add:
-                return a + b;
+                result = a + b;
+                break;
             case Operator.Subtract:
-                return a - b;
+                result = a - b;
+                break;
             case Operator.Multiply:
-                return a * b;
+                result = a * b;
+                break;
             case Operator.Divide:
-                return a / b;
+                if (b == 0)
+                    result = 0;
+                else result = a / b;
+                break;
             default:
                 throw new System.NotImplementedException("Operator isn't defined"+op);
         }
+        if (keepSignA)
+        {
+            result*= signa;
+        }
+
+        if (keepSignB)
+        {
+            result *= signb;
+        }
+        return result;
     }
 
     public enum Operator {
         Add,
         Subtract,
         Multiply,
-        Divide
+        Divide,
+        SignA
     }
     public string OpAsString() {
         switch (op)

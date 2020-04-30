@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19eda7678c412d24dbb73452476a02bd, type: 3}
+  m_Name: GetScaleForPlayerHpBarBasedOn%
+  m_EditorClassIdentifier: 
+  numberX:
+    useInt: 0
+    i:
+      value: {fileID: 0}
+      useDefault: 1
+      defaultValue: 0
+    useFloat: 1
+    f:
+      value: {fileID: 11400000, guid: 0d35fd867140e8a4586957bd572d1ef5, type: 2}
+      useDefault: 0
+      defaultValue: 0
+      log: 0
+    defaultValue: 0
+    log: 0
+  numberY:
+    useInt: 0
+    i:
+      value: {fileID: 0}
+      useDefault: 1
+      defaultValue: 0
+    useFloat: 1
+    f:
+      value: {fileID: 0}
+      useDefault: 1
+      defaultValue: 0
+      log: 0
+    defaultValue: 0
+    log: 0
+  numberZ:
+    useInt: 0
+    i:
+      value: {fileID: 0}
+      useDefault: 1
+      defaultValue: 0
+    useFloat: 1
+    f:
+      value: {fileID: 0}
+      useDefault: 1
+      defaultValue: 0
+      log: 0
+    defaultValue: 0
+    log: 0
+  numberXToX: 1
+  numberYToY: 0
+  numberZToZ: 0
+  xToNumberX: 0
+  yToNumberY: 0
+  zToNumberZ: 0
+  vector:
+    vec:
+      value: {fileID: 0}
+      useDefault: 1
+      defaultValue: {x: 0.97, y: 1, z: 1}

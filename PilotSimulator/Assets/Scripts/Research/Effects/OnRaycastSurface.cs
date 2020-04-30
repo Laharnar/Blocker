@@ -34,7 +34,7 @@ public class OnRaycastSurface : ScienceEffect {
     {
         IfThenStop(args.source);
 
-        args.moveDir.y = movement.value;
+        args.moveDir.y = movement.Value;
     }
 
 

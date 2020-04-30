@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PositionRotation : ScienceAffected {
+public class PositionRotation : MonoBehaviour {
 
     public FloatVarRef moveSpeed, rotationSpeed;
     public Vector3 direction;
     public Vector3 rotationDeg;
     public Vector3 scaling = Vector3.one;
     public Vector3 lastRot;
+    public bool useDeltaTime = true;
+
+    [Header("Modifications")]
+    public Vec3VarRef expectedMove;
+    public Vec3VarRef expectedRotation;
+    public UnityEvent onPreMove;
 
     [Header("Special case")]
     public SpaceVarValue relativeTo;
@@ -26,35 +32,54 @@ public class PositionRotation : ScienceAffected {
     // Update is called once per frame
     void Update()
     {
+        ForcePositionRotationTick();
+    }
+
+    public void ForcePositionRotationTick()
+    {
         if (rig == null || relativeTo.Value == Space.World)
         {
             CalculateBasicMoveRotateScale();
-            ApplyExternalModifications();
+            ModifyDirectionAndRotationOnExtrenalScripts();
             MoveRotateScale();
         }
     }
 
     private void FixedUpdate()
     {
+        ForceFixedUpdateTick();
+    }
+
+    private void ForceFixedUpdateTick()
+    {
         if (rig != null && relativeTo.Value == Space.Self)
         {
-            CalculateBasicMoveRotateScaleFixed();
-            ApplyExternalModifications();
+            CalculateBasicMoveRotateScaleFixedUpdate();
             MoveRotateScale();
         }
     }
 
     private void CalculateBasicMoveRotateScale()
     {
-        moveAmount = direction * moveSpeed.Value * Time.deltaTime;
-        rotsAmount = rotationDeg * Time.deltaTime * rotationSpeed.Value;
+        moveAmount = direction * moveSpeed.Value * (useDeltaTime ? Time.deltaTime : 1f);
+        rotsAmount = rotationDeg * (useDeltaTime ? Time.deltaTime : 1f) * rotationSpeed.Value;
     }
 
-    private void CalculateBasicMoveRotateScaleFixed()
+    private void CalculateBasicMoveRotateScaleFixedUpdate()
     {
         moveAmount = direction * moveSpeed.Value * Time.fixedDeltaTime;
         rotsAmount = rotationDeg * Time.fixedDeltaTime * rotationSpeed.Value;
     }
+
+    private void ModifyDirectionAndRotationOnExtrenalScripts()
+    {
+        expectedMove.Value = moveAmount;
+        expectedRotation.Value = rotsAmount;
+        onPreMove?.Invoke();
+        moveAmount = expectedMove.Value;
+        rotsAmount = expectedRotation.Value;
+    }
+
     private void MoveRotateScale()
     {
         if (rig == null || relativeTo.Value == Space.World)
@@ -74,17 +99,6 @@ public class PositionRotation : ScienceAffected {
         }
         if(transform.localScale != scaling)
             transform.localScale = scaling;
-    }
-
-    private void ApplyExternalModifications()
-    {
-        if (ScienceTree != null)
-        {
-            ScienceTree.args.source = transform;
-            ScienceEffect.RequestScienceEffect(Effects, ScienceTree.args);
-            moveAmount = ScienceTree.args.moveDir;
-            rotsAmount.y *= ScienceTree.args.rotationDirY;
-        }
     }
 
     private void OnDrawGizmos()

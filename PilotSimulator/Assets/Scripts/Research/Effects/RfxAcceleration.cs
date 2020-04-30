@@ -14,11 +14,11 @@ public class RfxAcceleration:ScienceEffect {
 
 protected override void Activate(ScienceArgs item)
     {
-        if (useX.Value) item.moveDir.x = moveStrengthX.value;
-        if (useY.Value) item.moveDir.y = moveStrengthY.value;
-        if (useZ.Value) item.moveDir.z = moveStrengthZ.value;
+        if (useX.Value) item.moveDir.x = moveStrengthX.Value;
+        if (useY.Value) item.moveDir.y = moveStrengthY.Value;
+        if (useZ.Value) item.moveDir.z = moveStrengthZ.Value;
         //item.moveX = moveStrengthZ.value; // remove when it works
-        if(useRX)item.rotationDirY = rotationStrengthY.value
+        if(useRX)item.rotationDirY = rotationStrengthY.Value
             * (directionRight.value ? 1 : -1);
     }
 

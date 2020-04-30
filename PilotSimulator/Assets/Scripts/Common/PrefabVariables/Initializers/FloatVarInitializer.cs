@@ -8,7 +8,7 @@ public class FloatVarInitializer : MonoBehaviour {
     {
         for (int i = 0; i < initValues.Length && i < vars.Length; i++)
         {
-            vars[i].value = initValues[i];
+            vars[i].Value = initValues[i];
         }
     }
 }

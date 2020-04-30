@@ -1,6 +1,8 @@
 ﻿using System;
 using UnityEngine;
 
+
+
 [System.Serializable]
 public class IntVarValue  {
     [SerializeField] IntVar value;
@@ -38,5 +40,9 @@ public class IntVarValue  {
     internal void SetIntPrefab(IntVar customVal)
     {
         value = customVal;
+    }
+    public void SetInt(int val)
+    {
+        Value = val;
     }
 }

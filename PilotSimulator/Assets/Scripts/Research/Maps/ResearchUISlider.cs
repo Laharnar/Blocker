@@ -8,8 +8,8 @@ public class ResearchUISlider : MonoBehaviour {
 
     public float Value {
         get {
-            val.value = slider.value / 100f;
-            return val.value;
+            val.Value = slider.value / 100f;
+            return val.Value;
         }
     }
 
@@ -20,6 +20,6 @@ public class ResearchUISlider : MonoBehaviour {
 
     public void OnSliderValuesChanges()
     {
-        val.value = slider.value / 100f;
+        val.Value = slider.value / 100f;
     }
 }

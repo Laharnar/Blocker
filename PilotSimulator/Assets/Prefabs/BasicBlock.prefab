@@ -112,20 +112,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 444329b2287500942a0209c0ebec07e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScienceTree: {fileID: 0}
-  Effects: []
   moveSpeed:
     value: {fileID: 0}
     useDefault: 1
     defaultValue: 0
+    log: 0
   rotationSpeed:
     value: {fileID: 0}
     useDefault: 1
     defaultValue: 0
+    log: 0
   direction: {x: 0, y: 0, z: 1}
   rotationDeg: {x: 0, y: 0, z: 0}
   scaling: {x: 1, y: 1, z: 1}
   lastRot: {x: 0, y: 0, z: 0}
+  useDeltaTime: 1
+  expectedMove:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: {x: 0, y: 0, z: 0}
+  expectedRotation:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: {x: 0, y: 0, z: 0}
+  onPreMove:
+    m_PersistentCalls:
+      m_Calls: []
   relativeTo:
     value: {fileID: 0}
     useDefault: 1
@@ -143,7 +155,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   thisAlliance: 0
-  writeBack: {fileID: 6719436536200536968}
 --- !u!114 &5948572153225120066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +167,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9474e4455e5a93c4fae373ba10a75422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alliance: {fileID: 662791871801492215}
+  selfAlliance:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 0
   hp: {fileID: 695494951990129942}
 --- !u!114 &6719436536200536968
 MonoBehaviour:
@@ -171,10 +185,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  onDamage:
-    m_PersistentCalls:
-      m_Calls: []
-  pass: 1
 --- !u!114 &695494951990129942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,10 +197,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e021b51aa3ab2f4c83a8db763dea70d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  health:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 1
+  maxHealth:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 1
+  OnDamaged:
+    m_PersistentCalls:
+      m_Calls: []
   OnDestroyed:
     m_PersistentCalls:
       m_Calls: []
+  checkEveryFrame: 1
 --- !u!54 &4744049145723941408
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -219,9 +240,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfe4aed385e17e34eaab5c435a373e80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sender: {fileID: 0}
+  selfAlliance:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 0
+  onHitSaveSelfAllianceInto: {fileID: 0}
+  onHitSaveOtherAllianceInto: {fileID: 0}
+  onHitRealtime: {fileID: 0}
+  onHitIf:
+    boolConditions: []
+    conditions: []
+    state: 0
+    op: 0
+    skip: 0
+    valueOnSkip: 1
+  onHit:
+    m_PersistentCalls:
+      m_Calls: []
   log: 0
-  call:
-    callFun: OnHit
-    callFuns: []
-    references: []
-    use: 1

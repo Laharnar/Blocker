@@ -3,12 +3,16 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
+
 public class ProgrammableDelay:MonoBehaviour {
 
     public FloatVarRef[] delays;
-    public int activeDelay;
+    public IntVarValue activeDelay;
     public UnityEvent onReady;
     public ConditionGroup condition;
+
+    public bool ignoreFirstActivation = true;
+    bool ignoredFirst = false;
 
     private void Start()
     {
@@ -22,9 +26,19 @@ public class ProgrammableDelay:MonoBehaviour {
         {
             if (condition.IsTrue())
             {
-                ActivateEvent();
-                yield return new WaitForSeconds(delays[activeDelay].Value);
-                ToNextDelay();
+                if (ignoreFirstActivation && !ignoredFirst)
+                {
+                    ignoredFirst = true;
+                    yield return new WaitForSeconds(delays[activeDelay.Value].Value);
+                    ToNextDelay();
+                }
+                else
+                {
+                    ActivateEvent();
+
+                    yield return new WaitForSeconds(delays[activeDelay.Value].Value);
+                    ToNextDelay();
+                }
             }
             yield return null;
         }
@@ -45,6 +59,6 @@ public class ProgrammableDelay:MonoBehaviour {
 
     protected void ToNextDelay()
     {
-        activeDelay = (activeDelay + 1) % delays.Length;
+        activeDelay.Value = (activeDelay.Value + 1) % delays.Length;
     }
 }

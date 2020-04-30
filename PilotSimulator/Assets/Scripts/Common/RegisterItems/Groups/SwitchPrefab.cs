@@ -1,12 +1,19 @@
-﻿using UnityEngine;
+﻿using System.Runtime.InteropServices;
+using UnityEngine;
 using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "Functions/Switch")]
 public class SwitchPrefab : ScriptableObject {
 
+    public IntVarValue activeId;
     public DoEvent[] cases;
 
-    protected void DoSwitch(int id)
+    public void DoSwitch()
+    {
+        DoSwitch(activeId.Value);
+    }
+
+    public void DoSwitch(int id)
     {
         cases[id].Do();
     }
@@ -20,7 +27,7 @@ public class SwitchPrefab : ScriptableObject {
         public void Do()
         {
             if (skipBoth) return;
-            onSuccess1.DoIt();
+            onSuccess1?.DoIt();
             onSuccess2?.Invoke();
         }
     }

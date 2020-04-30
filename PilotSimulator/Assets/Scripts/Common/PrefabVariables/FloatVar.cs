@@ -1,12 +1,9 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [CreateAssetMenu()]
 public class FloatVar : ScriptableObject {
-    public float value;
-    public float V { get => value; }
+    [SerializeField] float value1;
+    public float Value { get => value1; set { this.value1 = value; } }
 
-    public void SetFloat(float f)
-    {
-        value = f;
-    }
 }

@@ -2,14 +2,12 @@
 
 public class EnemyWorth:MonoBehaviour {
     public int worthOnDeath;
-    ResearchTree tree;
+    public IntVarValue collected;
 
 
 
     public void AddVSPToAnyCluster()
     {
-        if(tree == null)
-            tree = GameObject.FindObjectOfType<ResearchTree>();
-        tree.AddVSP(worthOnDeath);
+        collected.Value += worthOnDeath;
     }
 }

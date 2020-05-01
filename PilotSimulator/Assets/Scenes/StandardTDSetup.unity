@@ -4559,6 +4559,7 @@ GameObject:
   - component: {fileID: 307602083}
   - component: {fileID: 307602082}
   - component: {fileID: 307602081}
+  - component: {fileID: 307602093}
   m_Layer: 0
   m_Name: MovingBlock-B1(Clone) (2)
   m_TagString: Untagged
@@ -4602,7 +4603,7 @@ MonoBehaviour:
     defaultValue: 1
   onHitSaveSelfAllianceInto: {fileID: 0}
   onHitSaveOtherAllianceInto: {fileID: 0}
-  onHitRealtime: {fileID: 0}
+  onHitRealtime: {fileID: 307602093}
   onHitIf:
     boolConditions: []
     conditions:
@@ -4840,6 +4841,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &307602093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307602080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0793aca4da4574d90f982a2d51002f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHitSaveSelfAllianceInto: {fileID: 11400000, guid: afd6dc097d51c5145a110505169a6fd7,
+    type: 2}
+  onHitSaveOtherAllianceInto: {fileID: 11400000, guid: 93934e5c8b2b9614680fb72d49dba9e8,
+    type: 2}
 --- !u!1 &308818211
 GameObject:
   m_ObjectHideFlags: 0
@@ -5047,6 +5064,7 @@ GameObject:
   - component: {fileID: 311829764}
   - component: {fileID: 311829763}
   - component: {fileID: 311829762}
+  - component: {fileID: 311829774}
   m_Layer: 0
   m_Name: MovingBlock-B1(Clone) (4)
   m_TagString: Untagged
@@ -5090,7 +5108,7 @@ MonoBehaviour:
     defaultValue: 1
   onHitSaveSelfAllianceInto: {fileID: 0}
   onHitSaveOtherAllianceInto: {fileID: 0}
-  onHitRealtime: {fileID: 0}
+  onHitRealtime: {fileID: 307602093}
   onHitIf:
     boolConditions: []
     conditions:
@@ -5328,6 +5346,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &311829774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311829761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0793aca4da4574d90f982a2d51002f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHitSaveSelfAllianceInto: {fileID: 11400000, guid: afd6dc097d51c5145a110505169a6fd7,
+    type: 2}
+  onHitSaveOtherAllianceInto: {fileID: 11400000, guid: 93934e5c8b2b9614680fb72d49dba9e8,
+    type: 2}
 --- !u!1 &337548355
 GameObject:
   m_ObjectHideFlags: 0
@@ -6467,6 +6501,7 @@ GameObject:
   - component: {fileID: 427197094}
   - component: {fileID: 427197093}
   - component: {fileID: 427197092}
+  - component: {fileID: 427197104}
   m_Layer: 0
   m_Name: MovingBlock-B1(Clone)
   m_TagString: Untagged
@@ -6510,7 +6545,7 @@ MonoBehaviour:
     defaultValue: 1
   onHitSaveSelfAllianceInto: {fileID: 0}
   onHitSaveOtherAllianceInto: {fileID: 0}
-  onHitRealtime: {fileID: 0}
+  onHitRealtime: {fileID: 307602093}
   onHitIf:
     boolConditions: []
     conditions:
@@ -6748,6 +6783,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &427197104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427197091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0793aca4da4574d90f982a2d51002f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHitSaveSelfAllianceInto: {fileID: 11400000, guid: afd6dc097d51c5145a110505169a6fd7,
+    type: 2}
+  onHitSaveOtherAllianceInto: {fileID: 11400000, guid: 93934e5c8b2b9614680fb72d49dba9e8,
+    type: 2}
 --- !u!1 &439779312
 GameObject:
   m_ObjectHideFlags: 0
@@ -7435,6 +7486,7 @@ GameObject:
   - component: {fileID: 476928734}
   - component: {fileID: 476928733}
   - component: {fileID: 476928732}
+  - component: {fileID: 476928744}
   m_Layer: 0
   m_Name: MovingBlock-B1(Clone) (5)
   m_TagString: Untagged
@@ -7478,7 +7530,7 @@ MonoBehaviour:
     defaultValue: 1
   onHitSaveSelfAllianceInto: {fileID: 0}
   onHitSaveOtherAllianceInto: {fileID: 0}
-  onHitRealtime: {fileID: 0}
+  onHitRealtime: {fileID: 307602093}
   onHitIf:
     boolConditions: []
     conditions:
@@ -7716,6 +7768,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &476928744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476928731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0793aca4da4574d90f982a2d51002f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHitSaveSelfAllianceInto: {fileID: 11400000, guid: afd6dc097d51c5145a110505169a6fd7,
+    type: 2}
+  onHitSaveOtherAllianceInto: {fileID: 11400000, guid: 93934e5c8b2b9614680fb72d49dba9e8,
+    type: 2}
 --- !u!1 &479176965
 GameObject:
   m_ObjectHideFlags: 0
@@ -9455,6 +9523,7 @@ GameObject:
   - component: {fileID: 592431961}
   - component: {fileID: 592431960}
   - component: {fileID: 592431959}
+  - component: {fileID: 592431971}
   m_Layer: 0
   m_Name: MovingBlock-B1(Clone) (6)
   m_TagString: Untagged
@@ -9498,7 +9567,7 @@ MonoBehaviour:
     defaultValue: 1
   onHitSaveSelfAllianceInto: {fileID: 0}
   onHitSaveOtherAllianceInto: {fileID: 0}
-  onHitRealtime: {fileID: 0}
+  onHitRealtime: {fileID: 307602093}
   onHitIf:
     boolConditions: []
     conditions:
@@ -9736,6 +9805,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &592431971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592431958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0793aca4da4574d90f982a2d51002f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHitSaveSelfAllianceInto: {fileID: 11400000, guid: afd6dc097d51c5145a110505169a6fd7,
+    type: 2}
+  onHitSaveOtherAllianceInto: {fileID: 11400000, guid: 93934e5c8b2b9614680fb72d49dba9e8,
+    type: 2}
 --- !u!1 &594013585
 GameObject:
   m_ObjectHideFlags: 0
@@ -10554,6 +10639,7 @@ GameObject:
   - component: {fileID: 624009599}
   - component: {fileID: 624009598}
   - component: {fileID: 624009597}
+  - component: {fileID: 624009609}
   m_Layer: 0
   m_Name: MovingBlock-B1(Clone) (8)
   m_TagString: Untagged
@@ -10597,7 +10683,7 @@ MonoBehaviour:
     defaultValue: 1
   onHitSaveSelfAllianceInto: {fileID: 0}
   onHitSaveOtherAllianceInto: {fileID: 0}
-  onHitRealtime: {fileID: 0}
+  onHitRealtime: {fileID: 307602093}
   onHitIf:
     boolConditions: []
     conditions:
@@ -10835,6 +10921,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &624009609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624009596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0793aca4da4574d90f982a2d51002f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHitSaveSelfAllianceInto: {fileID: 11400000, guid: afd6dc097d51c5145a110505169a6fd7,
+    type: 2}
+  onHitSaveOtherAllianceInto: {fileID: 11400000, guid: 93934e5c8b2b9614680fb72d49dba9e8,
+    type: 2}
 --- !u!1 &634869696
 GameObject:
   m_ObjectHideFlags: 0
@@ -11645,6 +11747,70 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674388706}
   m_CullTransparentMesh: 0
+--- !u!1 &679552557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 679552559}
+  - component: {fileID: 679552558}
+  - component: {fileID: 679552560}
+  m_Layer: 0
+  m_Name: Testing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &679552558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679552557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 307cba82417ddef41814961d7031da61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  use:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 1
+  runTestsEvery: 2.45
+  searchSceneEvery: 5
+  failedTests: []
+--- !u!4 &679552559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679552557}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 56.03995}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &679552560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679552557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e200bc00d52b2594dba0dbd8f1726612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tester: {fileID: 679552558}
 --- !u!1 &689075061
 GameObject:
   m_ObjectHideFlags: 0
@@ -13007,6 +13173,7 @@ GameObject:
   - component: {fileID: 797768954}
   - component: {fileID: 797768959}
   - component: {fileID: 797768958}
+  - component: {fileID: 797768960}
   m_Layer: 0
   m_Name: PlayerBase
   m_TagString: Untagged
@@ -13134,7 +13301,7 @@ MonoBehaviour:
     defaultValue: 0
   onHitSaveSelfAllianceInto: {fileID: 0}
   onHitSaveOtherAllianceInto: {fileID: 0}
-  onHitRealtime: {fileID: 0}
+  onHitRealtime: {fileID: 797768960}
   onHitIf:
     boolConditions: []
     conditions:
@@ -13147,6 +13314,22 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   log: 1
+--- !u!114 &797768960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797768952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0793aca4da4574d90f982a2d51002f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHitSaveSelfAllianceInto: {fileID: 11400000, guid: afd6dc097d51c5145a110505169a6fd7,
+    type: 2}
+  onHitSaveOtherAllianceInto: {fileID: 11400000, guid: 93934e5c8b2b9614680fb72d49dba9e8,
+    type: 2}
 --- !u!1 &822137916
 GameObject:
   m_ObjectHideFlags: 0
@@ -14792,6 +14975,7 @@ GameObject:
   - component: {fileID: 931375975}
   - component: {fileID: 931375974}
   - component: {fileID: 931375973}
+  - component: {fileID: 931375985}
   m_Layer: 0
   m_Name: MovingBlock-B1(Clone) (3)
   m_TagString: Untagged
@@ -14835,7 +15019,7 @@ MonoBehaviour:
     defaultValue: 1
   onHitSaveSelfAllianceInto: {fileID: 0}
   onHitSaveOtherAllianceInto: {fileID: 0}
-  onHitRealtime: {fileID: 0}
+  onHitRealtime: {fileID: 307602093}
   onHitIf:
     boolConditions: []
     conditions:
@@ -15073,6 +15257,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &931375985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931375972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0793aca4da4574d90f982a2d51002f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHitSaveSelfAllianceInto: {fileID: 11400000, guid: afd6dc097d51c5145a110505169a6fd7,
+    type: 2}
+  onHitSaveOtherAllianceInto: {fileID: 11400000, guid: 93934e5c8b2b9614680fb72d49dba9e8,
+    type: 2}
 --- !u!1 &935869058
 GameObject:
   m_ObjectHideFlags: 0
@@ -15841,6 +16041,7 @@ GameObject:
   - component: {fileID: 1072073414}
   - component: {fileID: 1072073413}
   - component: {fileID: 1072073412}
+  - component: {fileID: 1072073424}
   m_Layer: 0
   m_Name: MovingBlock-B1(Clone) (1)
   m_TagString: Untagged
@@ -15884,7 +16085,7 @@ MonoBehaviour:
     defaultValue: 1
   onHitSaveSelfAllianceInto: {fileID: 0}
   onHitSaveOtherAllianceInto: {fileID: 0}
-  onHitRealtime: {fileID: 0}
+  onHitRealtime: {fileID: 307602093}
   onHitIf:
     boolConditions: []
     conditions:
@@ -16122,6 +16323,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1072073424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072073411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0793aca4da4574d90f982a2d51002f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHitSaveSelfAllianceInto: {fileID: 11400000, guid: afd6dc097d51c5145a110505169a6fd7,
+    type: 2}
+  onHitSaveOtherAllianceInto: {fileID: 11400000, guid: 93934e5c8b2b9614680fb72d49dba9e8,
+    type: 2}
 --- !u!1 &1081361117
 GameObject:
   m_ObjectHideFlags: 0
@@ -17232,6 +17449,7 @@ GameObject:
   - component: {fileID: 1157975015}
   - component: {fileID: 1157975014}
   - component: {fileID: 1157975013}
+  - component: {fileID: 1157975025}
   m_Layer: 0
   m_Name: MovingBlock-B1(Clone) (7)
   m_TagString: Untagged
@@ -17275,7 +17493,7 @@ MonoBehaviour:
     defaultValue: 1
   onHitSaveSelfAllianceInto: {fileID: 0}
   onHitSaveOtherAllianceInto: {fileID: 0}
-  onHitRealtime: {fileID: 0}
+  onHitRealtime: {fileID: 307602093}
   onHitIf:
     boolConditions: []
     conditions:
@@ -17513,6 +17731,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1157975025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157975012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0793aca4da4574d90f982a2d51002f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHitSaveSelfAllianceInto: {fileID: 11400000, guid: afd6dc097d51c5145a110505169a6fd7,
+    type: 2}
+  onHitSaveOtherAllianceInto: {fileID: 11400000, guid: 93934e5c8b2b9614680fb72d49dba9e8,
+    type: 2}
 --- !u!1 &1188495627
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,7 +7,6 @@ public class Health : MonoBehaviour {
     public UnityEvent OnDamaged;
     public UnityEvent OnDestroyed;
     public bool checkEveryFrame = true;
-    bool destroyedFromHealth = false;
 
     private void Start()
     {
@@ -15,6 +14,7 @@ public class Health : MonoBehaviour {
         {
             Debug.LogError("Max hp is 0."+name, this);
         }
+        health.Value = maxHealth.Value;
     }
 
     public void RecieveDamage(int dmg)
@@ -37,10 +37,14 @@ public class Health : MonoBehaviour {
         OnDamaged.Invoke();
         if (health.Value <= 0)
         {
-            destroyedFromHealth = true;
-            OnDestroyed.Invoke();
-            Destroy(gameObject);
+            DestroyFromHp();
         }
+    }
+
+    private void DestroyFromHp()
+    {
+        OnDestroyed.Invoke();
+        Destroy(gameObject);
     }
 
     private void Update() // this covers other sources of damage.
@@ -49,9 +53,7 @@ public class Health : MonoBehaviour {
         {
             if (health.Value <= 0)
             {
-                destroyedFromHealth = true;
-                OnDestroyed.Invoke();
-                Destroy(gameObject);
+                DestroyFromHp();
             }
         }
     }

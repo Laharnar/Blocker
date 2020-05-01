@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.Events;
 
-public class OnHit : MonoBehaviour {
+public class OnHit : MonoBehaviour, ITestable
+{
 
     public DamageSender sender;
     public IntVarValue selfAlliance;
@@ -16,6 +17,17 @@ public class OnHit : MonoBehaviour {
     public UnityEvent onHit;
 
     public bool log = false;
+
+    public void TestInitialState()
+    {
+        RealtimeTester.Assert(selfAlliance != null, this, "Missing selfAlliance");
+        RealtimeTester.Assert(onHitRealtime, this, "Using obsolete settings");
+        if (onHitRealtime)
+        {
+            RealtimeTester.Assert(onHitRealtime.onHitSaveSelfAllianceInto != null, this, "Missing onHitSaveSelfAllianceInto");
+            RealtimeTester.Assert(onHitRealtime.onHitSaveOtherAllianceInto != null, this, "Missing onHitSaveOtherAllianceInto");
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -76,7 +88,7 @@ public class OnHit : MonoBehaviour {
             }
             else
             {
-                Debug.LogWarning("obsolete, use realtime isntead.");
+                Debug.LogError("obsolete, use realtime isntead.");
                 onHitSaveSelfAllianceInto.value = selfAlliance.Value;
                 onHitSaveOtherAllianceInto.value = o.selfAlliance.Value;
             }

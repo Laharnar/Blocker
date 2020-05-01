@@ -168,6 +168,22 @@ MonoBehaviour:
     recordedRelativePosition: {x: 0, y: 0, z: 0}
     lastImportantPoint: {x: 0, y: 0, z: 0}
   logGather: 0
+--- !u!114 &3402926649304730696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4654028707743702223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0793aca4da4574d90f982a2d51002f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHitSaveSelfAllianceInto: {fileID: 11400000, guid: afd6dc097d51c5145a110505169a6fd7,
+    type: 2}
+  onHitSaveOtherAllianceInto: {fileID: 11400000, guid: 93934e5c8b2b9614680fb72d49dba9e8,
+    type: 2}
 --- !u!114 &5755799895089245140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,6 +298,11 @@ PrefabInstance:
       propertyPath: log
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3363914595107625994, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
+        type: 3}
+      propertyPath: onHitRealtime
+      value: 
+      objectReference: {fileID: 3402926649304730696}
     - target: {fileID: 695494951990129942, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
         type: 3}
       propertyPath: OnDestroyed.m_PersistentCalls.m_Calls.Array.size

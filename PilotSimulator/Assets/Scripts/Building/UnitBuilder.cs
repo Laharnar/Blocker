@@ -185,9 +185,7 @@ public class UnitBuilder : MonoBehaviour
     }
     public void Construct(Vector3 position)
     {
-        Debug.Log("building.");
         Transform t= Instantiate(buildPrefabs[buildId], position, new Quaternion());
-
     }
     void SetTimerForNextAllowedBuild()
     {
@@ -226,8 +224,6 @@ public class UnitBuilder : MonoBehaviour
 
     public void EndBuilding()
     {
-        Debug.Log("End building.");
-
         mode = READY;
         if (temporarySpawned!= null)
         {

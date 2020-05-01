@@ -74,6 +74,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   worthOnDeath: 2
+  collected:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 0
+--- !u!114 &1109671984280684059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3004379863362092023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d0793aca4da4574d90f982a2d51002f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHitSaveSelfAllianceInto: {fileID: 11400000, guid: afd6dc097d51c5145a110505169a6fd7,
+    type: 2}
+  onHitSaveOtherAllianceInto: {fileID: 11400000, guid: 93934e5c8b2b9614680fb72d49dba9e8,
+    type: 2}
 --- !u!1001 &8078217944095457778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -180,6 +200,11 @@ PrefabInstance:
       propertyPath: selfAlliance.useDefault
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3363914595107625994, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
+        type: 3}
+      propertyPath: onHitRealtime
+      value: 
+      objectReference: {fileID: 1109671984280684059}
     - target: {fileID: 381030146304024738, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
         type: 3}
       propertyPath: researchSender

@@ -11781,8 +11781,10 @@ MonoBehaviour:
     value: {fileID: 0}
     useDefault: 1
     defaultValue: 1
-  runTestsEvery: 2.45
-  searchSceneEvery: 5
+  editorRunTestsEvery: 5
+  runtimeRunTestsEvery: 2.5
+  editorSearchSceneEvery: 30
+  runtimeSearchSceneEvery: 5
   failedTests: []
 --- !u!4 &679552559
 Transform:

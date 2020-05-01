@@ -21,9 +21,11 @@ public class RealtimeTester:MonoBehaviour
 
     public BoolVarValue use;
 
-    public float runTestsEvery = 5;
-    public float searchSceneEvery = 30;
-    
+    public float editorRunTestsEvery = 5;
+    public float runtimeRunTestsEvery = 5;
+    public float editorSearchSceneEvery = 30;
+    public float runtimeSearchSceneEvery = 30;
+
     public List<Failure> failedTests;
 
     Coroutine testRunner, testableSearcher;
@@ -33,6 +35,25 @@ public class RealtimeTester:MonoBehaviour
 
     // Only items from scene cache that are testable
     List<ITestable> testableCache;
+    internal static void Assert(bool assertTrue, MonoBehaviour mono, string msg)
+    {
+        if (!assertTrue)
+            Err(mono, msg);
+    }
+
+    internal static void Err(MonoBehaviour source, string v)
+    {
+        Singleton.AddFailure(new Failure(source, v));
+    }
+    private void AddFailure(Failure failure)
+    {
+        failedTests.Add(failure);
+    }
+
+    public void RunExternally()
+    {
+        EnsureTestsRun();
+    }
 
     [System.Serializable]
     public class Failure
@@ -47,38 +68,6 @@ public class RealtimeTester:MonoBehaviour
         }
     }
 
-    internal static void Assert(bool assertTrue, MonoBehaviour mono, string msg)
-    {
-        if (!assertTrue)
-            Err(mono, msg);
-    }
-
-
-    void AddTestableObject(ITestable it)
-    {
-        testableCache.Add(it);
-    }
-
-    internal static void Err(MonoBehaviour source, string v)
-    {
-        Singleton.AddFailure(new Failure(source, v));
-    }
-
-    private void AddFailure(Failure failure)
-    {
-        failedTests.Add(failure);
-    }
-
-    private void ResetFailures()
-    {
-        failedTests.Clear();
-    }
-
-    void RemoveTestableLog(ITestable it)
-    {
-        testableCache.Remove(it);
-    }
-
     private void Start()
     {
         EnsureTestsRun();
@@ -89,21 +78,14 @@ public class RealtimeTester:MonoBehaviour
         EnsureTestsRun();
     }
 
-    private void OnGUI()
-    {
-        EnsureTestsRun();
-    }
-
     private void OnRenderObject()
     {
         EnsureTestsRun();
     }
-
-    public void RunExternally()
+    private void OnDestroy()
     {
-        EnsureTestsRun();
+        singleton = null;
     }
-
     void EnsureTestsRun()
     {
         if (testableCache == null) testableCache = new List<ITestable>();
@@ -140,9 +122,21 @@ public class RealtimeTester:MonoBehaviour
                     AddTestableObject(sceneCache[i] as ITestable);
                 }    
             }
-            yield return new WaitForSeconds(searchSceneEvery);
+            yield return new WaitForSeconds(GetSearchCycle());
         }
     }
+    void AddTestableObject(ITestable it)
+    {
+        testableCache.Add(it);
+    }
+    float GetSearchCycle()
+    {
+        if (!Application.isPlaying)
+            return editorSearchSceneEvery;
+        return runtimeSearchSceneEvery;
+    }
+
+
     private IEnumerator RunTests()
     {
         while (true)
@@ -164,11 +158,20 @@ public class RealtimeTester:MonoBehaviour
             {
                 Debug.LogErrorFormat(failedTests[0].mono, "[RealtimeTester] Test Failures = {0}. [0]={1}", failedTests.Count, failedTests[0].msg);
             }
-            yield return new WaitForSeconds(runTestsEvery);
+            yield return new WaitForSeconds(GetTestRunCycle());
         }
     }
-    private void OnDestroy()
+    private void ResetFailures()
     {
-        singleton = null;
+        failedTests.Clear();
     }
+
+
+    float GetTestRunCycle()
+    {
+        if(!Application.isPlaying)
+            return editorRunTestsEvery;
+        return runtimeRunTestsEvery;
+    }
+
 }

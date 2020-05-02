@@ -3,6 +3,7 @@
 [CreateAssetMenu]
 public class RfxTracking: ScienceEffect {
 
+    public bool use = true;
     public BoolVar trackingUnlocked;
     public FloatVar trackingRotationWeight;
     public FloatVar allyDeathsWeight;
@@ -13,6 +14,9 @@ public class RfxTracking: ScienceEffect {
 
     protected override void Effect(ScienceArgs args)
     {
+        if (!use)
+            return;
+
         // include tracking
         if (!trackingUnlocked.value)
         {

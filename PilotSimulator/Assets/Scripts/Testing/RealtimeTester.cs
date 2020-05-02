@@ -139,6 +139,7 @@ public class RealtimeTester:MonoBehaviour
 
     private IEnumerator RunTests()
     {
+        yield return null; // wait 1 frame to skip start.
         while (true)
         {
             if (!use.Value)

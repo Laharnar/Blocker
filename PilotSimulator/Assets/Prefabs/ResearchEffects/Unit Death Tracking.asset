@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1dcad1ff80742b34eab1ad9d959c2a0b, type: 3}
-  m_Name: Player Rfx Tracking
+  m_Name: Unit Death Tracking
   m_EditorClassIdentifier: Assembly-CSharp::RfxTracking
+  use: 0
   trackingUnlocked: {fileID: 11400000, guid: 3fa5f63e1a40efd47b82ec19f2bc2091, type: 2}
   trackingRotationWeight: {fileID: 11400000, guid: 692aa97fc3e6a7f44919b1dadb50e1ef,
     type: 2}

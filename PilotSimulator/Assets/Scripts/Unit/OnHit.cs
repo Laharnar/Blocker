@@ -11,15 +11,17 @@ public class OnHit : MonoBehaviour, ITestable
 
     public IntVar onHitSaveSelfAllianceInto;
     public IntVar onHitSaveOtherAllianceInto;
-    public RealtimePrefabs onHitRealtime;
+    [SerializeField] RealtimePrefabs onHitRealtime;
 
     public ConditionGroup onHitIf;
     public UnityEvent onHit;
 
-    public bool log = false;
+    [SerializeField] bool log = false;
 
     public void TestInitialState()
     {
+        AttemptSetup();
+
         RealtimeTester.Assert(selfAlliance != null, this, "Missing selfAlliance");
         RealtimeTester.Assert(onHitRealtime, this, "Using obsolete settings");
         if (onHitRealtime)
@@ -27,6 +29,21 @@ public class OnHit : MonoBehaviour, ITestable
             RealtimeTester.Assert(onHitRealtime.onHitSaveSelfAllianceInto != null, this, "Missing onHitSaveSelfAllianceInto");
             RealtimeTester.Assert(onHitRealtime.onHitSaveOtherAllianceInto != null, this, "Missing onHitSaveOtherAllianceInto");
         }
+    }
+
+    void Start()
+    {
+        AttemptSetup();
+    }
+    private void AttemptSetup()
+    {
+        if (onHitRealtime == null && ObjectNotDestroyed())
+            onHitRealtime = GetComponent<RealtimePrefabs>();
+    }
+
+    bool ObjectNotDestroyed()
+    {
+        return this != null;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -40,27 +57,9 @@ public class OnHit : MonoBehaviour, ITestable
 
     private void CollideEnter(GameObject collision)
     {
-        if (log) Debug.Log("Collision " + name + " -> " + collision.name);
-        DamageReciever o = collision.GetComponent<DamageReciever>();
-        if (o)
-        {
-            if (onHitRealtime)
-            {
-                onHitRealtime.onHitSaveSelfAllianceInto.value = selfAlliance.Value;
-                onHitRealtime.onHitSaveOtherAllianceInto.value = o.selfAlliance.Value;
-            }
-            else
-            {
-                Debug.LogWarning("obsolete, use realtime isntead.");
-                onHitSaveSelfAllianceInto.value = selfAlliance.Value;
-                onHitSaveOtherAllianceInto.value = o.selfAlliance.Value;
-            }
-            if (onHitIf.IsTrue())
-            {
-                onHit?.Invoke();
-                sender.OnHit(o);
-            }
-        }
+        string logging = "";
+        if (log) logging = "CollisionEvt: " + name + " -> " + collision.name;
+        HitEnter(collision, logging);
     }
 
     protected void OnTriggerEnter(Collider collider)
@@ -72,26 +71,20 @@ public class OnHit : MonoBehaviour, ITestable
         TriggerEnter(collider.gameObject);
     }
 
-
     private void TriggerEnter(GameObject collider)
     {
         string logging = "";
         if (log) logging = "TriggerEvt: " + name + " -> " + collider.name;
+        HitEnter(collider, logging);
+    }
 
+    private void HitEnter(GameObject collider, string logging)
+    {
         DamageReciever o = collider.GetComponent<DamageReciever>();
         if (o)
         {
-            if (onHitRealtime)
-            {
-                onHitRealtime.onHitSaveSelfAllianceInto.value = selfAlliance.Value;
-                onHitRealtime.onHitSaveOtherAllianceInto.value = o.selfAlliance.Value;
-            }
-            else
-            {
-                Debug.LogError("obsolete, use realtime isntead.");
-                onHitSaveSelfAllianceInto.value = selfAlliance.Value;
-                onHitSaveOtherAllianceInto.value = o.selfAlliance.Value;
-            }
+            onHitRealtime.onHitSaveSelfAllianceInto.value = selfAlliance.Value;
+            onHitRealtime.onHitSaveOtherAllianceInto.value = o.selfAlliance.Value;
             if (onHitIf.IsTrue())
             {
                 onHit?.Invoke();

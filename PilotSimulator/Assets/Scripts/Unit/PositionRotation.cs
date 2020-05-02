@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PositionRotation : MonoBehaviour {
+public class PositionRotation : MonoBehaviour, ITestable {
 
     public FloatVarRef moveSpeed, rotationSpeed;
     public Vector3 direction;
@@ -12,6 +12,9 @@ public class PositionRotation : MonoBehaviour {
     public Vector3 scaling = Vector3.one;
     public Vector3 lastRot;
     public bool useDeltaTime = true;
+    public bool needsRigidbody = true;
+    public Transform targeted;
+    public Rigidbody rig;
 
     [Header("Modifications")]
     public Vec3VarRef expectedMove;
@@ -28,12 +31,12 @@ public class PositionRotation : MonoBehaviour {
 
     private Vector3 moveAmount;
     private Vector3 rotsAmount;
-    private Rigidbody rig;
 
     private void Start()
     {
-        rig = GetComponent<Rigidbody>();
+        if(rig== null) rig = GetComponent<Rigidbody>();
         expectedMove.Value = Vector3.zero;
+        if (targeted == null) targeted = transform;
     }
 
     // Update is called once per frame
@@ -62,6 +65,7 @@ public class PositionRotation : MonoBehaviour {
         if (rig != null && relativeTo.Value == Space.Self)
         {
             CalculateBasicMoveRotateScaleFixedUpdate();
+            ModifyDirectionAndRotationOnExtrenalScripts();
             MoveRotateScale();
         }
     }
@@ -80,7 +84,6 @@ public class PositionRotation : MonoBehaviour {
 
     private void ModifyDirectionAndRotationOnExtrenalScripts()
     {
-
         expectedMove.Value = moveAmount;
         expectedRotation.Value = rotsAmount;
         prePredictionMove = moveAmount;
@@ -105,21 +108,21 @@ public class PositionRotation : MonoBehaviour {
     {
         if (rig == null || relativeTo.Value == Space.World)
         {
-            transform.Translate(moveAmount, relativeTo.Value);
+            targeted.Translate(moveAmount, relativeTo.Value);
             lastRot = transform.forward;
-            transform.Rotate(rotsAmount);
+            targeted.Rotate(rotsAmount);
         }
         else if (rig != null && relativeTo.Value == Space.Self)
         {
-            rig.MovePosition(rig.position + transform.InverseTransformDirection(moveAmount));
+            rig.MovePosition(rig.position + transform.TransformDirection(moveAmount));
             rig.MoveRotation( Quaternion.Euler(rig.rotation.eulerAngles+rotsAmount));
         }
         else
         {
             Debug.LogError("Missing rigidbody.", this);
         }
-        if(transform.localScale != scaling)
-            transform.localScale = scaling;
+        if(targeted.localScale != scaling)
+            targeted.localScale = scaling;
     }
 
     private void OnDrawGizmos()
@@ -132,5 +135,15 @@ public class PositionRotation : MonoBehaviour {
     public void SetMovement(Vector3 dir)
     {
         direction = dir;
+    }
+
+    public void TestInitialState()
+    {
+        if (Application.isPlaying)
+        {
+            if(needsRigidbody)
+                RealtimeTester.Assert(rig != null, this, "Rigidbody isn't assigned.");
+            RealtimeTester.Assert(transform != null, this, "Transfrom to move isn't assigned.");
+        }
     }
 }

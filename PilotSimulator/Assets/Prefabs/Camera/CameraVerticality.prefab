@@ -60,6 +60,9 @@ MonoBehaviour:
   scaling: {x: 1, y: 1, z: 1}
   lastRot: {x: 0, y: 0, z: 0}
   useDeltaTime: 1
+  needsRigidbody: 0
+  targeted: {fileID: 0}
+  rig: {fileID: 0}
   expectedMove:
     value: {fileID: 11400000, guid: 457efe4a338dc2d4e82c8f738c9935de, type: 2}
     useFloats: 0

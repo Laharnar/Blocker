@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e46fd6adec3177b4e8654e9346dca140, type: 3}
   m_Name: r_UnlockedAcceleration
   m_EditorClassIdentifier: 
-  value: 0
+  value: 1

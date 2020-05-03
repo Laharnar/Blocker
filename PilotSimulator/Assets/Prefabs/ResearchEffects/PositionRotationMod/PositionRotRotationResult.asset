@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd08618d94b758542a6c03ac7115bb76, type: 3}
-  m_Name: r_EffectSteeringWheel
+  m_Script: {fileID: 11500000, guid: 6d3d088bc38e4be45a3b666703d6adc1, type: 3}
+  m_Name: PositionRotRotationResult
   m_EditorClassIdentifier: 
-  value1: 1
+  value: {x: 0, y: 0, z: 0}

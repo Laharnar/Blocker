@@ -12,6 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c014ee867b0042a4baadda5518c56915, type: 3}
   m_Name: Fx Player Base Flying
   m_EditorClassIdentifier: 
+  lastRan: 182.61449
+  start:
+    value: {fileID: 11400000, guid: 457efe4a338dc2d4e82c8f738c9935de, type: 2}
+    useFloats: 0
+    x: {fileID: 0}
+    y: {fileID: 0}
+    z: {fileID: 0}
+    useDefault: 0
+    defaultValue: {x: 0, y: 0, z: 0}
+  logStart: {x: 0, y: 0.0281105, z: 0}
   useX:
     value: {fileID: 0}
     useDefault: 1
@@ -24,6 +34,11 @@ MonoBehaviour:
     value: {fileID: 0}
     useDefault: 1
     defaultValue: 0
+  reversing:
+    reverseX: {fileID: 0}
+    reverseY: {fileID: 11400000, guid: 7d67f2f5fca6cbf4ea4a555fddef0638, type: 2}
+    reverseZ: {fileID: 0}
+  noneWereUsed: 0
   ifNoneUsedFalse:
     value: {fileID: 0}
     useFloats: 0
@@ -32,17 +47,19 @@ MonoBehaviour:
     z: {fileID: 0}
     useDefault: 1
     defaultValue: {x: 0, y: 0, z: 0}
-  vectorOperations: []
-  useRX: 0
-  rotationStrengthY: {fileID: 0}
-  directionRight: {fileID: 0}
+  vectorOperations:
+    array: {fileID: 0}
+    useDefault: 1
+    defVectors: []
+    readOnly: 1
   op:
-    op: 5
-  moveResult:
-    value: {fileID: 0}
+    op: 2
+  result:
+    value: {fileID: 11400000, guid: 457efe4a338dc2d4e82c8f738c9935de, type: 2}
     useFloats: 0
     x: {fileID: 0}
     y: {fileID: 0}
     z: {fileID: 0}
-    useDefault: 1
+    useDefault: 0
     defaultValue: {x: 0, y: 0, z: 0}
+  logResult: {x: 0, y: 0.0281105, z: 0}

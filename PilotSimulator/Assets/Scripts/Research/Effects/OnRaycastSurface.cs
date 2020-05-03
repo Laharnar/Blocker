@@ -40,32 +40,32 @@ public class OnRaycastSurface : ScienceEffect {
     }
 
 
-    // if you want to convert it into prefab
-    //[CreateAssetMenu(menuName = "UnityCommon/Raycast")]
-    [System.Serializable]
-    public class RaycastPiece{//Prefab : ScriptableObject {
-        public Vec3VarRef position;
-        public Vec3VarRef direction;
-        [Header("Raycast results")]
-        public BoolVarValue anyHit;
-        public TransformVarValue theHit;
-        public float maxDistance=10;
-        public LayerMask castedLayers;
+    
+}
+// if you want to convert it into prefab
+//[CreateAssetMenu(menuName = "UnityCommon/Raycast")]
+[System.Serializable]
+public class RaycastPiece
+{//Prefab : ScriptableObject {
+    public Vec3VarRef position;
+    public Vec3VarRef direction;
+    [Header("Raycast results")]
+    public BoolVarValue anyHit;
+    public TransformVarValue theHit;
+    public float maxDistance = 10;
+    public LayerMask castedLayers;
 
-        Camera Cam { get => Camera.main; }
+    Camera Cam { get => Camera.main; }
+    public void Raycast()
+    {
+        anyHit.Value = Physics.Raycast(new Ray(position.Value, direction.Value));
+    }
 
-
-        public void Raycast()
-        {
-            anyHit.Value = Physics.Raycast(new Ray(position.Value, direction.Value));
-        }
-
-        public void Raycast(Transform t)
-        {
-            RaycastHit hit;
-            anyHit.Value = Physics.Raycast(t.position, direction.Value, out hit, maxDistance, castedLayers);
-            if(anyHit.Value)
-                theHit.Value = hit.transform;
-        }
+    public void Raycast(Transform t)
+    {
+        RaycastHit hit;
+        anyHit.Value = Physics.Raycast(t.position, direction.Value, out hit, maxDistance, castedLayers);
+        if (anyHit.Value)
+            theHit.Value = hit.transform;
     }
 }

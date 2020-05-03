@@ -61,6 +61,7 @@ MonoBehaviour:
   lastRot: {x: 0, y: 0, z: 0}
   useDeltaTime: 1
   needsRigidbody: 0
+  lockRotation: 1
   targeted: {fileID: 0}
   rig: {fileID: 0}
   expectedMove:

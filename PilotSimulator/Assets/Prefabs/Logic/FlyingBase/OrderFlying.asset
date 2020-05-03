@@ -64,7 +64,7 @@ MonoBehaviour:
               m_BoolArgument: 0
             m_CallState: 2
           - m_Target: {fileID: 11400000, guid: 0a9f9d8b1437956488a34628a4e8468c, type: 2}
-            m_MethodName: SetFloat
+            m_MethodName: SetValue
             m_Mode: 4
             m_Arguments:
               m_ObjectArgument: {fileID: 0}

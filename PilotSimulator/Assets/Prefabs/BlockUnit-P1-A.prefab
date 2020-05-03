@@ -55,11 +55,12 @@ MonoBehaviour:
     defaultValue: 1
     log: 0
   direction: {x: 0, y: 0, z: 1}
-  rotationDeg: {x: 0, y: 0, z: 0}
+  rotationDeg: {x: 0, y: 30, z: 0}
   scaling: {x: 1, y: 1, z: 1}
   lastRot: {x: 0, y: 0, z: 0}
   useDeltaTime: 1
   needsRigidbody: 1
+  lockRotation: 0
   targeted: {fileID: 8328161295704182592}
   rig: {fileID: 6407067670459569386}
   expectedMove:
@@ -71,12 +72,12 @@ MonoBehaviour:
     useDefault: 0
     defaultValue: {x: 0, y: 0, z: 0}
   expectedRotation:
-    value: {fileID: 0}
+    value: {fileID: 11400000, guid: 60eebbba641bd2240a8c70e2d2fa5031, type: 2}
     useFloats: 0
     x: {fileID: 0}
     y: {fileID: 0}
     z: {fileID: 0}
-    useDefault: 1
+    useDefault: 0
     defaultValue: {x: 0, y: 0, z: 0}
   postPrediction:
     m_PersistentCalls:
@@ -129,7 +130,7 @@ MonoBehaviour:
   ScienceTree: {fileID: 11400000, guid: 78d3412026269af4da3f849f1455576e, type: 2}
   Effects:
   - {fileID: 11400000, guid: b314711b4458f8b4f825be8c00efefd0, type: 2}
-  - {fileID: 11400000, guid: fe62a12da3b1ac1458fae5ae138af060, type: 2}
+  - {fileID: 11400000, guid: e0757a3a93588914dba1f09f794c2e36, type: 2}
   onDone:
     m_PersistentCalls:
       m_Calls:
@@ -144,7 +145,19 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
+      - m_Target: {fileID: 2067030655507903148}
+        m_MethodName: SetRotationValue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 60eebbba641bd2240a8c70e2d2fa5031,
+            type: 2}
+          m_ObjectArgumentAssemblyTypeName: Vec3Var, Tests
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 0
 --- !u!1 &701633954
 GameObject:
   m_ObjectHideFlags: 0

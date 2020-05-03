@@ -13,6 +13,7 @@ public class PositionRotation : MonoBehaviour, ITestable {
     public Vector3 lastRot;
     public bool useDeltaTime = true;
     public bool needsRigidbody = true;
+    public bool lockRotation;
     public Transform targeted;
     public Rigidbody rig;
 
@@ -109,13 +110,17 @@ public class PositionRotation : MonoBehaviour, ITestable {
         if (rig == null || relativeTo.Value == Space.World)
         {
             targeted.Translate(moveAmount, relativeTo.Value);
-            lastRot = transform.forward;
-            targeted.Rotate(rotsAmount);
+            if (!lockRotation)
+            {
+                lastRot = transform.forward;
+                targeted.Rotate(rotsAmount);
+            }
         }
         else if (rig != null && relativeTo.Value == Space.Self)
         {
             rig.MovePosition(rig.position + transform.TransformDirection(moveAmount));
-            rig.MoveRotation( Quaternion.Euler(rig.rotation.eulerAngles+rotsAmount));
+            if (!lockRotation)
+                rig.MoveRotation( Quaternion.Euler(rig.rotation.eulerAngles+rotsAmount));
         }
         else
         {
@@ -143,7 +148,10 @@ public class PositionRotation : MonoBehaviour, ITestable {
         {
             if(needsRigidbody)
                 RealtimeTester.Assert(rig != null, this, "Rigidbody isn't assigned.");
-            RealtimeTester.Assert(transform != null, this, "Transfrom to move isn't assigned.");
+            RealtimeTester.Assert(this != null, this, "Transfrom to move isn't assigned.");
         }
+        RealtimeTester.Assert(direction != Vector3.zero, this, "Zero movement speed.");
+        if(!lockRotation)
+            RealtimeTester.Assert(rotationDeg != Vector3.zero && rotationSpeed.Value != 0, this, "Zero rotation parameters rotationDeg or rotationSpeed with unlocked rotation.");
     }
 }

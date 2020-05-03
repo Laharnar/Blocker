@@ -10,8 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c014ee867b0042a4baadda5518c56915, type: 3}
-  m_Name: Camera BaseSpeed
+  m_Name: Camera BaseSpeed StopWhenDisabled
   m_EditorClassIdentifier: 
+  start:
+    value: {fileID: 11400000, guid: 457efe4a338dc2d4e82c8f738c9935de, type: 2}
+    useFloats: 0
+    x: {fileID: 0}
+    y: {fileID: 0}
+    z: {fileID: 0}
+    useDefault: 0
+    defaultValue: {x: 0.0060201, y: 0, z: 0.0060201}
   useX:
     value: {fileID: 11400000, guid: 53dd6916957aea54da6810dde89359a9, type: 2}
     useDefault: 0
@@ -33,31 +41,24 @@ MonoBehaviour:
     useDefault: 1
     defaultValue: {x: 0, y: 0, z: 0}
   vectorOperations:
-  - value: {fileID: 0}
-    useFloats: 0
-    x: {fileID: 0}
-    y: {fileID: 0}
-    z: {fileID: 0}
+    array: {fileID: 0}
     useDefault: 1
-    defaultValue: {x: 0.15, y: 0, z: 0.15}
-  useRX: 0
-  rotationStrengthY: {fileID: 0}
-  directionRight: {fileID: 0}
+    defVectors:
+    - value: {fileID: 0}
+      useFloats: 0
+      x: {fileID: 0}
+      y: {fileID: 0}
+      z: {fileID: 0}
+      useDefault: 1
+      defaultValue: {x: 1, y: 0, z: 1}
+    readOnly: 1
   op:
     op: 0
-  moveStart:
-    value: {fileID: 0}
+  result:
+    value: {fileID: 11400000, guid: 457efe4a338dc2d4e82c8f738c9935de, type: 2}
     useFloats: 0
     x: {fileID: 0}
     y: {fileID: 0}
     z: {fileID: 0}
-    useDefault: 1
-    defaultValue: {x: 0.0225859, y: 0, z: 0.0225859}
-  moveResult:
-    value: {fileID: 0}
-    useFloats: 0
-    x: {fileID: 0}
-    y: {fileID: 0}
-    z: {fileID: 0}
-    useDefault: 1
-    defaultValue: {x: 0.1725859, y: 0, z: 0.1725859}
+    useDefault: 0
+    defaultValue: {x: 0, y: 0, z: 0}

@@ -9,8 +9,6 @@ public class OnHit : MonoBehaviour, ITestable
     public DamageSender sender;
     public IntVarValue selfAlliance;
 
-    public IntVar onHitSaveSelfAllianceInto;
-    public IntVar onHitSaveOtherAllianceInto;
     [SerializeField] RealtimePrefabs onHitRealtime;
 
     public ConditionGroup onHitIf;

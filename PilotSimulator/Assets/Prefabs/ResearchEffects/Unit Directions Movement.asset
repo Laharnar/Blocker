@@ -12,6 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c014ee867b0042a4baadda5518c56915, type: 3}
   m_Name: Unit Directions Movement
   m_EditorClassIdentifier: 
+  lastRan: 16.859999
+  start:
+    value: {fileID: 11400000, guid: 457efe4a338dc2d4e82c8f738c9935de, type: 2}
+    useFloats: 0
+    x: {fileID: 0}
+    y: {fileID: 0}
+    z: {fileID: 0}
+    useDefault: 0
+    defaultValue: {x: 0, y: 0, z: 0.02}
+  logStart: {x: 0, y: 0, z: 0.02}
   useX:
     value: {fileID: 0}
     useDefault: 1
@@ -24,6 +34,7 @@ MonoBehaviour:
     value: {fileID: 11400000, guid: b32ba5209d95a5b4c86fe7bbd998a1a0, type: 2}
     useDefault: 0
     defaultValue: 0
+  noneWereUsed: 1
   ifNoneUsedFalse:
     value: {fileID: 0}
     useFloats: 0
@@ -33,31 +44,25 @@ MonoBehaviour:
     useDefault: 1
     defaultValue: {x: 0, y: 0, z: 0}
   vectorOperations:
-  - value: {fileID: 0}
-    useFloats: 1
-    x: {fileID: 0}
-    y: {fileID: 0}
-    z: {fileID: 11400000, guid: 340131a5a6981f24fbb88d91816fde52, type: 2}
-    useDefault: 0
-    defaultValue: {x: -0.16, y: 0.2, z: 0}
-  useRX: 1
-  rotationStrengthY: {fileID: 11400000, guid: d50522e0283a6fd44aba9ff50ca4001d, type: 2}
-  directionRight: {fileID: 11400000, guid: 4d53272e39980344996c036ef53ffc84, type: 2}
+    array: {fileID: 0}
+    useDefault: 1
+    defVectors:
+    - value: {fileID: 0}
+      useFloats: 1
+      x: {fileID: 0}
+      y: {fileID: 0}
+      z: {fileID: 11400000, guid: 340131a5a6981f24fbb88d91816fde52, type: 2}
+      useDefault: 0
+      defaultValue: {x: 0, y: 0, z: 1.07}
+    readOnly: 1
   op:
     op: 2
-  moveStart:
-    value: {fileID: 0}
+  result:
+    value: {fileID: 11400000, guid: 457efe4a338dc2d4e82c8f738c9935de, type: 2}
     useFloats: 0
     x: {fileID: 0}
     y: {fileID: 0}
     z: {fileID: 0}
-    useDefault: 1
+    useDefault: 0
     defaultValue: {x: 0, y: 0, z: 0.02}
-  moveResult:
-    value: {fileID: 0}
-    useFloats: 0
-    x: {fileID: 0}
-    y: {fileID: 0}
-    z: {fileID: 0}
-    useDefault: 1
-    defaultValue: {x: 0, y: 0, z: 0.02}
+  logResult: {x: 0, y: 0, z: 0}

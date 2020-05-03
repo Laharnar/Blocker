@@ -11,8 +11,6 @@ This allows for mixing results. For example mixing movement, with rotation and t
 
 First stage: 
 
---> ??
-
 Basic prototype that shows the idea, without actual gameplay goals.
 
 Features:
@@ -31,14 +29,20 @@ Second stage:
 
 Gameplay goals, experimentation, understanding of key time sinks in this sort of project.
 
---> 28.03.2020
-
- In progress.
+28.03.2020 - 03.05.2020
 
 Features:
 - [ ] offers one full simple level to beat.
-- [ ] ui, background.
-- [ ] explore a few ideas around using different blocks.
+- [x] ui, background.
+- [x] explore a few ideas around using different blocks.
+
+Results:
+
+I've created a prefab system for creating codeless games. It's pretty neat in some cases and in others it's pretty difficult to use because of readability and how much it's necessary to jump between the files. I'm thinking of creating some sort of editor for this. I'll add it to third stage.
+
+Now for game, i'm thinking of changing directions a little. This game wasn't really fun that much. I'll try something with a bit simpler rules. I could keep the sliders as main mechanics and maybe not go in rts. Maybe something simple like shield management system.
+
+Biggest time sunk at the moment is setting up, and especially fixing broken prefabs. It's flexibility is great though.
 
 ---
 
@@ -46,4 +50,6 @@ Third stage:
 
 More experimentation based on speed of development. Developing a few features to feature a few levels.
 
-Upcoming.
+--> 03.05.2020
+
+Shield/energy management game.

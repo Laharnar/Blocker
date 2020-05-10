@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEditor.Build.Reporting;
 using UnityEngine;
 
 [CreateAssetMenu(menuName ="Operations/Vectors")]
@@ -27,7 +27,7 @@ public class RfxVector:ScienceEffect {
     public Vec3VarRef result;
     [SerializeField] Vector3 logResult;
 
-    protected override void Effect(ScienceArgs item)
+    protected override void DoEffect()
     {
         lastRan = Time.time;
         // keeps old value, and adds through operation new values.
@@ -61,5 +61,11 @@ public class RfxVector:ScienceEffect {
             result.Value = ifNoneUsedFalse.Value;
         }
         logResult = result.Value;
+    }
+
+    protected override void Effect(ScienceArgs item)
+    {
+        Debug.LogError("Don't call.");
+        DoEffect();
     }
 }

@@ -12,15 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fa2636780592a849bd9edb189aa87b0, type: 3}
   m_Name: Fx StopOnGround
   m_EditorClassIdentifier: 
+  use:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 1
   rcast:
     position:
       value: {fileID: 0}
+      useFloats: 0
+      x: {fileID: 0}
+      y: {fileID: 0}
+      z: {fileID: 0}
       useDefault: 1
       defaultValue: {x: 0, y: -0.48000398, z: -1.37}
+      log: {x: 0, y: 0, z: 0}
     direction:
       value: {fileID: 0}
+      useFloats: 0
+      x: {fileID: 0}
+      y: {fileID: 0}
+      z: {fileID: 0}
       useDefault: 1
       defaultValue: {x: 0, y: -1, z: 0}
+      log: {x: 0, y: 0, z: 0}
     anyHit:
       value: {fileID: 0}
       useDefault: 1

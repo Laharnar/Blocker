@@ -11,17 +11,26 @@ public class Vec3VarRef {
 
     public bool useDefault = true;
     [SerializeField] Vector3 defaultValue;
+    [SerializeField] Vector3 log;
 
     public Vector3 Value {
         get {
             if (useDefault)
-                return defaultValue;
+            {
+                return log = defaultValue;
+            }
             else if (useFloats)
-                return new Vector3(
-                    x ? x.Value : defaultValue.x, 
-                    y ? y.Value : defaultValue.y, 
+            {
+
+                return log = new Vector3(
+                    x ? x.Value : defaultValue.x,
+                    y ? y.Value : defaultValue.y,
                     z ? z.Value : defaultValue.z);
-            else return value.value;
+            }
+            else
+            {
+                return log = value.value;
+            }
         }
         set {
             if (useDefault)
@@ -33,6 +42,7 @@ public class Vec3VarRef {
                 z.Value = value.z;
             }
             else this.value.value = value;
+            log = value;
         }
     }
 

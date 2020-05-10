@@ -6,36 +6,50 @@ using UnityEngine.Events;
 
 public class PositionRotation : MonoBehaviour, ITestable {
 
-    public FloatVarRef moveSpeed, rotationSpeed;
-    public Vector3 direction;
-    public Vector3 rotationDeg;
-    public Vector3 scaling = Vector3.one;
-    public Vector3 lastRot;
+
+    [Header("Parameters")]
+    public FloatVarRef moveSpeed;
+    public FloatVarRef rotationSpeed;
     public bool useDeltaTime = true;
     public bool needsRigidbody = true;
     public bool lockRotation;
-    public Transform targeted;
-    public Rigidbody rig;
+    public SpaceVarValue relativeTo;
 
     [Header("Modifications")]
+    public UnityEvent postPrediction;
     public Vec3VarRef expectedMove;
     public Vec3VarRef expectedRotation;
+    public bool normalize = false;
+    public bool deltaTime = false;
+    public bool fixedDelta = false;
+    public bool applySpeed = false;
 
-    public UnityEvent postPrediction;
+
+    [Header("Instance")]
+    public Transform targeted;
+    public Rigidlink rigbody;
+
+    [Header("Logs")]
     [SerializeField] private Vector3 prePredictionMove;
     [SerializeField] private Vector3 postPredictionMove;
     [SerializeField] private Vector3 postPredictionAngles;
+    [SerializeField] Vector3 lastRot;
 
 
     [Header("Special case")]
-    public SpaceVarValue relativeTo;
-
     private Vector3 moveAmount;
     private Vector3 rotsAmount;
 
+    [Header("Testing")]
+    public bool test = true;
+    public Vector3 direction;
+    public Vector3 rotationDeg;
+    public Vector3 scaling = Vector3.one;
+
+    public Vector3 TransformPos { get => targeted.position; }
+
     private void Start()
     {
-        if(rig== null) rig = GetComponent<Rigidbody>();
         expectedMove.Value = Vector3.zero;
         if (targeted == null) targeted = transform;
     }
@@ -48,9 +62,10 @@ public class PositionRotation : MonoBehaviour, ITestable {
 
     public void ForcePositionRotationTick()
     {
-        if (rig == null || relativeTo.Value == Space.World)
+        if (rigbody.IsNull() || relativeTo.Value == Space.World)
         {
-            CalculateBasicMoveRotateScale();
+            TestTransformationValues();
+            ApplyDeltaTime();
             ModifyDirectionAndRotationOnExtrenalScripts();
             MoveRotateScale();
         }
@@ -63,24 +78,42 @@ public class PositionRotation : MonoBehaviour, ITestable {
 
     private void ForceFixedUpdateTick()
     {
-        if (rig != null && relativeTo.Value == Space.Self)
+        if (!rigbody.IsNull() && relativeTo.Value == Space.Self)
         {
-            CalculateBasicMoveRotateScaleFixedUpdate();
+            TestFixedPhysicsValues();
+            ApplyFixedDeltaTime();
             ModifyDirectionAndRotationOnExtrenalScripts();
             MoveRotateScale();
         }
     }
 
-    private void CalculateBasicMoveRotateScale()
+    private void TestTransformationValues()
     {
-        moveAmount = direction * moveSpeed.Value * (useDeltaTime ? Time.deltaTime : 1f);
-        rotsAmount = rotationDeg * (useDeltaTime ? Time.deltaTime : 1f) * rotationSpeed.Value;
+        moveAmount = direction * moveSpeed.Value;
+        rotsAmount = rotationDeg  * rotationSpeed.Value;
     }
 
-    private void CalculateBasicMoveRotateScaleFixedUpdate()
+    void ApplySpeed()
     {
-        moveAmount = direction * moveSpeed.Value * Time.fixedDeltaTime;
-        rotsAmount = rotationDeg * Time.fixedDeltaTime * rotationSpeed.Value;
+        moveAmount *= moveSpeed.Value;
+        rotsAmount *= rotationSpeed.Value;
+    }
+
+    void ApplyDeltaTime()
+    {
+        moveAmount *= (useDeltaTime ? Time.deltaTime : 1f);
+        rotsAmount *= (useDeltaTime ? Time.deltaTime : 1f);
+    }
+    void ApplyFixedDeltaTime()
+    {
+        moveAmount *= Time.fixedDeltaTime;
+        rotsAmount *= Time.fixedDeltaTime;
+    }
+
+    private void TestFixedPhysicsValues()
+    {
+        moveAmount = direction * moveSpeed.Value;
+        rotsAmount = rotationDeg * rotationSpeed.Value;
     }
 
     private void ModifyDirectionAndRotationOnExtrenalScripts()
@@ -93,6 +126,16 @@ public class PositionRotation : MonoBehaviour, ITestable {
         postPredictionAngles = expectedRotation.Value;
         moveAmount = expectedMove.Value;
         rotsAmount = expectedRotation.Value;
+
+        if (normalize)
+            moveAmount= moveAmount.normalized;
+
+        if (deltaTime)
+            ApplyDeltaTime();
+        if (fixedDelta)
+            ApplyFixedDeltaTime();
+        if(applySpeed)
+            ApplySpeed();
     }
 
     public void SetMoveValue(Vec3Var vec3)
@@ -107,7 +150,7 @@ public class PositionRotation : MonoBehaviour, ITestable {
 
     private void MoveRotateScale()
     {
-        if (rig == null || relativeTo.Value == Space.World)
+        if (rigbody.IsNull() || relativeTo.Value == Space.World)
         {
             targeted.Translate(moveAmount, relativeTo.Value);
             if (!lockRotation)
@@ -116,11 +159,11 @@ public class PositionRotation : MonoBehaviour, ITestable {
                 targeted.Rotate(rotsAmount);
             }
         }
-        else if (rig != null && relativeTo.Value == Space.Self)
+        else if (!rigbody.IsNull() && relativeTo.Value == Space.Self)
         {
-            rig.MovePosition(rig.position + transform.TransformDirection(moveAmount));
+            rigbody.MoveBy(transform.TransformDirection(moveAmount));
             if (!lockRotation)
-                rig.MoveRotation( Quaternion.Euler(rig.rotation.eulerAngles+rotsAmount));
+                rigbody.RotateBy(rotsAmount);
         }
         else
         {
@@ -147,11 +190,18 @@ public class PositionRotation : MonoBehaviour, ITestable {
         if (Application.isPlaying)
         {
             if(needsRigidbody)
-                RealtimeTester.Assert(rig != null, this, "Rigidbody isn't assigned.");
+                rigbody.RunTests();
             RealtimeTester.Assert(this != null, this, "Transfrom to move isn't assigned.");
         }
-        RealtimeTester.Assert(direction != Vector3.zero, this, "Zero movement speed.");
-        if(!lockRotation)
-            RealtimeTester.Assert(rotationDeg != Vector3.zero && rotationSpeed.Value != 0, this, "Zero rotation parameters rotationDeg or rotationSpeed with unlocked rotation.");
+        RealtimeTester.Assert(moveSpeed.Value != 0, this, "Zero movement speed.");
+
+        if (test)
+        {
+            RealtimeTester.Assert(direction != Vector3.zero, this, "Zero movement direction.");
+            if (!lockRotation)
+                RealtimeTester.Assert(rotationDeg != Vector3.zero && rotationSpeed.Value != 0, this, "Zero rotation parameters rotationDeg or rotationSpeed with unlocked rotation.");
+        }
+
+        
     }
 }

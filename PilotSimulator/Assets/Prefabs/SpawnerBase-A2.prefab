@@ -12,24 +12,90 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 444329b2287500942a0209c0ebec07e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScienceTree: {fileID: 0}
-  Effects: []
   moveSpeed:
     value: {fileID: 0}
     useDefault: 1
-    defaultValue: 0
+    defaultValue: 1
+    log: 0
   rotationSpeed:
-    value: {fileID: 0}
+    value: {fileID: 11400000, guid: d50522e0283a6fd44aba9ff50ca4001d, type: 2}
     useDefault: 1
     defaultValue: 0
-  direction: {x: 0, y: 0, z: 0}
-  rotationDeg: {x: 0, y: 5, z: 0}
+    log: 0
+  direction: {x: 0, y: 1, z: 0}
+  rotationDeg: {x: 0, y: 0, z: 0}
   scaling: {x: 1, y: 1, z: 1}
   lastRot: {x: 0, y: 0, z: 0}
+  useDeltaTime: 1
+  needsRigidbody: 0
+  lockRotation: 1
+  targeted: {fileID: 0}
+  rig: {fileID: 0}
+  expectedMove:
+    value: {fileID: 11400000, guid: 457efe4a338dc2d4e82c8f738c9935de, type: 2}
+    useFloats: 0
+    x: {fileID: 0}
+    y: {fileID: 0}
+    z: {fileID: 0}
+    useDefault: 0
+    defaultValue: {x: 0, y: 0, z: 0}
+    log: {x: 0, y: 0, z: 0}
+  expectedRotation:
+    value: {fileID: 0}
+    useFloats: 0
+    x: {fileID: 0}
+    y: {fileID: 0}
+    z: {fileID: 0}
+    useDefault: 1
+    defaultValue: {x: 0, y: 0, z: 0}
+    log: {x: 0, y: 0, z: 0}
+  postPrediction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1867206865885094123}
+        m_MethodName: Modifications
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  prePredictionMove: {x: 0, y: 0, z: 0}
+  postPredictionMove: {x: 0, y: 0, z: 0}
+  postPredictionAngles: {x: 0, y: 0, z: 0}
   relativeTo:
     value: {fileID: 0}
     useDefault: 1
     defaultValue: 0
+--- !u!114 &1867206865885094123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392529813208287839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f54efa5c5c0df4e8b07de84412cf2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  used:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 1
+  ScienceTree: {fileID: 11400000, guid: 78d3412026269af4da3f849f1455576e, type: 2}
+  Effects: []
+  SimpleEffects:
+  - {fileID: 11400000, guid: 7fd8a1a340b6184459f4e509241ac586, type: 2}
+  - {fileID: 11400000, guid: 00fffad821f769b4fba3f52b56cdbf34, type: 2}
+  - {fileID: 11400000, guid: acf04688fd2f4f54482cc320c4440011, type: 2}
+  - {fileID: 11400000, guid: 513fc6804368f5b4f896a8de296b35ae, type: 2}
+  onDone:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &2787538408948871205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -133,7 +199,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2584459946764565115, guid: e90efcda3d21e4c48af2e8d778d039c0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e90efcda3d21e4c48af2e8d778d039c0, type: 3}
 --- !u!1 &392529813208287839 stripped
 GameObject:

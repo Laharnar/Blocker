@@ -72,6 +72,7 @@ MonoBehaviour:
     z: {fileID: 0}
     useDefault: 0
     defaultValue: {x: 0, y: 0, z: 0}
+    log: {x: 0, y: 0, z: 0}
   expectedRotation:
     value: {fileID: 0}
     useFloats: 0
@@ -80,6 +81,7 @@ MonoBehaviour:
     z: {fileID: 0}
     useDefault: 1
     defaultValue: {x: 0, y: 0, z: 0}
+    log: {x: 0, y: 0, z: 0}
   postPrediction:
     m_PersistentCalls:
       m_Calls:
@@ -129,7 +131,8 @@ MonoBehaviour:
     useDefault: 1
     defaultValue: 1
   ScienceTree: {fileID: 11400000, guid: 78d3412026269af4da3f849f1455576e, type: 2}
-  Effects:
+  Effects: []
+  SimpleEffects:
   - {fileID: 11400000, guid: db4e8f6e8ec6d84418a61695159b30e4, type: 2}
   - {fileID: 11400000, guid: 16239aea02f0d9b4a9dd4cf20c6f031b, type: 2}
   - {fileID: 11400000, guid: acf04688fd2f4f54482cc320c4440011, type: 2}

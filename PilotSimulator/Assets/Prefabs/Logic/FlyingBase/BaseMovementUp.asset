@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd08618d94b758542a6c03ac7115bb76, type: 3}
   m_Name: BaseMovementUp
   m_EditorClassIdentifier: 
-  value: 0.1
+  value1: 0

@@ -35,10 +35,24 @@ public class RealtimeTester:MonoBehaviour
 
     // Only items from scene cache that are testable
     List<ITestable> testableCache;
-    internal static void Assert(bool assertTrue, MonoBehaviour mono, string msg)
+    internal static void Assert(bool assertTrue, MonoBehaviour unityClass, string message)
     {
         if (!assertTrue)
-            Err(mono, msg);
+            Err(unityClass, message);
+    }
+    internal static void Assert(bool assertTrue, object source, string message)
+    {
+        if (!assertTrue)
+            Err(source, message);
+    }
+    internal static void Err(object source, string v)
+    {
+        Singleton.AddFailure(new Failure(source, v));
+    }
+
+    internal static void AssertSceneReference(MonoBehaviour script)
+    {
+        Assert(script != null, script, "Script isn't assigned in inspector.");
     }
 
     internal static void Err(MonoBehaviour source, string v)
@@ -55,18 +69,6 @@ public class RealtimeTester:MonoBehaviour
         EnsureTestsRun();
     }
 
-    [System.Serializable]
-    public class Failure
-    {
-        public MonoBehaviour mono;
-        public string msg;
-
-        public Failure(MonoBehaviour source, string v)
-        {
-            this.mono = source;
-            this.msg = v;
-        }
-    }
 
     private void Start()
     {
@@ -147,21 +149,37 @@ public class RealtimeTester:MonoBehaviour
                 yield return new WaitForSeconds(1);
                 continue;
             }
-            ResetFailures();
-            for (int i = 0; i < testable.Length; i++)
-            {
-                if (testable[i])
-                {
-                    ((ITestable)sceneCache[i]).TestInitialState();
-                }
-            }
-            if (failedTests.Count > 0)
-            {
-                Debug.LogErrorFormat(failedTests[0].mono, "[RealtimeTester] Test Failures = {0}. [0]={1}", failedTests.Count, failedTests[0].msg);
-            }
+
+            RunTestsInSceneOnce();
+
             yield return new WaitForSeconds(GetTestRunCycle());
         }
     }
+
+    [ContextMenu("Run")]
+    private void RunTestsInSceneOnce()
+    {
+        ResetFailures();
+        for (int i = 0; i < testable.Length; i++)
+        {
+            if (testable[i])
+            {
+                ((ITestable)sceneCache[i]).TestInitialState();
+            }
+        }
+        if (failedTests.Count > 0)
+        {
+            if (failedTests[0].Mono)
+            {
+                Debug.LogErrorFormat(failedTests[0].Mono, "[RealtimeTester] Test Failures = {0}. [0]={1}", failedTests.Count, failedTests[0].Message);
+            }
+            else
+            {
+                Debug.LogErrorFormat("[RealtimeTester] Test Failures = {0} Object: {1}. [0]={2}", failedTests.Count, failedTests[0].AdditionalObject, failedTests[0].Message);
+            }
+        }
+    }
+
     private void ResetFailures()
     {
         failedTests.Clear();
@@ -173,6 +191,38 @@ public class RealtimeTester:MonoBehaviour
         if(!Application.isPlaying)
             return editorRunTestsEvery;
         return runtimeRunTestsEvery;
+    }
+
+    internal static void Deployment(bool isDeployed, MonoBehaviour source, string msgIfFail)
+    {
+        Assert(isDeployed, source, msgIfFail);
+        if (isDeployed)
+            Debug.Log("Deployment for " + source + " completed succesfully.");
+    }
+
+    [System.Serializable]
+    public class Failure
+    {
+        // Has to be single class, to get it visible in inspector.
+        [SerializeField] MonoBehaviour mono;
+        [SerializeField] string msg;
+        [SerializeField] object obj;
+
+        public Failure(MonoBehaviour source, string v)
+        {
+            this.mono = source;
+            this.msg = v;
+        }
+
+        public Failure(object source, string v)
+        {
+            this.obj = source;
+            this.msg = v;
+        }
+
+        public string Message { get => msg; }
+        public object AdditionalObject { get => mono != null ? mono : obj; }
+        public MonoBehaviour Mono { get => mono; }
     }
 
 }

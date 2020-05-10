@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName ="Variables/Rect")]
+[CreateAssetMenu(menuName ="Variables/Rect")]
 public class RectVar:ScriptableObject
 {
     public Rect value;

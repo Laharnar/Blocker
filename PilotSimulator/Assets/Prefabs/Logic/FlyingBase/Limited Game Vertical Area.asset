@@ -10,25 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f8a461fd90045b4eb1e75a9124ca69a, type: 3}
-  m_Name: Camera Height Parametrized
+  m_Name: Limited Game Vertical Area
   m_EditorClassIdentifier: 
-  snapToRelativeHeight:
+  use:
     value: {fileID: 11400000, guid: 53dd6916957aea54da6810dde89359a9, type: 2}
-    useDefault: 0
-    defaultValue: 1
-  space:
-    state:
-      value: {fileID: 11400000, guid: 53dd6916957aea54da6810dde89359a9, type: 2}
-      useDefault: 0
-      defaultValue: 1
-    negate: 0
-    usedSpace: {fileID: 11400000, guid: f686e1dabaa5c82429affc9e7274d708, type: 2}
+    useDefault: 1
+    defaultValue: 0
   target:
     target: {fileID: 11400000, guid: 520de8a44cc45034190e48a2562f3c55, type: 2}
     useDefault: 0
     defaultValue: {fileID: 0}
   applyTransformDirection: 1
   applyInverseTransformDirection: 0
+  change:
+    value: {fileID: 11400000, guid: 457efe4a338dc2d4e82c8f738c9935de, type: 2}
+    useFloats: 0
+    x: {fileID: 0}
+    y: {fileID: 0}
+    z: {fileID: 0}
+    useDefault: 0
+    defaultValue: {x: 0, y: 0, z: 0}
+    log: {x: 0, y: 0, z: 0}
   relativeHeight:
     value: {fileID: 11400000, guid: b0d7c127842785c4cbe11d34ea8d5d85, type: 2}
     useDefault: 0
@@ -41,4 +43,12 @@ MonoBehaviour:
     log: 0
   minHeight: 6.6
   maxHeight: 50
-  result: {x: 0, y: 4.04, z: 0}
+  result:
+    value: {fileID: 11400000, guid: 457efe4a338dc2d4e82c8f738c9935de, type: 2}
+    useFloats: 0
+    x: {fileID: 0}
+    y: {fileID: 0}
+    z: {fileID: 0}
+    useDefault: 0
+    defaultValue: {x: 0, y: 0, z: 0}
+    log: {x: 0, y: 0, z: 0}

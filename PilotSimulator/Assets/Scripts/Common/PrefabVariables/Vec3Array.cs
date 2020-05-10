@@ -5,6 +5,9 @@ public class Vec3Array : ScriptableObject
 {
     [SerializeField] List<Vec3VarRef> value;
     public bool readOnly = true;
+
+    private int tmpId;
+
     public List<Vec3VarRef> Value {
         get => value;
         set {
@@ -19,5 +22,19 @@ public class Vec3Array : ScriptableObject
         get {
             return value.Count;
         }
+    }
+    public void InsertId(int id)
+    {
+        this.tmpId = id;
+    }
+
+    public void InsertDo(Vector3 target)
+    {
+        Value.Insert(tmpId, new Vec3VarRef() { useDefault = true, useFloats = false, Value = target });
+    }
+
+    public void Add(Vector3 target)
+    {
+        Value.Add(new Vec3VarRef() { useDefault = true, useFloats = false, Value = target });
     }
 }

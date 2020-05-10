@@ -6,22 +6,22 @@ public class FloatVarRef {
     public FloatVar value;
     public bool useDefault = true;
     public float defaultValue;
-    public bool log = false;
+    [Space]
+    public float log;
     public float Value {
         get {
             if (useDefault)
-                return defaultValue;
-            else return value.Value;
+                return log = defaultValue;
+            else return log = value.Value;
         }
         set {
             if (useDefault)
                 defaultValue = value;
             else
             {
-                if(log)Debug.Log("fvr: "+this.value.Value+" = "+ value);
-
                 this.value.Value = ( value);
             }
+            log = value;
         }
     }
 

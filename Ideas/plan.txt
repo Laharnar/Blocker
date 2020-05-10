@@ -1,0 +1,150 @@
+
+MVP 08 05 2020 - how to war
+3 units, 3 enemies
+2 bases, win by destroying
+exp constantly
+atk up spam
+hp up spam
+revive
+1 tactic
+1 passive
+1 skill
+
+respawning:
+they are always on field. it doesnt matter if they die.
+exp gain is constant or on kill or attack
+skills to create delay for your enemy
+tactics that focus base -> but don't get any exp for hitting base
+no base and limited count of same soldiers... i want single soldier that you sort of guide and take care of.
+limited count with base and with cooldown
+ablities that let you destroy enemies vs abilities that focus on base
+they are meat shield
+and it's hard to bounce back
+
+base unit deployment -> leave base without defences but get additional offence power
+if base unit dies... you are in trouble
+up to 5 hp of those deployments
+you lose 1 hp by sending it out OR win the game
+1/3 types of bases.
+units can't respawn without base command
+double armor on base outside, to prevent it from going down faster then enemy base when 1 on 1. it should deal damage and be worth it with maximum protection.
+maximum unit count multiplier. or choose tactical multiplier in certain situations.
+
+
+revive costs half of pack of base health, but gives exp bost.
+
+
+MVP:
+
+Core systems:
+Content drawer: connects specifc ui items and content
+Triggers: unit ui selected, on hover ui, collision...
+Logic: what happens on trigger.
+Responses: automatic response on logic. effects, animations, movement
+
+*Tree:
+drawer: draw rotated directional items and positional. 
+positional items respond to logic
+navigation -> move around and hide from view
+
+*Build tree: get out tree list with directional items, positional. by using click and dropdown. or randomizable.
+dropdown content is linked to some other content and can be sorted by type (or name or cost).
+set cost in input box
+
+*Build tree item drawer: select (empty item with dropdown that saves into perma data | unlock research item in combat withing (limit) and cost)
+active item is set on selection
+cost is condition. data is taken from active item and from currect active currency. 
+limit is active queue or list/user with automatic limited count. buying adds effect to it. unit uses the list directly.
+unlock is ui trigger that changes look
+
+*generate effect: parses string into specific omcbination of correct classes to interact in combat
+-- which omcbination ? --
+combat effect: has logic for combat to trigger
+
+*Combat:
+per tick trigger:input is picked logic for every unit. tactics, stats, information about enemy
+per action trigger:from dying, attacked, collision, range, etc
+evaluation and decision of picking combination of responses
+plus responses: attacking, movement, death, etc.
+
+ui:
+*swap tactics: drop down
+*win and lose conditiosn: on off object if T/F *sys done
+*respawn logic per unit: if "hp==0" then schedule "respawn self"
+
+
+
+Medium game expanded into all systems
+Unit
+- ui
+- respawn
+- active choices[1]
+- show info
+- show and choose tactics
+- exp per time in combat and level up to buy
+
+
+Combat
+- apply choices for all units
+- run simulation
+- apply simulation
+- return rewards
+- win condition -> kill base unit.
+- ui
+- effects
+- win/lose ui
+
+[1]Choice
+- collection of choices(tactic/stats/skill)
+choice buy logic:
+- limits
+- buy if enough choice
+
+
+(Stat/Skill/Tactic) tree item system
+- ui. on click, select
+- combat active
+- unlocked
+- existing
+- cost
+
+unit research tree
+- content:skill tree item ui+connections
+- navigation
+- general goals ui
+- possible goals list
+- display content of skill
+- bonus: build content in same tree
+- bonus: random
+________________________________________________________
+
+08 05 2020 arhitektura
+units, small numbers
+ui with information
+stats
+skills
+tactics
+skill tree per character
+combat - die
+experience
+items
+gold
+
+high goal
+skill tree ui per character-
+limited tree choices
+	tactics infite
+	skills limited+
+	stats limited
+ui for showing active tree
+ui for choosing skill tree on charcter and upgrading
+list of active skills
+buy tree with exp
+system to make skills adn trees easily
+-
+combat - 
+- change of tactics
+- die, revive
+- exp gather constantly with actions giving more
+- win fight by destroying enemy base unit
+	-

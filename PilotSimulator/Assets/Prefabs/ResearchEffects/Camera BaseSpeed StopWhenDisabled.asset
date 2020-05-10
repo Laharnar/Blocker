@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c014ee867b0042a4baadda5518c56915, type: 3}
   m_Name: Camera BaseSpeed StopWhenDisabled
   m_EditorClassIdentifier: 
+  use:
+    value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 1
+  lastRan: 91.94758
   start:
     value: {fileID: 11400000, guid: 457efe4a338dc2d4e82c8f738c9935de, type: 2}
     useFloats: 0
@@ -20,6 +25,8 @@ MonoBehaviour:
     z: {fileID: 0}
     useDefault: 0
     defaultValue: {x: 0.0060201, y: 0, z: 0.0060201}
+    log: {x: 0.0403211, y: 0, z: 0.0403211}
+  logStart: {x: 0.0403211, y: 0, z: 0.0403211}
   useX:
     value: {fileID: 11400000, guid: 53dd6916957aea54da6810dde89359a9, type: 2}
     useDefault: 0
@@ -32,6 +39,11 @@ MonoBehaviour:
     value: {fileID: 11400000, guid: 53dd6916957aea54da6810dde89359a9, type: 2}
     useDefault: 0
     defaultValue: 0
+  reversing:
+    reverseX: {fileID: 0}
+    reverseY: {fileID: 0}
+    reverseZ: {fileID: 0}
+  noneWereUsed: 1
   ifNoneUsedFalse:
     value: {fileID: 0}
     useFloats: 0
@@ -40,6 +52,7 @@ MonoBehaviour:
     z: {fileID: 0}
     useDefault: 1
     defaultValue: {x: 0, y: 0, z: 0}
+    log: {x: 0, y: 0, z: 0}
   vectorOperations:
     array: {fileID: 0}
     useDefault: 1
@@ -51,6 +64,7 @@ MonoBehaviour:
       z: {fileID: 0}
       useDefault: 1
       defaultValue: {x: 1, y: 0, z: 1}
+      log: {x: 0, y: 0, z: 0}
     readOnly: 1
   op:
     op: 0
@@ -62,3 +76,5 @@ MonoBehaviour:
     z: {fileID: 0}
     useDefault: 0
     defaultValue: {x: 0, y: 0, z: 0}
+    log: {x: 0, y: 0, z: 0}
+  logResult: {x: 0, y: 0, z: 0}

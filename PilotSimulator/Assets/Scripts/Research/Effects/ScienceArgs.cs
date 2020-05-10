@@ -13,6 +13,7 @@ public class ScienceArgs
     [SerializeField] Transform source;
     public Transform Source {
         get {
+            RealtimeTester.Assert(true, null, "ScienceArgs. anything connected to this should use local solution.");
             if (source == null)
             {
                 throw new NullReferenceException("source transform isn't assigned.");

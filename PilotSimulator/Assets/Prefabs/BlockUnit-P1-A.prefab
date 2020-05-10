@@ -53,7 +53,7 @@ MonoBehaviour:
     value: {fileID: 0}
     useDefault: 1
     defaultValue: 1
-    log: 0
+    log: 1
   direction: {x: 0, y: 0, z: 1}
   rotationDeg: {x: 0, y: 30, z: 0}
   scaling: {x: 1, y: 1, z: 1}
@@ -71,6 +71,7 @@ MonoBehaviour:
     z: {fileID: 0}
     useDefault: 0
     defaultValue: {x: 0, y: 0, z: 0}
+    log: {x: 0, y: 0, z: 0}
   expectedRotation:
     value: {fileID: 11400000, guid: 60eebbba641bd2240a8c70e2d2fa5031, type: 2}
     useFloats: 0
@@ -79,6 +80,7 @@ MonoBehaviour:
     z: {fileID: 0}
     useDefault: 0
     defaultValue: {x: 0, y: 0, z: 0}
+    log: {x: 0, y: 0, z: 0}
   postPrediction:
     m_PersistentCalls:
       m_Calls:
@@ -128,9 +130,11 @@ MonoBehaviour:
     useDefault: 1
     defaultValue: 1
   ScienceTree: {fileID: 11400000, guid: 78d3412026269af4da3f849f1455576e, type: 2}
-  Effects:
+  Effects: []
+  SimpleEffects:
   - {fileID: 11400000, guid: b314711b4458f8b4f825be8c00efefd0, type: 2}
   - {fileID: 11400000, guid: e0757a3a93588914dba1f09f794c2e36, type: 2}
+  - {fileID: 11400000, guid: fe62a12da3b1ac1458fae5ae138af060, type: 2}
   onDone:
     m_PersistentCalls:
       m_Calls:
@@ -794,7 +798,7 @@ PrefabInstance:
     - target: {fileID: 6461024968728099333, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
         type: 3}
       propertyPath: m_Name
-      value: BlockUnit-P1-A
+      value: BlockUnit-P1-A (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6719436536200536968, guid: 0fc4fec27f6210843bb124b24f8a4bbf,
         type: 3}

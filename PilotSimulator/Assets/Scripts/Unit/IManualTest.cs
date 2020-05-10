@@ -1,0 +1,4 @@
+﻿interface IManualTest
+{
+    void RunTests();
+}

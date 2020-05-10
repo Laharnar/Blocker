@@ -6,16 +6,19 @@ using UnityEngine.Events;
 
 public class ProgrammableDelay:MonoBehaviour {
 
-    public FloatVarRef[] delays;
-    public IntVarValue activeDelay;
-    public UnityEvent onReady;
-    public ConditionGroup condition;
+    public UnityEvent onStart;
 
+    public IntVarValue activeDelay;
+    public FloatVarRef[] delays;
+    public ConditionGroup condition;
     public bool ignoreFirstActivation = true;
+    public UnityEvent onReady;
+
     bool ignoredFirst = false;
 
     private void Start()
     {
+        onStart.Invoke();
         StartCoroutine(RunDelays());
     }
 

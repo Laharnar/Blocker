@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using UnityEngine.Assertions;
 
 [System.Serializable]
 public class ConditionGroup {
@@ -10,12 +10,24 @@ public class ConditionGroup {
     public int op;// 0: and, 1: or
     public bool skip = false;
     public bool valueOnSkip = true;
+    public bool refactored = false;
+    public bool valueOnSkipOrEmpty = true;
+
+    void Refactored()
+    {
+        if (!refactored)
+        {
+            valueOnSkipOrEmpty = valueOnSkip;
+            RealtimeTester.Assert(refactored == true, this, "Unknown ConditionGroup isn't deployed at valueOnSkipOrEmpty.");
+        }
+    }
 
     public bool IsTrue()
     {
+        Refactored();
         if (skip)
         {
-            return valueOnSkip;
+            return valueOnSkipOrEmpty;
         }
         if (op == 0)
         {
@@ -35,6 +47,7 @@ public class ConditionGroup {
 
     public bool IsFalse()
     {
+        Refactored();
         return IsTrue();
     }
 
@@ -42,7 +55,7 @@ public class ConditionGroup {
     {
         if (conditions.Length == 0)
         {
-            return valueOnSkip;
+            return valueOnSkipOrEmpty;
         }
         for (int i = 0; i < conditions.Length; i++)
         {
@@ -60,7 +73,7 @@ public class ConditionGroup {
     {
         if (conditions.Length == 0)
         {
-            return valueOnSkip;
+            return valueOnSkipOrEmpty;
         }
         for (int i = 0; i < conditions.Length; i++)
         {

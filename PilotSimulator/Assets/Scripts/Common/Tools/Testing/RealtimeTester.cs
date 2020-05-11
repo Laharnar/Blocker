@@ -50,9 +50,13 @@ public class RealtimeTester:MonoBehaviour
         Singleton.AddFailure(new Failure(source, v));
     }
 
-    internal static void AssertSceneReference(MonoBehaviour script)
+    internal static void AssertSceneReference(MonoBehaviour script, MonoBehaviour source)
     {
-        Assert(script != null, script, "Script isn't assigned in inspector.");
+        Assert(script != null, source, "Some script isn't assigned in inspector.");
+    }
+    internal static void AssertSceneReference(MonoBehaviour script, MonoBehaviour source, string msg)
+    {
+        Assert(script != null, source, "Some isn't assigned in inspector. "+msg);
     }
 
     internal static void Err(MonoBehaviour source, string v)

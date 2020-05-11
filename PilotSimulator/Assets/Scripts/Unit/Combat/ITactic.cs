@@ -1,5 +1,5 @@
 ﻿public interface ITactic
 {
-    public TacticResult SuggestedResult { get; set; }
-    public void Simulate();
+    TacticResult SuggestedResult { get; set; }
+    void Simulate();
 }

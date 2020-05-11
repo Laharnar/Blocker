@@ -13,7 +13,7 @@ public class CombatCollisionTrigger : MonoBehaviour, ICombatTrigger
         public GameObject target;
     }
 
-    public static List<CollisionInfo> collisions = new List<CollisionInfo>();
+    public List<CollisionInfo> collisions = new List<CollisionInfo>();
 
     private void Update()
     {

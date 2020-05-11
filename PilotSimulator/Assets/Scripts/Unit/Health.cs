@@ -1,12 +1,15 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Events;
-public class Health : MonoBehaviour {
+public class Health : MonoBehaviour, ITestable {
     public IntVarValue health;
     public IntVarValue maxHealth;
     public UnityEvent OnDamaged;
     public UnityEvent OnDestroyed;
-    public bool checkEveryFrame = true;
+
+    public bool selfDestroy = true;
+    public Transform destroyTarget;
+    public bool checkEveryFrameToCoverPrefabChanges => !health.useDefault;
 
     private void Start()
     {
@@ -44,12 +47,15 @@ public class Health : MonoBehaviour {
     private void DestroyFromHp()
     {
         OnDestroyed.Invoke();
-        Destroy(gameObject);
+        if(selfDestroy)
+            Destroy(gameObject);
+        else
+            Destroy(destroyTarget.gameObject);
     }
 
     private void Update() // this covers other sources of damage.
     {
-        if (checkEveryFrame)
+        if (checkEveryFrameToCoverPrefabChanges)
         {
             if (health.Value <= 0)
             {
@@ -58,4 +64,9 @@ public class Health : MonoBehaviour {
         }
     }
 
+    public void TestInitialState()
+    {
+        if(!selfDestroy)
+            RealtimeTester.Assert(destroyTarget != null, this, "Source DestroyTarget isn't assigned to Health.");
+    }
 }

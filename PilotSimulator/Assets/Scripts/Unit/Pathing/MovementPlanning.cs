@@ -65,6 +65,6 @@ public class MovementPlanning:MonoBehaviour, ITestable
 
     public void TestInitialState()
     {
-        RealtimeTester.AssertSceneReference(user);
+        RealtimeTester.AssertSceneReference(user, this);
     }
 }

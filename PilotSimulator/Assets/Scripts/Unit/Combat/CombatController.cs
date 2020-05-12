@@ -2,6 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+
 
 public class CombatController : MonoBehaviour
 {
@@ -16,6 +19,11 @@ public class CombatController : MonoBehaviour
     public float waitBetweenAttacks = 2f;
     public int searchForEnemyId = 0;
 
+    public MovementPlanning goTo;
+    [SerializeField] private CombatUser[] logAll;
+    [SerializeField] private CombatUser[] logEnemies;
+    [SerializeField] private CombatUser logEnemyTargat;
+
     // Update is called once per frame
     void Update()
     {
@@ -25,12 +33,23 @@ public class CombatController : MonoBehaviour
 
     private void Attack()
     {
+        // very lazy and slow search for enemies.
+        CombatUser[] all = GameObject.FindObjectsOfType<CombatUser>();
+        CombatUser[] enemies = GetEnemyUnits(all, searchForEnemyId);
+        CombatUser enemy = null;
+        if (enemies.Length > 0)
+        {
+            enemy = Closest(enemies);
+
+            goTo.OverwriteTargetAsFirst(enemy.transform.position);
+        }
+        logAll = all;
+        logEnemies = enemies;
+        logEnemyTargat = enemy;
 
         if (attackRange.collisions.Count > 0)
         {
-            CombatUser[] all = GameObject.FindObjectsOfType<CombatUser>();
-            CombatUser[] enemies = GetEnemyUnits(all, searchForEnemyId);
-            CombatUser enemy = Closest(enemies);
+
 
             if (!enemy)
             {

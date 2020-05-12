@@ -8,8 +8,10 @@ public class Health : MonoBehaviour, ITestable {
     public UnityEvent OnDestroyed;
 
     public bool selfDestroy = true;
+    public bool destroyed = false;
     public Transform destroyTarget;
     public bool checkEveryFrameToCoverPrefabChanges => !health.useDefault;
+
 
     private void Start()
     {
@@ -35,7 +37,6 @@ public class Health : MonoBehaviour, ITestable {
             Debug.Log("Damage negated.");
         }
 
-        Debug.Log(name + " recieve damage "+dmg);
         health.Value = Mathf.Clamp(health.Value - dmg, 0, maxHealth.Value);
         OnDamaged.Invoke();
         if (health.Value <= 0)
@@ -47,10 +48,16 @@ public class Health : MonoBehaviour, ITestable {
     private void DestroyFromHp()
     {
         OnDestroyed.Invoke();
-        if(selfDestroy)
+        if (selfDestroy)
+        {
+            destroyed = true;
             Destroy(gameObject);
+        }
         else
+        {
+            destroyed = true;
             Destroy(destroyTarget.gameObject);
+        }
     }
 
     private void Update() // this covers other sources of damage.
@@ -66,7 +73,7 @@ public class Health : MonoBehaviour, ITestable {
 
     public void TestInitialState()
     {
-        if(!selfDestroy)
+        if(!selfDestroy && !destroyed)
             RealtimeTester.Assert(destroyTarget != null, this, "Source DestroyTarget isn't assigned to Health.");
     }
 }

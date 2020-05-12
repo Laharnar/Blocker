@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner:MonoBehaviour {
+public class Spawner : MonoBehaviour
+{
     [SerializeField] TransformVarValue prefab;
     [SerializeField] TransformVarValue spawnPoint;
 
     static Dictionary<Spawner, List<Transform>> spawned = new Dictionary<Spawner, List<Transform>>();
+    [SerializeField] AutoLinker linkerForSpawned;
+
 
     void Awake()
     {
@@ -23,5 +26,8 @@ public class Spawner:MonoBehaviour {
     {
         Transform source = Instantiate(prefab.Value, pos, rot);
         spawned[this].Add(source);
+
+        linkerForSpawned.SetupLink(source);
+        
     }
 }

@@ -31,6 +31,15 @@ PrefabInstance:
       propertyPath: OnDestroyed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1372090157, guid: a35eeb385ca2f324ba326ff4ecf78702, type: 3}
+      propertyPath: groupId.value
+      value: 
+      objectReference: {fileID: 11400000, guid: 05a5fe1fef3465847bcf946514479590,
+        type: 2}
+    - target: {fileID: 1372090157, guid: a35eeb385ca2f324ba326ff4ecf78702, type: 3}
+      propertyPath: groupId.useDefault
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6322717010057583616, guid: a35eeb385ca2f324ba326ff4ecf78702,
         type: 3}
       propertyPath: m_LocalPosition.x

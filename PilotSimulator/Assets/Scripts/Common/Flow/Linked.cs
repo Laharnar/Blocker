@@ -1,26 +1,24 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
-
-public class Linked : MonoBehaviour
+﻿using ICSharpCode.NRefactory.Ast;
+using UnityEngine;
+public abstract class Linked : MonoBehaviour
 {
-    [SerializeField] bool used = true;
-    [SerializeField] UnityEvent onTriggered;
-    [SerializeField] bool log = false;
 
-    public virtual void TriggerLink()
-    {
-        if (!used) return;
-        if (log) Debug.Log("Link triggered."+name+" "+transform.root.name, this);
-        onTriggered.Invoke();
-    }
+    [SerializeField] Linker connectedTo;
+
+    protected Linker ConnectedTo { get => connectedTo; }
+
+    public abstract void OverLink();
 
     public void LinkTo(Linker linker)
     {
+        if (connectedTo != null)
+            UnlinkFrom(connectedTo);
         linker.Connect(this);
     }
 
     public void UnlinkFrom(Linker linker)
     {
+        connectedTo = null;
         linker.Disconnect(this);
     }
 }

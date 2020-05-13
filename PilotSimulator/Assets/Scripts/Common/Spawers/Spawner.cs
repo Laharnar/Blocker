@@ -24,10 +24,10 @@ public class Spawner : MonoBehaviour
 
     public void SpawnNew(Vector3 pos, Quaternion rot)
     {
-        Transform source = Instantiate(prefab.Value, pos, rot);
-        spawned[this].Add(source);
+        Transform spawnedNew = Instantiate(prefab.Value, pos, rot);
+        spawned[this].Add(spawnedNew);
 
-        linkerForSpawned.SetupLink(source);
+        linkerForSpawned.SetupLink(spawnedNew);
         
     }
 }

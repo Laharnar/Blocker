@@ -1,5 +1,56 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1647125575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1647125576}
+  - component: {fileID: 1647125577}
+  m_Layer: 0
+  m_Name: ExpEnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1647125576
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647125575}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8731769542941749814}
+  m_Father: {fileID: 8805458933758033212}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1647125577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647125575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b7de0a62d086bf499cc6682dd4bac10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expInGroups:
+  - value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 0
+  - value: {fileID: 0}
+    useDefault: 1
+    defaultValue: 0
 --- !u!1 &3951183415818118920
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,6 +191,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &8763874836002364138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8731769542941749814}
+  m_Layer: 0
+  m_Name: LinkToExpOnSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8731769542941749814
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8763874836002364138}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1647125576}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8805458933758033203
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,6 +251,7 @@ Transform:
   - {fileID: 8805458934556918545}
   - {fileID: 8651739634442138116}
   - {fileID: 2530737108157236940}
+  - {fileID: 1647125576}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -182,8 +264,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8805458934556918545}
-  - component: {fileID: 8805458934556918547}
   - component: {fileID: 8805458934556918546}
+  - component: {fileID: 1968539375170732687}
   m_Layer: 0
   m_Name: Revive
   m_TagString: Untagged
@@ -205,34 +287,6 @@ Transform:
   m_Father: {fileID: 8805458933758033212}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8805458934556918547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8805458934556918544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9525279b8c660e5459d8a353442d2f22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  used: 1
-  onTriggered:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8805458934556918546}
-        m_MethodName: SpawnNewAtSpawnPoint
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  log: 1
 --- !u!114 &8805458934556918546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,4 +310,34 @@ MonoBehaviour:
     defaultValue: {fileID: 8805458934556918545}
   linkerForSpawned:
     autoLink: 1
-    linkedSelf: {fileID: 8805458934556918547}
+    linkedSelf: {fileID: 1968539375170732687}
+    expgroup: {fileID: 1647125577}
+--- !u!114 &1968539375170732687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8805458934556918544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b783f6468e3040459874815d6ebc8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connectedTo: {fileID: 0}
+  used: 1
+  onTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8805458934556918546}
+        m_MethodName: SpawnNewAtSpawnPoint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  log: 0

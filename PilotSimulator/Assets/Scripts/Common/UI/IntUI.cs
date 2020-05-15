@@ -4,8 +4,6 @@ using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
-
 public class IntUI : MonoBehaviour
 {
     public TMP_Text text;

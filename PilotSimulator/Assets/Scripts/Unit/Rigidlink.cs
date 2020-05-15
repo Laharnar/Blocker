@@ -39,7 +39,10 @@ public class Rigidlink: IManualTest
 
     public void RunTests()
     {
-        RealtimeTester.Assert(!IsNull(), this, "Rigidbody 2D or 3D isn't assigned.");
+        if (transform)
+        {
+            RealtimeTester.Assert(!IsNull(), this, "Rigidbody 2D or 3D isn't assigned.");
+        }
     }
 
     public bool IsNull()

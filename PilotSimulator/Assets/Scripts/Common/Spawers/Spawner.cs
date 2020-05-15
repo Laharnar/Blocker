@@ -24,10 +24,16 @@ public class Spawner : MonoBehaviour
 
     public void SpawnNew(Vector3 pos, Quaternion rot)
     {
-        Transform spawnedNew = Instantiate(prefab.Value, pos, rot);
-        spawned[this].Add(spawnedNew);
+        if (spawned.ContainsKey(this))
+        {
+            Transform spawnedNew = Instantiate(prefab.Value, pos, rot);
+            spawned[this].Add(spawnedNew);
 
-        linkerForSpawned.SetupLink(spawnedNew);
-        
+            linkerForSpawned.SetupLink(spawnedNew);
+        }
+        else
+        {
+            Debug.LogError("Issue when trying to spawn. Key with this spawner doesn't exist in static global dictionary.", this);
+        }
     }
 }

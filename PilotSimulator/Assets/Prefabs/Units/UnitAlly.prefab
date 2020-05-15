@@ -836,8 +836,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed:
-    value: {fileID: 0}
-    useDefault: 1
+    value: {fileID: 11400000, guid: 9bf06b26d092ccd49af576a0ff62ba80, type: 2}
+    useDefault: 0
     defaultValue: 1
     log: 1
   rotationSpeed:

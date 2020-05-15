@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Events;
-public class ExpCollector : MonoBehaviour
+public class ExpCollector : MonoBehaviour, ITestable
 {
 
     public IntVarValue groupId;
@@ -37,8 +38,28 @@ public class ExpCollector : MonoBehaviour
         logAvaliableExp += value.intValue;
 
         onGetExp.Invoke();
-        expUser.Increase(value);
+        if(expUser)expUser.Increase(value);
 
         logAvaliableExp = 0;
     }
+
+    public void TestInitialState()
+    {
+        if (!Application.isPlaying)
+        {
+            if (expUser == null)
+            {
+                expUser = EmptyReference.Initializer<ExpGroup>(this);
+            }
+        }
+    }
+    private void OnDestroy()
+    {
+        if (!Application.isPlaying)
+        {
+            EmptyReference.DestroyTemporaryReference(expUser);
+        }
+    }
 }
+
+

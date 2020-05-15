@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor.WebGL.Il2Cpp;
 using UnityEngine;
 
+
 [ExecuteInEditMode]
 public class RealtimeTester:MonoBehaviour
 {
@@ -91,7 +92,7 @@ public class RealtimeTester:MonoBehaviour
     internal static void AssertSceneReference(MonoBehaviour script, MonoBehaviour source)
     {
         if (!Application.isPlaying || Time.time < 1)
-            Assert(script != null, source, "[1]Some script isn't assigned in inspector.");
+            Assert(script != null, source, "[1]Some script isn't assigned in inspector."+ source.GetType());
     }
     internal static void AssertSceneReference(MonoBehaviour script, MonoBehaviour source, string msg)
     {

@@ -19,6 +19,7 @@ public class PositionRotation : MonoBehaviour, ITestable {
     public UnityEvent postPrediction;
     public Vec3VarRef expectedMove;
     public Vec3VarRef expectedRotation;
+
     public bool normalize = false;
     public bool deltaTime = false;
     public bool fixedDelta = false;
@@ -202,6 +203,11 @@ public class PositionRotation : MonoBehaviour, ITestable {
                 RealtimeTester.Assert(rotationDeg != Vector3.zero && rotationSpeed.Value != 0, this, "Zero rotation parameters rotationDeg or rotationSpeed with unlocked rotation.");
         }
 
-        
+
     }
+    internal void IncreaseMovementSpeed(float moreSpeed)
+    {
+        moveSpeed.Value += moreSpeed;
+    }
+
 }

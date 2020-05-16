@@ -9,7 +9,7 @@ public class UpgradeClick:MonoBehaviour
         [SerializeField]internal float increase = 1;
     }
     public UpgradeData[] data;
-    public ButtonsList btns;
+    public PlaceHolderView placeholder;
 
     public void OnClick(int optionId)
     {
@@ -17,9 +17,12 @@ public class UpgradeClick:MonoBehaviour
         int money = 0;
         if (money >= cost)
         {
-            btns.Interact(new UICode()
+
+
+            placeholder.Interact(new UICode()
             {
-                userId = -1,
+                context = "ClickUpgrade",
+                userId = UICode.ACTIVEUSER,
                 data = new UpgradeData()
                 {
                     upgradeId = optionId,

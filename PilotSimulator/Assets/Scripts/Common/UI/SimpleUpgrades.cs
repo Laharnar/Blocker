@@ -15,13 +15,19 @@ public class SimpleUpgrades : ScriptableObject
         {
             attack += (int)data.increase;
         }
-        if (data.upgradeId == 0)
+        if (data.upgradeId == 1)
         {
             health += (int)data.increase;
         }
-        if (data.upgradeId == 0)
+        if (data.upgradeId == 2)
         {
             speed += data.increase;
         }
+    }
+    public void FullReset(SimpleUpgrades resetValues)
+    {
+        attack = resetValues.attack;
+        health = resetValues.health;
+        speed = resetValues.speed;
     }
 }

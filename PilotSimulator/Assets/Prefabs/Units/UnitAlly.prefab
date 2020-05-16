@@ -389,6 +389,7 @@ GameObject:
   - component: {fileID: 6322717010057583617}
   - component: {fileID: 6322717010757096716}
   - component: {fileID: 1062137913123300915}
+  - component: {fileID: 6635736892492744449}
   m_Layer: 0
   m_Name: UnitAlly
   m_TagString: Untagged
@@ -466,6 +467,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linkers:
   - {fileID: 1399210139328081185}
+--- !u!114 &6635736892492744449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6322717010057583619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1666ae82dd62c4f9f274acea80db3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attacking: {fileID: 6322717010757096712}
+  survival: {fileID: 2144158}
+  movement: {fileID: 6322717011786269136}
 --- !u!1 &6322717010061070581
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,7 +855,7 @@ MonoBehaviour:
     value: {fileID: 11400000, guid: 9bf06b26d092ccd49af576a0ff62ba80, type: 2}
     useDefault: 0
     defaultValue: 1
-    log: 1
+    log: 0.4
   rotationSpeed:
     value: {fileID: 0}
     useDefault: 1

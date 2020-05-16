@@ -22,6 +22,12 @@ public class Health : MonoBehaviour, ITestable {
         health.Value = maxHealth.Value;
     }
 
+    internal void IncreaseMaxHp(int health)
+    {
+        maxHealth.Value += health;
+        this.health.Value += health;
+    }
+
     public void RecieveDamage(int dmg)
     {
         if (dmg < 0)

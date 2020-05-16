@@ -15,6 +15,12 @@ public class CombatController : MonoBehaviour
 
     public CombatCollisionTrigger attackRange;
     public AttackAction basicAttackDamage = new AttackAction(1);
+
+    internal void IncreaseDamage(int attack)
+    {
+        basicAttackDamage.damage += attack;
+    }
+
     public float attackLength = 0.1f;
     public float waitBetweenAttacks = 2f;
     public int searchForEnemyId = 0;

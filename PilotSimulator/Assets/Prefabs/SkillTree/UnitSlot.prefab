@@ -1432,7 +1432,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetUI: {fileID: 0}
   useCase:
-    id: 0
+    userId: 1
+    context: SelectUser
 --- !u!1 &8207313001847643241
 GameObject:
   m_ObjectHideFlags: 0

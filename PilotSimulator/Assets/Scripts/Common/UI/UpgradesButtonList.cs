@@ -32,10 +32,9 @@ public class UpgradesButtonList : PlaceHolderView
             upgradesOfUsers[activeUser].Increase(code.data);
         }
 
-        buttons[0].text = ""+upgradesOfUsers[activeUser].attack;
-        buttons[1].text = ""+upgradesOfUsers[activeUser].health;
-        buttons[2].text = ""+upgradesOfUsers[activeUser].speed;
-
+        buttons[0].text = ""+upgradesOfUsers[activeUser].attack.GetModSum();
+        buttons[1].text = ""+upgradesOfUsers[activeUser].health.GetModSum();
+        buttons[2].text = ""+upgradesOfUsers[activeUser].speed.GetModSum();
     }
 
     public void SetUser(int userId)

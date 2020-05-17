@@ -3,7 +3,7 @@ public class UICode
 {
     public int userId;
     public string context;
-    internal UpgradeClick.UpgradeData data;
+    internal UpgradeData data;
     public const int ACTIVEUSER = -2;
-    public const UpgradeClick.UpgradeData EMPTYDATA = null;
+    public const UpgradeData EMPTYDATA = null;
 }

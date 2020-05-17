@@ -6,8 +6,8 @@ public class CombatUser:MonoBehaviour
     public Alliance alliance;
     public Health hp;
 
-    public void Damage(AttackAction basicAttackDamage)
+    public void Damage(int damage)
     {
-        hp.RecieveDamage(basicAttackDamage.damage);
+        hp.RecieveDamage(damage);
     }
 }

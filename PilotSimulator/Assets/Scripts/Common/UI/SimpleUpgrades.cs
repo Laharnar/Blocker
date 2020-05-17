@@ -1,29 +1,38 @@
 ﻿using System;
 using UnityEngine;
-
 [CreateAssetMenu]
-public class SimpleUpgrades : ScriptableObject
+public class SimpleUpgrades : UpgradePrefab
 {
-    public int attack = 0;
-    public int health = 0;
-    public float speed = 0;
+    public UpgradeMods attack;
+    public UpgradeMods health; 
+    public UpgradeMods speed;
 
 
-    internal void Increase(UpgradeClick.UpgradeData data)
+    public override void Increase(UpgradeData data)
     {
-        if (data.upgradeId == 0)
+        AddModifier(data);
+    }
+
+    private void AddModifier(UpgradeData data)
+    {
+        if (data.upgradeType == "Attack")
         {
-            attack += (int)data.increase;
+            attack.Add(data);
         }
-        if (data.upgradeId == 1)
+        else if (data.upgradeType == "Health")
         {
-            health += (int)data.increase;
+            health.Add(data);
         }
-        if (data.upgradeId == 2)
+        else if (data.upgradeType == "Speed")
         {
-            speed += data.increase;
+            speed.Add(data);
+        }
+        else
+        {
+            Debug.LogError("Unhandled upgrade type " + data.upgradeType, this);
         }
     }
+
     public void FullReset(SimpleUpgrades resetValues)
     {
         attack = resetValues.attack;

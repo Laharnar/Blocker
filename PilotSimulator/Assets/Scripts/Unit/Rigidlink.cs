@@ -13,7 +13,9 @@ public class Rigidlink: IManualTest
             {
                 return rig.transform;
             }
-            return rig2.transform;
+            if(rig2!= null)
+                return rig2.transform;
+            return null;
         }
     }
 

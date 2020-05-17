@@ -1,7 +1,8 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Events;
-public class Health : MonoBehaviour, ITestable {
+public class Health : MonoBehaviour, ITestable, IHealth
+{
     public IntVarValue health;
     public IntVarValue maxHealth;
     public UnityEvent OnDamaged;
@@ -12,6 +13,17 @@ public class Health : MonoBehaviour, ITestable {
     public Transform destroyTarget;
     public bool checkEveryFrameToCoverPrefabChanges => !health.useDefault;
 
+    public int Hp {
+        get {
+            return health.Value;
+        }
+    }
+
+    public int MaxHp {
+        get {
+            return maxHealth.Value;
+        }
+    }
 
     private void Start()
     {
@@ -20,12 +32,6 @@ public class Health : MonoBehaviour, ITestable {
             Debug.LogError("Max hp is 0."+name, this);
         }
         health.Value = maxHealth.Value;
-    }
-
-    internal void IncreaseMaxHp(int health)
-    {
-        maxHealth.Value += health;
-        this.health.Value += health;
     }
 
     public void RecieveDamage(int dmg)
@@ -42,8 +48,7 @@ public class Health : MonoBehaviour, ITestable {
         {
             Debug.Log("Damage negated.");
         }
-
-        health.Value = Mathf.Clamp(health.Value - dmg, 0, maxHealth.Value);
+        health.Value = Mathf.Clamp(Hp - dmg, 0, MaxHp);
         OnDamaged.Invoke();
         if (health.Value <= 0)
         {

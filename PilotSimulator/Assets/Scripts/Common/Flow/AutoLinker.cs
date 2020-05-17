@@ -13,6 +13,7 @@ public class AutoLinker
     {
         if (autoLink)
         {
+            // connect script data from spawner to spawned
             LinkerRoot target = t.GetComponent<LinkerRoot>();
             RealtimeTester.Assert(target != null, t, "Spawned object doesn't have LinkerRoot script. " + t.name);
 

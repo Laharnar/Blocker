@@ -2,9 +2,9 @@
 
 public class UpgradeInit:MonoBehaviour, IInitializer
 {
-    public CombatController attacking;
-    public Health survival;
-    public PositionRotation movement;
+    public MonoUserMods attacking;
+    public MonoUserMods health;
+    public MonoUserMods movement;
 
     public void InitOnSpawn(string code, object args)
     {
@@ -13,9 +13,9 @@ public class UpgradeInit:MonoBehaviour, IInitializer
             SimpleUpgrades upgrades = (SimpleUpgrades)args;
             // replace increase flat values with modifiers sometime.
             // class 1: list of modifiers. hp.get damage -> call modifiers.
-            attacking.IncreaseDamage(upgrades.attack);
-            survival.IncreaseMaxHp(upgrades.health);
-            movement.IncreaseMovementSpeed(upgrades.speed);
+            attacking.InitMods(upgrades.attack);
+            health.InitMods(upgrades.health);
+            movement.InitMods(upgrades.speed);
         }
     }
 

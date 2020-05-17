@@ -192,7 +192,6 @@ public class PositionRotation : MonoBehaviour, ITestable {
         {
             if(needsRigidbody)
                 rigbody.RunTests();
-            RealtimeTester.Assert(this != null, this, "Transfrom to move isn't assigned.");
         }
         RealtimeTester.Assert(moveSpeed.Value != 0, this, "Zero movement speed.");
 
@@ -205,9 +204,4 @@ public class PositionRotation : MonoBehaviour, ITestable {
 
 
     }
-    internal void IncreaseMovementSpeed(float moreSpeed)
-    {
-        moveSpeed.Value += moreSpeed;
-    }
-
 }

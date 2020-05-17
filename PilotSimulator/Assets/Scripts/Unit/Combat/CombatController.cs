@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
-
-
-public class CombatController : MonoBehaviour
+public class CombatController : MonoUserMods
 {
     public CombatUser self;
 
@@ -16,11 +15,6 @@ public class CombatController : MonoBehaviour
     public CombatCollisionTrigger attackRange;
     public AttackAction basicAttackDamage = new AttackAction(1);
 
-    internal void IncreaseDamage(int attack)
-    {
-        basicAttackDamage.damage += attack;
-    }
-
     public float attackLength = 0.1f;
     public float waitBetweenAttacks = 2f;
     public int searchForEnemyId = 0;
@@ -29,6 +23,7 @@ public class CombatController : MonoBehaviour
     [SerializeField] private CombatUser[] logAll;
     [SerializeField] private CombatUser[] logEnemies;
     [SerializeField] private CombatUser logEnemyTargat;
+
 
     // Update is called once per frame
     void Update()
@@ -67,6 +62,8 @@ public class CombatController : MonoBehaviour
             }
         }
     }
+    
+    float Damage{ get => basicAttackDamage.GetDamage(userMods); }
 
     private static CombatUser[] GetEnemyUnits(CombatUser[] mixed, int enemyId)
     {
@@ -102,8 +99,14 @@ public class CombatController : MonoBehaviour
     private IEnumerator AttackRoutine(CombatUser attacked)
     {
         attackingLocked = true;
-
-        attacked.Damage(basicAttackDamage);
+        try
+        {
+            attacked.Damage((int)Damage);
+        }
+        catch (Exception e)
+        {
+            Debug.LogException(e);
+        }
         sprite.color = Color.red;
         yield return new WaitForSeconds(attackLength);
         sprite.color = Color.white;

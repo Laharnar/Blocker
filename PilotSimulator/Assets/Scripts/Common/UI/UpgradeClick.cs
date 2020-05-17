@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
-
-public class UpgradeClick:MonoBehaviour
+public class UpgradeClick:MonoBehaviour, ITestable
 {
-    [System.Serializable]
-    public class UpgradeData
-    {
-        [SerializeField]internal int upgradeId = 0;
-        [SerializeField]internal float increase = 1;
-    }
-    public UpgradeData[] data;
+
+    [SerializeField] UpgradeData[] data;
     public PlaceHolderView placeholder;
+
+    public string GetUpgradeType(int i) {
+        return data[i].upgradeType;
+    }
 
     public void OnClick(int optionId)
     {
@@ -17,18 +15,20 @@ public class UpgradeClick:MonoBehaviour
         int money = 0;
         if (money >= cost)
         {
-
-
             placeholder.Interact(new UICode()
             {
                 context = "ClickUpgrade",
                 userId = UICode.ACTIVEUSER,
-                data = new UpgradeData()
-                {
-                    upgradeId = optionId,
-                    increase = data[optionId].increase
-                }
+                data= data[optionId].Copy()
             });
+        }
+    }
+
+    public void TestInitialState()
+    {
+        for (int i = 0; i < data.Length; i++)
+        {
+            data[i].TestInitialState(this);
         }
     }
 }

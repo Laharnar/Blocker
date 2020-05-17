@@ -28,7 +28,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  log: 0
+  log: 1
 --- !u!1001 &7821581985406049268
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43,7 +43,7 @@ PrefabInstance:
     - target: {fileID: 8805458933758033203, guid: 91a1b8f5dbd60764197525db66a70555,
         type: 3}
       propertyPath: m_Name
-      value: CastleAlly
+      value: CastleAlly (2)
       objectReference: {fileID: 0}
     - target: {fileID: 8805458933758033212, guid: 91a1b8f5dbd60764197525db66a70555,
         type: 3}
@@ -53,7 +53,7 @@ PrefabInstance:
     - target: {fileID: 8805458933758033212, guid: 91a1b8f5dbd60764197525db66a70555,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.5
+      value: 2.63
       objectReference: {fileID: 0}
     - target: {fileID: 8805458933758033212, guid: 91a1b8f5dbd60764197525db66a70555,
         type: 3}
@@ -126,6 +126,12 @@ PrefabInstance:
       propertyPath: linkerForSpawned.linkedSelf
       value: 
       objectReference: {fileID: 8636355155988781435}
+    - target: {fileID: 8805458934556918546, guid: 91a1b8f5dbd60764197525db66a70555,
+        type: 3}
+      propertyPath: linkerForSpawned.upgrades
+      value: 
+      objectReference: {fileID: 11400000, guid: 350ad689326b0e049acc9bb8ba0bbe5c,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 1968539375170732687, guid: 91a1b8f5dbd60764197525db66a70555, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 91a1b8f5dbd60764197525db66a70555, type: 3}

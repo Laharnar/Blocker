@@ -5,7 +5,7 @@ public class EmptyReference
 {
     public static T Initializer<T>(MonoBehaviour source) where T : Component
     {
-        Debug.Log("[Automatic setup] Creating temporary object: TempAutoReference linked to ExpCollector", source);
+        Debug.Log("[Automatic setup] Creating temporary object: TempAutoReference linked to " + typeof(T), source);
         T comp = new GameObject("[delete any time]TempAutoReference"+typeof(T)).AddComponent<T>();
         return comp;
     }
@@ -19,7 +19,7 @@ public class EmptyReference
     {
         if (target == null)
         {
-            Debug.Log("[Automatic setup] Creating temporary object: TempAutoReference linked to ExpCollector", source);
+            Debug.Log("[Automatic setup] Creating temporary object: TempAutoReference linked to " + typeof(T), source);
             T comp = new GameObject("[delete any time]TempAutoReference" + typeof(T)).AddComponent<T>();
             target = comp;
         }

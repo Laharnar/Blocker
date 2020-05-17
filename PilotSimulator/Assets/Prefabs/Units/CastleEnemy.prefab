@@ -312,6 +312,7 @@ MonoBehaviour:
     autoLink: 1
     linkedSelf: {fileID: 1968539375170732687}
     expgroup: {fileID: 1647125577}
+    upgrades: {fileID: 11400000, guid: dd9ab6c558f91904ba764f1e0938d0a9, type: 2}
 --- !u!114 &1968539375170732687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,4 +341,4 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  log: 0
+  log: 1

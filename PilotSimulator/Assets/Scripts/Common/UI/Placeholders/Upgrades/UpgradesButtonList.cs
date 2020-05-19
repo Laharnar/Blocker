@@ -1,6 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿
 using System.Collections.Generic;
-using System.Data.SqlTypes;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +8,7 @@ public class UpgradesButtonList : PlaceHolderView
     [SerializeField] List<SimpleUpgrades> upgradesOfUsers;
     [SerializeField] TMPro.TMP_Text title;
     [SerializeField] TMPro.TMP_Text[] buttons;
-    public int activeUser; // set active use when changing ui, then 
+    int activeUser; // set active use when changing ui, then 
 
     public override void ResponseHandler(ResponseToClick response)
     {
@@ -19,28 +18,34 @@ public class UpgradesButtonList : PlaceHolderView
             return;
         }
         Debug.LogError("TestableDestroyableMono if upgrades work");
-
         if (response.context == "SelectUser")
         {
-            Debug.Log("SelectUser :: "+activeUser);
-            activeUser = response.userId;
-            title.text = "User" + (activeUser + 1);
+            SetUser(response.userId);
         }
 
         if (response.context == "ClickUpgrade")
         {
-            Debug.Log("ClickUpgrade :: on "+activeUser+ " upId: "+response.data.upgradeId);
-            upgradesOfUsers[activeUser].Increase(response.data);
+            UpgradeUser(activeUser, response.data);
         }
 
-        buttons[0].text = ""+upgradesOfUsers[activeUser].attack.GetModSum();
-        buttons[1].text = ""+upgradesOfUsers[activeUser].health.GetModSum();
-        buttons[2].text = ""+upgradesOfUsers[activeUser].speed.GetModSum();
+        buttons[0].text = "" + upgradesOfUsers[activeUser].attack.GetModSum();
+        buttons[1].text = "" + upgradesOfUsers[activeUser].health.GetModSum();
+        buttons[2].text = "" + upgradesOfUsers[activeUser].speed.GetModSum();
+    }
+
+    private void UpgradeUser(int user, UpgradeData data)
+    {
+        Debug.Log("ClickUpgrade :: on " + user + " upId: " + data.upgradeId);
+        upgradesOfUsers[user].Increase(data);
     }
 
 
+    // Can be used in button events.
     public void SetUser(int userId)
     {
+        Debug.Log("Set user "+userId);
         activeUser = userId;
+        title.text = "User" + (activeUser + 1);
     }
+
 }

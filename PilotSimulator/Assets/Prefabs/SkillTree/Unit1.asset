@@ -17,7 +17,13 @@ MonoBehaviour:
     - upgradeId: 0
       upgradeType: Attack
       increase: 1
+    - upgradeId: 0
+      upgradeType: Attack
+      increase: 1
+    modType: Attack
   health:
     mods: []
+    modType: Health
   speed:
     mods: []
+    modType: Speed

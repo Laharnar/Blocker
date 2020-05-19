@@ -1,12 +1,12 @@
 ﻿using System;
 using UnityEngine;
+
 [CreateAssetMenu]
 public class SimpleUpgrades : UpgradePrefab
 {
     public UpgradeMods attack;
     public UpgradeMods health; 
     public UpgradeMods speed;
-
 
     public override void Increase(UpgradeData data)
     {
@@ -35,8 +35,8 @@ public class SimpleUpgrades : UpgradePrefab
 
     public void FullReset(SimpleUpgrades resetValues)
     {
-        attack = resetValues.attack;
-        health = resetValues.health;
-        speed = resetValues.speed;
+        attack = resetValues.attack.HardCopy();
+        health = resetValues.health.HardCopy();
+        speed = resetValues.speed.HardCopy();
     }
 }

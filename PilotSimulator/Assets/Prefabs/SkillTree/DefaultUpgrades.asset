@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: DefaultUpgrades
   m_EditorClassIdentifier: 
   attack:
-    mods:
-    - upgradeId: 0
-      upgradeType: Attack
-      increase: 1
+    mods: []
+    modType: Attack
   health:
     mods: []
+    modType: Health
   speed:
     mods: []
+    modType: Speed

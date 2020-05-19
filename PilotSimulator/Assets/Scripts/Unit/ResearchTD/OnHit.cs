@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Events;
 
+[System.Obsolete("Use other collision system.")]
 public class OnHit : MonoBehaviour, ITestable
 {
 

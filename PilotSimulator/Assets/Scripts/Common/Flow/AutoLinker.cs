@@ -29,7 +29,7 @@ public class AutoLinker
 
     private void ConnectUpgradesToChild(Transform t)
     {
-        IInitializer user = t.GetComponentInChildren<IInitializer>();
+        ISpawnInitializer user = t.GetComponentInChildren<ISpawnInitializer>();
         user.InitOnSpawn("upgrades", upgrades);
     }
 }

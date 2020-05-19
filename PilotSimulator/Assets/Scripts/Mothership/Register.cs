@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Register:MonoBehaviour {
+[System.Obsolete("Legacy/turn based.")]
+public class Register : MonoBehaviour {
 
     [Tooltip("Register on start if you don't intend to have another way to register this script.")]
     public bool registerOnStart = true;

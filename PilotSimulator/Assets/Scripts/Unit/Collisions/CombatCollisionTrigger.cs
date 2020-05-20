@@ -6,6 +6,7 @@ public class CombatCollisionTrigger : MonoBehaviour, ICombatTrigger
 
     public int staticLogCount;
 
+    [System.Serializable]
     public class CollisionInfo
     {
         public string code;
@@ -14,6 +15,10 @@ public class CombatCollisionTrigger : MonoBehaviour, ICombatTrigger
     }
 
     public List<CollisionInfo> collisions = new List<CollisionInfo>();
+
+    public CircleCollider2D circleCollider;
+
+    public float Range { get => circleCollider.radius; }
 
     private void Update()
     {

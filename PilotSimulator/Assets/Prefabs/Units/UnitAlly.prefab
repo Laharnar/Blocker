@@ -73,6 +73,8 @@ MonoBehaviour:
   selfDestroy: 0
   destroyed: 0
   destroyTarget: {fileID: 6322717010057583616}
+  logDamage: 0
+  logDeath: 1
 --- !u!114 &1389475476959222552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,6 +559,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   staticLogCount: 0
+  collisions: []
+  circleCollider: {fileID: 6322717010061070576}
 --- !u!1 &6322717010470451138
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,7 +874,7 @@ MonoBehaviour:
     value: {fileID: 11400000, guid: 9bf06b26d092ccd49af576a0ff62ba80, type: 2}
     useDefault: 0
     defaultValue: 1
-    log: 0.4
+    log: 1
   rotationSpeed:
     value: {fileID: 0}
     useDefault: 1
@@ -958,8 +962,7 @@ MonoBehaviour:
     readOnly: 0
   _operator:
     op: 0
-    emptyInput:
-      vector: {x: 0, y: 0, z: 0}
+    emptyInput: {x: 0, y: 0, z: 0}
   user: {fileID: 6322717011786269136}
   minDistance: 0.3
 --- !u!114 &1719786565364186448
@@ -1103,7 +1106,9 @@ MonoBehaviour:
   attackLength: 0.1
   waitBetweenAttacks: 0.9
   searchForEnemyId: 1
+  searchByEnemyFlagId: 0
   goTo: {fileID: 6322717011786269139}
   logAll: []
   logEnemies: []
+  logPickedEnemyTargetId: 0
   logEnemyTargat: {fileID: 0}

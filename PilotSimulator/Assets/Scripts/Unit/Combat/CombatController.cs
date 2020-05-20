@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class CombatController : MonoUserMods
+public class CombatController : MonoUserMods, ITestable
 {
     public CombatUser self;
 
@@ -18,12 +19,14 @@ public class CombatController : MonoUserMods
     public float attackLength = 0.1f;
     public float waitBetweenAttacks = 2f;
     public int searchForEnemyId = 0;
+    public int searchByEnemyFlagId = 0;
 
-    public MovementPlanning goTo;
+    [SerializeField] MovementPlanning goTo;
     [SerializeField] private CombatUser[] logAll;
-    [SerializeField] private CombatUser[] logEnemies;
+    [SerializeField] private List<CombatUser> logEnemies;
+    [SerializeField] int logPickedEnemyTargetId= 0;
     [SerializeField] private CombatUser logEnemyTargat;
-
+   
 
     // Update is called once per frame
     void Update()
@@ -36,61 +39,83 @@ public class CombatController : MonoUserMods
     {
         // very lazy and slow search for enemies.
         CombatUser[] all = GameObject.FindObjectsOfType<CombatUser>();
-        CombatUser[] enemies = GetEnemyUnits(all, searchForEnemyId);
-        CombatUser enemy = null;
-        if (enemies.Length > 0)
+        List<CombatUser> enemies = GetUnitsByFlag(all.ToList(), searchByEnemyFlagId);
+        List<CombatUser> attackableEnemy = GetAttackable(enemies);
+        CombatUser enemyToFollow = null;
+        if (attackableEnemy.Count > 0)
         {
-            enemy = Closest(enemies);
-
-            goTo.OverwriteTargetAsFirst(enemy.transform.position);
-        }
-        logAll = all;
-        logEnemies = enemies;
-        logEnemyTargat = enemy;
-
-        if (attackRange.collisions.Count > 0)
-        {
-
-
-            if (!enemy)
+            int closestEnemyId = Closest(attackableEnemy);
+            if(closestEnemyId == -1)
             {
-                Debug.LogError("Enemy count is 0 when searching for " + searchForEnemyId, this);
+                Debug.LogError("Enemy not picked.");
             }
             else
             {
-                StartCoroutine(AttackRoutine(enemy));
+                enemyToFollow = enemies[closestEnemyId];
+                
+                // walk to enemy
+                goTo.OverwriteTargetAsFirst(enemyToFollow.transform.position);
             }
         }
+        logAll = all;
+        logEnemies = attackableEnemy;
+        logEnemyTargat = enemyToFollow;
+
+        
+        if (enemyToFollow)
+        {
+            if (Vector3.Distance(enemyToFollow.transform.position, transform.position) < attackRange.Range)
+            {
+                StartCoroutine(AttackRoutine(enemyToFollow));
+            }
+        }
+        else
+        {
+            Debug.LogError("Enemy count is 0 when searching for " + searchForEnemyId, this);
+        }
     }
-    
+
+    private List<CombatUser> GetAttackable(List<CombatUser> group)
+    {
+        List<CombatUser> attackable = new List<CombatUser>();
+        for (int i = 0; i < group.Count; i++)
+        {
+            if (group[i].IsAttackable)
+            {
+                attackable.Add(group[i]);
+            }
+        }
+        return group;
+    }
+
     float Damage{ get => basicAttackDamage.GetDamage(userMods); }
 
-    private static CombatUser[] GetEnemyUnits(CombatUser[] mixed, int enemyId)
+    private static List<CombatUser> GetUnitsByFlag(List<CombatUser> mixed, int allyId)
     {
-        List<CombatUser> enemies = new List<CombatUser>();
-        for (int i = 0; i < mixed.Length; i++)
+        List<CombatUser> allies = new List<CombatUser>();
+        for (int i = 0; i < mixed.Count; i++)
         {
-            if(mixed[i].alliance.thisAlliance == enemyId)
+            if(mixed[i].alliance.thisAlliance == allyId)
             {
-                enemies.Add(mixed[i]);
+                allies.Add(mixed[i]);
             }
         }
-        return enemies.ToArray();
+        return allies;
     }
 
-    private CombatUser Closest(CombatUser[] users)
+    private int Closest(List<CombatUser> users)
     {
-        CombatUser closest = null;
+        int closest = -1;
         float minDist = float.MaxValue;
-        for (int i = 0; i < users.Length; i++)
+        for (int i = 0; i < users.Count; i++)
         {
-            if (users[i] == self) continue;
+            if (users[i] == self || users[i] == null) continue;
 
             float dist = Vector3.Distance(users[i].transform.position, self.transform.position);
             if (dist < minDist)
             {
                 minDist = dist;
-                closest = users[i];
+                closest = i;
             }
         }
         return closest;
@@ -99,19 +124,20 @@ public class CombatController : MonoUserMods
     private IEnumerator AttackRoutine(CombatUser attacked)
     {
         attackingLocked = true;
-        try
-        {
-            attacked.Damage((int)Damage);
-        }
-        catch (Exception e)
-        {
-            Debug.LogException(e);
-        }
+        
+        Debug.Log(gameObject.transform.root.name + " Attacking "+attacked);
+        attacked.Damage((int)Damage);
+
         sprite.color = Color.red;
         yield return new WaitForSeconds(attackLength);
         sprite.color = Color.white;
 
         yield return new WaitForSeconds(waitBetweenAttacks);
         attackingLocked = false;
+    }
+
+    public void TestInitialState()
+    {
+        searchByEnemyFlagId = searchForEnemyId;
     }
 }

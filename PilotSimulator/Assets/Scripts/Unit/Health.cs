@@ -5,13 +5,15 @@ public class Health : MonoBehaviour, ITestable, IHealth
 {
     public IntVarValue health;
     public IntVarValue maxHealth;
-    public UnityEvent OnDamaged;
-    public UnityEvent OnDestroyed;
+    [SerializeField] UnityEvent OnDamaged;
+    [SerializeField] UnityEvent OnDestroyed;
 
     public bool selfDestroy = true;
     public bool destroyed = false;
     public Transform destroyTarget;
     public bool checkEveryFrameToCoverPrefabChanges => !health.useDefault;
+    [SerializeField] bool logDamage = false;
+    [SerializeField] bool logDeath = false;
 
     public int Hp {
         get {
@@ -36,23 +38,37 @@ public class Health : MonoBehaviour, ITestable, IHealth
 
     public void RecieveDamage(int dmg)
     {
-        if (dmg < 0)
-        {
-            Debug.Log("Recieve damage. "+dmg);
-        }
-        else if(dmg > 0)
-        {
-            Debug.Log("Recieve healing. "+dmg);
-        }
-        else
-        {
-            Debug.Log("Damage negated.");
-        }
+        LogDmg(dmg);
         health.Value = Mathf.Clamp(Hp - dmg, 0, MaxHp);
         OnDamaged.Invoke();
         if (health.Value <= 0)
         {
+            LogDeath();
             DestroyFromHp();
+        }
+    }
+
+    private void LogDeath()
+    {
+        Debug.Log("Unit died "+transform.root.name);
+    }
+
+    private void LogDmg(int dmg)
+    {
+        if (logDamage)
+        {
+            if (dmg > 0)
+            {
+                Debug.Log("Recieve damage. " + dmg, this);
+            }
+            else if (dmg < 0)
+            {
+                Debug.Log("Recieve healing. " + dmg, this);
+            }
+            else
+            {
+                Debug.Log("Damage negated.", this);
+            }
         }
     }
 

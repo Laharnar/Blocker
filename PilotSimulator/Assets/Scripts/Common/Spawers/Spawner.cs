@@ -9,7 +9,7 @@ public class Spawner : MonoBehaviour
 
     static Dictionary<Spawner, List<Transform>> spawned = new Dictionary<Spawner, List<Transform>>();
     [SerializeField] AutoLinker linkerForSpawned;
-
+    [SerializeField] bool log = false;
 
     void Awake()
     {
@@ -19,10 +19,11 @@ public class Spawner : MonoBehaviour
     // Event usable.
     public void SpawnNewAtSpawnPoint()
     {
+        if (log) Debug.Log("Spawner:Spawn at spawn point");
         SpawnNew(spawnPoint.Value.position, spawnPoint.Value.rotation);
     }
 
-    public void SpawnNew(Vector3 pos, Quaternion rot)
+    private void SpawnNew(Vector3 pos, Quaternion rot)
     {
         if (spawned.ContainsKey(this))
         {
@@ -33,7 +34,7 @@ public class Spawner : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Issue when trying to spawn. Key with this spawner doesn't exist in static global dictionary.", this);
+            Debug.LogError("Spawner:Issue when trying to spawn. Key with this spawner doesn't exist in static global dictionary.", this);
         }
     }
 }

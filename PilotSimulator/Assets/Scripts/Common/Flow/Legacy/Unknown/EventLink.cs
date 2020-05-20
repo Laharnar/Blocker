@@ -11,7 +11,7 @@ public class EventLink:Linked
     public override void OverLink()
     {
         if (!used) return;
-        if (log) Debug.Log("Link triggered." + name + " " + transform.root.name, this);
+        if (log) Debug.Log("EventLink:Link triggered." + name + " " + transform.root.name, this);
         onTriggered.Invoke();
     }
 }

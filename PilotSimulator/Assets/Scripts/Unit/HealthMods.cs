@@ -4,6 +4,7 @@ using UnityEngine.Events;
 public class HealthMods : MonoUserMods, IHealth
 {
     public Health healthSrc;
+    [SerializeField] float healthMods;
 
     public int Hp {
         get {
@@ -20,6 +21,7 @@ public class HealthMods : MonoUserMods, IHealth
     public override void InitMods(IUserMods userMods)
     {
         base.InitMods(userMods);
+        healthMods = userMods.GetModSum();
         healthSrc.health.Value = MaxHp;
         healthSrc.maxHealth.Value = MaxHp;
     }

@@ -52,7 +52,7 @@ MonoBehaviour:
   maxHealth:
     value: {fileID: 0}
     useDefault: 1
-    defaultValue: 3
+    defaultValue: 5
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []
@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSrc: {fileID: 2144158}
+  healthMods: 0
 --- !u!1 &1372090155
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,6 +1104,7 @@ MonoBehaviour:
   attackRange: {fileID: 6322717010061070579}
   basicAttackDamage:
     damage: 1
+    logModsDamage: 0
   attackLength: 0.1
   waitBetweenAttacks: 0.9
   searchForEnemyId: 1

@@ -1,9 +1,10 @@
-﻿using UnityEngine.SocialPlatforms;
+﻿using UnityEngine;
 
 [System.Serializable]
 public class AttackAction
 {
     public int damage;
+    [SerializeField] int logModsDamage;
     public AttackAction(int damage)
     {
         this.damage = damage;
@@ -11,6 +12,7 @@ public class AttackAction
 
     public int GetDamage(IUserMods mods)
     {
-        return damage + (int)mods.GetModSum();
+        logModsDamage = (int)mods.GetModSum();
+        return damage + logModsDamage;
     }
 }

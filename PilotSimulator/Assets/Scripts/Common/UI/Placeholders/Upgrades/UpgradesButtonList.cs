@@ -17,7 +17,6 @@ public class UpgradesButtonList : PlaceHolderView
             Debug.Log("Changed tree.");
             return;
         }
-        Debug.LogError("TestableDestroyableMono if upgrades work");
         if (response.context == "SelectUser")
         {
             SetUser(response.userId);

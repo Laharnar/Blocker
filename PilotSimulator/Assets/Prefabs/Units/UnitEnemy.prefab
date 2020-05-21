@@ -110,6 +110,11 @@ PrefabInstance:
       propertyPath: searchForEnemyId
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6322717010757096712, guid: a35eeb385ca2f324ba326ff4ecf78702,
+        type: 3}
+      propertyPath: searchByEnemyFlagId
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6322717011208904970, guid: a35eeb385ca2f324ba326ff4ecf78702,
         type: 3}
       propertyPath: thisAlliance

@@ -1106,7 +1106,7 @@ MonoBehaviour:
   attackLength: 0.1
   waitBetweenAttacks: 0.9
   searchForEnemyId: 1
-  searchByEnemyFlagId: 0
+  searchByEnemyFlagId: 1
   goTo: {fileID: 6322717011786269139}
   logAll: []
   logEnemies: []

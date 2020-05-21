@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Linker : MonoBehaviour
+public class Linker : MonoBehaviour, ITestable
 {
     public List<Linked> targets = new List<Linked>();
 
@@ -18,8 +18,7 @@ public class Linker : MonoBehaviour
     internal void Connect(Linked linked)
     {
         targets.Add(linked);
-        if (linked == null)
-            Debug.LogError("Linker connecting to null. Probably an error.", this);
+        RealtimeTester.Assert(linked, this, "Recieved linked is null.");
     }
 
     internal void DualConnect(ExpCollector expCollector)
@@ -32,4 +31,7 @@ public class Linker : MonoBehaviour
         targets.Remove(linked);
     }
 
+    public void TestInitialState()
+    {
+    }
 }

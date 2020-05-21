@@ -23,6 +23,11 @@ public class MovementPlanning:MonoBehaviour, ITestable
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position, vectors[0]);
+    }
+
     public void RemoveAt(int i)
     {
         vectors.RemoveAt(i);

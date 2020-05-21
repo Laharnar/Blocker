@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [System.Serializable]
 public class AutoLinker
@@ -17,7 +18,7 @@ public class AutoLinker
             LinkerRoot target = t.GetComponent<LinkerRoot>();
             RealtimeTester.Assert(target != null, t, "Spawned object doesn't have LinkerRoot script. " + t.name);
 
-            target.Setup(linkedSelf);
+            if(linkedSelf)target.Setup(linkedSelf);
             if(expgroup) expgroup.ConnectToChild(t);
 
             if (upgrades)
@@ -31,5 +32,10 @@ public class AutoLinker
     {
         ISpawnInitializer user = t.GetComponentInChildren<ISpawnInitializer>();
         user.InitOnSpawn("upgrades", upgrades);
+    }
+
+    internal void TestInitialState(MonoBehaviour t)
+    {
+        RealtimeTester.AssertSceneReference(linkedSelf, t);
     }
 }

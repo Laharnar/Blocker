@@ -2,9 +2,21 @@
 
 public class UserUpgradesOnSpawn:MonoBehaviour, ISpawnInitializer
 {
+    public SimpleUpgrades defaultUpgradeSet;
+
     public MonoUserMods attacking;
     public MonoUserMods health;
     public MonoUserMods movement;
+
+    private void Start()
+    {
+        if (defaultUpgradeSet)
+        {
+            if (attacking) attacking.InitMods(defaultUpgradeSet.attack);
+            if (health) health.InitMods(defaultUpgradeSet.health);
+            if (movement) movement.InitMods(defaultUpgradeSet.speed);
+        }
+    }
 
     public void InitOnSpawn(string code, object args)
     {
@@ -13,9 +25,9 @@ public class UserUpgradesOnSpawn:MonoBehaviour, ISpawnInitializer
             SimpleUpgrades upgrades = (SimpleUpgrades)args;
             // replace increase flat values with modifiers sometime.
             // class 1: list of modifiers. hp.get damage -> call modifiers.
-            attacking.InitMods(upgrades.attack);
-            health.InitMods(upgrades.health);
-            movement.InitMods(upgrades.speed);
+            if (attacking)attacking.InitMods(upgrades.attack);
+            if (health)   health.InitMods(upgrades.health);
+            if (movement) movement.InitMods(upgrades.speed);
         }
     }
 }

@@ -6,27 +6,44 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 
+// GOAL: split into 4 -> combat controller. movement follow target. targeting searching. 
+// Combat controller has control over which items are ran.
 public class CombatController : MonoUserMods, ITestable
 {
-    public CombatUser self;
+    [SerializeField] CombatUser self;
 
-    public SpriteRenderer sprite;
-    public bool attackingLocked = false;
+    [SerializeField] SpriteRenderer sprite;
+    [SerializeField] bool attackingLocked = false;
 
-    public CombatCollisionTrigger attackRange;
-    public AttackAction basicAttackDamage = new AttackAction(1);
+    [SerializeField] CombatCollisionTrigger attackRange;
+    [SerializeField] AttackAction basicAttackDamage = new AttackAction(1);
 
-    public float attackLength = 0.1f;
-    public float waitBetweenAttacks = 2f;
-    public int searchForEnemyId = 0;
-    public int searchByEnemyFlagId = 0;
+    [SerializeField] float attackLength = 0.1f;
+    [SerializeField] float waitBetweenAttacks = 2f;
+    [SerializeField] int searchForEnemyId = 0;
+    [SerializeField] int searchByEnemyFlagId = 0;
 
-    [SerializeField] MovementPlanning goTo;
-    [SerializeField] private CombatUser[] logAll;
-    [SerializeField] private List<CombatUser> logEnemies;
+    [System.Serializable]
+    public class Traversal
+    {
+        [SerializeField] List<MovementPlanning> traversal;
+
+        public void Travel(Vector2 goTo)
+        {
+            for (int i = 0; i < traversal.Count; i++)
+            {
+                traversal[i].OverwriteTargetAsFirst(goTo);
+            }
+        }
+    }
+    [SerializeField] Traversal traversal;
+
+    [Header("Logging")]
+    [SerializeField] CombatUser[] logAll;
+    [SerializeField] List<CombatUser> logEnemies;
     [SerializeField] int logPickedEnemyTargetId= 0;
-    [SerializeField] private CombatUser logEnemyTargat;
-   
+    [SerializeField] CombatUser logEnemyTargat;
+    float Damage { get => basicAttackDamage.GetDamage(userMods); }
 
     // Update is called once per frame
     void Update()
@@ -54,7 +71,7 @@ public class CombatController : MonoUserMods, ITestable
                 enemyToFollow = enemies[closestEnemyId];
                 
                 // walk to enemy
-                goTo.OverwriteTargetAsFirst(enemyToFollow.transform.position);
+                traversal.Travel(enemyToFollow.transform.position);
             }
         }
         logAll = all;
@@ -88,7 +105,6 @@ public class CombatController : MonoUserMods, ITestable
         return group;
     }
 
-    float Damage{ get => basicAttackDamage.GetDamage(userMods); }
 
     private static List<CombatUser> GetUnitsByFlag(List<CombatUser> mixed, int allyId)
     {

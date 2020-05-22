@@ -31,6 +31,10 @@ PrefabInstance:
       propertyPath: OnDestroyed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 66912885, guid: a35eeb385ca2f324ba326ff4ecf78702, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1372090157, guid: a35eeb385ca2f324ba326ff4ecf78702, type: 3}
       propertyPath: groupId.value
       value: 
@@ -140,6 +144,12 @@ PrefabInstance:
       propertyPath: movement
       value: 
       objectReference: {fileID: 975255005123937528}
+    - target: {fileID: 6635736892492744449, guid: a35eeb385ca2f324ba326ff4ecf78702,
+        type: 3}
+      propertyPath: defaultUpgradeSet
+      value: 
+      objectReference: {fileID: 11400000, guid: 1dacac5b84df1ce4e869e3654c58eac2,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a35eeb385ca2f324ba326ff4ecf78702, type: 3}
 --- !u!114 &5295784872243088104 stripped

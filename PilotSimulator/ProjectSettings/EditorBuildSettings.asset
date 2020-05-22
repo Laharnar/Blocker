@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/ControlAlliesWithUnlockables.unity
+    guid: c7c4fbc7ad0302840a94130f66efb754
   m_configObjects: {}

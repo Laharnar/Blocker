@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class Spawner : MonoBehaviour, ITestable
 {
     [SerializeField] TransformVarValue prefab;
     [SerializeField] TransformVarValue spawnPoint;
@@ -36,5 +36,9 @@ public class Spawner : MonoBehaviour
         {
             Debug.LogError("Spawner:Issue when trying to spawn. Key with this spawner doesn't exist in static global dictionary.", this);
         }
+    }
+
+    public void TestInitialState()
+    {
     }
 }

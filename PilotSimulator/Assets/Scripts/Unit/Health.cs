@@ -11,7 +11,9 @@ public class Health : MonoBehaviour, ITestable, IHealth
     public bool selfDestroy = true;
     public bool destroyed = false;
     public Transform destroyTarget;
+
     public bool checkEveryFrameToCoverPrefabChanges => !health.useDefault;
+
     [SerializeField] bool logDamage = false;
     [SerializeField] bool logDeath = false;
 

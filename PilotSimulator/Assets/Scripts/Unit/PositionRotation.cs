@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PositionRotation : MonoBehaviour, ITestable {
+public class PositionRotation : MonoBehaviour, ITestable, ISetupUnity {
 
 
     [Header("Parameters")]
@@ -13,7 +13,8 @@ public class PositionRotation : MonoBehaviour, ITestable {
     public bool useDeltaTime = true;
     public bool needsRigidbody = true;
     public bool lockRotation;
-    public SpaceVarValue relativeTo;
+    [SerializeField] SpaceVarValue relativeTo;
+    [SerializeField] ExpandedStats optionallyExpanded;
 
     [Header("Modifications")]
     public UnityEvent postPrediction;
@@ -35,6 +36,7 @@ public class PositionRotation : MonoBehaviour, ITestable {
     [SerializeField] private Vector3 postPredictionMove;
     [SerializeField] private Vector3 postPredictionAngles;
     [SerializeField] Vector3 lastRot;
+    [SerializeField] float logModsSpeed;
 
 
     [Header("Special case")]
@@ -48,6 +50,8 @@ public class PositionRotation : MonoBehaviour, ITestable {
     public Vector3 scaling = Vector3.one;
 
     public Vector3 TransformPos { get => targeted.position; }
+    public Transform KnownRoot { get => targeted; }
+
 
     private void Start()
     {
@@ -90,13 +94,24 @@ public class PositionRotation : MonoBehaviour, ITestable {
 
     private void TestTransformationValues()
     {
-        moveAmount = direction * moveSpeed.Value;
+        moveAmount = direction * GetSpeed();
         rotsAmount = rotationDeg  * rotationSpeed.Value;
+    }
+    private void TestFixedPhysicsValues()
+    {
+        moveAmount = direction * GetSpeed();
+        rotsAmount = rotationDeg * rotationSpeed.Value;
+    }
+
+    public float GetSpeed()
+    {
+        logModsSpeed = optionallyExpanded.BonusSpeed;
+        return moveSpeed.Value + logModsSpeed;
     }
 
     void ApplySpeed()
     {
-        moveAmount *= moveSpeed.Value;
+        moveAmount *= GetSpeed();
         rotsAmount *= rotationSpeed.Value;
     }
 
@@ -111,11 +126,6 @@ public class PositionRotation : MonoBehaviour, ITestable {
         rotsAmount *= Time.fixedDeltaTime;
     }
 
-    private void TestFixedPhysicsValues()
-    {
-        moveAmount = direction * moveSpeed.Value;
-        rotsAmount = rotationDeg * rotationSpeed.Value;
-    }
 
     private void ModifyDirectionAndRotationOnExtrenalScripts()
     {
@@ -190,10 +200,15 @@ public class PositionRotation : MonoBehaviour, ITestable {
     {
         if (Application.isPlaying)
         {
-            if(needsRigidbody)
+            if (needsRigidbody)
                 rigbody.RunTests();
         }
-        RealtimeTester.Assert(moveSpeed.Value != 0, this, "Zero movement speed.");
+        else
+        {
+            RealtimeTester.Assert(KnownRoot != null, this, "Root isn't assinged.");
+        }
+
+        RealtimeTester.Assert(moveSpeed.Value != 0, this, "Zero base movement speed."); 
 
         if (test)
         {
@@ -203,5 +218,26 @@ public class PositionRotation : MonoBehaviour, ITestable {
         }
 
 
+    }
+
+    public bool UnitySetup()
+    {
+        if (UnitySetups.Priority == SetupPriorities.EditorOnly)
+        {
+            if (!KnownRoot)
+            {
+                return false;
+            }
+            if (optionallyExpanded == null)
+            {
+                optionallyExpanded = KnownRoot.GetComponentInChildren<ExpandedStats>();
+            }
+            if (optionallyExpanded)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

@@ -2,6 +2,7 @@
 
 public class MonoUserMods:MonoBehaviour
 {
+    [SerializeField] float logSum = 0;
     protected IUserMods userMods;
 
     public virtual void InitMods(IUserMods userMods)
@@ -12,5 +13,13 @@ public class MonoUserMods:MonoBehaviour
 
     public virtual void ModAdded(float modValue)
     {
+    }
+
+    public float GetSum()
+    {
+        if(userMods != null)
+            logSum = userMods.GetModSum();
+        logSum = 0;
+        return logSum;
     }
 }

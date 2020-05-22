@@ -1,6 +1,8 @@
-﻿using System;
+﻿using ICSharpCode.NRefactory.Ast;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using UnityEditor.WebGL.Il2Cpp;
 using UnityEngine;
 
@@ -20,12 +22,15 @@ public class RealtimeTester:MonoBehaviour
     public List<Failure> failedTests;
 
     Coroutine testRunner, testableSearcher;
+    public UnitySetups setups;
 
-    MonoBehaviour[] sceneCache;
-    bool[] testable;
+    [SerializeField] SceneSearchByClassType sceneSearch;
 
+    MonoBehaviour[] SceneCache => sceneSearch.sceneCache;
+    int[] Types => sceneSearch.foundTypes;
     // Only items from scene cache that are testable
-    List<ITestable> testableCache;
+    List<ITestable> TestableCache => sceneSearch.testableCache;
+
     static RealtimeTester Singleton {
         get {
             if (singleton == null) singleton = GameObject.FindObjectOfType<RealtimeTester>();
@@ -40,38 +45,38 @@ public class RealtimeTester:MonoBehaviour
 
     public void RunExternally()
     {
-        EnsureTestsRun();
+        EnsureLayersRun();
     }
 
 
     private void Start()
     {
-        EnsureTestsRun();
+        EnsureLayersRun();
     }
 
     private void Update()
     {
-        EnsureTestsRun();
+        EnsureLayersRun();
     }
 
     private void OnRenderObject()
     {
-        EnsureTestsRun();
+        EnsureLayersRun();
     }
     private void OnDestroy()
     {
         singleton = null;
     }
-    void EnsureTestsRun()
+    void EnsureLayersRun()
     {
-        if (testableCache == null) testableCache = new List<ITestable>();
         if (failedTests == null) failedTests = new List<Failure>();
         if (testableSearcher == null)
-            testableSearcher = StartCoroutine(FindNewTargets());
+            testableSearcher = sceneSearch.RunSearch(this);
+        if(setups == null) setups = new UnitySetups();
         if (testRunner == null)
         {
             Debug.Log("Rerunning test runner.");
-            testRunner = StartCoroutine(RunTests());
+            testRunner = StartCoroutine(RunTestsAndSetups());
         }
     }
     internal static void Assert(bool assertTrue, MonoBehaviour unityClass, string message)
@@ -109,40 +114,15 @@ public class RealtimeTester:MonoBehaviour
         failedTests.Add(failure);
     }
 
-    private IEnumerator FindNewTargets()
+   
+    private void ResetFailedTests()
     {
-        while (true)
-        {
-            if (!use.Value) {
-                yield return new WaitForSeconds(1);
-                continue;
-            }
-
-            sceneCache = GameObject.FindObjectsOfType<MonoBehaviour>();
-            testable = new bool[sceneCache.Length];
-            testableCache.Clear();
-            ResetFailures();
-            for (int i = 0; i < sceneCache.Length; i++)
-            {
-                testable[i] = sceneCache[i] as ITestable != null;
-
-                // log
-                if(testable[i])
-                {
-                    AddTestableObject(sceneCache[i] as ITestable);
-                }    
-            }
-            yield return new WaitForSeconds(GetSearchCycle());
-        }
-    }
-    void AddTestableObject(ITestable it)
-    {
-        testableCache.Add(it);
+        failedTests.Clear();
     }
 
     public static void DestroyedTestableObject(ITestable it)
     {
-        Singleton.testableCache.Remove(it);
+        Singleton.TestableCache.Remove(it);
     }
 
     float GetSearchCycle()
@@ -153,7 +133,7 @@ public class RealtimeTester:MonoBehaviour
     }
 
 
-    private IEnumerator RunTests()
+    private IEnumerator RunTestsAndSetups()
     {
         yield return null; // wait 1 frame to skip start.
         while (true)
@@ -164,54 +144,54 @@ public class RealtimeTester:MonoBehaviour
                 continue;
             }
 
-            RunTestsInSceneOnce();
+            RunTestsAndSetupsInSceneOnce();
 
             yield return new WaitForSeconds(GetTestRunCycle());
         }
     }
 
-    [ContextMenu("Run")]
-    private void RunTestsInSceneOnce()
+    [ContextMenu("Run tests")]
+    private void RunTestsAndSetupsInSceneOnce()
     {
-        ResetFailures();
-        for (int i = 0; i < testable.Length; i++)
+        ResetFailedTests();
+        for (int i = 0; i < SceneCache.Length; i++)
         {
-            if (testable[i])
+            int scriptType = Types[i];
+            ITestable test = SceneCache[i] as ITestable;
+            ISetupUnity setup = SceneCache[i] as ISetupUnity;
+            if (test != null)
             {
-                ((ITestable)sceneCache[i]).TestInitialState();
+                test.TestInitialState();
+            } 
+            if (setup != null)
+            {
+                if (!Application.isPlaying)
+                {
+                    if (!setups.RunSetup(setup))
+                    {
+                        Debug.LogErrorFormat(SceneCache[i], "[RealtimeSetup] Failed to setup{0}", SceneCache[i]);
+                    }
+                }
             }
         }
-        if (failedTests.Count > 0)
+        for (int i = 0; i < 5 && i < failedTests.Count; i++)
         {
-            if (failedTests[0].Mono)
+            if (failedTests[i].Mono)
             {
-                Debug.LogErrorFormat(failedTests[0].Mono, "[RealtimeTester] Test Failures = {0}. [0]={1}", failedTests.Count, failedTests[0].Message);
+                Debug.LogErrorFormat(failedTests[i].Mono, "[RealtimeTester] Test Failures = {0}. [{2}]={1}", failedTests.Count, failedTests[i].Message, i);
             }
             else
             {
-                Debug.LogErrorFormat("[RealtimeTester] Test Failures = {0} Object: {1}. [0]={2}", failedTests.Count, failedTests[0].AdditionalObject, failedTests[0].Message);
+                Debug.LogErrorFormat("[RealtimeTester] Test Failures = {0} Object: {1}. [{3}]={2}", failedTests.Count, failedTests[i].AdditionalObject, failedTests[i].Message, i);
             }
         }
     }
-
-    private void ResetFailures()
-    {
-        failedTests.Clear();
-    }
-
 
     float GetTestRunCycle()
     {
         if(!Application.isPlaying)
             return editorRunTestsEvery;
         return runtimeRunTestsEvery;
-    }
-
-    internal static void Deployment(bool isDeployed, MonoBehaviour source, string msgIfFail)
-    {
-        Assert(isDeployed, source, msgIfFail);
-        if (isDeployed)
-            Debug.Log("Deployment for " + source + " completed succesfully.");
     }
 
     [System.Serializable]
@@ -237,6 +217,85 @@ public class RealtimeTester:MonoBehaviour
         public string Message { get => msg; }
         public object AdditionalObject { get => mono != null ? mono : obj; }
         public MonoBehaviour Mono { get => mono; }
+    }
+
+    [Serializable]
+    public class SceneSearchByClassType
+    {
+        [SerializeField] BoolVarValue use;
+        internal MonoBehaviour[] sceneCache;
+        internal int[] foundTypes;
+        internal List<ITestable> testableCache = new List<ITestable>();
+        private List<ISetupUnity> setupsCache = new List<ISetupUnity>();
+
+        public float editorSearchSceneEvery = 30;
+        public float runtimeSearchSceneEvery = 30;
+
+        Coroutine coro;
+
+        Type[] defTypes =
+        {
+            typeof(ITestable),
+            typeof(ISetupUnity)
+        };
+
+        public Coroutine RunSearch(RealtimeTester tester)
+        {
+            if (testableCache == null) testableCache = new List<ITestable>();
+            if (coro == null)
+                coro = tester.StartCoroutine(FindNewTargets(tester, defTypes));
+            return coro;
+        }
+
+
+        private IEnumerator FindNewTargets(RealtimeTester tester, params Type[] types)
+        {
+            while (true)
+            {
+                if (!use.Value)
+                {
+                    yield return new WaitForSeconds(1);
+                    continue;
+                }
+
+                sceneCache = GameObject.FindObjectsOfType<MonoBehaviour>();
+                foundTypes = new int[sceneCache.Length];
+                testableCache.Clear();
+                setupsCache.Clear();
+                NewCycleRealtimeTester(tester);
+                for (int i = 0; i < sceneCache.Length; i++)
+                {
+                    foundTypes[i] = TypesContainScriptAt(types, i);
+
+                    // log
+                    if (foundTypes[i] == 0)
+                    {
+                        testableCache.Add((ITestable)sceneCache[i]);
+                    }
+                }
+                yield return new WaitForSeconds(GetSearchCycle());
+            }
+        }
+        private void NewCycleRealtimeTester(RealtimeTester tester)
+        {
+            tester.ResetFailedTests();
+        }
+
+        int TypesContainScriptAt(Type[] types, int sceneScriptId)
+        {
+            for (int j = 0; j < types.Length; j++)
+            {
+                if (types[j].IsAssignableFrom(sceneCache[sceneScriptId].GetType()))
+                    return j;
+            }
+            return -1;
+        }
+        float GetSearchCycle()
+        {
+            if (!Application.isPlaying)
+                return editorSearchSceneEvery;
+            return runtimeSearchSceneEvery;
+        }
     }
 
 }

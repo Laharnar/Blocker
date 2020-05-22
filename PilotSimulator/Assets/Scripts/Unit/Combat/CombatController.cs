@@ -43,7 +43,7 @@ public class CombatController : MonoUserMods, ITestable
     [SerializeField] List<CombatUser> logEnemies;
     [SerializeField] int logPickedEnemyTargetId= 0;
     [SerializeField] CombatUser logEnemyTargat;
-    float Damage { get => basicAttackDamage.GetDamage(userMods); }
+    float Damage { get => basicAttackDamage.GetDamage(); }
 
     // Update is called once per frame
     void Update()
@@ -156,4 +156,5 @@ public class CombatController : MonoUserMods, ITestable
     {
         searchByEnemyFlagId = searchForEnemyId;
     }
+
 }

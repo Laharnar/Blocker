@@ -5,14 +5,17 @@ public class AttackAction
 {
     public int damage;
     [SerializeField] int logModsDamage;
+    [SerializeField] ExpandedStats optionalStats;
+
     public AttackAction(int damage)
     {
         this.damage = damage;
     }
 
-    public int GetDamage(IUserMods mods)
+    public int GetDamage()
     {
-        logModsDamage = (int)mods.GetModSum();
+        if(optionalStats)
+            logModsDamage = (int)optionalStats.BonusAttack;
         return damage + logModsDamage;
     }
 }

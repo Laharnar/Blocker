@@ -87,8 +87,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d8587163a15404998792c4696a6a37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  logSum: 0
   healthSrc: {fileID: 2144158}
   healthMods: 0
+--- !u!1 &66912885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 66912886}
+  - component: {fileID: 66912887}
+  m_Layer: 0
+  m_Name: ExpandedStats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &66912886
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66912885}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1433826215}
+  - {fileID: 4943390590095583913}
+  m_Father: {fileID: 6322717010057583616}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &66912887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66912885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6f26f206a719164191482f5b76e8d2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speedMod: {fileID: 2046910207093867051}
+  attackMod: {fileID: 1433826216}
 --- !u!1 &1372090155
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,6 +239,94 @@ MonoBehaviour:
   expUser: {fileID: 0}
   logCollectedExp: 0
   logAvaliableExp: 0
+--- !u!1 &1433826214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1433826215}
+  - component: {fileID: 1433826216}
+  m_Layer: 0
+  m_Name: AttackingMods
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1433826215
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433826214}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 66912886}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1433826216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433826214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f825baf7fd418448bb4f8592ff8a598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logSum: 0
+--- !u!1 &5302765488466130764
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4943390590095583913}
+  - component: {fileID: 2046910207093867051}
+  m_Layer: 0
+  m_Name: Speed mods
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4943390590095583913
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302765488466130764}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.300914, y: -0.25608423, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 66912886}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2046910207093867051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302765488466130764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f825baf7fd418448bb4f8592ff8a598, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logSum: 0
 --- !u!1 &6322717009954682217
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,6 +568,7 @@ Transform:
   - {fileID: 4163295611502563629}
   - {fileID: 2144157}
   - {fileID: 1372090156}
+  - {fileID: 66912886}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -496,9 +633,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1666ae82dd62c4f9f274acea80db3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attacking: {fileID: 6322717010757096712}
+  defaultUpgradeSet: {fileID: 0}
+  attacking: {fileID: 1433826216}
   health: {fileID: 1389475476959222552}
-  movement: {fileID: 1719786565364186448}
+  movement: {fileID: 0}
 --- !u!1 &6322717010061070581
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,7 +974,6 @@ GameObject:
   - component: {fileID: 6322717011786269138}
   - component: {fileID: 6322717011786269136}
   - component: {fileID: 6322717011786269139}
-  - component: {fileID: 1719786565364186448}
   m_Layer: 0
   m_Name: MovementWP
   m_TagString: Untagged
@@ -888,6 +1025,7 @@ MonoBehaviour:
     value: {fileID: 0}
     useDefault: 1
     defaultValue: 0
+  optionallyExpanded: {fileID: 66912887}
   postPrediction:
     m_PersistentCalls:
       m_Calls:
@@ -932,6 +1070,7 @@ MonoBehaviour:
   postPredictionMove: {x: 0, y: 0, z: 0}
   postPredictionAngles: {x: 0, y: 0, z: 0}
   lastRot: {x: 0, y: 0, z: 0}
+  logModsSpeed: 0
   test: 0
   direction: {x: 0, y: 0, z: 0}
   rotationDeg: {x: 0, y: 0, z: 0}
@@ -966,19 +1105,6 @@ MonoBehaviour:
     emptyInput: {x: 0, y: 0, z: 0}
   user: {fileID: 6322717011786269136}
   minDistance: 0.3
---- !u!114 &1719786565364186448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6322717011786269141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb53bbcab4d131747972a71f18f92200, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: {fileID: 6322717011786269136}
 --- !u!1 &6595297780515937951
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,6 +1224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e186169279e2b4584f1a0fc15524a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  logSum: 0
   self: {fileID: 6322717010757096716}
   sprite: {fileID: 6322717010485856559}
   attackingLocked: 0
@@ -1105,6 +1232,7 @@ MonoBehaviour:
   basicAttackDamage:
     damage: 1
     logModsDamage: 0
+    optionalStats: {fileID: 66912887}
   attackLength: 0.1
   waitBetweenAttacks: 0.9
   searchForEnemyId: 1

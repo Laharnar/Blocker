@@ -5,8 +5,8 @@ public class ExpandedStats:MonoBehaviour, ISetupUnity
     public StatMods speedMod;
     public StatMods attackMod;
 
-    public float BonusSpeed => enabled && speedMod ? speedMod.GetSum() : 0;
-    public float BonusAttack => enabled && attackMod ? attackMod.GetSum() : 0;
+    public float BonusSpeed => gameObject.activeSelf && attackMod != null ? speedMod.GetSum() : 0;
+    public float BonusAttack => gameObject.activeSelf && attackMod!= null ? attackMod.GetSum() : 0;
 
     public void UnregisterFromMods()
     {

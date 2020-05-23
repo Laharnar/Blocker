@@ -18,7 +18,7 @@ public class HealthMods : StatMods, IHealth
         }
     }
 
-    public override void SetMods(IUpgradeMods userMods)
+    public override void SetMods(UpgradeMods userMods)
     {
         base.SetMods(userMods);
         healthMods = userMods.GetModSum();

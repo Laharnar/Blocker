@@ -14,7 +14,7 @@ public class AttackAction
 
     public int GetDamage()
     {
-        if(optionalStats)
+        if (optionalStats!= null)
             logModsDamage = (int)optionalStats.BonusAttack;
         return damage + logModsDamage;
     }

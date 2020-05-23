@@ -6,10 +6,10 @@ using UnityEngine;
 public class StatMods: Observer
 {
     [SerializeField] float logSum = 0;
-    protected IUpgradeMods upgradeMods;
+    [SerializeField] protected UpgradeMods upgradeMods;
     [SerializeField] bool init = false;
 
-    public virtual void SetMods(IUpgradeMods userMods)
+    public virtual void SetMods(UpgradeMods userMods)
     {
         if (!gameObject.activeInHierarchy)
         {
@@ -43,9 +43,9 @@ public class StatMods: Observer
 
     public float GetSum()
     {
-        if(upgradeMods != null)
-            logSum = upgradeMods.GetModSum();
         logSum = 0;
+        if (upgradeMods != null)
+            logSum = upgradeMods.GetModSum();
         return logSum;
     }
 

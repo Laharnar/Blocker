@@ -8,7 +8,7 @@ using UnityEngine.Events;
 
 // GOAL: split into 4 -> combat controller. movement follow target. targeting searching. 
 // Combat controller has control over which items are ran.
-public class CombatController : MonoUserMods, ITestable
+public class CombatController : StatMods, ITestable
 {
     [SerializeField] CombatUser self;
 

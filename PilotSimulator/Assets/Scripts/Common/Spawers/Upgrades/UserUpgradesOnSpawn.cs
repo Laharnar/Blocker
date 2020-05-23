@@ -1,33 +1,27 @@
 ﻿using UnityEngine;
 
-public class UserUpgradesOnSpawn:MonoBehaviour, ISpawnInitializer
+public class UserUpgradesOnSpawn:MonoBehaviour, ISpawnUpgradeInitializer
 {
     public SimpleUpgrades defaultUpgradeSet;
 
-    public MonoUserMods attacking;
-    public MonoUserMods health;
-    public MonoUserMods movement;
+    public StatMods attacking;
+    public StatMods health;
+    public StatMods movement;
 
     private void Start()
     {
         if (defaultUpgradeSet)
         {
-            if (attacking) attacking.InitMods(defaultUpgradeSet.attack);
-            if (health) health.InitMods(defaultUpgradeSet.health);
-            if (movement) movement.InitMods(defaultUpgradeSet.speed);
+            InitUpgradesOnSpawn(defaultUpgradeSet);
+            //if (attacking) attacking.InitMods(defaultUpgradeSet.attack);
+            //if (health) health.InitMods(defaultUpgradeSet.health);
+            //if (movement) movement.InitMods(defaultUpgradeSet.speed);
         }
     }
-
-    public void InitOnSpawn(string code, object args)
+    public void InitUpgradesOnSpawn(SimpleUpgrades upgrades)
     {
-        if (code == "upgrades")
-        {
-            SimpleUpgrades upgrades = (SimpleUpgrades)args;
-            // replace increase flat values with modifiers sometime.
-            // class 1: list of modifiers. hp.get damage -> call modifiers.
-            if (attacking)attacking.InitMods(upgrades.attack);
-            if (health)   health.InitMods(upgrades.health);
-            if (movement) movement.InitMods(upgrades.speed);
-        }
+        if (attacking) attacking.SetMods(upgrades.attack);
+        if (health) health.SetMods(upgrades.health);
+        if (movement) movement.SetMods(upgrades.speed);
     }
 }

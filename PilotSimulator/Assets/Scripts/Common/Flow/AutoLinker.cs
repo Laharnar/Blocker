@@ -30,8 +30,8 @@ public class AutoLinker
 
     private void ConnectUpgradesToChild(Transform t)
     {
-        ISpawnInitializer user = t.GetComponentInChildren<ISpawnInitializer>();
-        user.InitOnSpawn("upgrades", upgrades);
+        ISpawnUpgradeInitializer user = t.GetComponentInChildren<ISpawnUpgradeInitializer>();
+        user.InitUpgradesOnSpawn(upgrades);
     }
 
     internal void TestInitialState(MonoBehaviour t)

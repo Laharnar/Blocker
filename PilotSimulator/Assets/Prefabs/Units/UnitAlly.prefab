@@ -70,6 +70,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 66912887}
+        m_MethodName: UnregisterFromMods
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   selfDestroy: 0
   destroyed: 0
   destroyTarget: {fileID: 6322717010057583616}
@@ -88,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logSum: 0
+  init: 0
   healthSrc: {fileID: 2144158}
   healthMods: 0
 --- !u!1 &66912885
@@ -283,6 +295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logSum: 0
+  init: 0
 --- !u!1 &5302765488466130764
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logSum: 0
+  init: 0
 --- !u!1 &6322717009954682217
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,7 +650,7 @@ MonoBehaviour:
   defaultUpgradeSet: {fileID: 0}
   attacking: {fileID: 1433826216}
   health: {fileID: 1389475476959222552}
-  movement: {fileID: 0}
+  movement: {fileID: 2046910207093867051}
 --- !u!1 &6322717010061070581
 GameObject:
   m_ObjectHideFlags: 0
@@ -1225,6 +1239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logSum: 0
+  init: 0
   self: {fileID: 6322717010757096716}
   sprite: {fileID: 6322717010485856559}
   attackingLocked: 0

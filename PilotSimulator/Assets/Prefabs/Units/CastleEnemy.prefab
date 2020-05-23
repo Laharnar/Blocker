@@ -312,7 +312,7 @@ MonoBehaviour:
     autoLink: 1
     linkedSelf: {fileID: 1968539375170732687}
     expgroup: {fileID: 1647125577}
-    upgrades: {fileID: 11400000, guid: 4989277387de6954e9a1f2d8f72aed75, type: 2}
+    upgrades: {fileID: 0}
   log: 0
 --- !u!114 &1968539375170732687
 MonoBehaviour:

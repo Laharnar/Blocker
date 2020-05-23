@@ -1,4 +1,4 @@
-﻿public interface ISpawnInitializer
+﻿public interface ISpawnUpgradeInitializer
 {
-    void InitOnSpawn(string code, object args);
+    void InitUpgradesOnSpawn(SimpleUpgrades upgrades);
 }

@@ -3,18 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class UpgradeMods:IUserMods {
+public class UpgradeMods:IUpgradeMods {
 
     [SerializeField] List<UpgradeData> mods;
     [SerializeField] string modType;
     public string ModType { get => modType; }
-    public Action<float> OnModGetsNewValue { get; set; }
 
-    public void Add(UpgradeData mod)
+    [SerializeField] Listener addNewModsEvt = new Listener();
+
+    public void AddMod(UpgradeData newMod)
     {
         Debug.Log("Added mod");
-        mods.Add(mod);
-        OnModGetsNewValue?.Invoke(mod.increase);
+        mods.Add(newMod);
+        addNewModsEvt.Notify(newMod.increase);
     }
 
     public float GetModSum()
@@ -27,6 +28,20 @@ public class UpgradeMods:IUserMods {
         return sum;
     }
 
+
+    public void AddObserver(StatMods mod)
+    {
+        addNewModsEvt.RegisterObserver(mod);
+    }
+
+    public void RemoveObserver(StatMods mod)
+    {
+        if (addNewModsEvt != null)
+            addNewModsEvt.UnregisterObserver(mod);
+        else
+            Debug.Log("Observer is already null.");
+    }
+
     public UpgradeMods HardCopy()
     {
         UpgradeMods copied = new UpgradeMods();
@@ -36,6 +51,12 @@ public class UpgradeMods:IUserMods {
             copied.mods.Add(mods[i].Copy());
         }
         copied.modType = modType;
+        copied.ResetObservers();
         return copied;
+    }
+
+    private void ResetObservers()
+    {
+        addNewModsEvt = new Listener();
     }
 }

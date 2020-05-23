@@ -10,27 +10,23 @@ public class SimpleUpgrades : UpgradePrefab
 
     public override void Increase(UpgradeData data)
     {
-        AddModifier(data);
-    }
-
-    private void AddModifier(UpgradeData data)
-    {
-        if (data.upgradeType == "Attack")
-        {
-            attack.Add(data);
-        }
-        else if (data.upgradeType == "Health")
-        {
-            health.Add(data);
-        }
-        else if (data.upgradeType == "Speed")
-        {
-            speed.Add(data);
-        }
+        if (AddModifierByName(data, "Attack", attack)) return;
+        else if (AddModifierByName(data, "Health", health)) return;
+        else if (AddModifierByName(data, "Speed", speed)) return;
         else
         {
             Debug.LogError("Unhandled upgrade type " + data.upgradeType, this);
         }
+    }
+
+    private bool AddModifierByName(UpgradeData data, string title, UpgradeMods mods)
+    {
+        if (data.upgradeType == title)
+        {
+            mods.AddMod(data);
+            return true;
+        }
+        return false;
     }
 
     public void FullReset(SimpleUpgrades resetValues)

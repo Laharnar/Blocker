@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Events;
-public class HealthMods : MonoUserMods, IHealth
+public class HealthMods : StatMods, IHealth
 {
     public Health healthSrc;
     [SerializeField] float healthMods;
@@ -14,20 +14,21 @@ public class HealthMods : MonoUserMods, IHealth
 
     public int MaxHp {
         get {
-            return healthSrc.MaxHp + (int)userMods.GetModSum();
+            return healthSrc.MaxHp + (int)upgradeMods.GetModSum();
         }
     }
 
-    public override void InitMods(IUserMods userMods)
+    public override void SetMods(IUpgradeMods userMods)
     {
-        base.InitMods(userMods);
+        base.SetMods(userMods);
         healthMods = userMods.GetModSum();
         healthSrc.health.Value = MaxHp;
         healthSrc.maxHealth.Value = MaxHp;
     }
 
-    public override void ModAdded(float modValue)
+    public override void Notified(float modValue)
     {
+        base.Notified(modValue);
         // Heal amount that was added to max hp as mod.
         // Max hp doesn't have to be increased, because userMods.GetModSum()
         // automatically takes care of that.

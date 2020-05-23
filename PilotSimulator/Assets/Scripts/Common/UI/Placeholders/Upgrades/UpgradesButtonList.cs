@@ -10,6 +10,7 @@ public class UpgradesButtonList : PlaceHolderView
     [SerializeField] TMPro.TMP_Text[] buttons;
     int activeUser; // set active use when changing ui, then 
 
+
     public override void ResponseHandler(ResponseToClick response)
     {
         if (response.userId >= upgradesOfUsers.Count)

@@ -1,9 +1,10 @@
 ﻿using System;
 
-public interface IUserMods
+public interface IUpgradeMods
 {
     string ModType { get; }
     float GetModSum();
 
-    Action<float> OnModGetsNewValue { get; set; }
+    void AddObserver(StatMods monoUserMods);
+    void RemoveObserver(StatMods monoUserMods);
 }

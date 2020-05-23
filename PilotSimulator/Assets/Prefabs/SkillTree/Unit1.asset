@@ -13,17 +13,26 @@ MonoBehaviour:
   m_Name: Unit1
   m_EditorClassIdentifier: 
   attack:
-    mods:
-    - upgradeId: 0
-      upgradeType: Attack
-      increase: 1
-    - upgradeId: 0
-      upgradeType: Attack
-      increase: 1
+    mods: []
     modType: Attack
+    addNewModsEvt:
+      observers: []
+      observerNames: []
+      registeredCount: 0
+      reset: 0
   health:
     mods: []
     modType: Health
+    addNewModsEvt:
+      observers: []
+      observerNames: []
+      registeredCount: 18
+      reset: 0
   speed:
     mods: []
     modType: Speed
+    addNewModsEvt:
+      observers: []
+      observerNames: []
+      registeredCount: 18
+      reset: 0

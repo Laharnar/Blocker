@@ -88,7 +88,7 @@ public class CombatController : StatMods, ITestable
         }
         else
         {
-            Debug.LogError("Enemy count is 0 when searching for " + searchForEnemyId, this);
+            Debug.Log("!Enemy count is 0 when searching for " + searchForEnemyId, this);
         }
     }
 

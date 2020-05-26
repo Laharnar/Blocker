@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 
 public class ProgrammableDelay:MonoBehaviour {
+    // tude use delays directly from other scripts, use
 
     public UnityEvent onStart;
 
@@ -13,6 +14,7 @@ public class ProgrammableDelay:MonoBehaviour {
     public ConditionGroup condition;
     public bool ignoreFirstActivation = true;
     public UnityEvent onReady;
+    bool isReady = false;
 
     bool ignoredFirst = false;
 
@@ -21,6 +23,7 @@ public class ProgrammableDelay:MonoBehaviour {
         onStart.Invoke();
         StartCoroutine(RunDelays());
     }
+
 
     protected virtual IEnumerator RunDelays()
     {
@@ -37,14 +40,21 @@ public class ProgrammableDelay:MonoBehaviour {
                 }
                 else
                 {
-                    ActivateEvent();
-
-                    yield return new WaitForSeconds(delays[activeDelay.Value].Value);
-                    ToNextDelay();
+                    yield return StartCoroutine(RunOnce());
                 }
             }
             yield return null;
         }
+    }
+
+    private IEnumerator RunOnce()
+    {
+        isReady = false;
+        ActivateEvent();
+
+        yield return new WaitForSeconds(delays[activeDelay.Value].Value);
+        ToNextDelay();
+        isReady = true;
     }
 
     protected void ActivateEvent()

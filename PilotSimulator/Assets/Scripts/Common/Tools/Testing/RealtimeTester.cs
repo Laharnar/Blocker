@@ -70,6 +70,7 @@ public class RealtimeTester:MonoBehaviour
     void EnsureLayersRun()
     {
         if (failedTests == null) failedTests = new List<Failure>();
+        if (sceneSearch == null) sceneSearch = new SceneSearchByClassType();
         if (testableSearcher == null)
             testableSearcher = sceneSearch.RunSearch(this);
         if(setups == null) setups = new UnitySetups();

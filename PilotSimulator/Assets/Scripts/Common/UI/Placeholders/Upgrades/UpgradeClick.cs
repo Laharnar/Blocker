@@ -11,17 +11,14 @@ public class UpgradeClick:MonoBehaviour, ITestable
 
     public void OnClick(int optionId)
     {
-        int cost = 0;
-        int money = 0;
-        if (money >= cost)
+        UpgradeData dat = data[optionId].Copy();
+        dat.userId = ResponseToClick.ACTIVEUSER;
+        placeholder.ResponseHandler(new ResponseToClick()
         {
-            placeholder.ResponseHandler(new ResponseToClick()
-            {
-                context = "ClickUpgrade",
-                userId = ResponseToClick.ACTIVEUSER,
-                data= data[optionId].Copy()
-            });
-        }
+            context = "ClickUpgrade",
+            userId = ResponseToClick.ACTIVEUSER,
+            data = dat
+        });
     }
 
     public void TestInitialState()

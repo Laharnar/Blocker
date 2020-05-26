@@ -308,6 +308,7 @@ MonoBehaviour:
     target: {fileID: 0}
     useDefault: 1
     defaultValue: {fileID: 8805458934556918545}
+  delayBeforeSpawning: 3
   linkerForSpawned:
     autoLink: 1
     linkedSelf: {fileID: 1968539375170732687}
@@ -332,7 +333,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8805458934556918546}
-        m_MethodName: SpawnNewAtSpawnPoint
+        m_MethodName: ScheduleNewAfterDelay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

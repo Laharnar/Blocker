@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -9,6 +10,9 @@ public class AutoLinker
     public Linked linkedSelf;
     public ExpGroup expgroup;
     public SimpleUpgrades upgrades;
+    [Header("Optional")]
+    public UpgradableUser userUpgrades; 
+    public UpgradableAlliance allies; 
 
     public void SetupLink(Transform t)
     {
@@ -32,6 +36,14 @@ public class AutoLinker
     {
         ISpawnUpgradeInitializer user = t.GetComponentInChildren<ISpawnUpgradeInitializer>();
         user.InitUpgradesOnSpawn(upgrades);
+
+        //UpgradableUser upgradableUser = t.GetComponentInChildren<UpgradableUser>();
+        //if (upgradableUser)
+        //    UpgradableUser.Connect(upgradableUser, expgroup);
+        //else Debug.LogErrorFormat(t, "User isn't on t:{0}", upgradableUser);
+        if (allies && userUpgrades)
+            allies.Add(userUpgrades);
+        else Debug.Log("allies && userUpgrades aren't connected optionally in auto linker.", t);
     }
 
     internal void TestInitialState(MonoBehaviour t)

@@ -1,19 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour, ITestable
+
+public class Spawner : MonoBehaviour
 {
-    [SerializeField] TransformVarValue prefab;
-    [SerializeField] TransformVarValue spawnPoint;
 
     static Dictionary<Spawner, List<Transform>> spawned = new Dictionary<Spawner, List<Transform>>();
+
+    [Header("Spawning")]
+    [SerializeField] TransformVarValue prefab;
+    [SerializeField] TransformVarValue spawnPoint;
+    [SerializeField] float delayBeforeSpawning = 0;
+
+    [Header("Linking")]
     [SerializeField] AutoLinker linkerForSpawned;
     [SerializeField] bool log = false;
 
     void Awake()
     {
         spawned.Add(this, new List<Transform>());
+    }
+
+    public void ScheduleNewAfterDelay()
+    {
+        Invoke("SpawnNewAtSpawnPoint", delayBeforeSpawning);
     }
 
     // Event usable.
@@ -36,9 +48,5 @@ public class Spawner : MonoBehaviour, ITestable
         {
             Debug.LogError("Spawner:Issue when trying to spawn. Key with this spawner doesn't exist in static global dictionary.", this);
         }
-    }
-
-    public void TestInitialState()
-    {
     }
 }

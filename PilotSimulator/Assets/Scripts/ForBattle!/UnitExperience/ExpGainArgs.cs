@@ -1,4 +1,5 @@
-﻿public class ExpGainArgs
+﻿
+public class ExpGainArgs
 {
     public int groupId;
     public int intValue;

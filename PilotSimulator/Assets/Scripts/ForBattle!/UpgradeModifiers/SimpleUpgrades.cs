@@ -10,6 +10,8 @@ public class SimpleUpgrades : UpgradePrefab
 
     [SerializeField] int[] levels = new int[3];
 
+    public int UpgradeCount { get => 3; }
+
     public override void Increase(UpgradeData data)
     {
         if (AddModifierByName(data, "Attack", attack)) return;

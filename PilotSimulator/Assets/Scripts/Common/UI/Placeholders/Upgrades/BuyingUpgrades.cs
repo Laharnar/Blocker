@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
 
 public class BuyingUpgrades:MonoBehaviour
@@ -26,5 +27,13 @@ public class BuyingUpgrades:MonoBehaviour
         {
             Debug.LogFormat("Not enough money to upgrade on {0} upgradeId: {1} cost: {2} exp: {3} level:{4}", user, data.upgradeId, cost, money, level);
         }
+    }
+
+    public int LastestCost(int user, int upgradeId)
+    {
+        UpgradableUser userUps = upgradable.GetUser(user);
+        int lvl = upgradesOfUsers[user].GetLevel(user);
+        int cost =userUps.LoadCosts(upgradeId, lvl);
+        return cost;
     }
 }

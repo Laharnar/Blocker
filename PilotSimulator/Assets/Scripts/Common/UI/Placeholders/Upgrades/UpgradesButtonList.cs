@@ -31,6 +31,7 @@ public class UpgradesButtonList : PlaceHolderView
         if (response.context == "SelectUser")
         {
             SetUser(response.userId);
+            costUI.ShowUser(activeUser);
         }
 
         if (response.context == "ClickUpgrade")

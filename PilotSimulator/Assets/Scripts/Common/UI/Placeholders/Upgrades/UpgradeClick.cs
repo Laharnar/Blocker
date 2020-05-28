@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 public class UpgradeClick:MonoBehaviour, ITestable
 {
 
     [SerializeField] UpgradeData[] data;
-    public PlaceHolderView placeholder;
+    public List<PlaceHolderView> placeholder;
 
     public string GetUpgradeType(int i) {
         return data[i].upgradeType;
@@ -13,12 +14,15 @@ public class UpgradeClick:MonoBehaviour, ITestable
     {
         UpgradeData dat = data[optionId].Copy();
         dat.userId = ResponseToClick.ACTIVEUSER;
-        placeholder.ResponseHandler(new ResponseToClick()
+        for (int i = 0; i < placeholder.Count; i++)
         {
-            context = "ClickUpgrade",
-            userId = ResponseToClick.ACTIVEUSER,
-            data = dat
-        });
+            placeholder[i].ResponseHandler(new ResponseToClick()
+            {
+                context = "ClickUpgrade",
+                userId = ResponseToClick.ACTIVEUSER,
+                data = dat
+            });
+        }
     }
 
     public void TestInitialState()

@@ -3419,6 +3419,21 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2308074487770338521, guid: 108d6b2d6dda73d468e72ef36fe53ebb,
+        type: 3}
+      propertyPath: placeholder.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2308074487770338521, guid: 108d6b2d6dda73d468e72ef36fe53ebb,
+        type: 3}
+      propertyPath: placeholder.Array.data[0]
+      value: 
+      objectReference: {fileID: 2308074487770338522}
+    - target: {fileID: 2308074487770338521, guid: 108d6b2d6dda73d468e72ef36fe53ebb,
+        type: 3}
+      propertyPath: placeholder.Array.data[1]
+      value: 
+      objectReference: {fileID: 2308074487770338522}
     - target: {fileID: 2308074488644223428, guid: 108d6b2d6dda73d468e72ef36fe53ebb,
         type: 3}
       propertyPath: m_padding

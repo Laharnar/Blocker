@@ -1,9 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
-
-public class TacticUser:MonoBehaviour
+public class UnitTactics:MonoBehaviour
 {
-    public Tactics avaliable;
+    public TacticGroup tactics;
     public bool useTactic = true;
     public int activeTactic;
     public int displayTactic;
@@ -12,11 +11,10 @@ public class TacticUser:MonoBehaviour
 
     public void Activate()
     {
-        if (useTactic)
-        {
-            avaliable.tactics[activeTactic].Simulate();
-            onSimulation.Invoke();
-        }
+        if (!useTactic) return;
+
+        //tactics.Activate(activeTactic).Simulate();
+        onSimulation.Invoke();
     }
 
     public void SetTacticByUI(int i)
@@ -27,12 +25,9 @@ public class TacticUser:MonoBehaviour
             activeTactic = i;
     }
 
-    public void ChangeUse(bool newUse)
+    public void SetIsUsed(bool use)
     {
-        if (newUse!= useTactic)
-        {
-            useTactic = newUse;
-        }
+        useTactic = use;
     }
 
     public void Log()

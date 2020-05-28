@@ -9,6 +9,7 @@ public class AttackWhenInRange: ITactic
     public TacticResult SuggestedResult { get; set; }
     [Space]
     public bool logNoTarget = true;
+    bool used = false;
 
     public AttackWhenInRange()
     {
@@ -16,19 +17,32 @@ public class AttackWhenInRange: ITactic
     }
     public void Simulate()
     {
-        logNoTarget = target == null;
-        RealtimeTester.Assert(source != null, this, "Source isn't assigned to tactic of type AttackWhenInRange.");
-        if (target)
+        if (used)
         {
-            if (Vector3.Distance(target.position, source.position) < range)
+            logNoTarget = target == null;
+            RealtimeTester.Assert(source != null, this, "Source isn't assigned to tactic of type AttackWhenInRange.");
+            if (target)
             {
-                SuggestedResult.ChangeGoal("Attack", Time.time);
+                if (Vector3.Distance(target.position, source.position) < range)
+                {
+                    SuggestedResult.ChangeGoal("Attack", Time.time);
+                }
+                else
+                {
+                    SuggestedResult.ChangeGoal("Other", Time.time);
+                }
             }
-            else
-            {
-                SuggestedResult.ChangeGoal("Other", Time.time);
-            }
+            else SuggestedResult.ChangeGoal("NoTarget", Time.time);
         }
-        else SuggestedResult.ChangeGoal("NoTarget", Time.time);
+    }
+
+    public void Activate()
+    {
+        used = true;
+    }
+
+    public void Deactivate()
+    {
+        used = false;
     }
 }

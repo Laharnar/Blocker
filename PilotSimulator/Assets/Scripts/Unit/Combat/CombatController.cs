@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using UnityEngine.Events;
 
 // GOAL: split into 4 -> combat controller. movement follow target. targeting searching. 
 // Combat controller has control over which items are ran.
-public class CombatController : StatMods, ITestable
+public class CombatController : StatMods, ITestable, ITactic
 {
     [SerializeField] CombatUser self;
 
@@ -23,19 +24,6 @@ public class CombatController : StatMods, ITestable
     [SerializeField] int searchForEnemyId = 0;
     [SerializeField] int searchByEnemyFlagId = 0;
 
-    [System.Serializable]
-    public class Traversal
-    {
-        [SerializeField] List<MovementPlanning> traversal;
-
-        public void Travel(Vector2 goTo)
-        {
-            for (int i = 0; i < traversal.Count; i++)
-            {
-                traversal[i].OverwriteTargetAsFirst(goTo);
-            }
-        }
-    }
     [SerializeField] Traversal traversal;
 
     [Header("Logging")]
@@ -44,6 +32,8 @@ public class CombatController : StatMods, ITestable
     [SerializeField] int logPickedEnemyTargetId= 0;
     [SerializeField] CombatUser logEnemyTargat;
     float Damage { get => basicAttackDamage.GetDamage(); }
+    public TacticResult SuggestedResult { get; set; }
+    bool used = false;
 
     // Update is called once per frame
     void Update()
@@ -54,6 +44,8 @@ public class CombatController : StatMods, ITestable
 
     private void Attack()
     {
+        if (!used) return;
+
         // very lazy and slow search for enemies.
         CombatUser[] all = GameObject.FindObjectsOfType<CombatUser>();
         List<CombatUser> enemies = GetUnitsByFlag(all.ToList(), searchByEnemyFlagId);
@@ -157,4 +149,32 @@ public class CombatController : StatMods, ITestable
         searchByEnemyFlagId = searchForEnemyId;
     }
 
+    public void Simulate()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Activate()
+    {
+        used = true;
+    }
+
+    public void Deactivate()
+    {
+        used = false;
+    }
+
+    [System.Serializable]
+    public class Traversal
+    {
+        [SerializeField] List<MovementPlanning> traversal;
+
+        public void Travel(Vector2 goTo)
+        {
+            for (int i = 0; i < traversal.Count; i++)
+            {
+                traversal[i].OverwriteTargetAsFirst(goTo);
+            }
+        }
+    }
 }

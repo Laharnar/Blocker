@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class TextUI : MonoBehaviour
 {
-    [SerializeField] UIValueConnection expValue;
+    [SerializeField] MonoConnection expValue;
     [SerializeField] TMP_Text text;
 
     private void Update()
     {
-        if (expValue.Mono.IsChanged)
+        if (expValue.MonoUI.IsChanged)
         {
-            text.text = expValue.Mono.GetContent();
+            text.text = expValue.MonoUI.GetContent();
         }
     }
 }

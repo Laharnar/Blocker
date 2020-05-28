@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using UnityEditorInternal;
+using UnityEngine;
 
-public class ToggleChoicesUI:MonoBehaviour
+public class ToggleChoicesUI : MonoBehaviour
 {
     [SerializeField] ToggleUI[] choices;
-
+    [SerializeField] TacticChangeUI optionalTriggers;
     private void Start()
     {
         for (int i = 0; i < choices.Length; i++)
@@ -16,6 +17,7 @@ public class ToggleChoicesUI:MonoBehaviour
     {
         Syncronize(false);
         choices[showId].Set(true);
+        if (optionalTriggers) optionalTriggers.ChangeTacticByUI(showId);
     }
 
     public void ShowOff(int showId)
@@ -30,5 +32,16 @@ public class ToggleChoicesUI:MonoBehaviour
         {
             choices[i].Set(value);
         }
+    }
+}
+public class TacticChangeUI:MonoBehaviour
+{
+    [SerializeField] UnitTactics tacticUsers;
+
+    public void ChangeTacticByUI(int id)
+    {
+        Debug.Log("TODO");
+        tacticUsers.SetTacticByUI(id);
+        //onToggleTrigger[id].Mono.SetValue(values[id]);Tactics
     }
 }

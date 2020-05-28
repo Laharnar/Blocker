@@ -8,7 +8,8 @@ public class UpgradableAlliance:MonoBehaviour
 
     public void Add(UpgradableUser upgradableUser)
     {
-        existingUsers.Add(upgradableUser);
+        if(!existingUsers.Contains(upgradableUser))
+            existingUsers.Add(upgradableUser);
     }
 
     internal UpgradableUser GetUser(int user)

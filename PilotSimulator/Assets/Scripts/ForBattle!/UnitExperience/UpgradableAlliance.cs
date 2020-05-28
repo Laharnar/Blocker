@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UpgradableAlliance:MonoBehaviour
 {
+
     [SerializeField] List<UpgradableUser> existingUsers = new List<UpgradableUser>();
 
     public void Add(UpgradableUser upgradableUser)

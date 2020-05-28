@@ -10,8 +10,6 @@ public class TextUI : MonoBehaviour
     {
         if (expValue.Mono.IsChanged)
         {
-            Debug.Log("Updated ui");
-
             text.text = expValue.Mono.GetContent();
         }
     }

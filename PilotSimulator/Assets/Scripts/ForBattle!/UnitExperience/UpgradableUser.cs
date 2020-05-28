@@ -16,7 +16,7 @@ public class UpgradableUser : MonoBehaviour
 
     internal int LoadExp()
     {
-        return collectedPoints.GetExp(alliance);
+        return collectedPoints.GetExp();
     }
 
     internal void SubtractExp(int cost)

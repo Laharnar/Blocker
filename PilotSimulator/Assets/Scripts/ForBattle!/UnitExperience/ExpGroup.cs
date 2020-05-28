@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExpGroup:MonoBehaviour
+public class ExpGroup: MonoBehaviour, IUIValue
 {
 
     [SerializeField] IntVarValue exp;
+
+    public bool IsChanged { get; set; }
 
     public void ConnectToChild(Transform t)
     {
@@ -15,16 +17,25 @@ public class ExpGroup:MonoBehaviour
 
     public void Increase(ExpGainArgs expItem)
     {
+        Debug.Log("IsChanged");
         exp.Value += expItem.intValue;
+        IsChanged = true;
     }
 
-    public int GetExp(int alliance)
+    public int GetExp()
     {
         return exp.Value;
     }
 
     internal void Decrease(ExpGainArgs expItem)
     {
+        Debug.Log("Subtracted "+expItem.intValue);
         exp.Value -= expItem.intValue;
+        IsChanged = true;
+    }
+
+    public string GetContent()
+    {
+        return "" + GetExp();
     }
 }

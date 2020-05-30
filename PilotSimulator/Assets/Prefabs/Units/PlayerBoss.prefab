@@ -479,6 +479,7 @@ MonoBehaviour:
       registeredCount: 0
       reset: 0
   init: 0
+  used: 1
   self: {fileID: 987203099557368406}
   sprite: {fileID: 987203100901330549}
   attackingLocked: 0

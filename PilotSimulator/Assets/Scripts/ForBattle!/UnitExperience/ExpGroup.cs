@@ -17,7 +17,6 @@ public class ExpGroup: MonoBehaviour, IUIValue
 
     public void Increase(ExpGainArgs expItem)
     {
-        Debug.Log("IsChanged");
         exp.Value += expItem.intValue;
         IsChanged = true;
     }

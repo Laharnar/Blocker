@@ -9,7 +9,7 @@ using UnityEngine.Events;
 // GOAL: split into 4 -> combat controller. movement follow target. targeting searching. 
 // Combat controller has control over which items are ran.
 // Repurposed into tactic.
-public class CombatController : StatMods, ITestable, ITactic
+public class CombatController : StatMods, ITestable
 {
     public bool used = true;
     [SerializeField] CombatUser self;
@@ -17,15 +17,18 @@ public class CombatController : StatMods, ITestable, ITactic
     [SerializeField] SpriteRenderer sprite;
     [SerializeField] bool attackingLocked = false;
 
+
     [SerializeField] CombatCollisionTrigger attackRange;
     [SerializeField] AttackAction basicAttackDamage = new AttackAction(1);
-
     [SerializeField] float attackLength = 0.1f;
     [SerializeField] float waitBetweenAttacks = 2f;
-    [SerializeField] int searchForEnemyId = 0;
+
+    [Header("Traversal")]
+    [SerializeField] Traversal traversal;
+
+    [Header("Searching")]
     [SerializeField] int searchByEnemyFlagId = 0;
 
-    [SerializeField] Traversal traversal;
 
     [Header("Logging")]
     [SerializeField] CombatUser[] logAll;
@@ -34,8 +37,10 @@ public class CombatController : StatMods, ITestable, ITactic
     [SerializeField] CombatUser logEnemyTargat;
 
     private OnLoseFocusTactic lostTactic = new OnLoseFocusTactic();
+    public OnLoseFocusTactic LostTactic => lostTactic;
 
     float Damage { get => basicAttackDamage.GetDamage(); }
+    public float AttackRange { get => attackRange.Range; }
 
     // Update is called once per frame
     void Update()
@@ -49,39 +54,23 @@ public class CombatController : StatMods, ITestable, ITactic
     {
         traversal.Travel(goTo);
     }
-    private void Stop()
+    public void Stop()
+    {
+        LostTactic.Do(this);
+    }
+
+    private void StopWalking()
     {
         traversal.Travel(transform.position);
     }
 
     private void Attack()
     {
-
         // very lazy and slow search for enemies.
-        CombatUser[] all = GameObject.FindObjectsOfType<CombatUser>();
-        List<CombatUser> enemies = GetUnitsByFlag(all.ToList(), searchByEnemyFlagId);
-        List<CombatUser> attackableEnemy = GetAttackable(enemies);
-        CombatUser enemyToFollow = null;
-        if (attackableEnemy.Count > 0)
-        {
-            int closestEnemyId = Closest(attackableEnemy);
-            if(closestEnemyId == -1)
-            {
-                Debug.LogError("Enemy not picked.");
-            }
-            else
-            {
-                enemyToFollow = enemies[closestEnemyId];
-
-                // walk to enemy
-                Travel(enemyToFollow.transform.position);
-            }
-        }
-        logAll = all;
-        logEnemies = attackableEnemy;
+        CombatUser enemyToFollow = FindClosestAttackableEnemy();
+        Follow(enemyToFollow);
         logEnemyTargat = enemyToFollow;
 
-        
         if (enemyToFollow)
         {
             if (Vector3.Distance(enemyToFollow.transform.position, transform.position) < attackRange.Range)
@@ -91,8 +80,52 @@ public class CombatController : StatMods, ITestable, ITactic
         }
         else
         {
-            Debug.Log("!Enemy count is 0 when searching for " + searchForEnemyId, this);
+            Debug.Log("!Enemy count is 0 when searching for " + searchByEnemyFlagId, this);
         }
+    }
+
+    private CombatUser FindClosestAttackableEnemy()
+    {
+        return 
+            FindClosest(
+                FindAttackableEnemies()
+                );
+    }
+
+    private List<CombatUser> FindAttackableEnemies()
+    {
+        List<CombatUser> attackableEnemies, enemies;
+        enemies = SearchSceneForEnemies();
+        attackableEnemies = GetAttackable(enemies);
+        logEnemies = attackableEnemies;
+        return attackableEnemies;
+    }
+
+    private CombatUser FindClosest(List<CombatUser> group) { 
+        CombatUser unit = null;
+        if (group.Count > 0)
+        {
+            int closestEnemyId = Closest(group);
+            if (closestEnemyId == -1)
+            {
+                Debug.LogError("Enemy not picked.");
+            }
+            else
+            {
+                unit = group[closestEnemyId];
+
+            }
+        }
+        return unit;
+    }
+
+    private List<CombatUser> SearchSceneForEnemies()
+    {
+        List<CombatUser> enemies;
+        CombatUser[] all = GameObject.FindObjectsOfType<CombatUser>();
+        enemies = GetUnitsByFlag(all.ToList(), searchByEnemyFlagId);
+        logAll = all;
+        return enemies;
     }
 
     private List<CombatUser> GetAttackable(List<CombatUser> group)
@@ -157,7 +190,6 @@ public class CombatController : StatMods, ITestable, ITactic
 
     public void TestInitialState()
     {
-        searchByEnemyFlagId = searchForEnemyId;
     }
 
 
@@ -169,6 +201,26 @@ public class CombatController : StatMods, ITestable, ITactic
     public void Deactivate()
     {
         lostTactic.Do(this);
+    }
+
+    internal CombatUser SearchEnemy()
+    {
+        return FindClosestAttackableEnemy();
+    }
+
+    internal void Follow(CombatUser enemyToFollow)
+    {
+        if (enemyToFollow)
+        {
+            // walk to enemy
+            Travel(enemyToFollow.transform.position);
+        }
+    }
+
+    internal void AttackEnemy(CombatUser enemyToFollow)
+    {
+        if (attackingLocked) return;
+        StartCoroutine(AttackRoutine(enemyToFollow));
     }
 
     [System.Serializable]
@@ -189,8 +241,7 @@ public class CombatController : StatMods, ITestable, ITactic
         public void Do(CombatController controller)
         {
             controller.used = false;
-            controller.Stop();
-            Debug.Log("disable");
+            controller.StopWalking();
         }
     }
 }

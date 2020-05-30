@@ -15,16 +15,16 @@ public class TacticsCommand:MonoBehaviour, ISetupUnity
     {
         // for dev
         if (activeTactic != devManualActiveTactic)
-            SetTacticByUI(devManualActiveTactic);
+            SetTacticAndActivate(devManualActiveTactic);
     }
 
-    public void Activate()
+    public void Activate(int id)
     {
         if (!useTactic) return;
-
+        devManualActiveTactic = id;
         for (int i = 0; i < units.Count; i++)
         {
-            units[i].Activate(activeTactic);
+            units[i].Activate(id);
         }
     }
 
@@ -34,19 +34,15 @@ public class TacticsCommand:MonoBehaviour, ISetupUnity
             Debug.Log("Disconnected unit from commander when destroyed.");
     }
 
-    public void SetTacticByUI(int i)
+    public void SetTacticAndActivate(int i)
     {
         activeTactic = i;
+        Activate(activeTactic);
     }
 
     public void SetIsUsed(bool use)
     {
         useTactic = use;
-    }
-
-    public void Log()
-    {
-        Debug.Log("Logged tactic");
     }
 
     public bool UnitySetup()

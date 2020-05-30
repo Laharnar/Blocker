@@ -1,5 +1,4 @@
-﻿using JetBrains.Annotations;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +8,10 @@ using UnityEngine.Events;
 
 // GOAL: split into 4 -> combat controller. movement follow target. targeting searching. 
 // Combat controller has control over which items are ran.
+// Repurposed into tactic.
 public class CombatController : StatMods, ITestable, ITactic
 {
-    public bool used = false;
+    public bool used = true;
     [SerializeField] CombatUser self;
 
     [SerializeField] SpriteRenderer sprite;
@@ -32,19 +32,30 @@ public class CombatController : StatMods, ITestable, ITactic
     [SerializeField] List<CombatUser> logEnemies;
     [SerializeField] int logPickedEnemyTargetId= 0;
     [SerializeField] CombatUser logEnemyTargat;
+
+    private OnLoseFocusTactic lostTactic = new OnLoseFocusTactic();
+
     float Damage { get => basicAttackDamage.GetDamage(); }
-    public TacticResult SuggestedResult { get; set; }
 
     // Update is called once per frame
     void Update()
     {
         if (attackingLocked) return;
+        if (!used) return;
         Attack();
+    }
+
+    private void Travel(Vector3 goTo)
+    {
+        traversal.Travel(goTo);
+    }
+    private void Stop()
+    {
+        traversal.Travel(transform.position);
     }
 
     private void Attack()
     {
-        if (!used) return;
 
         // very lazy and slow search for enemies.
         CombatUser[] all = GameObject.FindObjectsOfType<CombatUser>();
@@ -61,9 +72,9 @@ public class CombatController : StatMods, ITestable, ITactic
             else
             {
                 enemyToFollow = enemies[closestEnemyId];
-                
+
                 // walk to enemy
-                traversal.Travel(enemyToFollow.transform.position);
+                Travel(enemyToFollow.transform.position);
             }
         }
         logAll = all;
@@ -149,10 +160,6 @@ public class CombatController : StatMods, ITestable, ITactic
         searchByEnemyFlagId = searchForEnemyId;
     }
 
-    public void Simulate()
-    {
-        throw new NotImplementedException();
-    }
 
     public void Activate()
     {
@@ -161,7 +168,7 @@ public class CombatController : StatMods, ITestable, ITactic
 
     public void Deactivate()
     {
-        used = false;
+        lostTactic.Do(this);
     }
 
     [System.Serializable]
@@ -175,6 +182,15 @@ public class CombatController : StatMods, ITestable, ITactic
             {
                 traversal[i].OverwriteTargetAsFirst(goTo);
             }
+        }
+    }
+    public class OnLoseFocusTactic
+    {
+        public void Do(CombatController controller)
+        {
+            controller.used = false;
+            controller.Stop();
+            Debug.Log("disable");
         }
     }
 }

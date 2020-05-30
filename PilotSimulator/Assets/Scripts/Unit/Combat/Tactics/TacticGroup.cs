@@ -13,7 +13,7 @@ public class TacticGroup:MonoGroup
             activatedId = i;
             connections[i].MonoTactic.Activate();
         }
-        else Debug.LogError("Index out of range when activating tactic.", this);
+        else Debug.Log("Not enough tactics. Index out of range when activating tactic.", this);
     }
 
     public void DeactivateAll()

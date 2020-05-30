@@ -9,10 +9,8 @@ public class TacticChangeUI:MonoBehaviour
 
     public void ChangeTacticByUI(int id)
     {
-        Debug.Log("TODO");
-        activeUser.SetTacticByUI(id);
+        activeUser.SetTacticAndActivate(id);
         displayedTactic = id;
-        //onToggleTrigger[id].Mono.SetValue(values[id]);Tactics
     }
 
     public void ChangeUser(TacticsCommand user)

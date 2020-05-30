@@ -9,7 +9,7 @@ public class ExpGroup: MonoBehaviour, IUIValue
 
     public bool IsChanged { get; set; }
 
-    public void ConnectToChild(Transform t)
+    public void ConnectExpToChild(Transform t)
     {
         t.GetComponentInChildren<ExpCollector>().Connect(this);
         t.GetComponentInChildren<ExpCollector>().Connect(this);

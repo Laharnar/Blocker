@@ -2,11 +2,16 @@
 
 public class TacticGroup:MonoGroup
 {
+    public int activatedId = 0;
+
     public void Activate(int i)
     {
         DeactivateAll();
         if (i < connections.Count)
+        {
+            activatedId = i;
             connections[i].MonoTactic.Activate();
+        }
         else Debug.LogError("Index out of range when activating tactic.", this);
     }
 
@@ -16,5 +21,6 @@ public class TacticGroup:MonoGroup
         {
             connections[i].MonoTactic.Deactivate();
         }
+        activatedId = -1;
     }
 }

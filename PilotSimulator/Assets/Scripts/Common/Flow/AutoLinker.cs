@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 [System.Serializable]
@@ -12,7 +13,8 @@ public class AutoLinker
     public SimpleUpgrades upgrades;
     [Header("Optional")]
     public UpgradableUser userUpgrades; 
-    public UpgradableAlliance allies; 
+    public UpgradableAlliance allies;
+    [SerializeField] TacticLinker tactics;
 
     public void SetupLink(Transform t)
     {
@@ -22,13 +24,10 @@ public class AutoLinker
             LinkerRoot target = t.GetComponent<LinkerRoot>();
             RealtimeTester.Assert(target != null, t, "Spawned object doesn't have LinkerRoot script. " + t.name);
 
-            if(linkedSelf)target.Setup(linkedSelf);
-            if(expgroup) expgroup.ConnectToChild(t);
-
-            if (upgrades)
-            {
-                ConnectUpgradesToChild(t);
-            }
+            if(linkedSelf) target.Setup(linkedSelf);
+            if(expgroup) expgroup.ConnectExpToChild(t);
+            if (upgrades) ConnectUpgradesToChild(t);
+            tactics.ConnectTactics(t);
         }
     }
 
@@ -37,6 +36,7 @@ public class AutoLinker
         ISpawnUpgradeInitializer user = t.GetComponentInChildren<ISpawnUpgradeInitializer>();
         user.InitUpgradesOnSpawn(upgrades);
 
+        
         //UpgradableUser upgradableUser = t.GetComponentInChildren<UpgradableUser>();
         //if (upgradableUser)
         //    UpgradableUser.Connect(upgradableUser, expgroup);

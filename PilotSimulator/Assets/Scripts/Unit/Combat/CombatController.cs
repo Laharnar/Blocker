@@ -11,6 +11,7 @@ using UnityEngine.Events;
 // Combat controller has control over which items are ran.
 public class CombatController : StatMods, ITestable, ITactic
 {
+    public bool used = false;
     [SerializeField] CombatUser self;
 
     [SerializeField] SpriteRenderer sprite;
@@ -33,7 +34,6 @@ public class CombatController : StatMods, ITestable, ITactic
     [SerializeField] CombatUser logEnemyTargat;
     float Damage { get => basicAttackDamage.GetDamage(); }
     public TacticResult SuggestedResult { get; set; }
-    bool used = false;
 
     // Update is called once per frame
     void Update()

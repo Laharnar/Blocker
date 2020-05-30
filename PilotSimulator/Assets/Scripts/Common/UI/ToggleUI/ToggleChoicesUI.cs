@@ -33,15 +33,5 @@ public class ToggleChoicesUI : MonoBehaviour
             choices[i].Set(value);
         }
     }
-}
-public class TacticChangeUI:MonoBehaviour
-{
-    [SerializeField] UnitTactics tacticUsers;
 
-    public void ChangeTacticByUI(int id)
-    {
-        Debug.Log("TODO");
-        tacticUsers.SetTacticByUI(id);
-        //onToggleTrigger[id].Mono.SetValue(values[id]);Tactics
-    }
 }

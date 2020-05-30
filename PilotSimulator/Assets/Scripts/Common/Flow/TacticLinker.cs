@@ -18,7 +18,7 @@ public class TacticLinker
         }
         else
         {
-            tactic.AddUnit(spawnedTactics);
+            tactic.ConnectUnit(spawnedTactics);
         }
     }
 }

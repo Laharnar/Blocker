@@ -28,6 +28,12 @@ public class TacticsCommand:MonoBehaviour, ISetupUnity
         }
     }
 
+    public void DisconnectUnitOnDestroy(TacticGroup tacticGroup)
+    {
+        if (!units.Remove(tacticGroup))
+            Debug.Log("Disconnected unit from commander when destroyed.");
+    }
+
     public void SetTacticByUI(int i)
     {
         activeTactic = i;
@@ -52,17 +58,20 @@ public class TacticsCommand:MonoBehaviour, ISetupUnity
         if (units.Count == 0)
         {
             TacticGroup tg = GetComponentInChildren<TacticGroup>();
-            AddUnit(tg);
+            ConnectUnit(tg);
         }
         if (units.Count > 0)
             return true;
         return false;
     }
 
-    internal void AddUnit(TacticGroup spawnedTactics)
+    internal void ConnectUnit(TacticGroup spawnedTactics)
     {
         Debug.Log("Adding unit to tactics command.");
         if (spawnedTactics)
+        {
             units.Add(spawnedTactics);
+            spawnedTactics.officer = this; 
+        }
     }
 }

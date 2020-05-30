@@ -3,6 +3,7 @@
 public class TacticGroup:MonoGroup
 {
     public int activatedId = 0;
+    public TacticsCommand officer;
 
     public void Activate(int i)
     {
@@ -22,5 +23,10 @@ public class TacticGroup:MonoGroup
             connections[i].MonoTactic.Deactivate();
         }
         activatedId = -1;
+    }
+
+    private void OnDestroy()
+    {
+        if(officer)officer.DisconnectUnitOnDestroy(this);
     }
 }

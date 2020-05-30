@@ -233,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connections:
   - mono: {fileID: 6322717010757096712}
+  activatedId: 0
 --- !u!1 &1372090155
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,7 +1432,7 @@ MonoBehaviour:
       registeredCount: 0
       reset: 0
   init: 0
-  used: 0
+  used: 1
   self: {fileID: 6322717010757096716}
   sprite: {fileID: 6322717010485856559}
   attackingLocked: 0

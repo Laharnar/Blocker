@@ -5,13 +5,19 @@ using UnityEngine;
 
 public class TacticsCommand:MonoBehaviour
 {
+    // Tells which tactics or global targets should the commanded units go for.
+
+    [Header("Realtime | Tactics")]
     public bool useTactic = true;
     [SerializeField] int devManualActiveTactic;
     [SerializeField] int activeTactic;
-    [SerializeField] int lastTactic;
+
+    [Header("Realtime | Commanding bases")]
     [SerializeField] Transform defendingBase;
     [SerializeField] public CombatUser enemyBoss;
-    public List<TacticGroup> units = new List<TacticGroup>();
+
+    [Header("Realtime | Connected units")]
+    public List<TacticalUnit> units = new List<TacticalUnit>();
 
     private void Update()
     {
@@ -19,19 +25,27 @@ public class TacticsCommand:MonoBehaviour
         if (activeTactic != devManualActiveTactic)
             ChangeTacticAndActivate(devManualActiveTactic);
 
-        for (int i = 0; i < units.Count; i++)
-        {
-            units[i].AllyBaseToDefend = defendingBase;
-        }
+        InformAboutDefendedBase(defendingBase);
+        InformAboutAttackableBase(enemyBoss);
+    }
 
+    private void InformAboutAttackableBase(CombatUser enemyBoss)
+    {
         for (int i = 0; i < units.Count; i++)
         {
             units[i].EnemyBossToAttack = enemyBoss;
         }
     }
 
+    private void InformAboutDefendedBase(Transform defendingBase)
+    {
+        for (int i = 0; i < units.Count; i++)
+        {
+            units[i].AllyBaseToDefend = defendingBase;
+        }
+    }
 
-    public void DisconnectUnitOnDestroy(TacticGroup tacticGroup)
+    public void DisconnectUnitOnDestroy(TacticalUnit tacticGroup)
     {
         if (!units.Remove(tacticGroup))
             Debug.Log("Disconnected unit from commander when destroyed.");
@@ -43,7 +57,7 @@ public class TacticsCommand:MonoBehaviour
         Activate(activeTactic);
     }
 
-    internal void ConnectUnit(TacticGroup spawnedTactics)
+    internal void ConnectUnit(TacticalUnit spawnedTactics)
     {
         if (spawnedTactics)
         {

@@ -7,24 +7,26 @@ public class DefendBase : MonoBehaviour, ITactic, ITestable
 
     //public Rect areaAroundBase;
 
-    public float ApproachStructureRange;
-    public float SearchAroundTime;
-    public float maxAllowedSearchRange;
+    public float structureApproachingRange;
+    public float searchRate;
+    public float searchRange;
     
     [SerializeField] bool returningToBase = false;
-    [SerializeField] TacticGroup unit;
+    [SerializeField] TacticalUnit unit;
 
-    [SerializeField] Transform DefendBaseTarget {
-        get {
-            return logBaseTarget = unit.AllyBaseToDefend;
-        }
-    }
     [Header("|Realtime|")]
-    [SerializeField] float letThemRunAway;
+    float letThemRunAway;
     [SerializeField] CombatUser enemyToFollow;
 
     [Header("|Log|")]
     public Transform logBaseTarget;
+
+    [SerializeField]
+    Transform DefendedBase {
+        get {
+            return logBaseTarget = unit.AllyBaseToDefend;
+        }
+    }
 
     private void Update() { 
         if (used) Simulate();
@@ -49,13 +51,7 @@ public class DefendBase : MonoBehaviour, ITactic, ITestable
         }
         else
         {
-            enemyToFollow = combatant.SearchEnemy();
-            float dist = Vector3.Distance(enemyToFollow.transform.position, transform.position);
-            bool nearEnemy = dist < maxAllowedSearchRange;
-            if (nearEnemy)
-            {
-                combatant.OffensiveLocking(enemyToFollow);
-            }
+            SearchAndLockNearbyEnemy();
         }
 
         // reset every 3 seconds, to allow enemy to escape the area.
@@ -65,18 +61,28 @@ public class DefendBase : MonoBehaviour, ITactic, ITestable
         }
     }
 
+    private void SearchAndLockNearbyEnemy()
+    {
+        enemyToFollow = combatant.SearchEnemy();
+        float dist = Vector3.Distance(enemyToFollow.transform.position, transform.position);
+        bool nearEnemy = dist < searchRange;
+        if (nearEnemy)
+        {
+            combatant.OffensiveLocking(enemyToFollow);
+        }
+    }
 
     private void DefensiveAroundBase(CombatController combatant)
     {
-        Transform defended = DefendBaseTarget;
+        Transform defended = DefendedBase;
         if (defended)
         {
             float dist = Vector3.Distance(defended.position, transform.position);
-            bool nearStructure = dist < ApproachStructureRange;
+            bool nearStructure = dist < structureApproachingRange;
             if (nearStructure)
             {
                 combatant.Stop();
-                letThemRunAway = Time.time + SearchAroundTime;
+                letThemRunAway = Time.time + searchRate;
                 returningToBase = false;
             }
             else
@@ -105,7 +111,7 @@ public class DefendBase : MonoBehaviour, ITactic, ITestable
 
     public void TestInitialState()
     {
-        RealtimeTester.Assert(ApproachStructureRange > 0, this, "ApproachStructureRange is <0, expect >0.");
-        RealtimeTester.Assert(SearchAroundTime > 0, this, "ApproachStructureRange is <0. expect >0");
+        RealtimeTester.Assert(structureApproachingRange > 0, this, "ApproachStructureRange is <0, expect >0.");
+        RealtimeTester.Assert(searchRate > 0, this, "ApproachStructureRange is <0. expect >0");
     }
 }

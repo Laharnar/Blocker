@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 
-public class TacticGroup:MonoGroup
+public class TacticalUnit:MonoGroup
 {
+    // Contains connection for single unit to tactics on unit, commanding officer and target bases.
+
     [Header("| Realtime |")]
     [SerializeField] int activatedId = 0;
     [Header("| Linked |")]
     [SerializeField] internal TacticsCommand officer;
-
     [SerializeField] internal Transform AllyBaseToDefend;
     [SerializeField] internal CombatUser EnemyBossToAttack;
 

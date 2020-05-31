@@ -4,19 +4,16 @@ public class AttackStructure : MonoBehaviour, ITactic
 {
     public bool used = false;
     [SerializeField] CombatController combatant;
-    [SerializeField] TacticGroup unit;
+    [SerializeField] TacticalUnit unit;
 
     CombatUser AttackBaseTarget {
         get {
-            return logBaseTarget = enemyToFollow = unit.EnemyBossToAttack;
+            return attackedEnemyOrBoss = unit.EnemyBossToAttack;
         }
     }
 
     [Header("|Realtime|")]
-    [SerializeField] CombatUser enemyToFollow;
-
-    [Header("|Log|")]
-    public CombatUser logBaseTarget;
+    [SerializeField] CombatUser attackedEnemyOrBoss;
 
     private void Update()
     {
@@ -38,23 +35,17 @@ public class AttackStructure : MonoBehaviour, ITactic
         {
             return;
         }
-        if (!enemyToFollow)
-        {
-            enemyToFollow = combatant.SearchEnemy();
-        }
 
-        if (enemyToFollow && combatant.IsBlocked)
-            combatant.NormalAttack(enemyToFollow);
+        if (attackedEnemyOrBoss && combatant.IsBlocked)
+        {
+            attackedEnemyOrBoss = combatant.SearchEnemy();
+            combatant.NormalAttack(attackedEnemyOrBoss);
+        }
         else
         {
-            AttackBossStructure();
+            if (AttackBaseTarget)
+                combatant.NormalAttack(AttackBaseTarget);
+            else Debug.Log("Missing enemy.");
         }
-    }
-
-    private void AttackBossStructure()
-    {
-        if (AttackBaseTarget)
-            combatant.NormalAttack(AttackBaseTarget);
-        else Debug.Log("Missing enemy.");
     }
 }

@@ -7,13 +7,17 @@ public class LinkSpawnedUnitAsBoss
     [SerializeField] bool isBossSpawner = false;
     [SerializeField] List<TacticsCommand> otherGenerals;
 
-    public void ToEnemyBoss(CombatUser spawned)
+    public void ToEnemyBoss(Transform spawned)
     {
-        if (isBossSpawner)
+        CombatUser spawnedBoss = spawned.GetComponent<CombatUser>();
+        if (spawnedBoss)
         {
-            for (int i = 0; i < otherGenerals.Count; i++)
+            if (isBossSpawner)
             {
-                otherGenerals[i].enemyBoss = spawned;
+                for (int i = 0; i < otherGenerals.Count; i++)
+                {
+                    otherGenerals[i].enemyBoss = spawnedBoss;
+                }
             }
         }
     }

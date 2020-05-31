@@ -246,7 +246,6 @@ MonoBehaviour:
   self: {fileID: 6322717010757096716}
   sprite: {fileID: 6322717010485856559}
   attackingLocked: 0
-  blocking: {fileID: 2477366892957138314}
   attackRange: {fileID: 6322717010061070579}
   basicAttackDamage:
     damage: 1
@@ -257,11 +256,10 @@ MonoBehaviour:
   traversal:
     traversal:
     - {fileID: 6322717011786269139}
+  blocking: {fileID: 2477366892957138314}
   searchByEnemyFlagId: 1
-  logAll: []
   logEnemies: []
   logPickedEnemyTargetId: 0
-  logEnemyTargat: {fileID: 0}
 --- !u!1 &1030130993
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,12 +359,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   used: 0
   combatant: {fileID: 486480328}
-  ApproachStructureRange: 0.5
-  SearchAroundTime: 3
-  maxAllowedSearchRange: 2
+  structureApproachingRange: 1
+  searchRate: 4
+  searchRange: 2
   returningToBase: 0
   unit: {fileID: 1030130995}
-  letThemRunAway: 0
   enemyToFollow: {fileID: 0}
   logBaseTarget: {fileID: 0}
 --- !u!1 &1372090155
@@ -570,8 +567,7 @@ MonoBehaviour:
   used: 0
   combatant: {fileID: 486480328}
   unit: {fileID: 1030130995}
-  enemyToFollow: {fileID: 0}
-  logBaseTarget: {fileID: 0}
+  attackedEnemyOrBoss: {fileID: 0}
 --- !u!1 &1395757735375908142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1577,6 +1573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 6322717011786269136}
   blockedBy: {fileID: 486480328}
+  isBlocked: 0
 --- !u!1 &8934981638858523820
 GameObject:
   m_ObjectHideFlags: 0

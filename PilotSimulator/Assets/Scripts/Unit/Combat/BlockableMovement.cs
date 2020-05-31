@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class BlockableMovement:MonoBehaviour
 {
+    // Offers optional expansion for movement control to other systems.
+
     [SerializeField] PositionRotation movement;
     [Header("|Realtime|")]
     [SerializeField] CombatController blockedBy;
@@ -10,6 +12,7 @@ public class BlockableMovement:MonoBehaviour
 
     private void Update()
     {
+        // When source was destroyed, unit can get unlocked.
         if(blockedBy == null)
         {
             ForceUnlock();

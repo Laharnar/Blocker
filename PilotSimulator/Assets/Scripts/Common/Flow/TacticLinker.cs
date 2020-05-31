@@ -11,7 +11,7 @@ public class TacticLinker
     {
         if (tactic == null) return;
 
-        TacticGroup spawnedTactics = t.gameObject.GetComponentInChildren<TacticGroup>();
+        TacticalUnit spawnedTactics = t.gameObject.GetComponentInChildren<TacticalUnit>();
         if (spawnedTactics == null)
         {
             Debug.Log("Couldn't find tactic on spawned.");

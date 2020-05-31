@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class AutoLinker
 {
+    // Calls initializers for selected(probably spawned) target.
 
     public bool autoLink = false;
     public Linked linkedSelf;
@@ -28,10 +29,7 @@ public class AutoLinker
             if(expgroup) expgroup.ConnectExpToChild(t);
             if (upgrades) ConnectUpgradesToChild(t);
             tactics.ConnectTactics(t);
-
-            CombatUser combatUser = t.GetComponent<CombatUser>();
-            if(combatUser)
-                boss.ToEnemyBoss(combatUser);
+            boss.ToEnemyBoss(t);
         }
     }
 

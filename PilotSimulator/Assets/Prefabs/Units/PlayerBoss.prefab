@@ -247,6 +247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alliance: {fileID: 987203099374003792}
   hp: {fileID: 6489109142292639940}
+  con8: {fileID: 987203099557368402}
 --- !u!114 &6102529982012547433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,6 +484,7 @@ MonoBehaviour:
   self: {fileID: 987203099557368406}
   sprite: {fileID: 987203100901330549}
   attackingLocked: 0
+  blocking: {fileID: 0}
   attackRange: {fileID: 987203100512458665}
   basicAttackDamage:
     damage: 1
@@ -490,10 +492,9 @@ MonoBehaviour:
     optionalStats: {fileID: 0}
   attackLength: 0.1
   waitBetweenAttacks: 0.9
-  searchForEnemyId: 1
-  searchByEnemyFlagId: 1
   traversal:
     traversal: []
+  searchByEnemyFlagId: 1
   logAll: []
   logEnemies: []
   logPickedEnemyTargetId: 0

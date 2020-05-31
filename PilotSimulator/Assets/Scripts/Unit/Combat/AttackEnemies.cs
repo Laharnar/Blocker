@@ -2,6 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
+
 public class AttackEnemies: MonoBehaviour, ITactic
 {
     public bool used = false;

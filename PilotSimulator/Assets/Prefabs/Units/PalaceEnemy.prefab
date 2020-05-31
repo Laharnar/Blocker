@@ -51,10 +51,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1266929501266870794, guid: 944c3d14e36b4fa44a71fcc87814b08c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.87
+      objectReference: {fileID: 0}
     - target: {fileID: 4857316094168717825, guid: 944c3d14e36b4fa44a71fcc87814b08c,
         type: 3}
       propertyPath: m_Name
       value: PalaceEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6364351049922366224, guid: 944c3d14e36b4fa44a71fcc87814b08c,
+        type: 3}
+      propertyPath: linkerForSpawned.boss.otherGenerals.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6364351049922366224, guid: 944c3d14e36b4fa44a71fcc87814b08c,
         type: 3}
@@ -77,6 +87,11 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7399394692820418240, guid: 944c3d14e36b4fa44a71fcc87814b08c,
+        type: 3}
+      propertyPath: defendingBase
+      value: 
+      objectReference: {fileID: 6599417947108319416}
     - target: {fileID: 8321784915348656222, guid: 944c3d14e36b4fa44a71fcc87814b08c,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -97,5 +112,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -0.13
       objectReference: {fileID: 0}
+    - target: {fileID: 8789114704923706788, guid: 944c3d14e36b4fa44a71fcc87814b08c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789114704923706788, guid: 944c3d14e36b4fa44a71fcc87814b08c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.32
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 944c3d14e36b4fa44a71fcc87814b08c, type: 3}
+--- !u!4 &6599417947108319416 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1266929501266870794, guid: 944c3d14e36b4fa44a71fcc87814b08c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5332506064946668210}
+  m_PrefabAsset: {fileID: 0}

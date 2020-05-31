@@ -9,7 +9,7 @@ public class TacticChangeUI:MonoBehaviour
 
     public void ChangeTacticByUI(int id)
     {
-        activeUser.SetTacticAndActivate(id);
+        activeUser.ChangeTacticAndActivate(id);
         displayedTactic = id;
     }
 

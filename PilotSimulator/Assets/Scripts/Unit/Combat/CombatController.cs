@@ -17,7 +17,7 @@ public class CombatController : StatMods, ITestable
     [SerializeField] SpriteRenderer sprite;
     [SerializeField] bool attackingLocked = false;
 
-
+    [SerializeField] BlockableMovement blocking;
     [SerializeField] CombatCollisionTrigger attackRange;
     [SerializeField] AttackAction basicAttackDamage = new AttackAction(1);
     [SerializeField] float attackLength = 0.1f;
@@ -29,17 +29,14 @@ public class CombatController : StatMods, ITestable
     [Header("Searching")]
     [SerializeField] int searchByEnemyFlagId = 0;
 
-
     [Header("Logging")]
     [SerializeField] CombatUser[] logAll;
     [SerializeField] List<CombatUser> logEnemies;
     [SerializeField] int logPickedEnemyTargetId= 0;
-    [SerializeField] CombatUser logEnemyTargat;
-
-    private OnLoseFocusTactic lostTactic = new OnLoseFocusTactic();
-    public OnLoseFocusTactic LostTactic => lostTactic;
 
     float Damage { get => basicAttackDamage.GetDamage(); }
+    public bool IsBlocked { get => blocking.isBlocked; }
+
     public float AttackRange { get => attackRange.Range; }
 
     // Update is called once per frame
@@ -50,16 +47,58 @@ public class CombatController : StatMods, ITestable
         Attack();
     }
 
-    private void Travel(Vector3 goTo)
+    internal bool LockdownEnemy(CombatUser enemy)
+    {
+        if (!enemy)
+        {
+            return false;
+        }
+        if (!enemy.con8) { 
+            Debug.LogError("Enemy isn't connected con8.", enemy);
+            return false; 
+        }
+        // blocking is optional.
+        if (!enemy.con8.blocking) { 
+            return true; 
+        }
+
+        BlockableMovement other = enemy.con8.blocking;
+        other.LockMovement(this);
+        return true;
+    }
+
+    internal bool ReleaseEnemy(CombatUser enemy)
+    {
+        if (!enemy)
+        {
+            return false;
+        }
+        if (!enemy.con8)
+        {
+            Debug.LogError("Enemy isn't connected con8.", enemy);
+            return false;
+        }
+        // blocking is optional.
+        if (!enemy.con8.blocking)
+        {
+            return true;
+        }
+
+        BlockableMovement other = enemy.con8.blocking;
+        other.UnlockMovement(this);
+        return true;
+    }
+
+    public void Travel(Vector3 goTo)
     {
         traversal.Travel(goTo);
     }
     public void Stop()
     {
-        LostTactic.Do(this);
+        StopWalking();
     }
 
-    private void StopWalking()
+    public void StopWalking()
     {
         traversal.Travel(transform.position);
     }
@@ -69,7 +108,6 @@ public class CombatController : StatMods, ITestable
         // very lazy and slow search for enemies.
         CombatUser enemyToFollow = FindClosestAttackableEnemy();
         Follow(enemyToFollow);
-        logEnemyTargat = enemyToFollow;
 
         if (enemyToFollow)
         {
@@ -81,6 +119,38 @@ public class CombatController : StatMods, ITestable
         else
         {
             Debug.Log("!Enemy count is 0 when searching for " + searchByEnemyFlagId, this);
+        }
+    }
+    /// <summary>
+    /// Distance based attacking.
+    /// </summary>
+    /// <param name="enemy"></param>
+    public void NormalAttack(CombatUser enemy)
+    {
+        // when unit is in defence area, look for enemies in that area
+        Follow(enemy);
+
+        if (enemy)
+        {
+            if (Vector3.Distance(enemy.transform.position, transform.position) < AttackRange)
+            {
+                AttackEnemy(enemy);
+            }
+        }
+    }
+
+    public void OffensiveLocking(CombatUser enemyToFollow)
+    {
+        // when unit is in defence area, look for enemies in that area
+        Follow(enemyToFollow);
+
+        if (enemyToFollow)
+        {
+            if (Vector3.Distance(enemyToFollow.transform.position, transform.position) < AttackRange)
+            {
+                LockdownEnemy(enemyToFollow);
+                AttackEnemy(enemyToFollow);
+            }
         }
     }
 
@@ -200,7 +270,8 @@ public class CombatController : StatMods, ITestable
 
     public void Deactivate()
     {
-        lostTactic.Do(this);
+        used = false;
+        OnLoseFocusTactic.Do(this);
     }
 
     internal CombatUser SearchEnemy()
@@ -236,12 +307,13 @@ public class CombatController : StatMods, ITestable
             }
         }
     }
-    public class OnLoseFocusTactic
+
+}
+public static class OnLoseFocusTactic
+{
+    public static void Do(CombatController controller)
     {
-        public void Do(CombatController controller)
-        {
-            controller.used = false;
-            controller.StopWalking();
-        }
+        controller.used = false;
+        controller.StopWalking();
     }
 }

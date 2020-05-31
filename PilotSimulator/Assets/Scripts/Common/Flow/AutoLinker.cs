@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
-
 [System.Serializable]
 public class AutoLinker
 {
@@ -15,6 +14,7 @@ public class AutoLinker
     public UpgradableUser userUpgrades; 
     public UpgradableAlliance allies;
     [SerializeField] TacticLinker tactics;
+    [SerializeField] LinkSpawnedUnitAsBoss boss;
 
     public void SetupLink(Transform t)
     {
@@ -28,6 +28,10 @@ public class AutoLinker
             if(expgroup) expgroup.ConnectExpToChild(t);
             if (upgrades) ConnectUpgradesToChild(t);
             tactics.ConnectTactics(t);
+
+            CombatUser combatUser = t.GetComponent<CombatUser>();
+            if(combatUser)
+                boss.ToEnemyBoss(combatUser);
         }
     }
 

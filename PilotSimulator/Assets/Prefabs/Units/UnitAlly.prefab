@@ -215,7 +215,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 6322717010061070578}
   m_Father: {fileID: 6322717010057583616}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -245,6 +246,7 @@ MonoBehaviour:
   self: {fileID: 6322717010757096716}
   sprite: {fileID: 6322717010485856559}
   attackingLocked: 0
+  blocking: {fileID: 2477366892957138314}
   attackRange: {fileID: 6322717010061070579}
   basicAttackDamage:
     damage: 1
@@ -289,6 +291,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4163295611502563629}
+  - {fileID: 1317394498}
+  - {fileID: 5000231352020552647}
   m_Father: {fileID: 124206956}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -306,8 +310,65 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connections:
   - mono: {fileID: 673391050}
+  - mono: {fileID: 1317394499}
+  - mono: {fileID: 4626734527563031969}
   activatedId: 0
   officer: {fileID: 0}
+  AllyBaseToDefend: {fileID: 0}
+  EnemyBossToAttack: {fileID: 0}
+--- !u!1 &1317394497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1317394498}
+  - component: {fileID: 1317394499}
+  m_Layer: 0
+  m_Name: TAC2 Defend base
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1317394498
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317394497}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1030130994}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1317394499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317394497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e671815940103c4fbfac81dd6261ba7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  used: 0
+  combatant: {fileID: 486480328}
+  ApproachStructureRange: 0.5
+  SearchAroundTime: 3
+  maxAllowedSearchRange: 2
+  returningToBase: 0
+  unit: {fileID: 1030130995}
+  letThemRunAway: 0
+  enemyToFollow: {fileID: 0}
+  logBaseTarget: {fileID: 0}
 --- !u!1 &1372090155
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,6 +524,54 @@ MonoBehaviour:
       registeredCount: 0
       reset: 0
   init: 0
+--- !u!1 &1115375483318201023
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5000231352020552647}
+  - component: {fileID: 4626734527563031969}
+  m_Layer: 0
+  m_Name: TAC3 Attack boss
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5000231352020552647
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115375483318201023}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1030130994}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4626734527563031969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115375483318201023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0aedb8279ee0d1d479d705a0bc7a148d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  used: 0
+  combatant: {fileID: 486480328}
+  unit: {fileID: 1030130995}
+  enemyToFollow: {fileID: 0}
+  logBaseTarget: {fileID: 0}
 --- !u!1 &1395757735375908142
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,6 +987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alliance: {fileID: 6322717011208904970}
   hp: {fileID: 2144158}
+  con8: {fileID: 486480328}
 --- !u!114 &1062137913123300915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -937,7 +1047,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4163295611502563629}
+  m_Father: {fileID: 486480327}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!58 &6322717010061070576
@@ -1265,6 +1375,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6322717009954682230}
+  - {fileID: 3490859057782726240}
   m_Father: {fileID: 6322717010057583616}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1421,7 +1532,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
---- !u!1 &8251119895292190348
+--- !u!1 &8057849617052982856
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1429,28 +1540,43 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1782932450425753949}
+  - component: {fileID: 3490859057782726240}
+  - component: {fileID: 2477366892957138314}
   m_Layer: 0
-  m_Name: FrameTick
+  m_Name: Blocking
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1782932450425753949
+--- !u!4 &3490859057782726240
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8251119895292190348}
+  m_GameObject: {fileID: 8057849617052982856}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4163295611502563629}
+  m_Father: {fileID: 6322717011786269138}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2477366892957138314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8057849617052982856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65ca04a4096ba15428bc00e3df8f8ab7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 6322717011786269136}
+  blockedBy: {fileID: 486480328}
 --- !u!1 &8934981638858523820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,9 +1604,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 6322717010061070578}
-  - {fileID: 1782932450425753949}
+  m_Children: []
   m_Father: {fileID: 1030130994}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

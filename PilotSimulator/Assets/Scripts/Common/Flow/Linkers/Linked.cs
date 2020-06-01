@@ -1,4 +1,4 @@
-﻿using ICSharpCode.NRefactory.Ast;
+﻿
 using UnityEngine;
 public abstract class Linked : MonoBehaviour
 {

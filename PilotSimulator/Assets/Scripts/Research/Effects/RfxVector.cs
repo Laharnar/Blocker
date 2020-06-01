@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEditor.Build.Reporting;
-using UnityEngine;
+﻿using UnityEngine;
 
 [CreateAssetMenu(menuName ="Operations/Vectors")]
 public class RfxVector:ScienceEffect {

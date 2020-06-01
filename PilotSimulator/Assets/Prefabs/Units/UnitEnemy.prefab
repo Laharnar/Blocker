@@ -31,6 +31,10 @@ PrefabInstance:
       propertyPath: OnDestroyed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 2144158, guid: a35eeb385ca2f324ba326ff4ecf78702, type: 3}
+      propertyPath: maxHealth.defaultValue
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 66912885, guid: a35eeb385ca2f324ba326ff4ecf78702, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -38,6 +42,10 @@ PrefabInstance:
     - target: {fileID: 486480328, guid: a35eeb385ca2f324ba326ff4ecf78702, type: 3}
       propertyPath: searchByEnemyFlagId
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 486480328, guid: a35eeb385ca2f324ba326ff4ecf78702, type: 3}
+      propertyPath: basicAttackDamage.damage
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1372090157, guid: a35eeb385ca2f324ba326ff4ecf78702, type: 3}
       propertyPath: groupId.value

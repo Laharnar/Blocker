@@ -22,7 +22,7 @@ public class TacticalBases:MonoBehaviour
     {
         for (int i = 0; i < group.units.Count; i++)
         {
-            group.units[i].asUser.EnemyBossToAttack = enemyBoss;
+            group.units[i].SetEnemyBoss(enemyBoss);
         }
     }
 
@@ -30,7 +30,7 @@ public class TacticalBases:MonoBehaviour
     {
         for (int i = 0; i < group.units.Count; i++)
         {
-            group.units[i].asUser.AllyBaseToDefend = defendingBase;
+            group.units[i].SetAllyBase(defendingBase);
         }
     }
 }

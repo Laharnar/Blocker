@@ -19,6 +19,7 @@ public class CombatUser : MonoBehaviour, ITestable
 
     public void TestInitialState()
     {
-        RealtimeTester.Assert(con8, this, "con8 isn't assigned.");
+        if(!Application.isPlaying)
+            RealtimeTester.Assert(con8!= null, this, "con8 isn't assigned.");
     }
 }

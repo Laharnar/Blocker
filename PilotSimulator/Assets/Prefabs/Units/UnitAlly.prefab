@@ -217,6 +217,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6322717010061070578}
+  - {fileID: 5859017026467865832}
   m_Father: {fileID: 6322717010057583616}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -259,7 +260,6 @@ MonoBehaviour:
   blocking: {fileID: 2477366892957138314}
   searchByEnemyFlagId: 1
   logEnemies: []
-  logPickedEnemyTargetId: 0
 --- !u!1 &1030130993
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,6 +270,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1030130994}
   - component: {fileID: 1030130995}
+  - component: {fileID: 9221579775077839679}
   m_Layer: 0
   m_Name: 3 tactics
   m_TagString: Untagged
@@ -311,9 +312,22 @@ MonoBehaviour:
   - mono: {fileID: 1317394499}
   - mono: {fileID: 4626734527563031969}
   activatedId: 0
-  officer: {fileID: 0}
   AllyBaseToDefend: {fileID: 0}
   EnemyBossToAttack: {fileID: 0}
+--- !u!114 &9221579775077839679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030130993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e1497bcc1c7bb44aac10b2e05f4dcad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  officer: {fileID: 0}
+  asUser: {fileID: 1030130995}
 --- !u!1 &1317394497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,9 +1088,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3f2d62d71336745b4a11ef50bb7ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staticLogCount: 0
-  collisions: []
+  collisions: {fileID: 4693174804001266569}
   circleCollider: {fileID: 6322717010061070576}
+  root: {fileID: 6322717010057583619}
 --- !u!1 &6322717010470451138
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,6 +1542,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
+--- !u!1 &7866633692042072187
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5859017026467865832}
+  - component: {fileID: 4693174804001266569}
+  m_Layer: 0
+  m_Name: Collisions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5859017026467865832
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7866633692042072187}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 486480327}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4693174804001266569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7866633692042072187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e6e20fba80ec9458f1f4af8deef745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staticLogCount: 0
+  collisions: []
 --- !u!1 &8057849617052982856
 GameObject:
   m_ObjectHideFlags: 0
@@ -1619,3 +1678,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   used: 1
   combatController: {fileID: 486480328}
+  enemyToFollow: {fileID: 0}

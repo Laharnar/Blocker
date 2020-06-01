@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class AttackEnemies: MonoBehaviour, ITactic
 {
-    public bool used = false;
-    public CombatController combatController;
+    [SerializeField] bool used = false;
+    [SerializeField] CombatController combatController;
+    [SerializeField] CombatUser enemyToFollow;
 
     private void Update() { if(used) Simulate(); }
 
@@ -23,15 +24,13 @@ public class AttackEnemies: MonoBehaviour, ITactic
 
         CombatController c0b = combatController;
 
-        CombatUser enemyToFollow = c0b.SearchEnemy();
+        enemyToFollow = c0b.SearchEnemy();
         c0b.Follow(enemyToFollow);
 
-        if (enemyToFollow)
+        
+        if (c0b.IsInAttackRange(enemyToFollow))
         {
-            if (Vector3.Distance(enemyToFollow.transform.position, transform.position) < c0b.AttackRange)
-            {
-                c0b.AttackEnemy(enemyToFollow);
-            }
+            c0b.AttackEnemy(enemyToFollow);
         }
     }
 }

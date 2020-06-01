@@ -2,7 +2,7 @@
 
 public class TacticChangeUI:MonoBehaviour
 {
-    [SerializeField] TacticsCommand activeUser;
+    [SerializeField] TacticGroup activeUser;
 
     public int displayedTactic;// displayed tactic can be different from active tactic
     // when unit is stunned or something
@@ -13,7 +13,7 @@ public class TacticChangeUI:MonoBehaviour
         displayedTactic = id;
     }
 
-    public void ChangeUser(TacticsCommand user)
+    public void ChangeUser(TacticGroup user)
     {
         activeUser = user;
     }

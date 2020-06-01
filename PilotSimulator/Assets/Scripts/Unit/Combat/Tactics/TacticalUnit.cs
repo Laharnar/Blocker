@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-
+﻿using System;
+using UnityEngine;
 public class TacticalUnit:MonoGroup
 {
     // Contains connection for single unit to tactics on unit, commanding officer and target bases.
@@ -7,7 +7,6 @@ public class TacticalUnit:MonoGroup
     [Header("| Realtime |")]
     [SerializeField] int activatedId = 0;
     [Header("| Linked |")]
-    [SerializeField] internal TacticsCommand officer;
     [SerializeField] internal Transform AllyBaseToDefend;
     [SerializeField] internal CombatUser EnemyBossToAttack;
 
@@ -31,8 +30,4 @@ public class TacticalUnit:MonoGroup
         activatedId = -1;
     }
 
-    private void OnDestroy()
-    {
-        if(officer)officer.DisconnectUnitOnDestroy(this);
-    }
 }

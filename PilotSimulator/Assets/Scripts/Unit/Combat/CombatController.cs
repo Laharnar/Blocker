@@ -32,20 +32,24 @@ public class CombatController : StatMods
     [Header("Logging")]
     CombatUser[] logAll;
     [SerializeField] List<CombatUser> logEnemies;
-    [SerializeField] int logPickedEnemyTargetId= 0;
 
     float Damage { get => basicAttackDamage.GetDamage(); }
     public bool IsBlocked { get => blocking.isBlocked; }
 
-    public float AttackRange { get => attackRange.Range; }
 
     // Update is called once per frame
     void Update()
     {
         if (attackingLocked) return;
         if (!used) return;
-        Attack();
+        AttackClosest();
     }
+
+    public bool IsInAttackRange(CombatUser enemy)
+    {
+        return enemy && attackRange.IsInRange(enemy.transform);
+    }
+    
 
     internal bool LockdownEnemy(CombatUser enemy)
     {
@@ -85,23 +89,11 @@ public class CombatController : StatMods
         traversal.Travel(transform.position);
     }
 
-    private void Attack()
+    public void AttackClosest()
     {
         // very lazy and slow search for enemies.
         CombatUser enemyToFollow = FindClosestAttackableEnemy();
-        Follow(enemyToFollow);
-
-        if (enemyToFollow)
-        {
-            if (Vector3.Distance(enemyToFollow.transform.position, transform.position) < attackRange.Range)
-            {
-                StartCoroutine(AttackRoutine(enemyToFollow));
-            }
-        }
-        else
-        {
-            Debug.Log("!Enemy count is 0 when searching for " + searchByEnemyFlagId, this);
-        }
+        NormalAttack(enemyToFollow);
     }
     /// <summary>
     /// Distance based attacking.
@@ -111,13 +103,10 @@ public class CombatController : StatMods
     {
         // when unit is in defence area, look for enemies in that area
         Follow(enemy);
-
-        if (enemy)
+        
+        if (IsInAttackRange(enemy))
         {
-            if (Vector3.Distance(enemy.transform.position, transform.position) < AttackRange)
-            {
-                AttackEnemy(enemy);
-            }
+            AttackEnemy(enemy);
         }
     }
 
@@ -130,13 +119,10 @@ public class CombatController : StatMods
 
     public void LockdownHit(CombatUser enemyToFollow)
     {
-        if (enemyToFollow)
+        if (IsInAttackRange(enemyToFollow))
         {
-            if (Vector3.Distance(enemyToFollow.transform.position, transform.position) < AttackRange)
-            {
-                LockdownEnemy(enemyToFollow);
-                AttackEnemy(enemyToFollow);
-            }
+            LockdownEnemy(enemyToFollow);
+            AttackEnemy(enemyToFollow);
         }
     }
 
@@ -164,6 +150,7 @@ public class CombatController : StatMods
 
     private IEnumerator AttackRoutine(CombatUser attacked)
     {
+        if (attackingLocked) yield break;
         attackingLocked = true;
 
         Debug.Log(gameObject.transform.root.name + " Attacking " + attacked);

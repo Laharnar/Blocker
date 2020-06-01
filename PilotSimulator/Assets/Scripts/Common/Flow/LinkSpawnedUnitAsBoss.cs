@@ -5,7 +5,7 @@ using UnityEngine;
 public class LinkSpawnedUnitAsBoss
 {
     [SerializeField] bool isBossSpawner = false;
-    [SerializeField] List<TacticsCommand> otherGenerals;
+    [SerializeField] List<TacticalBases> otherGenerals;
 
     public void ToEnemyBoss(Transform spawned)
     {

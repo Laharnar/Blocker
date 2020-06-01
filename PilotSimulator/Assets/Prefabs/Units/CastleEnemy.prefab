@@ -58,6 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1980798916389959026}
   - component: {fileID: 18255556280094796}
+  - component: {fileID: 23762726977006523}
   m_Layer: 0
   m_Name: Tactic
   m_TagString: Untagged
@@ -92,12 +93,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useTactic: 1
-  devManualActiveTactic: 1
+  commands: {fileID: 23762726977006523}
+  units: []
   activeTactic: 1
-  lastTactic: 0
+  onUnitDeathEvents: []
+--- !u!114 &23762726977006523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717624906795851952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4964dce0e9ada464ebd268d4687e2c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  group: {fileID: 18255556280094796}
   defendingBase: {fileID: 0}
   enemyBoss: {fileID: 0}
-  units: []
 --- !u!1 &3951183415818118920
 GameObject:
   m_ObjectHideFlags: 0

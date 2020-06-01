@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1477115320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1477115321}
+  - component: {fileID: 1477115323}
+  m_Layer: 0
+  m_Name: TacticalUnit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1477115321
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477115320}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 987203100273695578}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1477115323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477115320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e1497bcc1c7bb44aac10b2e05f4dcad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  officer: {fileID: 0}
+  asUser: {fileID: 0}
 --- !u!1 &11810806629078669
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,6 +254,7 @@ Transform:
   - {fileID: 987203099729039260}
   - {fileID: 7190855724027254391}
   - {fileID: 6489109142292639943}
+  - {fileID: 1477115321}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -338,9 +384,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3f2d62d71336745b4a11ef50bb7ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staticLogCount: 0
-  collisions: []
+  collisions: {fileID: 1978814614771811581}
   circleCollider: {fileID: 987203100512458666}
+  root: {fileID: 987203100273695577}
 --- !u!1 &987203100901330555
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,6 +501,7 @@ Transform:
   m_Children:
   - {fileID: 987203100512458664}
   - {fileID: 4806411710910158343}
+  - {fileID: 3380645816567071814}
   m_Father: {fileID: 987203100273695578}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -484,7 +531,6 @@ MonoBehaviour:
   self: {fileID: 987203099557368406}
   sprite: {fileID: 987203100901330549}
   attackingLocked: 0
-  blocking: {fileID: 0}
   attackRange: {fileID: 987203100512458665}
   basicAttackDamage:
     damage: 1
@@ -494,11 +540,9 @@ MonoBehaviour:
   waitBetweenAttacks: 0.9
   traversal:
     traversal: []
+  blocking: {fileID: 0}
   searchByEnemyFlagId: 1
-  logAll: []
   logEnemies: []
-  logPickedEnemyTargetId: 0
-  logEnemyTargat: {fileID: 0}
 --- !u!1 &2921762718081587670
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,6 +654,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &5176437060927065414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3380645816567071814}
+  - component: {fileID: 1978814614771811581}
+  m_Layer: 0
+  m_Name: Collisions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3380645816567071814
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176437060927065414}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7190855724027254391}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1978814614771811581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5176437060927065414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e6e20fba80ec9458f1f4af8deef745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staticLogCount: 0
+  collisions: []
 --- !u!1 &6489109142292639942
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,7 +750,7 @@ MonoBehaviour:
   maxHealth:
     value: {fileID: 0}
     useDefault: 1
-    defaultValue: 10
+    defaultValue: 25
   OnDamaged:
     m_PersistentCalls:
       m_Calls: []

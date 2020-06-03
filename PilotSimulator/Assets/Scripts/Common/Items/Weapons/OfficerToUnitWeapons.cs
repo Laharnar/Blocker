@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class OfficerToUnitWeapons:MonoBehaviour, IWeaponChanger
+public class OfficerToUnitWeapons:MonoBehaviour, IWeaponChanger, IRandomizable
 {
 
     public TacticGroup group;
@@ -19,15 +19,6 @@ public class OfficerToUnitWeapons:MonoBehaviour, IWeaponChanger
         GroupChangeWeapon(id);
     }
 
-    [ContextMenu("Change weapon")]
-    void TestChangeWeapon1()
-    {
-        GroupChangeWeapon(0);
-    }
-    void TestChangeWeapon2()
-    {
-        GroupChangeWeapon(1);
-    }
     public void GroupChangeWeapon(int swap)
     {
         activeWeaponInGroup = swap;
@@ -38,4 +29,8 @@ public class OfficerToUnitWeapons:MonoBehaviour, IWeaponChanger
         }
     }
 
+    public void RandomValue(int next)
+    {
+        GroupChangeWeapon(next);
+    }
 }

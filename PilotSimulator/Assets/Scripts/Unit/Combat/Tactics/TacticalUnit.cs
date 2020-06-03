@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
-public class TacticalUnit:MonoGroup
+
+public class TacticalUnit : MonoGroup, IRandomizable
 {
     // Contains connection for single unit to tactics on unit, commanding officer and target bases.
 
@@ -30,4 +31,8 @@ public class TacticalUnit:MonoGroup
         activatedId = -1;
     }
 
+    public void RandomValue(int next)
+    {
+        Activate(next);
+    }
 }

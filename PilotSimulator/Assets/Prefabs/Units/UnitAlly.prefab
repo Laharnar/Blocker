@@ -188,6 +188,36 @@ Transform:
   m_Father: {fileID: 6322717010057583616}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &125024249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 125024250}
+  m_Layer: 0
+  m_Name: Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &125024250
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125024249}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.31, y: -0.362, z: 0}
+  m_LocalScale: {x: 0.12, y: 0.12, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1500562366}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &486480326
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,8 +356,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e1497bcc1c7bb44aac10b2e05f4dcad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  officer: {fileID: 0}
   asUser: {fileID: 1030130995}
+  officer: {fileID: 0}
 --- !u!1 &1317394497
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,6 +565,70 @@ MonoBehaviour:
       registeredCount: 0
       reset: 0
   init: 0
+--- !u!1 &1500562365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1500562366}
+  - component: {fileID: 1500562368}
+  - component: {fileID: 1500562367}
+  m_Layer: 0
+  m_Name: Weapons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1500562366
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500562365}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 125024250}
+  m_Father: {fileID: 6322717010057583616}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1500562368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500562365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40557cf314c699f47af01fd5b67394f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipped: 1
+  equippedObj: {fileID: 0}
+  hand: {fileID: 125024250}
+  maker:
+    mono: {fileID: 1500562367}
+--- !u!114 &1500562367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1500562365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeee35b3e81639543a5dd90dd9009c36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponsListPrefab: {fileID: 9154612230488826381, guid: 1bec82fedcd9c3846a9f96a857473bec,
+    type: 3}
 --- !u!1 &1115375483318201023
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,6 +1053,7 @@ Transform:
   - {fileID: 66912886}
   - {fileID: 124206956}
   - {fileID: 486480327}
+  - {fileID: 1500562366}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

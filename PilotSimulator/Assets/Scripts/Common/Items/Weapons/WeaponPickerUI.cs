@@ -2,10 +2,11 @@
 
 public class WeaponPickerUI : MonoBehaviour
 {
-    public UnitWeapons activeUser;
+    public MonoConnection weaponChanger;
 
     public void PickWeaponByUI(int id)
     {
-        if(activeUser) activeUser.ChangeWeapon(id);
+        if(weaponChanger.MonoWeaponChanger != null) 
+            weaponChanger.MonoWeaponChanger.Change(id);
     }
 }

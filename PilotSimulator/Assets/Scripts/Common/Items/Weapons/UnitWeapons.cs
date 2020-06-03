@@ -1,7 +1,7 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-public class UnitWeapons : MonoBehaviour //, ITestable
+
+public class UnitWeapons : MonoBehaviour, IWeaponChanger //, ITestable
 {
     [SerializeField] int startupEquipped = -1;
 
@@ -12,7 +12,7 @@ public class UnitWeapons : MonoBehaviour //, ITestable
 
     private void Start()
     {
-            ChangeWeapon(startupEquipped);
+        ChangeWeapon(startupEquipped);
     }
 
     public void ChangeWeapon(int id)
@@ -47,6 +47,11 @@ public class UnitWeapons : MonoBehaviour //, ITestable
             obj.transform.parent = hand;
             obj.transform.localPosition = new Vector3(0,0,0);
         }
+    }
+
+    public void Change(int id)
+    {
+        ChangeWeapon(id);
     }
 
     // Testing changes.

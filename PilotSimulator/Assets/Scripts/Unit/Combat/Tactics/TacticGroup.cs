@@ -9,8 +9,11 @@ public class TacticGroup:MonoBehaviour
     public bool useTactic = true;
 
     public TacticalBases commands;
+
     [Header("Realtime | Connected units")]
     public List<TacticallyConnected> units = new List<TacticallyConnected>();
+
+    public List<TacticallyConnected> Units => units;
     [SerializeField] int activeTactic;
     public List<MonoConnection> onUnitDeathEvents;
 

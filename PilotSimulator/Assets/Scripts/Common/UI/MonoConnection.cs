@@ -7,6 +7,7 @@ public class MonoConnection
     public IUIValue MonoUI => (IUIValue)mono;
     public ITactic MonoTactic => (ITactic) mono;
     public IWeaponMaker MonoWeaponMaker => (IWeaponMaker) mono;
+    public IWeaponChanger MonoWeaponChanger => (IWeaponChanger) mono;
 
     public OnDeathEvents onDeathEvents => mono as OnDeathEvents;
 }

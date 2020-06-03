@@ -4,6 +4,7 @@ using UnityEngine;
 public class TacticallyConnected:MonoBehaviour
 {
     [SerializeField] internal TacticalUnit asUser;
+    [SerializeField] internal UnitWeapons asWeaponUser;
     [Header("| Linked |")]
     [SerializeField] internal TacticGroup officer;
 
@@ -25,5 +26,13 @@ public class TacticallyConnected:MonoBehaviour
     internal void SetAllyBase(Transform defendingBase)
     {
         if (asUser) asUser.AllyBaseToDefend = defendingBase;
+    }
+
+    internal void ChangeWeapon(int swap)
+    {
+        if (asWeaponUser)
+        {
+            asWeaponUser.Change(swap);
+        }
     }
 }

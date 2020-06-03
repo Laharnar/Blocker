@@ -12,7 +12,6 @@ public class UnitWeapons : MonoBehaviour //, ITestable
 
     private void Start()
     {
-        if(startupEquipped > -1)
             ChangeWeapon(startupEquipped);
     }
 
@@ -21,8 +20,11 @@ public class UnitWeapons : MonoBehaviour //, ITestable
         RemoveWeapon();
 
         equipped = id;
-        Transform newWeapon = maker.MonoWeaponMaker.CreateWeapon(id, this);
-        UseAsWeapon(newWeapon);
+        if (id > -1)
+        {
+            Transform newWeapon = maker.MonoWeaponMaker.CreateWeapon(id, this);
+            UseAsWeapon(newWeapon);
+        }
     }
 
     public void RemoveWeapon()
@@ -43,6 +45,7 @@ public class UnitWeapons : MonoBehaviour //, ITestable
         {
             equippedObj = obj.gameObject;
             obj.transform.parent = hand;
+            obj.transform.localPosition = new Vector3(0,0,0);
         }
     }
 

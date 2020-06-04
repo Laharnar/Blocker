@@ -4,9 +4,9 @@ using UnityEngine;
 [CreateAssetMenu]
 public class SimpleUpgrades : UpgradePrefab
 {
-    public UpgradeMods attack;
-    public UpgradeMods health; 
-    public UpgradeMods speed;
+    public UpgradeMod attack;
+    public UpgradeMod health; 
+    public UpgradeMod speed;
 
     [SerializeField] int[] levels = new int[3];
 
@@ -28,7 +28,7 @@ public class SimpleUpgrades : UpgradePrefab
         return levels[upgradeId];
     }
 
-    private bool AddModifierByName(UpgradeData data, string title, UpgradeMods mods)
+    private bool AddModifierByName(UpgradeData data, string title, UpgradeMod mods)
     {
         if (data.upgradeType == title)
         {
@@ -41,9 +41,9 @@ public class SimpleUpgrades : UpgradePrefab
 
     public void FullReset(SimpleUpgrades resetValues)
     {
-        attack = resetValues.attack.HardCopy();
-        health = resetValues.health.HardCopy();
-        speed = resetValues.speed.HardCopy();
+        attack = resetValues.attack.GetDataCopyForResettingModSets();
+        health = resetValues.health.GetDataCopyForResettingModSets();
+        speed = resetValues.speed.GetDataCopyForResettingModSets();
         levels = new int[3];
     }
 }

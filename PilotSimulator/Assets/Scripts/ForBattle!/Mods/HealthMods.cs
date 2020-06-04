@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.Events;
+
 public class HealthMods : StatMods, IHealth
 {
     public Health healthSrc;
@@ -18,22 +19,22 @@ public class HealthMods : StatMods, IHealth
         }
     }
 
-    public override void SetMods(UpgradeMods userMods)
+    protected override void OnAddMods(UpgradeMod userMods)
     {
-        base.SetMods(userMods);
+        // load items from mods into hp.
         healthMods = userMods.GetModSum();
         healthSrc.health.Value = MaxHp;
         healthSrc.maxHealth.Value = MaxHp;
     }
 
-    public override void Notified(float modValue)
+    public override void Notified(UpgradeData modValue)
     {
         base.Notified(modValue);
         // Heal amount that was added to max hp as mod.
         // Max hp doesn't have to be increased, because userMods.GetModSum()
         // automatically takes care of that.
-        healthSrc.health.Value += (int)modValue;
-        healthSrc.maxHealth.Value += (int)modValue;
+        healthSrc.health.Value += (int)modValue.increase;
+        healthSrc.maxHealth.Value += (int)modValue.increase;
         Debug.Log("inc hp+1 by mod");
     }
 }

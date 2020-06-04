@@ -11,15 +11,12 @@ public class BuyingUpgrades:MonoBehaviour
     public void UpgradeUser(int user, UpgradeData data)
     {
         UpgradableUser userUps = upgradable.GetUser(user);
-        data.SetUpgradeLevel(upgradesOfUsers[user].GetLevel(data.upgradeId));
-        data.SetCosts(userUps.LoadCosts(data.upgradeId, data.upgradeLevel));
-        data.SetMoney(userUps.LoadExp());
-        int level = data.upgradeLevel;
-        int cost = data.cost;
-        int money = data.money;
+        int level = upgradesOfUsers[user].GetLevel(data.upgradeId);
+        int cost = userUps.LoadCosts(data.upgradeId, level);
+        int money = userUps.LoadExp();
         if (money >= cost)
         {
-            Debug.Log("ClickUpgrade :: on " + user + " upId: " + data.upgradeId);
+            // Debug.Log("ClickUpgrade :: on " + user + " upId: " + data.upgradeId);
             upgradesOfUsers[user].Increase(data);
             userUps.SubtractExp(cost);
         }

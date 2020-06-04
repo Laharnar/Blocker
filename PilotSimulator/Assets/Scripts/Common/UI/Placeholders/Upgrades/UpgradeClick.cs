@@ -12,8 +12,7 @@ public class UpgradeClick:MonoBehaviour, ITestable
 
     public void OnClick(int optionId)
     {
-        UpgradeData dat = data[optionId].Copy();
-        dat.userId = ResponseToClick.ACTIVEUSER;
+        UpgradeData dat = data[optionId].GetDataCopyForUpgradingUnit();
         for (int i = 0; i < placeholder.Count; i++)
         {
             placeholder[i].ResponseHandler(new ResponseToClick()

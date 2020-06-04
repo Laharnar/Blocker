@@ -1,33 +1,18 @@
-﻿using System;
-using UnityEngine;
-
-
+﻿using UnityEngine;
+public interface IModData
+{
+    string ModType { get; }
+    float ModValue { get; }
+}
 [System.Serializable]
-public class UpgradeData
+public class UpgradeData: IModData
 {
     [SerializeField] internal int upgradeId = 0;
     [SerializeField] internal string upgradeType;
     [SerializeField] internal float increase = 1;
-    [SerializeField] internal int cost;
-    [SerializeField] internal int money;
-    [SerializeField] internal int userId;
 
-    [SerializeField] internal int upgradeLevel;
-
-    internal void SetMoney(int v)
-    {
-        money = v;
-    }
-
-    internal void SetCosts(int v)
-    {
-        cost = v;
-    }
-
-    internal void SetUpgradeLevel(int v)
-    {
-        upgradeLevel = v;
-    }
+    public string ModType { get => upgradeType; }
+    public float ModValue { get => increase; }
 
     public void TestInitialState(MonoBehaviour mono)
     {
@@ -41,9 +26,11 @@ public class UpgradeData
             upgradeType = upgradeType,
             upgradeId = upgradeId,
             increase = increase,
-            cost = cost,
-            money = money,
-            userId = userId
         };
+    }
+
+    public UpgradeData GetDataCopyForUpgradingUnit()
+    {
+        return Copy();
     }
 }

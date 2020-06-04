@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 
-public class UserUpgradesOnSpawn:MonoBehaviour, ISpawnUpgradeInitializer
+public class UserUpgradesOnSpawn : MonoBehaviour, ISpawnUpgradeInitializer
 {
+    // prefab based stat loading.
+
     public SimpleUpgrades defaultUpgradeSet;
 
     public StatMods attacking;
@@ -20,8 +22,9 @@ public class UserUpgradesOnSpawn:MonoBehaviour, ISpawnUpgradeInitializer
     }
     public void InitUpgradesOnSpawn(SimpleUpgrades upgrades)
     {
-        if (attacking) attacking.SetMods(upgrades.attack);
-        if (health) health.SetMods(upgrades.health);
-        if (movement) movement.SetMods(upgrades.speed);
+        Debug.Log("changes "+ upgrades.attack.ModCount);
+        if (attacking) ((IStatAdder)attacking).AddUpgradeStats(upgrades.attack);
+        if (health) ((IStatAdder)health).AddUpgradeStats((upgrades.health));
+        if (movement) ((IStatAdder)movement).AddUpgradeStats(upgrades.speed);
     }
 }

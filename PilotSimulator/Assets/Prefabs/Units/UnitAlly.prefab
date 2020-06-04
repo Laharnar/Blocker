@@ -102,7 +102,15 @@ MonoBehaviour:
   upgradeMods:
     mods: []
     modType: 
-    addNewModsEvt:
+    evtOnAddedMod:
+      observers: []
+      observerNames: []
+      registeredCount: 0
+      reset: 0
+  weaponMods:
+    mods: []
+    modType: 
+    evtOnAddedMod:
       observers: []
       observerNames: []
       registeredCount: 0
@@ -157,6 +165,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedMod: {fileID: 2046910207093867051}
   attackMod: {fileID: 1433826216}
+  speedStatMod:
+    mono: {fileID: 2046910207093867051}
+  attackStatMod:
+    mono: {fileID: 1433826216}
 --- !u!1 &124206955
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +279,15 @@ MonoBehaviour:
   upgradeMods:
     mods: []
     modType: 
-    addNewModsEvt:
+    evtOnAddedMod:
+      observers: []
+      observerNames: []
+      registeredCount: 0
+      reset: 0
+  weaponMods:
+    mods: []
+    modType: 
+    evtOnAddedMod:
       observers: []
       observerNames: []
       registeredCount: 0
@@ -357,6 +377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asUser: {fileID: 1030130995}
+  asWeaponUser: {fileID: 0}
   officer: {fileID: 0}
 --- !u!1 &1317394497
 GameObject:
@@ -559,7 +580,15 @@ MonoBehaviour:
   upgradeMods:
     mods: []
     modType: 
-    addNewModsEvt:
+    evtOnAddedMod:
+      observers: []
+      observerNames: []
+      registeredCount: 0
+      reset: 0
+  weaponMods:
+    mods: []
+    modType: 
+    evtOnAddedMod:
       observers: []
       observerNames: []
       registeredCount: 0
@@ -610,6 +639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40557cf314c699f47af01fd5b67394f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startupEquipped: -1
   equipped: 1
   equippedObj: {fileID: 0}
   hand: {fileID: 125024250}
@@ -804,7 +834,15 @@ MonoBehaviour:
   upgradeMods:
     mods: []
     modType: 
-    addNewModsEvt:
+    evtOnAddedMod:
+      observers: []
+      observerNames: []
+      registeredCount: 0
+      reset: 0
+  weaponMods:
+    mods: []
+    modType: 
+    evtOnAddedMod:
       observers: []
       observerNames: []
       registeredCount: 0

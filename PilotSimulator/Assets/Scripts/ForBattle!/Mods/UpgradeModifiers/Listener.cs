@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
+
 [System.Serializable]
 public class Listener
 {
-    [SerializeField] List<Observer> observers;
+    [SerializeField] List<ListenersObserver> observers;
     [SerializeField] List<string> observerNames;
     public int registeredCount = 0;
     public bool reset = false;
 
     public Listener()
     {
-        observers = new List<Observer>();
+        observers = new List<ListenersObserver>();
         observerNames = new List<string>();
         registeredCount = 0;
     }
 
-    public void RegisterObserver(Observer item)
+    public void RegisterObserver(ValueChangeNotifiable item)
     {
         if (reset)
         {
@@ -30,7 +31,7 @@ public class Listener
         registeredCount = observers.Count;
     }
 
-    public void Notify(float value)
+    public void Notify(IModData mods)
     {
         if (reset)
         {
@@ -38,14 +39,14 @@ public class Listener
             observerNames.Clear();
             reset = false;
         }
-
         for (int i = 0; i < observers.Count; i++)
         {
-            observers[i].Notified(value);
+            if(observerNames[i] != null)
+                observers[i].Notified(mods);
         }
     }
 
-    internal void UnregisterObserver(Observer item)
+    internal void UnregisterObserver(ValueChangeNotifiable item)
     {
         if (reset)
         {

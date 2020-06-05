@@ -5,6 +5,7 @@ public class BonusesToMods:MonoBehaviour
 {
     [System.Serializable]
     public class UniqueStatModsList {
+        // References for relaying stat mods to other scripts.
         [SerializeField] List<StatMods> mods = new List<StatMods>();
         public bool nonUniqueThrowError = true;
         [SerializeField] List<StatMods> logIsDuplicate = new List<StatMods>();

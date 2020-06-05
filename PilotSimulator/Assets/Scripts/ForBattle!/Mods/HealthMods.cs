@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class HealthMods : StatMods, IHealth
+public class HealthMods : StatMods, IHealth, IValueGetter
 {
     public Health healthSrc;
     [SerializeField] float healthMods;
@@ -15,7 +15,7 @@ public class HealthMods : StatMods, IHealth
 
     public int MaxHp {
         get {
-            return healthSrc.MaxHp + (int)upgradeMods.GetModSum();
+            return healthSrc.MaxHp;
         }
     }
 
@@ -36,5 +36,13 @@ public class HealthMods : StatMods, IHealth
         healthSrc.health.Value += (int)modValue.ModValue;
         healthSrc.maxHealth.Value += (int)modValue.ModValue;
         Debug.Log("inc hp+1 by mod");
+    }
+    public float GetValue(int id)
+    {
+        if (id == 0)
+            return Hp;
+        if (id == 1)
+            return MaxHp;
+        return 0;
     }
 }

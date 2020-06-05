@@ -153,7 +153,7 @@ public class CombatController : StatMods
         if (attackingLocked) yield break;
         attackingLocked = true;
 
-        Debug.Log(gameObject.transform.root.name + " Attacking " + attacked);
+        Debug.Log(gameObject.transform.root.name + " Attacking " + attacked +" for "+ Damage);
         attacked.Damage((int)Damage);
 
         sprite.color = Color.red;

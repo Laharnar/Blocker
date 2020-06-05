@@ -16,7 +16,7 @@ public class Health : MonoBehaviour, ITestable, IHealth
 
     [SerializeField] bool logDamage = false;
     [SerializeField] bool logDeath = false;
-
+    [SerializeField] bool triggerDamage1 = false;
     public int Hp {
         get {
             return health.Value;
@@ -97,6 +97,11 @@ public class Health : MonoBehaviour, ITestable, IHealth
             {
                 DestroyFromHp();
             }
+        }
+        if (triggerDamage1)
+        {
+            RecieveDamage(1);
+            triggerDamage1 = false;
         }
     }
 

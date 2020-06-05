@@ -11,6 +11,7 @@ public class MonoConnection
     public IWeaponChanger MonoWeaponChanger => (IWeaponChanger) mono;
     public IRandomizable MonoRandomized => (IRandomizable) mono;
     public IStatGetter StatGetter => (IStatGetter)mono;
+    public IValueGetter ValueGetter => (IValueGetter)mono;
 
     public OnDeathEvents onDeathEvents => mono as OnDeathEvents;
 

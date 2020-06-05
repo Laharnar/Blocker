@@ -10,19 +10,19 @@ public class RealtimeTester:MonoBehaviour
 {
     static RealtimeTester singleton;
 
-    public BoolVarValue use;
+    public BoolVarValue use = new BoolVarValue();
 
     public float editorRunTestsEvery = 5;
     public float runtimeRunTestsEvery = 5;
     public float editorSearchSceneEvery = 30;
     public float runtimeSearchSceneEvery = 30;
 
-    public List<Failure> failedTests;
+    public List<Failure> failedTests = new List<Failure>();
 
     Coroutine testRunner, testableSearcher;
     public UnitySetups setups;
 
-    [SerializeField] SceneSearchByClassType sceneSearch;
+    [SerializeField] SceneSearchByClassType sceneSearch = new SceneSearchByClassType();
 
     MonoBehaviour[] SceneCache => sceneSearch.sceneCache;
     int[] Types => sceneSearch.foundTypes;
@@ -230,7 +230,7 @@ public class RealtimeTester:MonoBehaviour
     [Serializable]
     public class SceneSearchByClassType
     {
-        [SerializeField] public BoolVarValue use;
+        [SerializeField] public BoolVarValue use = new BoolVarValue();
         internal MonoBehaviour[] sceneCache;
         internal int[] foundTypes;
         internal List<ITestable> testableCache = new List<ITestable>();

@@ -56,7 +56,6 @@ public class TacticGroup:MonoBehaviour
 
     public void InformOnDeath()
     {
-        Debug.Log("Informing after unit death, events: " + onUnitDeathEvents.Count);
         for (int i = 0; i < onUnitDeathEvents.Count; i++)
         {
             onUnitDeathEvents[i].onDeathEvents.OnDeath();

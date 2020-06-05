@@ -100,7 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logSum: 0
   upgradeMods:
-    mods: []
+    logUpgrades: []
+    logBonuses: []
     modType: 
     evtOnAddedMod:
       observers: []
@@ -108,7 +109,8 @@ MonoBehaviour:
       registeredCount: 0
       reset: 0
   weaponMods:
-    mods: []
+    logUpgrades: []
+    logBonuses: []
     modType: 
     evtOnAddedMod:
       observers: []
@@ -116,6 +118,7 @@ MonoBehaviour:
       registeredCount: 0
       reset: 0
   init: 0
+  statType: Health
   healthSrc: {fileID: 2144158}
   healthMods: 0
 --- !u!1 &66912885
@@ -163,8 +166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f26f206a719164191482f5b76e8d2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMod: {fileID: 2046910207093867051}
-  attackMod: {fileID: 1433826216}
   speedStatMod:
     mono: {fileID: 2046910207093867051}
   attackStatMod:
@@ -224,12 +225,62 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 125024249}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.31, y: -0.362, z: 0}
+  m_LocalPosition: {x: 0.1551, y: -0.1819, z: 0}
   m_LocalScale: {x: 0.12, y: 0.12, z: 1}
   m_Children: []
   m_Father: {fileID: 1500562366}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &148467102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 148467103}
+  - component: {fileID: 148467104}
+  m_Layer: 0
+  m_Name: WeaponBonuses
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &148467103
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148467102}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1500562366}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &148467104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148467102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4ad54a973f073c4ab92f98c37f8b4b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueStats:
+    mods:
+    - {fileID: 1389475476959222552}
+    - {fileID: 1433826216}
+    - {fileID: 2046910207093867051}
+    nonUniqueThrowError: 1
+    logIsDuplicate: []
 --- !u!1 &486480326
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,7 +328,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logSum: 0
   upgradeMods:
-    mods: []
+    logUpgrades: []
+    logBonuses: []
     modType: 
     evtOnAddedMod:
       observers: []
@@ -285,7 +337,8 @@ MonoBehaviour:
       registeredCount: 0
       reset: 0
   weaponMods:
-    mods: []
+    logUpgrades: []
+    logBonuses: []
     modType: 
     evtOnAddedMod:
       observers: []
@@ -293,6 +346,7 @@ MonoBehaviour:
       registeredCount: 0
       reset: 0
   init: 0
+  statType: 
   used: 0
   self: {fileID: 6322717010757096716}
   sprite: {fileID: 6322717010485856559}
@@ -377,7 +431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   asUser: {fileID: 1030130995}
-  asWeaponUser: {fileID: 0}
+  asWeaponUser: {fileID: 1500562368}
   officer: {fileID: 0}
 --- !u!1 &1317394497
 GameObject:
@@ -578,7 +632,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logSum: 0
   upgradeMods:
-    mods: []
+    logUpgrades: []
+    logBonuses: []
     modType: 
     evtOnAddedMod:
       observers: []
@@ -586,7 +641,8 @@ MonoBehaviour:
       registeredCount: 0
       reset: 0
   weaponMods:
-    mods: []
+    logUpgrades: []
+    logBonuses: []
     modType: 
     evtOnAddedMod:
       observers: []
@@ -594,6 +650,7 @@ MonoBehaviour:
       registeredCount: 0
       reset: 0
   init: 0
+  statType: Attack
 --- !u!1 &1500562365
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,6 +681,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 125024250}
+  - {fileID: 148467103}
   m_Father: {fileID: 6322717010057583616}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -639,12 +697,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40557cf314c699f47af01fd5b67394f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startupEquipped: -1
+  startupEquipped: 0
   equipped: 1
   equippedObj: {fileID: 0}
   hand: {fileID: 125024250}
   maker:
     mono: {fileID: 1500562367}
+  weaponBonuses: {fileID: 148467104}
 --- !u!114 &1500562367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,7 +891,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logSum: 0
   upgradeMods:
-    mods: []
+    logUpgrades: []
+    logBonuses: []
     modType: 
     evtOnAddedMod:
       observers: []
@@ -840,7 +900,8 @@ MonoBehaviour:
       registeredCount: 0
       reset: 0
   weaponMods:
-    mods: []
+    logUpgrades: []
+    logBonuses: []
     modType: 
     evtOnAddedMod:
       observers: []
@@ -848,6 +909,7 @@ MonoBehaviour:
       registeredCount: 0
       reset: 0
   init: 0
+  statType: Speed
 --- !u!1 &6322717009954682217
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,8 @@ using UnityEngine;
 public class UpgradeMod:IUpgradeMods {
 
     [SerializeField] List<IModData> mods = new List<IModData>();
-    [SerializeField] List<UpgradeData> upmods = new List<UpgradeData>();
+    [SerializeField] List<UpgradeData> logUpgrades = new List<UpgradeData>();
+    [SerializeField] List<Bonus> logBonuses = new List<Bonus>();
     [SerializeField] string modType;
     public string ModType { get => modType; }
     public int ModCount { get => mods.Count; }
@@ -17,8 +18,11 @@ public class UpgradeMod:IUpgradeMods {
     public void AddMod(IModData newMod)
     {
         mods.Add(newMod);
-        if(newMod as UpgradeData != null)
-            upmods.Add((UpgradeData)newMod);
+        if (newMod as UpgradeData != null)
+            logUpgrades.Add((UpgradeData)newMod);
+        else if(newMod as Bonus != null)
+            logBonuses.Add((Bonus)newMod);
+        else Debug.LogError("Unhandled type."+newMod);
         Debug.Log("adding mod "+newMod.ModType+ newMod.ModValue);
         evtOnAddedMod.Notify(newMod);
     }
@@ -58,6 +62,15 @@ public class UpgradeMod:IUpgradeMods {
     public void AddObserver(StatMods mod)
     {
         evtOnAddedMod.RegisterObserver(mod);
+    }
+
+    public void ClearBonusMods()
+    {
+        for (int i = 0; i < logBonuses.Count; i++)
+        {
+            mods.Remove(logBonuses[i]);
+        }
+        logBonuses.Clear();
     }
 
     public void RemoveObserver(StatMods mod)

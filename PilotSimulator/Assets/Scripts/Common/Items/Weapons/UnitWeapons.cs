@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class UnitWeapons : MonoBehaviour, IWeaponChanger //, ITestable
+public class UnitWeapons : MonoBehaviour, IWeaponChanger, ITestable
 {
     [SerializeField] int startupEquipped = -1;
 
@@ -9,6 +9,7 @@ public class UnitWeapons : MonoBehaviour, IWeaponChanger //, ITestable
     [SerializeField] GameObject equippedObj;
     [SerializeField] Transform hand;
     [SerializeField] MonoConnection maker;
+    [SerializeField] BonusesToMods weaponBonuses;
 
     private void Start()
     {
@@ -46,6 +47,15 @@ public class UnitWeapons : MonoBehaviour, IWeaponChanger //, ITestable
             equippedObj = obj.gameObject;
             obj.transform.parent = hand;
             obj.transform.localPosition = new Vector3(0,0,0);
+
+            if (weaponBonuses)
+            {
+                BonusList mods = obj.GetComponent<BonusList>();
+                if (mods)
+                {
+                    weaponBonuses.Assign(mods);
+                }
+            }
         }
     }
 
@@ -54,13 +64,9 @@ public class UnitWeapons : MonoBehaviour, IWeaponChanger //, ITestable
         ChangeWeapon(id);
     }
 
-    // Testing changes.
-    /*public void TestInitialState()
+    public void TestInitialState()
     {
-        if(equipped == 0)
-            ChangeWeapon(1);
-        else
-            ChangeWeapon(0);
-    }*/
+        RealtimeTester.Assert(weaponBonuses != null, this, "Weapon bonus is null.");
+    }
 
 }

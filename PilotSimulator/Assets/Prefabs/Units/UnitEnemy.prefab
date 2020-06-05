@@ -57,6 +57,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 125024249, guid: a35eeb385ca2f324ba326ff4ecf78702, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 486480328, guid: a35eeb385ca2f324ba326ff4ecf78702, type: 3}
       propertyPath: searchByEnemyFlagId
       value: 0
@@ -82,12 +86,12 @@ PrefabInstance:
     - target: {fileID: 6322717010057583616, guid: a35eeb385ca2f324ba326ff4ecf78702,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.22
+      value: 4.33
       objectReference: {fileID: 0}
     - target: {fileID: 6322717010057583616, guid: a35eeb385ca2f324ba326ff4ecf78702,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.13
+      value: 0.159
       objectReference: {fileID: 0}
     - target: {fileID: 6322717010057583616, guid: a35eeb385ca2f324ba326ff4ecf78702,
         type: 3}

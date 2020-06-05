@@ -23,8 +23,8 @@ public class UserUpgradesOnSpawn : MonoBehaviour, ISpawnUpgradeInitializer
     public void InitUpgradesOnSpawn(SimpleUpgrades upgrades)
     {
         Debug.Log("changes "+ upgrades.attack.ModCount);
-        if (attacking) ((IStatAdder)attacking).AddUpgradeStats(upgrades.attack);
-        if (health) ((IStatAdder)health).AddUpgradeStats((upgrades.health));
-        if (movement) ((IStatAdder)movement).AddUpgradeStats(upgrades.speed);
+        if (attacking) ((IStatAdder)attacking).AddUpgrades(upgrades.attack);
+        if (health) ((IStatAdder)health).AddUpgrades((upgrades.health));
+        if (movement) ((IStatAdder)movement).AddUpgrades(upgrades.speed);
     }
 }

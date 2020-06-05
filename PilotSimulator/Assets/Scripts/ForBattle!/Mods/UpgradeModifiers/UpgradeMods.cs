@@ -5,13 +5,14 @@ using UnityEngine;
 [System.Serializable]
 public class UpgradeMod:IUpgradeMods {
 
-    [SerializeField] List<IModData> mods;
-    [SerializeField] List<UpgradeData> upmods;
+    [SerializeField] List<IModData> mods = new List<IModData>();
+    [SerializeField] List<UpgradeData> upmods = new List<UpgradeData>();
     [SerializeField] string modType;
     public string ModType { get => modType; }
     public int ModCount { get => mods.Count; }
 
     [SerializeField] Listener evtOnAddedMod = new Listener();
+
 
     public void AddMod(IModData newMod)
     {
@@ -27,7 +28,7 @@ public class UpgradeMod:IUpgradeMods {
         float sum = 0;
         for (int i = 0; i < mods.Count; i++)
         {
-            sum += mods[i].increase;
+            sum += mods[i].ModValue;
         }
         return sum;
     }
@@ -35,7 +36,7 @@ public class UpgradeMod:IUpgradeMods {
     public UpgradeMod HardCopy()
     {
         UpgradeMod copied = new UpgradeMod();
-        copied.mods = new List<UpgradeData>();
+        copied.mods = new List<IModData>();
         for (int i = 0; i < mods.Count; i++)
         {
             copied.mods.Add(mods[i].Copy());

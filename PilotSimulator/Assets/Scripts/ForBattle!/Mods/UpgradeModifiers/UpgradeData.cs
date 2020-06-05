@@ -3,6 +3,8 @@ public interface IModData
 {
     string ModType { get; }
     float ModValue { get; }
+
+    IModData Copy();
 }
 [System.Serializable]
 public class UpgradeData: IModData
@@ -19,7 +21,7 @@ public class UpgradeData: IModData
         RealtimeTester.Assert(upgradeType != "", mono, "Upgrade type is empty. Assign it.");
     }
 
-    internal UpgradeData Copy()
+    public IModData Copy()
     {
         return new UpgradeData()
         {
@@ -31,6 +33,6 @@ public class UpgradeData: IModData
 
     public UpgradeData GetDataCopyForUpgradingUnit()
     {
-        return Copy();
+        return (UpgradeData)Copy();
     }
 }

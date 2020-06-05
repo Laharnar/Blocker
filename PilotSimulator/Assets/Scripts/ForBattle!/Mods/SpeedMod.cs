@@ -3,8 +3,8 @@
 
     public PositionRotation rotationSpeed;
 
-    public override void Notified(UpgradeData modValue)
+    public override void Notified(IModData modValue)
     {
-        rotationSpeed.rotationSpeed.Value += modValue.increase;
+        rotationSpeed.rotationSpeed.Value += modValue.ModValue;
     }
 }

@@ -7,5 +7,14 @@ public class Bonus : IModData
     [SerializeField] public int value;
 
     public string ModType { get => type; }
-    public float ModValue { get => value }
+    public float ModValue { get => value; }
+
+    public IModData Copy()
+    {
+        return new Bonus()
+        {
+            type = this.type,
+            value = this.value
+        };
+    }
 }

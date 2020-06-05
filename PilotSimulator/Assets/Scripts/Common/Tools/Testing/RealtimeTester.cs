@@ -67,6 +67,7 @@ public class RealtimeTester:MonoBehaviour
     {
         singleton = null;
     }
+
     void EnsureLayersRun()
     {
         if (failedTests == null) failedTests = new List<Failure>();
@@ -80,6 +81,7 @@ public class RealtimeTester:MonoBehaviour
             testRunner = StartCoroutine(RunTestsAndSetups());
         }
     }
+
     internal static void Assert(bool assertTrue, MonoBehaviour unityClass, string message)
     {
         if (!assertTrue)

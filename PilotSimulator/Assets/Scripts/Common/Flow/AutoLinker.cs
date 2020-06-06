@@ -16,6 +16,7 @@ public class AutoLinker
     public UpgradableAlliance allies;
     [SerializeField] TacticLinker tactics;
     [SerializeField] LinkSpawnedUnitAsBoss boss;
+    [SerializeField] OfficerToUnitWeapons weapons;
 
     public void SetupLink(Transform t)
     {
@@ -28,8 +29,14 @@ public class AutoLinker
             if(linkedSelf) target.Setup(linkedSelf);
             if(expgroup) expgroup.ConnectExpToChild(t);
             if (upgrades) ConnectUpgradesToChild(t);
+
+            // set up connection to source
             tactics.ConnectTactics(t);
+
+            // everything that relies on connection back to source.
             boss.ToEnemyBoss(t);
+            
+            weapons?.EvtOnSpawnSetUnitWeapon();
         }
     }
 

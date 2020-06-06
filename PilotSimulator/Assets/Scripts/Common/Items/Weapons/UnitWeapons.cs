@@ -10,14 +10,21 @@ public class UnitWeapons : MonoBehaviour, IWeaponChanger, ISetupUnity
     [SerializeField] Transform hand;
     [SerializeField] MonoConnection maker;
     [SerializeField] BonusesToMods weaponBonuses;
+    [SerializeField] bool init = true;
 
     private void Start()
     {
-        ChangeWeapon(startupEquipped);
+        if (!init)
+        {
+            Debug.Log("startup equip");
+            ChangeWeapon(startupEquipped);
+            init = true;
+        }
     }
 
     public void ChangeWeapon(int id)
     {
+        Debug.Log("Changed weapon from "+equipped +" to " +id);
         RemoveWeapon();
 
         equipped = id;
@@ -33,8 +40,10 @@ public class UnitWeapons : MonoBehaviour, IWeaponChanger, ISetupUnity
         equipped = -1;
         if (equippedObj)
         {
-            if(Application.isPlaying)
+            if (Application.isPlaying)
+            {
                 Destroy(equippedObj);
+            }
             else
                 DestroyImmediate(equippedObj);
         }
@@ -62,6 +71,7 @@ public class UnitWeapons : MonoBehaviour, IWeaponChanger, ISetupUnity
     public void Change(int id)
     {
         ChangeWeapon(id);
+        init = true;
     }
 
 

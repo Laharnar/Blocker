@@ -34,5 +34,9 @@ public class TacticallyConnected:MonoBehaviour
         {
             asWeaponUser.Change(swap);
         }
+        else
+        {
+            Debug.Log("Attemting to change weapon on use without Weapons."+name, this);
+        }
     }
 }

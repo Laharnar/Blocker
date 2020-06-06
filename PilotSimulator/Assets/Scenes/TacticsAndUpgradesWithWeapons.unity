@@ -3634,19 +3634,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 445578501}
     m_Modifications:
-    - target: {fileID: 861350140, guid: 79f73600c7e92b649a2a12599bbec43b, type: 3}
-      propertyPath: defendingBase
-      value: 
-      objectReference: {fileID: 245685029}
     - target: {fileID: 1637218302752663239, guid: 79f73600c7e92b649a2a12599bbec43b,
         type: 3}
       propertyPath: m_Name
       value: CastleAlly
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637218302752663239, guid: 79f73600c7e92b649a2a12599bbec43b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1637218302752663240, guid: 79f73600c7e92b649a2a12599bbec43b,
         type: 3}
@@ -3708,27 +3699,6 @@ PrefabInstance:
       propertyPath: linkerForSpawned.allies
       value: 
       objectReference: {fileID: 2097755722}
-    - target: {fileID: 1637218303555852518, guid: 79f73600c7e92b649a2a12599bbec43b,
-        type: 3}
-      propertyPath: linkerForSpawned.boss.tactics
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1637218303555852518, guid: 79f73600c7e92b649a2a12599bbec43b,
-        type: 3}
-      propertyPath: linkerForSpawned.upgrades
-      value: 
-      objectReference: {fileID: 11400000, guid: dd9ab6c558f91904ba764f1e0938d0a9,
-        type: 2}
-    - target: {fileID: 7839372997721344952, guid: 79f73600c7e92b649a2a12599bbec43b,
-        type: 3}
-      propertyPath: defendingBase
-      value: 
-      objectReference: {fileID: 245685029}
-    - target: {fileID: 7845195178664210511, guid: 79f73600c7e92b649a2a12599bbec43b,
-        type: 3}
-      propertyPath: defendingBase
-      value: 
-      objectReference: {fileID: 245685029}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79f73600c7e92b649a2a12599bbec43b, type: 3}
 --- !u!4 &1719963658 stripped

@@ -5,7 +5,9 @@ using UnityEngine;
 public abstract class CombatScript:MonoBehaviour, ITickable
 {
     protected abstract void CombatUpdate();
+
     protected virtual void CombatStart() { }
+
     protected virtual void CombatDestroy() { }
 
     // Don't override!
@@ -19,6 +21,7 @@ public abstract class CombatScript:MonoBehaviour, ITickable
     protected void OnDestroy()
     {
         CombatDestroy();
+        TickRunner.Disconnection(this);
     }
 
     public void Tick()

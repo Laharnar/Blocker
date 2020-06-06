@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PositionRotation : MonoBehaviour, ITestable, ISetupUnity {
+public class PositionRotation : CombatScript, ITestable, ISetupUnity {
 
 
     [Header("Parameters")]
@@ -53,14 +53,14 @@ public class PositionRotation : MonoBehaviour, ITestable, ISetupUnity {
     public Transform KnownRoot { get => targeted; }
 
 
-    private void Start()
+    private new void Start()
     {
+        base.Start();
         expectedMove.Value = Vector3.zero;
         if (targeted == null) targeted = transform;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void CombatUpdate()
     {
         ForcePositionRotationTick();
     }
@@ -240,4 +240,5 @@ public class PositionRotation : MonoBehaviour, ITestable, ISetupUnity {
 
         return false;
     }
+
 }

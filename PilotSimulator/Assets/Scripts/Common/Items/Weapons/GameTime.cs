@@ -5,12 +5,13 @@ public class GameTime : MonoBehaviour
     [SerializeField] bool paused;
     public void ResumeGame()
     {
-        Time.timeScale = 1;
+        PauseGlobal.Instance.IsPaused = false;
         paused = false;
     }
+
     public void PauseGame()
     {
-        Time.timeScale = 0;
+        PauseGlobal.Instance.IsPaused = true;
         paused = true;
     }
 }

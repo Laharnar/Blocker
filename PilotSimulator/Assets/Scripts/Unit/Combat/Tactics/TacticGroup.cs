@@ -26,15 +26,17 @@ public class TacticGroup:MonoBehaviour
         InformOnDeath();
     }
 
+    internal void ActivateDefaultTactic()
+    {
+        ChangeTacticAndActivate(activeTactic);
+    }
+
     internal void ConnectUnit(TacticallyConnected spawnedTactics)
     {
         if (spawnedTactics)
         {
             units.Add(spawnedTactics);
             spawnedTactics.officer = this;
-
-            // ensure untis have correct tactic when they are added to command
-            Activate(activeTactic);
         }
     }
 

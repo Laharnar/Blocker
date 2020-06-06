@@ -663,7 +663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40557cf314c699f47af01fd5b67394f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startupEquipped: 0
+  startupEquipped: -1
   equipped: 1
   equippedObj: {fileID: 0}
   hand: {fileID: 125024250}

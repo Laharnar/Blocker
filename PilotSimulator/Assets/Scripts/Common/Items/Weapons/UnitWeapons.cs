@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class UnitWeapons : MonoBehaviour, IWeaponChanger, ITestable
+public class UnitWeapons : MonoBehaviour, IWeaponChanger, ISetupUnity
 {
     [SerializeField] int startupEquipped = -1;
 
@@ -64,9 +64,10 @@ public class UnitWeapons : MonoBehaviour, IWeaponChanger, ITestable
         ChangeWeapon(id);
     }
 
-    public void TestInitialState()
+
+    public bool UnitySetup()
     {
         RealtimeTester.Assert(weaponBonuses != null, this, "Weapon bonus is null.");
+        return true;
     }
-
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 [System.Serializable]
 public class Bonus : IModData
@@ -16,5 +17,10 @@ public class Bonus : IModData
             type = this.type,
             value = this.value
         };
+    }
+
+    public override string ToString()
+    {
+        return string.Format("{0}{1}", type, value);
     }
 }

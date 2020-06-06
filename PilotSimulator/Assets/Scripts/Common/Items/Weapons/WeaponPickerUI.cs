@@ -1,8 +1,13 @@
 ﻿using UnityEngine;
 
-public class WeaponPickerUI : MonoBehaviour
+public class WeaponPickerUI : MonoBehaviour, IWeaponChanger
 {
     public MonoConnection weaponChanger;
+
+    public void Change(int id)
+    {
+        PickWeaponByUI(id);
+    }
 
     public void PickWeaponByUI(int id)
     {

@@ -63,4 +63,13 @@ public class TacticGroup:MonoBehaviour
             onUnitDeathEvents[i].onDeathEvents.OnDeath();
         }
     }
+
+    public void SkillDamageGroup(int value)
+    {
+        for (int i = 0; i < units.Count; i++)
+        {
+            if(units[i])
+                units[i].scripts.hp.RecieveDamage(value);
+        }
+    }
 }

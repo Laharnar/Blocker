@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CombatCollisionTrigger : MonoBehaviour, ICombatTrigger
 {
-    [SerializeField]CollisionsInfo collisions = new CollisionsInfo();
+    [SerializeField]CollisionsInfo collisions;
 
     public CircleCollider2D circleCollider;
     public GameObject root;

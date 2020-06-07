@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class TacticallyConnected:MonoBehaviour
+public class TacticallyConnected:MonoBehaviour, ISetupUnity
 {
     [SerializeField] internal TacticalUnit asUser;
     [SerializeField] internal UnitWeapons asWeaponUser;
     [Header("| Linked |")]
     [SerializeField] internal TacticGroup officer;
+    [SerializeField] internal UnitScriptLoader scripts;
 
     private void OnDestroy()
     {
@@ -38,5 +39,16 @@ public class TacticallyConnected:MonoBehaviour
         {
             Debug.Log("Attemting to change weapon on use without Weapons."+name, this);
         }
+    }
+
+    public bool UnitySetup()
+    {
+        if (!scripts)
+        {
+            scripts = GetComponent<UnitScriptLoader>();
+        }
+        if (scripts)
+            return true;
+        return false;
     }
 }

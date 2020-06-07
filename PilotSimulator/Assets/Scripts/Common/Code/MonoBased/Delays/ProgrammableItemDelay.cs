@@ -15,7 +15,8 @@ public class ProgrammableItemDelay : MonoBehaviour
 
     private void Start()
     {
-        onStart.Invoke();
+        if(enabled)
+            onStart.Invoke();
         StartCoroutine(RunDelays());
     }
 
@@ -24,18 +25,14 @@ public class ProgrammableItemDelay : MonoBehaviour
         yield return new WaitForEndOfFrame();
         while (true)
         {
-            yield return StartCoroutine(events[activeDelay.Value].delay.Delay(0));
-            Debug.Log("done delay 0");
-            if (events[activeDelay.Value].condition.IsTrue())
+            if (enabled)
             {
-                yield return StartCoroutine(events[activeDelay.Value].delay.Delay(1));
-            Debug.Log("done delay 1");
-                ActivateEvent();
-            Debug.Log("activated");
-                yield return StartCoroutine(events[activeDelay.Value].delay.Delay(2));
-            Debug.Log("done delay 2");
-                ToNextDelay();
-            Debug.Log("next");
+                if (events[activeDelay.Value].condition.IsTrue())
+                {
+                    yield return StartCoroutine(events[activeDelay.Value].delay.Delay(0));
+                    ActivateEvent();
+                    ToNextDelay();
+                }
             }
             yield return null;
         }

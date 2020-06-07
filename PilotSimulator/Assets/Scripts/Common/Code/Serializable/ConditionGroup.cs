@@ -11,23 +11,13 @@ public class ConditionGroup {
     public bool skip = false;
     public bool valueOnSkip = true;
     public bool refactored = false;
-    public bool valueOnSkipOrEmpty = true;
-
-    void Refactored()
-    {
-        if (!refactored)
-        {
-            valueOnSkipOrEmpty = valueOnSkip;
-            RealtimeTester.Assert(refactored == true, this, "Unknown ConditionGroup isn't deployed at valueOnSkipOrEmpty.");
-        }
-    }
+    public bool valueOnNoConditions = true;
 
     public bool IsTrue()
     {
-        Refactored();
         if (skip)
         {
-            return valueOnSkipOrEmpty;
+            return valueOnSkip;
         }
         if (op == 0)
         {
@@ -47,7 +37,6 @@ public class ConditionGroup {
 
     public bool IsFalse()
     {
-        Refactored();
         return IsTrue();
     }
 
@@ -55,7 +44,7 @@ public class ConditionGroup {
     {
         if (conditions.Length == 0)
         {
-            return valueOnSkipOrEmpty;
+            return valueOnNoConditions;
         }
         for (int i = 0; i < conditions.Length; i++)
         {
@@ -73,7 +62,7 @@ public class ConditionGroup {
     {
         if (conditions.Length == 0)
         {
-            return valueOnSkipOrEmpty;
+            return valueOnNoConditions;
         }
         for (int i = 0; i < conditions.Length; i++)
         {

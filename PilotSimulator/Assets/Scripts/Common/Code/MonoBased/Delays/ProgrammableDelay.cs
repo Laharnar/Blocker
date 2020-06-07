@@ -20,7 +20,8 @@ public class ProgrammableDelay:MonoBehaviour {
 
     private void Start()
     {
-        onStart.Invoke();
+        if(enabled)
+            onStart.Invoke();
         StartCoroutine(RunDelays());
     }
 
@@ -30,7 +31,7 @@ public class ProgrammableDelay:MonoBehaviour {
         yield return new WaitForEndOfFrame();
         while (true)
         {
-            if (condition.IsTrue())
+            if (enabled && condition.IsTrue())
             {
                 if (ignoreFirstActivation && !ignoredFirst)
                 {

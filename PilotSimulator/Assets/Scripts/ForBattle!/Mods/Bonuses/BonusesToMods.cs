@@ -15,17 +15,12 @@ public class BonusesToMods:MonoBehaviour
         {
             if (!changed || nonUniqueThrowError == false) return; 
 
-            Dictionary<string, StatMods> unique = new Dictionary<string, StatMods>();
-            logIsDuplicate.Clear();
+            HashSet<StatMods> unique = new HashSet<StatMods>();
             for (int i = 0; i < mods.Count; i++)
             {
-                if (!unique.ContainsKey(mods[i].name))
+                if (!unique.Add(mods[i]))
                 {
-                    unique.Add(mods[i].name, mods[i]);
-                }
-                else
-                {
-                    logIsDuplicate.Add(mods[i]);
+                    Debug.LogError("Mod is duplicate, which is not allowed.", mods[i]);
                 }
             }
         }

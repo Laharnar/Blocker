@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 
-public class BonusList : MonoBehaviour
+public class BonusList : MonoBehaviour, IPrefabLoadable
 {
     [SerializeField] List<Bonus> bonuses = new List<Bonus>();
 

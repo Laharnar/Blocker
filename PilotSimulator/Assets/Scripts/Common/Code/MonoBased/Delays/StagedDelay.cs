@@ -10,7 +10,7 @@ public class StagedDelay
 
     public IEnumerator Delay(int stageId)
     {
-        if (stages[stageId])
+        if (stageId >= stages.Length || stages[stageId])
         {
             yield return new WaitForSeconds(delay.Value);
         }

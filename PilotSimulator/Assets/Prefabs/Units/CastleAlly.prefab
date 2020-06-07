@@ -375,7 +375,7 @@ PrefabInstance:
     - target: {fileID: 8805458933758033203, guid: 91a1b8f5dbd60764197525db66a70555,
         type: 3}
       propertyPath: m_Name
-      value: CastleAlly
+      value: CastleAlly (2)
       objectReference: {fileID: 0}
     - target: {fileID: 8805458933758033212, guid: 91a1b8f5dbd60764197525db66a70555,
         type: 3}
@@ -385,7 +385,7 @@ PrefabInstance:
     - target: {fileID: 8805458933758033212, guid: 91a1b8f5dbd60764197525db66a70555,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.5
+      value: 2.63
       objectReference: {fileID: 0}
     - target: {fileID: 8805458933758033212, guid: 91a1b8f5dbd60764197525db66a70555,
         type: 3}

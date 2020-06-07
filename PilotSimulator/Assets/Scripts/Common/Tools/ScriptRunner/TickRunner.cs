@@ -10,7 +10,10 @@ public class TickRunner: MonoBehaviour
     public static TickRunner GetInstance() { 
         if (instance == null)
         {
-            instance = new GameObject("[Auto-singleton]Tick runner").AddComponent<TickRunner>();
+            if (Application.isPlaying)
+            {
+                instance = new GameObject("[Auto-singleton]Tick runner").AddComponent<TickRunner>();
+            }
         }
         return instance;
     }

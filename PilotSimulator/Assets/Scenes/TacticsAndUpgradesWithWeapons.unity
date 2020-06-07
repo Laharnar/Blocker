@@ -669,6 +669,11 @@ PrefabInstance:
       propertyPath: linkerForSpawned.allies
       value: 
       objectReference: {fileID: 2097755722}
+    - target: {fileID: 5339860944150346637, guid: 79f73600c7e92b649a2a12599bbec43b,
+        type: 3}
+      propertyPath: defendingBase
+      value: 
+      objectReference: {fileID: 245685029}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79f73600c7e92b649a2a12599bbec43b, type: 3}
 --- !u!4 &194751129 stripped
@@ -1943,21 +1948,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 353290242}
     m_Modifications:
-    - target: {fileID: 18255556280094796, guid: 91a1b8f5dbd60764197525db66a70555,
-        type: 3}
-      propertyPath: activeTactic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 18255556280094796, guid: 91a1b8f5dbd60764197525db66a70555,
-        type: 3}
-      propertyPath: devManualActiveTactic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 18255556280094796, guid: 91a1b8f5dbd60764197525db66a70555,
-        type: 3}
-      propertyPath: defendingBase
-      value: 
-      objectReference: {fileID: 376316458}
     - target: {fileID: 23762726977006523, guid: 91a1b8f5dbd60764197525db66a70555,
         type: 3}
       propertyPath: defendingBase
@@ -2030,11 +2020,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8805458934556918546, guid: 91a1b8f5dbd60764197525db66a70555,
         type: 3}
-      propertyPath: linkerForSpawned.upgrades
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8805458934556918546, guid: 91a1b8f5dbd60764197525db66a70555,
-        type: 3}
       propertyPath: linkerForSpawned.allies
       value: 
       objectReference: {fileID: 1453697886}
@@ -2058,10 +2043,20 @@ PrefabInstance:
       propertyPath: defendingBase
       value: 
       objectReference: {fileID: 376316458}
+    - target: {fileID: 1980798916389959026, guid: 91a1b8f5dbd60764197525db66a70555,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8805458933758033203, guid: 91a1b8f5dbd60764197525db66a70555,
         type: 3}
       propertyPath: m_Name
       value: CastleEnemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8805458933758033203, guid: 91a1b8f5dbd60764197525db66a70555,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8805458933758033212, guid: 91a1b8f5dbd60764197525db66a70555,
         type: 3}
@@ -3699,6 +3694,11 @@ PrefabInstance:
       propertyPath: linkerForSpawned.allies
       value: 
       objectReference: {fileID: 2097755722}
+    - target: {fileID: 5339860944150346637, guid: 79f73600c7e92b649a2a12599bbec43b,
+        type: 3}
+      propertyPath: defendingBase
+      value: 
+      objectReference: {fileID: 245685029}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79f73600c7e92b649a2a12599bbec43b, type: 3}
 --- !u!4 &1719963658 stripped
@@ -4285,6 +4285,11 @@ PrefabInstance:
       propertyPath: defendingBase
       value: 
       objectReference: {fileID: 376316458}
+    - target: {fileID: 1980798916389959026, guid: 91a1b8f5dbd60764197525db66a70555,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8805458933758033203, guid: 91a1b8f5dbd60764197525db66a70555,
         type: 3}
       propertyPath: m_Name

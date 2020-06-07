@@ -22,7 +22,7 @@ public class StatMods : ValueChangeNotifiable, IStatGetter, IStatAdder
     [SerializeField] bool init = false;
     [SerializeField] string statType;
     public string StatType { get => statType; }
-    bool IsUsed => gameObject.activeInHierarchy;
+    bool IsUsed => this!= null && gameObject.activeInHierarchy;
 
     void OnDestroy()
     {

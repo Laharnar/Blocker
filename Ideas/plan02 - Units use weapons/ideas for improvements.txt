@@ -1,0 +1,45 @@
+how do all these weapons, tactics and upgrades, actually even impact the gameplay?
+
+because it feels like, it's just a slow slog of upgrading units, until you win
+wait until base all on enemy and win.
+it's like very linear.
+too fast to let you think
+
+--- i guess i could design it in a way to make it hard to scale up. like in star craft, if you have a numbers game, you win.
+--- armor and anti armor weapon work well. magic and magic shield or some other cacle of countering.
+
+other things, like weapons to collect? --- pickable items that they go for if they are near.
+change dynamic of enemies? --- 1 defends, others random
+change turret strength? --- larger range, slow. --- and multiple turrets
+
+
+maybe objectives are too small, and things  happen too quikly to be able to think properly
+->moving map
+
+upgrades aren't next to each other.
+less predictability in tactics.
+
+ui timer for respawn
+--- better visuals for who units are focusing
+
+--- changing tactics is kinda random instead. wonky.
+--- which count add mechanic of food. and angry units. or angry barracks. and slaves.
+
+slowing units down gives you some micro
+weapons don't actually increase range -> mages archers
+buildings?
+
+maybe i also don't want kingdom rush to limit me
+upgrades aren't necessary
+
+large amounts of units?
+
+skills would just make it easier
+countering enemy weapons
+elements that counter each other
+
+costs for ugrades should go up with leveling collectively, not per upgrade
++3 hp vs +2 atk. plus they can have multiple things in upgrades.
+
+new self healing unit
+other units.

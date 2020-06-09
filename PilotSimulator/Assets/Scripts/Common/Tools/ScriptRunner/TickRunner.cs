@@ -7,6 +7,8 @@ public class TickRunner: MonoBehaviour
     static TickRunner instance;
     public BoolVarValue run = new BoolVarValue() { defaultValue = true };
 
+    Dictionary<MonoBehaviour, ITickable> existing = new Dictionary<MonoBehaviour, ITickable>();
+
     public static TickRunner GetInstance() { 
         if (instance == null)
         {
@@ -17,9 +19,6 @@ public class TickRunner: MonoBehaviour
         }
         return instance;
     }
-
-    Dictionary<MonoBehaviour, ITickable> existing = new Dictionary<MonoBehaviour, ITickable>();
-
 
     private void Update()
     {

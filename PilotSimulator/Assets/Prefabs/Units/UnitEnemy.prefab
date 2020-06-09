@@ -16,8 +16,8 @@ MonoBehaviour:
     mono: {fileID: 2215953359653196499}
   numOfDifferentValue: 3
   active: 0
-  randomizerMin: 6
-  randomizerMax: 12
+  randomizerMin: 10
+  randomizerMax: 17
 --- !u!1001 &2215953360401522656
 PrefabInstance:
   m_ObjectHideFlags: 0

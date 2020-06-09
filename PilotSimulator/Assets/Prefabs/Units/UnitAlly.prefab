@@ -342,7 +342,7 @@ GameObject:
   - component: {fileID: 1030130995}
   - component: {fileID: 9221579775077839679}
   m_Layer: 0
-  m_Name: 3 tactics
+  m_Name: 4 tactics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -362,6 +362,7 @@ Transform:
   - {fileID: 4163295611502563629}
   - {fileID: 1317394498}
   - {fileID: 5000231352020552647}
+  - {fileID: 6640498074637431378}
   m_Father: {fileID: 124206956}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -381,6 +382,7 @@ MonoBehaviour:
   - mono: {fileID: 673391050}
   - mono: {fileID: 1317394499}
   - mono: {fileID: 4626734527563031969}
+  - mono: {fileID: 7884305987150534001}
   activatedId: 0
   AllyBaseToDefend: {fileID: 0}
   EnemyBossToAttack: {fileID: 0}
@@ -546,7 +548,7 @@ MonoBehaviour:
     skip: 0
     valueOnSkip: 1
     refactored: 0
-    valueOnSkipOrEmpty: 1
+    valueOnNoConditions: 1
   ignoreFirstActivation: 1
   onReady:
     m_PersistentCalls:
@@ -763,6 +765,55 @@ MonoBehaviour:
   combatant: {fileID: 486480328}
   unit: {fileID: 1030130995}
   attackedEnemyOrBoss: {fileID: 0}
+--- !u!1 &1148142428308429489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6640498074637431378}
+  - component: {fileID: 7884305987150534001}
+  m_Layer: 0
+  m_Name: TAC4 Rally
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6640498074637431378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148142428308429489}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1030130994}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7884305987150534001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148142428308429489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c217dd74fe8d146b89aabb75998dae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  used: 0
+  combatController: {fileID: 486480328}
+  searchRate: 5
+  enemySearchRange: 3
+  rallyToRange: 0.5
+  enemy: {fileID: 0}
 --- !u!1 &1395757735375908142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1087,7 +1138,7 @@ MonoBehaviour:
       skip: 0
       valueOnSkip: 0
       refactored: 1
-      valueOnSkipOrEmpty: 1
+      valueOnNoConditions: 1
     onReady:
       m_PersistentCalls:
         m_Calls:
@@ -1117,7 +1168,7 @@ MonoBehaviour:
       skip: 0
       valueOnSkip: 0
       refactored: 1
-      valueOnSkipOrEmpty: 1
+      valueOnNoConditions: 1
     onReady:
       m_PersistentCalls:
         m_Calls:
@@ -1147,7 +1198,7 @@ MonoBehaviour:
       skip: 0
       valueOnSkip: 0
       refactored: 1
-      valueOnSkipOrEmpty: 1
+      valueOnNoConditions: 1
     onReady:
       m_PersistentCalls:
         m_Calls:
@@ -1177,7 +1228,7 @@ MonoBehaviour:
       skip: 0
       valueOnSkip: 0
       refactored: 1
-      valueOnSkipOrEmpty: 1
+      valueOnNoConditions: 1
     onReady:
       m_PersistentCalls:
         m_Calls:
@@ -1207,7 +1258,7 @@ MonoBehaviour:
       skip: 0
       valueOnSkip: 0
       refactored: 1
-      valueOnSkipOrEmpty: 1
+      valueOnNoConditions: 1
     onReady:
       m_PersistentCalls:
         m_Calls:
@@ -1727,7 +1778,7 @@ MonoBehaviour:
     value: {fileID: 11400000, guid: 9bf06b26d092ccd49af576a0ff62ba80, type: 2}
     useDefault: 0
     defaultValue: 1
-    log: 0.5
+    log: 0.7
   rotationSpeed:
     value: {fileID: 0}
     useDefault: 1

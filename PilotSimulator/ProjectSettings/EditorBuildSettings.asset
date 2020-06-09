@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Map1Small.unity
     guid: 68dc9c0d34c3f1e47a837dc5bbf44e88
+  - enabled: 1
+    path: Assets/Scenes/Map2Medium.unity
+    guid: 6b18f1ec0a08b414c8dc7956845d1020
+  - enabled: 1
+    path: Assets/Scenes/MapPicker.unity
+    guid: ac7ebd8eb0bc12641a66620b3e7f347d
   m_configObjects: {}

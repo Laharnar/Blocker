@@ -2,7 +2,6 @@
 using System.Linq;
 using UnityEngine;
 
-
 public class AttackEnemies: MonoBehaviour, ITactic
 {
     [SerializeField] bool used = false;

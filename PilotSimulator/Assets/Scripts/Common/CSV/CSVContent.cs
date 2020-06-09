@@ -1,78 +1,48 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Microsoft.VisualBasic.FileIO;
-using System.Linq;
+﻿using UnityEngine;
 
-public static class CSVContent
+public interface IInstance
 {
-    public interface ILine
-    {
-        void SetLine(string[] fields);
-    }
-    public interface ILines<T> where T:ILine
-    {
-        List<T> Lines { get; }
+    IInstance Instance();
+}
 
-        void Add(T line);
-    }
+public interface IFileParser:IInstance
+{
+    string[] GetData(string line);
+}
 
-    public class TextLines<T> : ILines<T> where T : ILine
+public class CSVParser : IFileParser
+{
+    public const int TYPE = 0;
+    const char DEFAULTPARSER = ';';
+
+    public string[] GetData(string line)
     {
-        public List<T> Lines { get; }
-
-        public void Add(T line)
-        {
-            Lines.Add(line);
-        }
+        return line.Split(DEFAULTPARSER);
     }
 
-    class TextLine : ILine
+    public IInstance Instance()
     {
-        string[] line;
+        return new CSVParser();
+    }
+}
 
-        public TextLine(string[] fields)
-        {
-            SetLine(fields);
-        }
+public interface IContent: IInstance
+{
+    void Assign(string[] content);
+}
+[System.Serializable]
+public class ContentItem: IContent
+{
+    public const int TYPE = 0;
+    [SerializeField]string[] content;
 
-        public void SetLine(string[] fields)
-        {
-            line = fields;
-        }
+    public void Assign(string[] content)
+    {
+        this.content = content;
     }
 
-    public static ILines<T> ReadCsv<T>(string path) where T: ILine
+    public IInstance Instance()
     {
-        var defPath = @"C:\Person.csv"; // Habeeb, "Dubai Media City, Dubai"
-        using (TextFieldParser csvParser = new TextFieldParser(path))
-        {
-            csvParser.CommentTokens = new string[] { "#" };
-            csvParser.SetDelimiters(new string[] { "," });
-            csvParser.HasFieldsEnclosedInQuotes = true;
-
-            // Skip the row with the column names
-            csvParser.ReadLine();
-
-            ILines<T> lines = new TextLines<T>();
-
-            while (!csvParser.EndOfData)
-            {
-                // Read current line fields, pointer moves to the next line.
-                string[] fields = csvParser.ReadFields();
-                lines.Add((T)TextFactory.CreateTextLine(fields));
-            }
-
-            Debug.Log("Reading csv with"+lines.Lines.Count);
-
-            return lines;
-        }
-    }
-    static class TextFactory
-    {
-        public static ILine CreateTextLine(string[] fields)
-        {
-            return new TextLine(fields);
-        }
+        return new ContentItem();
     }
 }

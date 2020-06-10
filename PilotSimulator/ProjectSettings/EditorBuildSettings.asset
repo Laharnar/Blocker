@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MapPicker.unity
     guid: ac7ebd8eb0bc12641a66620b3e7f347d
+  - enabled: 1
+    path: Assets/Scenes/Map3Big.unity
+    guid: 1a9c4c71c25a39c4f8420fa577bcf1ef
   m_configObjects: {}

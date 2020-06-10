@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 [System.Serializable]
@@ -14,15 +15,3 @@ public class ImageUI
     }
 }
 
-[System.Serializable]
-public class SpriteUI
-{
-    [SerializeField] SpriteRenderer sprite;
-    [SerializeField] Color[] colors;
-
-    public void SetColor(int col)
-    {
-        if(sprite && col <colors.Length)
-            sprite.color = colors[col];
-    }
-}

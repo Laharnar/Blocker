@@ -121,12 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!212 &49850787 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 3428185858373550533, guid: 58b571876f01cb947a8f0d7e7fe7cf97,
-    type: 3}
-  m_PrefabInstance: {fileID: 1326213682}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &81137181
 GameObject:
   m_ObjectHideFlags: 0
@@ -351,10 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5953c43f79680c488886be1d63829ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manualTargets:
-  - {fileID: 1326213683}
-  - {fileID: 1680512200}
-  - {fileID: 456079420}
+  target: {fileID: 0}
 --- !u!1001 &164025048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -939,12 +930,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1266929501266870794, guid: 944c3d14e36b4fa44a71fcc87814b08c,
     type: 3}
   m_PrefabInstance: {fileID: 245685027}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &249414405 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 3428185858373550533, guid: 58b571876f01cb947a8f0d7e7fe7cf97,
-    type: 3}
-  m_PrefabInstance: {fileID: 8727770547554533703}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &292958258
 GameObject:
@@ -2121,11 +2106,7 @@ MonoBehaviour:
       image:
         image: {fileID: 0}
         colors: []
-      sprite:
-        sprite: {fileID: 49850787}
-        colors:
-        - {r: 0.31461376, g: 0.4519506, b: 0.6603774, a: 1}
-        - {r: 1, g: 1, b: 1, a: 1}
+      sprite: {fileID: 0}
   - goTarget: {fileID: 1387878724}
     disableWhenOff: 0
     isOn: 0
@@ -2135,11 +2116,7 @@ MonoBehaviour:
         colors:
         - {r: 0.3137255, g: 0.45098042, b: 0.65882355, a: 1}
         - {r: 1, g: 1, b: 1, a: 1}
-      sprite:
-        sprite: {fileID: 249414405}
-        colors:
-        - {r: 0.3137255, g: 0.45098042, b: 0.65882355, a: 1}
-        - {r: 1, g: 1, b: 1, a: 1}
+      sprite: {fileID: 0}
   - goTarget: {fileID: 845500886}
     disableWhenOff: 0
     isOn: 0
@@ -2147,11 +2124,7 @@ MonoBehaviour:
       image:
         image: {fileID: 0}
         colors: []
-      sprite:
-        sprite: {fileID: 905850090}
-        colors:
-        - {r: 0.3137255, g: 0.45098042, b: 0.65882355, a: 1}
-        - {r: 1, g: 1, b: 1, a: 1}
+      sprite: {fileID: 0}
   optionalTriggers: {fileID: 0}
 --- !u!114 &576160952 stripped
 MonoBehaviour:
@@ -2935,12 +2908,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6670545884097650028, guid: f013921ee8f8be34d8de17a758760bb0,
     type: 3}
   m_PrefabInstance: {fileID: 903382415}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &905850090 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 3428185858373550533, guid: 58b571876f01cb947a8f0d7e7fe7cf97,
-    type: 3}
-  m_PrefabInstance: {fileID: 456079419}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &913044638 stripped
 MonoBehaviour:
@@ -7257,7 +7224,7 @@ PrefabInstance:
     - target: {fileID: 4629639264099012513, guid: 1c41276d88ea61c479efecc05268f4ae,
         type: 3}
       propertyPath: loadName
-      value: Map3TODO
+      value: Map3Big
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c41276d88ea61c479efecc05268f4ae, type: 3}

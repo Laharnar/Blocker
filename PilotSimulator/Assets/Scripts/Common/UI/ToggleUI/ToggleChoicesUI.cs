@@ -14,18 +14,18 @@ public class ToggleChoicesUI : MonoBehaviour
 
     public void ShowOn(int showId)
     {
-        Syncronize(false);
+        SetAllUI(false);
         choices[showId].Set(true);
         if (optionalTriggers) optionalTriggers.ChangeTacticByUI(showId);
     }
 
     public void ShowOff(int showId)
     {
-        Syncronize(false);
+        SetAllUI(false);
         choices[showId].Set(false);
     }
 
-    public void Syncronize(bool value)
+    public void SetAllUI(bool value)
     {
         for (int i = 0; i < choices.Length; i++)
         {

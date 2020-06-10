@@ -8,6 +8,6 @@ public class UIOptionalPieces
     public void SetColor(int col)
     {
         image.SetColor(col);
-        sprite.SetColor(col);
+        sprite?.SetColor(col);
     }
 }

@@ -10,7 +10,7 @@ public interface IStatGetter
 
 public interface IStatAdder
 {
-    void AddStatUpgrade(UpgradeData upgradeMods);
+    void AddUnitStatUpgrade(UpgradeData upgradeMods);
     void AddUpgrades(UpgradeMod upgradeMods);
 }
 
@@ -23,6 +23,7 @@ public class StatMods : ValueChangeNotifiable, IStatGetter, IStatAdder
     [SerializeField] string statType;
     public string StatType { get => statType; }
     bool IsUsed => this!= null && gameObject.activeInHierarchy;
+    public static UpgradeMod badCode_lastMod;
 
     void OnDestroy()
     {
@@ -32,6 +33,8 @@ public class StatMods : ValueChangeNotifiable, IStatGetter, IStatAdder
         else Debug.Log("Upgrade logs is already null, can't remove observer.");
     }
 
+    // Notified is used for events, that want to trigger upgrading.
+    // For inheritance don't override Notified. Use OnAddMods instead.
     public override void Notified(IModData value)
     {
         if (!IsUsed) return;
@@ -41,9 +44,9 @@ public class StatMods : ValueChangeNotifiable, IStatGetter, IStatAdder
         else Debug.Log("Attemting to add mod to incorrect stat."+value.ModType+statType);
 
         if (value as UpgradeData != null)
-            AddStatUpgrade((UpgradeData)value);
+            AddUnitStatUpgrade((UpgradeData)value);
         else if (value as Bonus != null)
-            SwapWeaponBonus((Bonus)value);
+            SwapWeaponBonuses((Bonus)value);
         else Debug.LogError("Unhnadled transfered type."+ value, this);
     }
 
@@ -60,25 +63,27 @@ public class StatMods : ValueChangeNotifiable, IStatGetter, IStatAdder
         return logSum;
     }
 
-    public void SwapWeaponBonus(Bonus bonus)
+    public void SwapWeaponBonuses(Bonus bonus)
     {
         if (!IsUsed) return;
         weaponMods.ClearBonusMods();
         AddStat(bonus, weaponMods);
     }
 
-    public void AddStatUpgrade(UpgradeData upgrade)
+    public void AddUnitStatUpgrade(UpgradeData upgrade)
     {
         if (!IsUsed) return;
         AddStat(upgrade, upgradeMods);
     }
+
     public void AddStat(IModData modItem, UpgradeMod mod)
     {
         if (!IsUsed) return;
         if (modItem.ModType != statType)
             return;
         mod.AddMod(modItem);
-        OnAddMods(upgradeMods);
+        badCode_lastMod = mod;
+        OnAddedMod();
     }
 
     public void AddUpgrades(UpgradeMod upgrades)
@@ -86,11 +91,12 @@ public class StatMods : ValueChangeNotifiable, IStatGetter, IStatAdder
         if (!IsUsed) return;
         upgradeMods.AddMods(upgrades);
         upgrades.AddObserver(this);
-        OnAddMods(upgradeMods);
+        badCode_lastMod = upgrades;
+        OnAddedMod();
     }
 
-    protected virtual void OnAddMods(UpgradeMod userMods)
+    protected virtual void OnAddedMod()
     {
-    }
 
+    }
 }

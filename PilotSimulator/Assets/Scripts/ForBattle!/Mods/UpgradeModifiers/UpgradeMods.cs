@@ -23,7 +23,7 @@ public class UpgradeMod:IUpgradeMods {
         else if(newMod as Bonus != null)
             logBonuses.Add((Bonus)newMod);
         else Debug.LogError("Unhandled type."+newMod);
-        Debug.Log("adding mod "+newMod.ModType+ newMod.ModValue);
+        Debug.Log("adding mod "+newMod.ModType+" "+ newMod.ModValue);
         evtOnAddedMod.Notify(newMod);
     }
 

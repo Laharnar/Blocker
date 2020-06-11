@@ -107,6 +107,9 @@ public class CombatController : StatMods
         if (IsInAttackRange(enemy))
         {
             AttackEnemy(enemy);
+            //-
+            Stop();// fix for not having moddable move range same as attack range.
+            //-
         }
     }
 
@@ -132,6 +135,15 @@ public class CombatController : StatMods
     }
 
     internal void Follow(CombatUser enemyToFollow)
+    {
+        if (enemyToFollow)
+        {
+            // walk to enemy
+            Travel(enemyToFollow.transform.position);
+        }
+    }
+
+    internal void FollowAgressively(CombatUser enemyToFollow)
     {
         if (enemyToFollow)
         {

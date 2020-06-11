@@ -1,11 +1,16 @@
 ﻿using TMPro;
 using UnityEngine;
 
-public class WeaponModToTextUI : MonoBehaviour
+public class WeaponModToTextUI : MonoBehaviour, ITestable
 {
     public Transform weaponPrefab;
     public UIId targetUI;
     public TextMeshProUGUI textUI;
+
+    public void TestInitialState()
+    {
+        ReloadUI();
+    }
 
     [ContextMenu("Reload")]
     void ReloadUI()

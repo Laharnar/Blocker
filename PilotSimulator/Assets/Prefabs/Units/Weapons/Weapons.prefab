@@ -229,7 +229,9 @@ MonoBehaviour:
   - type: Attack
     value: 4
   - type: Health
-    value: 2
+    value: 3
+  - type: Speed
+    value: -0.1
 --- !u!1 &9154612232339711561
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +329,10 @@ MonoBehaviour:
   bonuses:
   - type: Attack
     value: 5
+  - type: Attack range
+    value: 2
+  - type: Health
+    value: -2
 --- !u!1 &9154612232509895938
 GameObject:
   m_ObjectHideFlags: 0

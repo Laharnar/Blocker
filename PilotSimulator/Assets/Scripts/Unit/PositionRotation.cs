@@ -69,7 +69,7 @@ public class PositionRotation : CombatScript, ITestable, ISetupUnity {
     {
         if (rigbody.IsNull() || relativeTo.Value == Space.World)
         {
-            TestTransformationValues();
+            DefaultTransformationValues();
             ApplyDeltaTime();
             ModifyDirectionAndRotationOnExtrenalScripts();
             MoveRotateScale();
@@ -85,19 +85,19 @@ public class PositionRotation : CombatScript, ITestable, ISetupUnity {
     {
         if (!rigbody.IsNull() && relativeTo.Value == Space.Self)
         {
-            TestFixedPhysicsValues();
+            DefaultFixedPhysicsValues();
             ApplyFixedDeltaTime();
             ModifyDirectionAndRotationOnExtrenalScripts();
             MoveRotateScale();
         }
     }
 
-    private void TestTransformationValues()
+    private void DefaultTransformationValues()
     {
         moveAmount = direction * GetSpeed();
         rotsAmount = rotationDeg  * rotationSpeed.Value;
     }
-    private void TestFixedPhysicsValues()
+    private void DefaultFixedPhysicsValues()
     {
         moveAmount = direction * GetSpeed();
         rotsAmount = rotationDeg * rotationSpeed.Value;
@@ -105,8 +105,9 @@ public class PositionRotation : CombatScript, ITestable, ISetupUnity {
 
     public float GetSpeed()
     {
-        logModsSpeed = optionallyExpanded.BonusSpeed;
-        return moveSpeed.Value + logModsSpeed;
+        float bonus = optionallyExpanded.BonusSpeed;
+        logModsSpeed = bonus;
+        return moveSpeed.Value + bonus;
     }
 
     void ApplySpeed()

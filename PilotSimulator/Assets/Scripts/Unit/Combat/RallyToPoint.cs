@@ -61,6 +61,7 @@ public class RallyToPoint : MonoBehaviour, ITactic
             if (c0b.IsInAttackRange(enemy))
             {
                 c0b.AttackEnemy(enemy);
+                c0b.Stop();
             }
         }
     }

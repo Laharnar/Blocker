@@ -19,7 +19,7 @@ public class UnitySetups
 
         if (script.UnitySetup())
         {
-            isInit[script] = true;
+            //isInit[script] = true;
             return true;
         }
         return false;

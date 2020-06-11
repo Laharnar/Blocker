@@ -26,10 +26,12 @@ public class AttackEnemies: MonoBehaviour, ITactic
         enemyToFollow = c0b.SearchEnemy();
         c0b.Follow(enemyToFollow);
 
-        
+
         if (c0b.IsInAttackRange(enemyToFollow))
         {
             c0b.AttackEnemy(enemyToFollow);
+            // workaround for not having actual attack range mod same as move range in simple manner.
+            c0b.Stop();
         }
     }
 }

@@ -16,7 +16,7 @@ public class UnitWeapons : MonoBehaviour, IWeaponChanger, ISetupUnity
     {
         if (!init)
         {
-            Debug.Log("startup equip");
+            //Debug.Log("startup equip", this);
             ChangeWeapon(startupEquipped);
             init = true;
         }
@@ -24,7 +24,7 @@ public class UnitWeapons : MonoBehaviour, IWeaponChanger, ISetupUnity
 
     public void ChangeWeapon(int id)
     {
-        Debug.Log("Changed weapon from "+equipped +" to " +id);
+        //Debug.Log("Changed weapon from "+equipped +" to " +id, this);
         RemoveWeapon();
 
         equipped = id;

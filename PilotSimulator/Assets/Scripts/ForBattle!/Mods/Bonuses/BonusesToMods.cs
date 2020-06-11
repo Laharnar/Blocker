@@ -55,7 +55,7 @@ public class BonusesToMods:MonoBehaviour
         {
             Bonus bonus = bonuses.GetBonus(i);
             StatMods mods = GetModReference(bonus);
-            mods.SwapWeaponBonus(bonus);
+            mods.SwapWeaponBonuses(bonus);
         }
     }
 

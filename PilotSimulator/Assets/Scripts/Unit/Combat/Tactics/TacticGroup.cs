@@ -60,7 +60,13 @@ public class TacticGroup:MonoBehaviour
     {
         for (int i = 0; i < onUnitDeathEvents.Count; i++)
         {
-            onUnitDeathEvents[i].onDeathEvents.OnDeath();
+            if (onUnitDeathEvents[i] != null)
+            {
+                if(onUnitDeathEvents[i].onDeathEvents != null)
+                    onUnitDeathEvents[i].onDeathEvents.OnDeath();
+                else Debug.LogError("Death event is null", this);
+            }
+            else Debug.LogError("Inform on death is null", this);
         }
     }
 

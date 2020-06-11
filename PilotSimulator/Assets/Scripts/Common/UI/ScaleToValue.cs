@@ -13,7 +13,8 @@ public class ScaleToValue : MonoBehaviour
     {
         float current = valueGetterCurrent.ValueGetter.GetValue(0);
         float max = valueGetterMax.ValueGetter.GetValue(1);
-
-        scaled.localScale = new Vector3(current / max, 1, 1);
+        if (max == 0)
+            current = 0;
+        scaled.localScale = new Vector3(current / max+0.001f, 1, 1);
     }
 }

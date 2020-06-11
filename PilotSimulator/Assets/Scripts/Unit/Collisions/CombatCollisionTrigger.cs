@@ -77,7 +77,7 @@ public class CombatCollisionTrigger : MonoBehaviour, ITestable
         CombatCollisionTrigger trigger = collider.GetComponent<CombatCollisionTrigger>();
         if (!trigger)
         {
-            Debug.Log("Other doesn't have collisiotn trigger(other is linked to this log). This can result in errors with scripts that need root.", collider);
+            //Debug.Log("Other doesn't have collisiotn trigger(other is linked to this //log). This can result in errors with scripts that need root.", collider);
         }
         Rigidbody2D rig = collider.GetComponent<Rigidbody2D>();
         GameObject root;

@@ -1288,7 +1288,7 @@ GameObject:
   - component: {fileID: 1062137913123300915}
   - component: {fileID: 6635736892492744449}
   - component: {fileID: 900326887}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: UnitAlly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1413,7 +1413,7 @@ GameObject:
   - component: {fileID: 6322717010061070578}
   - component: {fileID: 6322717010061070576}
   - component: {fileID: 6322717010061070579}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: AttackRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1462,7 +1462,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3f2d62d71336745b4a11ef50bb7ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  log: 1
   collisions: {fileID: 4693174804001266569}
+  connections:
+    collisions: {fileID: 4693174804001266569}
+    traps: []
   circleCollider: {fileID: 6322717010061070576}
   root: {fileID: 6322717010057583619}
 --- !u!1 &6322717010470451138
@@ -1691,7 +1695,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6322717011666569414}
   - component: {fileID: 6322717011666569415}
-  m_Layer: 0
+  - component: {fileID: 1649250885}
+  - component: {fileID: 1649250886}
+  m_Layer: 11
   m_Name: CharacterSize
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1728,6 +1734,39 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.17
+--- !u!114 &1649250885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6322717011666569401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e6e20fba80ec9458f1f4af8deef745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staticLogCount: 0
+  collisions: []
+--- !u!114 &1649250886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6322717011666569401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b3f2d62d71336745b4a11ef50bb7ec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  log: 0
+  collisions: {fileID: 1649250885}
+  connections:
+    collisions: {fileID: 1649250885}
+    traps: []
+  circleCollider: {fileID: 6322717011666569415}
+  root: {fileID: 6322717010057583619}
 --- !u!1 &6322717011786269141
 GameObject:
   m_ObjectHideFlags: 0

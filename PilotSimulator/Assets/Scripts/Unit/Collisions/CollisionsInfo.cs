@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+[System.Serializable]
+public class CollisionInfo
+{
+    public string code;
+    public GameObject start;
 
+    public GameObject otherCollision;
+    public GameObject otherRoot;
+}
 public class CollisionsInfo:MonoBehaviour
 {
-    [System.Serializable]
-    public class CollisionInfo
-    {
-        public string code;
-        public GameObject start;
 
-        public GameObject otherCollision;
-        public GameObject otherRoot;
-    }
     public int staticLogCount;
     [SerializeField]List<CollisionInfo> collisions = new List<CollisionInfo>();
 

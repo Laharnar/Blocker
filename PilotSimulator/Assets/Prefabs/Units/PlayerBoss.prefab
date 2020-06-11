@@ -46,6 +46,7 @@ MonoBehaviour:
   asUser: {fileID: 0}
   asWeaponUser: {fileID: 0}
   officer: {fileID: 0}
+  scripts: {fileID: 0}
 --- !u!1 &11810806629078669
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,6 +183,8 @@ GameObject:
   m_Component:
   - component: {fileID: 987203099729039260}
   - component: {fileID: 987203099729039261}
+  - component: {fileID: 594982637}
+  - component: {fileID: 594982638}
   m_Layer: 0
   m_Name: CharacterSize
   m_TagString: Untagged
@@ -219,6 +222,39 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.6
+--- !u!114 &594982637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987203099729039331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b3f2d62d71336745b4a11ef50bb7ec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  log: 0
+  collisions: {fileID: 594982638}
+  connections:
+    collisions: {fileID: 594982638}
+    traps: []
+  circleCollider: {fileID: 987203099729039261}
+  root: {fileID: 987203100273695577}
+--- !u!114 &594982638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987203099729039331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e6e20fba80ec9458f1f4af8deef745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  staticLogCount: 0
+  collisions: []
 --- !u!1 &987203100273695577
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,7 +421,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b3f2d62d71336745b4a11ef50bb7ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  log: 1
   collisions: {fileID: 1978814614771811581}
+  connections:
+    collisions: {fileID: 1978814614771811581}
+    traps: []
   circleCollider: {fileID: 987203100512458666}
   root: {fileID: 987203100273695577}
 --- !u!1 &987203100901330555

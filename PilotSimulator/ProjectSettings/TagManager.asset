@@ -16,10 +16,10 @@ TagManager:
   - BuildTempAreas
   - Absorber
   - MinimalGround
-  - 
-  - 
-  - 
-  - 
+  - Unit
+  - Attackable
+  - AttackUtility
+  - NonAttackable
   - 
   - 
   - 

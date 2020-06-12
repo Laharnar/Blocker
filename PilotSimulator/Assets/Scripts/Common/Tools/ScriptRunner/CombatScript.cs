@@ -13,15 +13,23 @@ public abstract class CombatScript:MonoBehaviour, ITickable
     // Don't override!
     protected void Start()
     {
-        TickRunner.EnsureConnection(this);
         CombatStart();
+    }
+
+    private void OnEnable()
+    {
+        TickRunner.EnsureConnection(this);
+    }
+
+    private void OnDisable()
+    {
+        TickRunner.Disconnection(this);
     }
 
     // Don't override!
     protected void OnDestroy()
     {
         CombatDestroy();
-        TickRunner.Disconnection(this);
     }
 
     public void Tick()

@@ -3,7 +3,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+public enum TestPriority
+{
+    AllowInTestEnv,
+    Always
+}
 
 [ExecuteInEditMode]
 public class RealtimeTester:MonoBehaviour
@@ -81,7 +85,11 @@ public class RealtimeTester:MonoBehaviour
             testRunner = StartCoroutine(RunTestsAndSetups());
         }
     }
-
+    internal static void Assert(bool assertTrue, MonoBehaviour unityClass, string message, TestPriority priority)
+    {
+        if (!assertTrue)
+            Err(unityClass, message);
+    }
     internal static void Assert(bool assertTrue, MonoBehaviour unityClass, string message)
     {
         if (!assertTrue)

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TacticGroup:MonoBehaviour
+public class TacticGroup:MonoBehaviour, ISetupUnity
 {
 
     [Header("Realtime | Tactics")]
@@ -77,5 +77,19 @@ public class TacticGroup:MonoBehaviour
             if(units[i])
                 units[i].scripts.hp.RecieveDamage(value);
         }
+    }
+
+    public bool UnitySetup()
+    {
+        for (int i = 0; i < onUnitDeathEvents.Count; i++)
+        {
+            RealtimeTester.Assert(onUnitDeathEvents[i] != null, this, "missing connected event. ", TestPriority.AllowInTestEnv);
+            if(onUnitDeathEvents[i] == null)
+            {
+
+                return false;
+            }
+        }
+        return true;
     }
 }

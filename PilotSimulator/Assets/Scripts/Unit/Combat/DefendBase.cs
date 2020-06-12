@@ -64,8 +64,12 @@ public class DefendBase : MonoBehaviour, ITactic, ITestable
     private void SearchAndLockNearbyEnemy()
     {
         enemyToFollow = combatant.SearchEnemy();
-        float dist = Vector3.Distance(enemyToFollow.transform.position, transform.position);
-        bool nearEnemy = dist < searchRange;
+        bool nearEnemy = false;
+        if (enemyToFollow)
+        {
+            float dist = Vector3.Distance(enemyToFollow.transform.position, transform.position);
+            nearEnemy = dist < searchRange;
+        }
         if (nearEnemy)
         {
             combatant.OffensiveLocking(enemyToFollow);

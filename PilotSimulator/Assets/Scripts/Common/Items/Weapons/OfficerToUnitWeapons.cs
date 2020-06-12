@@ -32,7 +32,7 @@ public class OfficerToUnitWeapons:MonoBehaviour, IWeaponChanger, IRandomizable
         {
             units[i].ChangeWeapon(swap);
         }
-        Debug.Log("Changed weapon for unit count of "+ group.Units.Count+" to id "+swap);
+        //Debug.Log("Changed weapon for unit count of "+ group.Units.Count+" to id "+swap);
     }
 
     public void RandomValue(int next)

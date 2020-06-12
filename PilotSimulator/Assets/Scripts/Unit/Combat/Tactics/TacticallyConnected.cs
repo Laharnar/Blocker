@@ -9,7 +9,7 @@ public class TacticallyConnected:MonoBehaviour, ISetupUnity
     [SerializeField] internal TacticGroup officer;
     [SerializeField] internal UnitScriptLoader scripts;
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         if (officer) officer.DisconnectUnitOnDestroy(this);
     }

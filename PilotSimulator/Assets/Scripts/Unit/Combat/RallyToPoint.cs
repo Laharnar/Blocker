@@ -48,6 +48,7 @@ public class RallyToPoint : MonoBehaviour, ITactic
                 {
                     enemy = null;
                     letThemRunAway = Time.time + searchRate;
+                    searchRally = false;
                 }
             }
         }

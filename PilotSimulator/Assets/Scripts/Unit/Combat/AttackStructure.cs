@@ -45,7 +45,7 @@ public class AttackStructure : MonoBehaviour, ITactic
         {
             if (AttackBaseTarget)
                 combatant.NormalAttack(AttackBaseTarget);
-            else Debug.Log("Missing enemy.");
+            else Debug.Log("Missing base to attack.");
         }
     }
 }

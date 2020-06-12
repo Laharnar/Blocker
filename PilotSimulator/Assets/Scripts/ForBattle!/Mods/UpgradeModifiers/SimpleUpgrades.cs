@@ -45,5 +45,9 @@ public class SimpleUpgrades : UpgradePrefab
         health = resetValues.health.GetDataCopyForResettingModSets();
         speed = resetValues.speed.GetDataCopyForResettingModSets();
         levels = new int[3];
+        for (int i = 0; i < levels.Length; i++)
+        {
+            levels[i] = 0;
+        }
     }
 }

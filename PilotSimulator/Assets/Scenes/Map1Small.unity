@@ -334,6 +334,57 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 7544942656037688091}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &191013368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 191013370}
+  - component: {fileID: 191013369}
+  m_Layer: 0
+  m_Name: UpgradeResets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &191013369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191013368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b526cc53736991140bbe161b1349a32b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgrades:
+  - {fileID: 11400000, guid: 350ad689326b0e049acc9bb8ba0bbe5c, type: 2}
+  - {fileID: 11400000, guid: 4989277387de6954e9a1f2d8f72aed75, type: 2}
+  - {fileID: 11400000, guid: dd9ab6c558f91904ba764f1e0938d0a9, type: 2}
+  setTo:
+  - {fileID: 11400000, guid: 350ad689326b0e049acc9bb8ba0bbe5c, type: 2}
+  - {fileID: 11400000, guid: 4989277387de6954e9a1f2d8f72aed75, type: 2}
+  - {fileID: 11400000, guid: dd9ab6c558f91904ba764f1e0938d0a9, type: 2}
+--- !u!4 &191013370
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191013368}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 797.6, y: 606.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &194751128
 PrefabInstance:
   m_ObjectHideFlags: 0

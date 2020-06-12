@@ -49,6 +49,9 @@ public class Health : MonoBehaviour, ITestable, IHealth
 
     public void RecieveDamage(int dmg)
     {
+        if (health.Value <= 0) { 
+            return;
+        }
         LogDmg(dmg);
         health.Value = Mathf.Clamp(Hp - dmg, 0, MaxHp);
         OnDamaged.Invoke();
